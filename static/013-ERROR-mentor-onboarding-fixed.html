@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentor Onboarding - Roots & Wings</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#00A2E8',
+                        'primary-dark': '#00468C',
+                        'primary-light': '#E6F7FF',
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @keyframes slideIn {
+            from { transform: translateX(20px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        .step-content {
+            animation: slideIn 0.5s ease-out;
+        }
+        .step-content.hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <h1 class="text-2xl font-bold text-primary-dark">Roots & Wings</h1>
+                    <span class="ml-4 text-gray-500">Mentor Onboarding</span>
+                </div>
+                <button class="text-gray-500 hover:text-gray-700" onclick="window.history.back()">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <!-- Progress Section -->
+        <div class="mb-8">
+            <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center space-x-4">
+                    <span class="text-sm text-gray-600">Step <span id="current-step">1</span> of <span id="total-steps">9</span></span>
+                    <div class="text-sm text-gray-500" id="step-title">Welcome</div>
+                </div>
+                <div class="text-sm text-gray-500 flex items-center">
+                    <i class="fas fa-save mr-1 text-green-500"></i>
+                    Progress saved
+                </div>
+            </div>
+            
+            <!-- Progress Steps -->
+            <div class="flex items-center space-x-2 overflow-x-auto pb-2">
+                <div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center text-xs font-medium transition-all duration-300" data-step="1">1</div>
+                <div class="w-6 h-0.5 bg-gray-300"></div>
+                <div class="w-8 h-8 rounded-full bg-gray-300 text-gray-600 flex items-center justify-center text-xs font-medium transition-all duration-300" data-step="2">2</div>
+                <div class="w-6 h-0.5 bg-gray-300"></div>
+                <div class="w-8 h-8 rounded-full bg-gray-300 text-gray-600 flex items-center justify-center text-xs font-medium transition-all duration-300" data-step="3">3</div>
+                <div class="w-6 h-0.5 bg-gray-300"></div>
+                <div class="w-8 h-8 rounded-full bg-gray-300 text-gray-600 flex items-center justify-center text-xs font-medium transition-all duration-300" data-step="4">4</div>
+                <div class="w-6 h-0.5 bg-gray-300"></div>
+                <div class="w-8 h-8 rounded-full bg-gray-300 text-gray-600 flex items-center justify-center text-xs font-medium transition-all duration-300" data-step="5">5</div>
+                <div class="w-6 h-0.5 bg-gray-300"></div>
+                <div class="w-8 h-8 rounded-full bg-gray-300 text-gray-600 flex items-center justify-center text-xs font-medium transition-all duration-300" data-step="6">6</div>
+                <div class="w-6 h-0.5 bg-gray-300"></div>
+                <div class="w-8 h-8 rounded-full bg-gray-300 text-gray-600 flex items-center justify-center text-xs font-medium transition-all duration-300" data-step="7">7</div>
+                <div class="w-6 h-0.5 bg-gray-300"></div>
+                <div class="w-8 h-8 rounded-full bg-gray-300 text-gray-600 flex items-center justify-center text-xs font-medium transition-all duration-300" data-step="8">8</div>
+                <div class="w-6 h-0.5 bg-gray-300"></div>
+                <div class="w-8 h-8 rounded-full bg-gray-300 text-gray-600 flex items-center justify-center text-xs font-medium transition-all duration-300" data-step="9">9</div>
+            </div>
+            
+            <!-- Progress Bar -->
+            <div class="w-full bg-gray-300 rounded-full h-3 mt-4">
+                <div class="bg-primary h-3 rounded-full transition-all duration-500" id="progress-bar" style="width: 11.11%"></div>
+            </div>
+        </div>
+
+        <!-- Main Content Container -->
+        <div class="bg-white rounded-xl shadow-sm border border-gray-200 min-h-96">
+            
+            <!-- Step 1: Welcome -->
+            <div class="step-content p-8" data-step="1" id="step-1">
+                <div class="max-w-2xl mx-auto text-center">
+                    <div class="w-20 h-20 bg-primary rounded-full mx-auto mb-6 flex items-center justify-center">
+                        <i class="fas fa-chalkboard-teacher text-white text-2xl"></i>
+                    </div>
+                    <h1 class="text-3xl font-bold text-gray-900 mb-4">Let's build your teaching profile</h1>
+                    <p class="text-lg text-gray-600 mb-8">
+                        Welcome to Roots & Wings! We'll guide you through creating an amazing mentor profile that attracts the right students.
+                    </p>
+                    
+                    <!-- Role Confirmation -->
+                    <div class="bg-gray-50 rounded-lg p-6 mb-8">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4">Confirm your teaching role</h3>
+                        <div class="space-y-3 text-left">
+                            <label class="flex items-center space-x-3 cursor-pointer p-3 border border-gray-200 rounded-lg hover:bg-gray-50">
+                                <input type="radio" name="teaching-role" value="individual" class="w-4 h-4 text-primary focus:ring-primary">
+                                <span class="text-gray-700">Individual mentor (1-on-1 and small groups)</span>
+                            </label>
+                            <label class="flex items-center space-x-3 cursor-pointer p-3 border border-gray-200 rounded-lg hover:bg-gray-50">
+                                <input type="radio" name="teaching-role" value="workshop" class="w-4 h-4 text-primary focus:ring-primary">
+                                <span class="text-gray-700">Workshop leader (special events and masterclasses)</span>
+                            </label>
+                            <label class="flex items-center space-x-3 cursor-pointer p-3 border border-gray-200 rounded-lg hover:bg-gray-50">
+                                <input type="radio" name="teaching-role" value="both" class="w-4 h-4 text-primary focus:ring-primary" checked>
+                                <span class="text-gray-700">Both (recommended for maximum opportunities)</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="text-sm text-gray-500">
+                        ⏱️ This process takes about 10 minutes and your progress is automatically saved
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2: Subject & Level Selection -->
+            <div class="step-content p-8 hidden" data-step="2" id="step-2">
+                <div class="grid lg:grid-cols-3 gap-8">
+                    <!-- Tips Card -->
+                    <div class="lg:col-span-1">
+                        <div class="bg-primary-light rounded-lg p-6 sticky top-4">
+                            <h3 class="font-semibold text-primary-dark mb-3">💡 Good to Know</h3>
+                            <ul class="text-sm text-gray-600 space-y-2">
+                                <li>• Most popular: Music, Maths, Languages, Art</li>
+                                <li>• You can teach multiple subjects</li>
+                                <li>• Choose levels you're comfortable with</li>
+                                <li>• Age groups help students find you easily</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Form -->
+                    <div class="lg:col-span-2">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-6">What would you like to teach?</h2>
+                        
+                        <!-- Subject Selection -->
+                        <div class="mb-6">
+                            <h3 class="text-lg font-semibold text-gray-900 mb-4">Select your subjects</h3>
+                            <div class="grid grid-cols-2 md:grid-cols-3 gap-3" id="subject-grid">
+                                <label class="subject-option cursor-pointer">
+                                    <input type="checkbox" class="hidden" value="music">
+                                    <div class="subject-card p-3 border-2 border-gray-200 rounded-lg text-center hover:border-primary transition-colors">
+                                        <i class="fas fa-music text-primary mb-2"></i>
+                                        <div class="text-sm font-medium">Music</div>
+                                    </div>
+                                </label>
+                                <label class="subject-option cursor-pointer">
+                                    <input type="checkbox" class="hidden" value="maths">
+                                    <div class="subject-card p-3 border-2 border-gray-200 rounded-lg text-center hover:border-primary transition-colors">
+                                        <i class="fas fa-calculator text-primary mb-2"></i>
+                                        <div class="text-sm font-medium">Maths</div>
+                                    </div>
+                                </label>
+                                <label class="subject-option cursor-pointer">
+                                    <input type="checkbox" class="hidden" value="art">
+                                    <div class="subject-card p-3 border-2 border-gray-200 rounded-lg text-center hover:border-primary transition-colors">
+                                        <i class="fas fa-palette text-primary mb-2"></i>
+                                        <div class="text-sm font-medium">Art & Craft</div>
+                                    </div>
+                                </label>
+                                <label class="subject-option cursor-pointer">
+                                    <input type="checkbox" class="hidden" value="languages">
+                                    <div class="subject-card p-3 border-2 border-gray-200 rounded-lg text-center hover:border-primary transition-colors">
+                                        <i class="fas fa-globe text-primary mb-2"></i>
+                                        <div class="text-sm font-medium">Languages</div>
+                                    </div>
+                                </label>
+                                <label class="subject-option cursor-pointer">
+                                    <input type="checkbox" class="hidden" value="coding">
+                                    <div class="subject-card p-3 border-2 border-gray-200 rounded-lg text-center hover:border-primary transition-colors">
+                                        <i class="fas fa-code text-primary mb-2"></i>
+                                        <div class="text-sm font-medium">Coding</div>
+                                    </div>
+                                </label>
+                                <label class="subject-option cursor-pointer">
+                                    <input type="checkbox" class="hidden" value="philosophy">
+                                    <div class="subject-card p-3 border-2 border-gray-200 rounded-lg text-center hover:border-primary transition-colors">
+                                        <i class="fas fa-brain text-primary mb-2"></i>
+                                        <div class="text-sm font-medium">Philosophy</div>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="mt-4">
+                                <input type="text" placeholder="Add another subject..." class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                            </div>
+                        </div>
+                        
+                        <!-- Level & Age Groups -->
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="bg-gray-50 rounded-lg p-4">
+                                <h3 class="text-lg font-semibold text-gray-900 mb-4">🎓 Teaching levels</h3>
+                                <div class="space-y-3">
+                                    <label class="flex items-center space-x-3 cursor-pointer">
+                                        <input type="checkbox" class="w-4 h-4 text-primary focus:ring-primary" name="levels" value="beginner">
+                                        <span>Beginner</span>
+                                    </label>
+                                    <label class="flex items-center space-x-3 cursor-pointer">
+                                        <input type="checkbox" class="w-4 h-4 text-primary focus:ring-primary" name="levels" value="intermediate">
+                                        <span>Intermediate</span>
+                                    </label>
+                                    <label class="flex items-center space-x-3 cursor-pointer">
+                                        <input type="checkbox" class="w-4 h-4 text-primary focus:ring-primary" name="levels" value="advanced">
+                                        <span>Advanced</span>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-gray-50 rounded-lg p-4">
+                                <h3 class="text-lg font-semibold text-gray-900 mb-4">👥 Age groups</h3>
+                                <div class="space-y-3">
+                                    <label class="flex items-center space-x-3 cursor-pointer">
+                                        <input type="checkbox" class="w-4 h-4 text-primary focus:ring-primary" name="age-groups" value="children">
+                                        <span>Children (5-12)</span>
+                                    </label>
+                                    <label class="flex items-center space-x-3 cursor-pointer">
+                                        <input type="checkbox" class="w-4 h-4 text-primary focus:ring-primary" name="age-groups" value="teens">
+                                        <span>Teens (13-17)</span>
+                                    </label>
+                                    <label class="flex items-center space-x-3 cursor-pointer">
+                                        <input type="checkbox" class="w-4 h-4 text-primary focus:ring-primary" name="age-groups" value="adults">
+                                        <span>Adults (18+)</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3: Class & Bundle Setup -->
+            <div class="step-content p-8 hidden" data-step="3" id="step-3">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">Choose your class types</h2>
+                <p class="text-gray-600 mb-8">Select the teaching formats you'd like to offer. You can always add more later.</p>
+                
+                <div class="space-y-4">
+                    <!-- One-on-One Sessions -->
+                    <div class="border border-gray-200 rounded-lg p-6 hover:bg-gray-50 transition-colors">
+                        <label class="flex items-start space-x-4 cursor-pointer">
+                            <input type="checkbox" class="w-5 h-5 text-primary focus:ring-primary mt-1" checked>
+                            <div class="flex-1">
+                                <h3 class="text-lg font-semibold text-gray-900">✅ One-on-one sessions</h3>
+                                <p class="text-gray-600 mt-1">Personalized lessons tailored to individual student needs</p>
+                                <div class="mt-3 text-sm text-primary">Most popular choice • Highest earning potential</div>
+                            </div>
+                        </label>
+                    </div>
+                    
+                    <!-- Weekend Group Batch -->
+                    <div class="border border-gray-200 rounded-lg p-6 hover:bg-gray-50 transition-colors">
+                        <label class="flex items-start space-x-4 cursor-pointer">
+                            <input type="checkbox" class="w-5 h-5 text-primary focus:ring-primary mt-1" id="weekend-batch">
+                            <div class="flex-1">
+                                <h3 class="text-lg font-semibold text-gray-900">Weekend Group Batch</h3>
+                                <p class="text-gray-600 mt-1">Saturday & Sunday sessions over multiple weeks</p>
+                            </div>
+                        </label>
+                    </div>
+                    
+                    <!-- Weekday Batch -->
+                    <div class="border border-gray-200 rounded-lg p-6 hover:bg-gray-50 transition-colors">
+                        <label class="flex items-start space-x-4 cursor-pointer">
+                            <input type="checkbox" class="w-5 h-5 text-primary focus:ring-primary mt-1" id="weekday-batch">
+                            <div class="flex-1">
+                                <h3 class="text-lg font-semibold text-gray-900">Weekday Group Batch</h3>
+                                <p class="text-gray-600 mt-1">Monday to Friday intensive courses</p>
+                            </div>
+                        </label>
+                    </div>
+                    
+                    <!-- Workshops -->
+                    <div class="border border-gray-200 rounded-lg p-6 hover:bg-gray-50 transition-colors">
+                        <label class="flex items-start space-x-4 cursor-pointer">
+                            <input type="checkbox" class="w-5 h-5 text-primary focus:ring-primary mt-1">
+                            <div class="flex-1">
+                                <h3 class="text-lg font-semibold text-gray-900">Special Workshops</h3>
+                                <p class="text-gray-600 mt-1">One-time events, masterclasses, and special occasions</p>
+                                <div class="mt-3 text-sm text-green-600">Great for building your reputation • Flexible scheduling</div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 4: Bio & Experience -->
+            <div class="step-content p-8 hidden" data-step="4" id="step-4">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">Tell students about yourself</h2>
+                
+                <div class="space-y-6">
+                    <!-- Title -->
+                    <div>
+                        <label class="block text-lg font-semibold text-gray-900 mb-3">✏️ Title of your ad</label>
+                        <textarea rows="2" placeholder="Write a compelling headline that summarizes what you offer..." 
+                                 class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                                 minlength="50"></textarea>
+                        <div class="mt-2 text-sm text-gray-500">Minimum 50 characters</div>
+                    </div>
+                    
+                    <!-- About Lessons -->
+                    <div>
+                        <label class="block text-lg font-semibold text-gray-900 mb-3">✨ About your lessons</label>
+                        <p class="text-gray-600 mb-3">Describe your teaching methodology, materials you use, and what a typical lesson looks like</p>
+                        <textarea rows="4" placeholder="Share your teaching approach, lesson structure, materials you provide..."
+                                 class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                                 minlength="100"></textarea>
+                        <div class="mt-2 text-sm text-gray-500">Minimum 100 characters</div>
+                    </div>
+                    
+                    <!-- About You -->
+                    <div>
+                        <label class="block text-lg font-semibold text-gray-900 mb-3">🧑 About you</label>
+                        <p class="text-gray-600 mb-3">Share your qualifications, experience, passion, and personal message to students</p>
+                        <textarea rows="5" placeholder="Tell students about your background, qualifications, why you love teaching..."
+                                 class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                                 minlength="150"></textarea>
+                        <div class="mt-2 text-sm text-gray-500">Minimum 150 characters</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 5: Location & Mode -->
+            <div class="step-content p-8 hidden" data-step="5" id="step-5">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">Where would you like to teach?</h2>
+                
+                <!-- Address Input -->
+                <div class="mb-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">📍 Your location</h3>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <input type="text" placeholder="City" class="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                        <input type="text" placeholder="Postcode" class="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                    </div>
+                </div>
+                
+                <!-- Teaching Modes -->
+                <div class="space-y-4">
+                    <h3 class="text-lg font-semibold text-gray-900">Choose your teaching modes</h3>
+                    
+                    <div class="border border-gray-200 rounded-lg p-4 hover:bg-gray-50 transition-colors">
+                        <label class="flex items-center space-x-3 cursor-pointer">
+                            <input type="checkbox" class="w-5 h-5 text-primary focus:ring-primary">
+                            <span class="font-medium">🏠 At my home</span>
+                        </label>
+                    </div>
+                    
+                    <div class="border border-gray-200 rounded-lg p-4 hover:bg-gray-50 transition-colors">
+                        <label class="flex items-center space-x-3 cursor-pointer">
+                            <input type="checkbox" class="w-5 h-5 text-primary focus:ring-primary">
+                            <span class="font-medium">🚗 I can travel</span>
+                        </label>
+                    </div>
+                    
+                    <div class="border border-gray-200 rounded-lg p-4 hover:bg-gray-50 transition-colors">
+                        <label class="flex items-center space-x-3 cursor-pointer">
+                            <input type="checkbox" class="w-5 h-5 text-primary focus:ring-primary" checked>
+                            <span class="font-medium">🌐 Online lessons</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 6: Languages -->
+            <div class="step-content p-8 hidden" data-step="6" id="step-6">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">Languages you speak</h2>
+                
+                <div class="space-y-4">
+                    <!-- Default English -->
+                    <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                        <span class="font-medium">English</span>
+                        <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">Default</span>
+                    </div>
+                    
+                    <!-- Added Languages Container -->
+                    <div id="added-languages">
+                        <!-- Dynamically added languages will appear here -->
+                    </div>
+                    
+                    <!-- Add Language -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Add another language</label>
+                        <div class="flex space-x-3">
+                            <select id="language-select" class="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                                <option value="">Select a language...</option>
+                                <option value="spanish">Spanish</option>
+                                <option value="french">French</option>
+                                <option value="hindi">Hindi</option>
+                                <option value="urdu">Urdu</option>
+                                <option value="punjabi">Punjabi</option>
+                                <option value="arabic">Arabic</option>
+                                <option value="mandarin">Mandarin</option>
+                                <option value="german">German</option>
+                            </select>
+                            <button type="button" id="add-language-btn" class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors">
+                                Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 7: Safety -->
+            <div class="step-content p-8 hidden" data-step="7" id="step-7">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">Safety & Verification</h2>
+                
+                <div class="space-y-6">
+                    <!-- DBS Section -->
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4">🛡️ DBS Check</h3>
+                        <div class="space-y-3">
+                            <label class="flex items-start space-x-3 p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="radio" name="dbs-status" value="have-dbs" class="w-4 h-4 text-primary focus:ring-primary mt-1">
+                                <span>I have an enhanced DBS certificate</span>
+                            </label>
+                            <label class="flex items-start space-x-3 p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="radio" name="dbs-status" value="need-help" class="w-4 h-4 text-primary focus:ring-primary mt-1">
+                                <span>I need help getting a DBS check</span>
+                            </label>
+                            <label class="flex items-start space-x-3 p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="radio" name="dbs-status" value="adults-only" class="w-4 h-4 text-primary focus:ring-primary mt-1">
+                                <span>I only teach adults (18+)</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <!-- ID Verification -->
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4">🆔 Identity verification</h3>
+                        <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-primary transition-colors cursor-pointer" id="file-upload-area">
+                            <i class="fas fa-id-card text-gray-400 text-2xl mb-2"></i>
+                            <p class="text-gray-600 mb-2">Upload your ID document</p>
+                            <button type="button" class="text-primary hover:underline">Choose file</button>
+                            <input type="file" class="hidden" id="id-upload" accept=".jpg,.jpeg,.png,.pdf">
+                        </div>
+                        <div id="upload-status" class="mt-2 text-sm text-gray-500 hidden">
+                            <i class="fas fa-check-circle text-green-500 mr-1"></i>
+                            <span>Document uploaded successfully</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 8: Pricing -->
+            <div class="step-content p-8 hidden" data-step="8" id="step-8">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">Set your pricing</h2>
+                
+                <!-- Pricing Guide -->
+                <div class="bg-primary-light rounded-lg p-6 mb-6">
+                    <h3 class="font-semibold text-primary-dark mb-3">💡 Pricing Guide</h3>
+                    <div class="grid md:grid-cols-3 gap-4 text-sm">
+                        <div class="bg-white rounded p-3 text-center">
+                            <div class="font-medium">Beginner</div>
+                            <div class="text-primary">£15-25/hr</div>
+                        </div>
+                        <div class="bg-white rounded p-3 text-center">
+                            <div class="font-medium">Experienced</div>
+                            <div class="text-primary">£25-40/hr</div>
+                        </div>
+                        <div class="bg-white rounded p-3 text-center">
+                            <div class="font-medium">Expert</div>
+                            <div class="text-primary">£40-60+/hr</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Hourly Rate -->
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-lg font-semibold text-gray-900 mb-3">One-on-one hourly rate</label>
+                        <div class="flex items-center space-x-4">
+                            <div class="relative">
+                                <span class="absolute left-3 top-3 text-gray-500">£</span>
+                                <input type="number" placeholder="35" min="10" max="100" id="hourly-rate"
+                                       class="w-32 pl-8 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                            </div>
+                            <span class="text-gray-600">per hour</span>
+                        </div>
+                        <div class="mt-2 text-sm text-gray-500">
+                            Recommended range: £25-45 per hour based on your experience
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 9: Review -->
+            <div class="step-content p-8 hidden" data-step="9" id="step-9">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">Review your profile</h2>
+                
+                <!-- Profile Preview -->
+                <div class="bg-gradient-to-r from-primary to-primary-dark p-6 text-white rounded-lg mb-6">
+                    <h3 class="text-xl font-bold mb-2">Profile Preview</h3>
+                    <p>Your mentor profile is ready for review!</p>
+                </div>
+                
+                <!-- Summary -->
+                <div class="bg-gray-50 rounded-lg p-6 mb-6">
+                    <h3 class="font-semibold text-gray-900 mb-4">📋 Profile Summary</h3>
+                    <div class="grid md:grid-cols-2 gap-4 text-sm">
+                        <div>
+                            <div class="mb-3">
+                                <span class="font-medium">Teaching Role:</span>
+                                <span id="summary-role" class="ml-2 text-gray-600"></span>
+                            </div>
+                            <div class="mb-3">
+                                <span class="font-medium">Subjects:</span>
+                                <div id="summary-subjects" class="mt-1"></div>
+                            </div>
+                            <div class="mb-3">
+                                <span class="font-medium">Age Groups:</span>
+                                <div id="summary-ages" class="mt-1"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="mb-3">
+                                <span class="font-medium">Teaching Modes:</span>
+                                <div id="summary-modes" class="mt-1"></div>
+                            </div>
+                            <div class="mb-3">
+                                <span class="font-medium">Hourly Rate:</span>
+                                <span id="summary-rate" class="ml-2 text-gray-600"></span>
+                            </div>
+                            <div class="mb-3">
+                                <span class="font-medium">Languages:</span>
+                                <div id="summary-languages" class="mt-1"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Checklist -->
+                <div class="bg-gray-50 rounded-lg p-6 mb-8">
+                    <h3 class="font-semibold text-gray-900 mb-4">✅ Profile checklist</h3>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="space-y-2">
+                            <div class="flex items-center space-x-2">
+                                <i class="fas fa-check-circle text-green-500"></i>
+                                <span class="text-sm">Subjects selected</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <i class="fas fa-check-circle text-green-500"></i>
+                                <span class="text-sm">Bio completed</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <i class="fas fa-check-circle text-green-500"></i>
+                                <span class="text-sm">Location set</span>
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex items-center space-x-2">
+                                <i class="fas fa-check-circle text-green-500"></i>
+                                <span class="text-sm">Safety verified</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <i class="fas fa-check-circle text-green-500"></i>
+                                <span class="text-sm">Pricing set</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <i class="fas fa-check-circle text-green-500"></i>
+                                <span class="text-sm">Ready to submit</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center">
+                    <p class="text-gray-600 mb-4">
+                        You'll receive confirmation within 24-48 hours after submission
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Buttons - Fixed at bottom -->
+        <div class="flex justify-between items-center mt-6 pt-4 border-t border-gray-200">
+            <button id="prev-button" class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors flex items-center" disabled>
+                <i class="fas fa-arrow-left mr-2"></i>
+                Previous
+            </button>
+            
+            <div class="flex space-x-4">
+                <button id="save-draft" class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors">
+                    Save as Draft
+                </button>
+                <button id="next-button" class="px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors flex items-center">
+                    Next Step
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // State management
+        const mentorState = {
+            currentStep: 1,
+            totalSteps: 9,
+            formData: {
+                teachingRole: '',
+                subjects: [],
+                levels: [],
+                ageGroups: [],
+                classTypes: [],
+                bio: {},
+                location: {},
+                teachingModes: [],
+                languages: ['English'],
+                dbs: '',
+                pricing: {},
+                verification: false
+            },
+            stepTitles: [
+                'Welcome',
+                'Subjects & Levels', 
+                'Class Types',
+                'Bio & Experience',
+                'Location & Mode',
+                'Languages',
+                'Safety & Verification',
+                'Pricing',
+                'Review & Submit'
+            ]
+        };
+
+        // Initialize
+        function init() {
+            updateDisplay();
+            setupEventListeners();
+            loadSavedProgress();
+        }
+
+        // Update all displays
+        function updateDisplay() {
+            updateProgressBar();
+            updateStepTitle();
+            updateButtons();
+            updateStepVisibility();
+            updateStepIndicators();
+        }
+
+        // Update progress bar and step counter
+        function updateProgressBar() {
+            const progress = (mentorState.currentStep / mentorState.totalSteps) * 100;
+            document.getElementById('progress-bar').style.width = `${progress}%`;
+            document.getElementById('current-step').textContent = mentorState.currentStep;
+            document.getElementById('total-steps').textContent = mentorState.totalSteps;
+        }
+
+        // Update step title
+        function updateStepTitle() {
+            const title = mentorState.stepTitles[mentorState.currentStep - 1];
+            document.getElementById('step-title').textContent = title;
+        }
+
+        // Update step visibility
+        function updateStepVisibility() {
+            // Hide all steps
+            document.querySelectorAll('.step-content').forEach(step => {
+                step.classList.add('hidden');
+            });
+            
+            // Show current step
+            const currentStep = document.getElementById(`step-${mentorState.currentStep}`);
+            if (currentStep) {
+                currentStep.classList.remove('hidden');
+            }
+        }
+
+        // Update step indicators
+        function updateStepIndicators() {
+            document.querySelectorAll('[data-step]').forEach((indicator, index) => {
+                const stepNumber = index + 1;
+                indicator.classList.remove('bg-primary', 'text-white', 'bg-green-500');
+                indicator.classList.add('bg-gray-300', 'text-gray-600');
+                
+                if (stepNumber < mentorState.currentStep) {
+                    indicator.classList.remove('bg-gray-300', 'text-gray-600');
+                    indicator.classList.add('bg-green-500', 'text-white');
+                } else if (stepNumber === mentorState.currentStep) {
+                    indicator.classList.remove('bg-gray-300', 'text-gray-600');
+                    indicator.classList.add('bg-primary', 'text-white');
+                }
+            });
+        }
+
+        // Update navigation buttons
+        function updateButtons() {
+            const prevBtn = document.getElementById('prev-button');
+            const nextBtn = document.getElementById('next-button');
+            
+            prevBtn.disabled = mentorState.currentStep === 1;
+            prevBtn.style.opacity = mentorState.currentStep === 1 ? '0.5' : '1';
+            
+            if (mentorState.currentStep === mentorState.totalSteps) {
+                nextBtn.innerHTML = '<i class="fas fa-check mr-2"></i>Submit Profile';
+                nextBtn.onclick = submitProfile;
+            } else {
+                nextBtn.innerHTML = 'Next Step <i class="fas fa-arrow-right ml-2"></i>';
+                nextBtn.onclick = nextStep;
+            }
+        }
+
+        // Navigation functions
+        function nextStep() {
+            if (validateCurrentStep() && mentorState.currentStep < mentorState.totalSteps) {
+                mentorState.currentStep++;
+                if (mentorState.currentStep === 9) {
+                    updateSummary();
+                }
+                updateDisplay();
+                saveProgress();
+            }
+        }
+
+        function prevStep() {
+            if (mentorState.currentStep > 1) {
+                mentorState.currentStep--;
+                updateDisplay();
+            }
+        }
+
+        // Validation
+        function validateCurrentStep() {
+            switch(mentorState.currentStep) {
+                case 1:
+                    const role = document.querySelector('input[name="teaching-role"]:checked');
+                    if (!role) {
+                        alert('Please select your teaching role.');
+                        return false;
+                    }
+                    mentorState.formData.teachingRole = role.value;
+                    break;
+                
+                case 2:
+                    const subjects = document.querySelectorAll('#subject-grid input[type="checkbox"]:checked');
+                    if (subjects.length === 0) {
+                        alert('Please select at least one subject you want to teach.');
+                        return false;
+                    }
+                    mentorState.formData.subjects = Array.from(subjects).map(s => s.value);
+                    
+                    const levels = document.querySelectorAll('input[name="levels"]:checked');
+                    const ageGroups = document.querySelectorAll('input[name="age-groups"]:checked');
+                    mentorState.formData.levels = Array.from(levels).map(l => l.value);
+                    mentorState.formData.ageGroups = Array.from(ageGroups).map(a => a.value);
+                    break;
+                
+                case 3:
+                    const classTypes = document.querySelectorAll('#step-3 input[type="checkbox"]:checked');
+                    if (classTypes.length === 0) {
+                        alert('Please select at least one class type.');
+                        return false;
+                    }
+                    break;
+                
+                case 7:
+                    const dbs = document.querySelector('input[name="dbs-status"]:checked');
+                    if (!dbs) {
+                        alert('Please select your DBS status.');
+                        return false;
+                    }
+                    mentorState.formData.dbs = dbs.value;
+                    break;
+                
+                case 8:
+                    const rate = document.getElementById('hourly-rate').value;
+                    if (!rate || rate < 10 || rate > 100) {
+                        alert('Please enter a valid hourly rate between £10-£100.');
+                        return false;
+                    }
+                    mentorState.formData.pricing.hourlyRate = rate;
+                    break;
+            }
+            return true;
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            // Navigation buttons
+            document.getElementById('prev-button').onclick = prevStep;
+            document.getElementById('next-button').onclick = nextStep;
+            
+            // Subject selection
+            setupSubjectSelection();
+            
+            // Add language functionality
+            setupLanguageAddition();
+            
+            // File upload
+            setupFileUpload();
+            
+            // Save draft
+            document.getElementById('save-draft').addEventListener('click', function() {
+                saveProgress();
+                alert('Progress saved! You can continue later from where you left off.');
+            });
+
+            // Auto-save on form changes
+            document.addEventListener('change', saveProgress);
+            document.addEventListener('input', debounce(saveProgress, 1000));
+        }
+
+        // Setup subject selection functionality
+        function setupSubjectSelection() {
+            document.querySelectorAll('#subject-grid .subject-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    const checkbox = this.querySelector('input[type="checkbox"]');
+                    const card = this.querySelector('.subject-card');
+                    
+                    checkbox.checked = !checkbox.checked;
+                    
+                    if (checkbox.checked) {
+                        card.classList.add('border-primary', 'bg-primary-light');
+                        card.classList.remove('border-gray-200');
+                    } else {
+                        card.classList.remove('border-primary', 'bg-primary-light');
+                        card.classList.add('border-gray-200');
+                    }
+                });
+            });
+        }
+
+        // Setup language addition
+        function setupLanguageAddition() {
+            document.getElementById('add-language-btn').addEventListener('click', function() {
+                const select = document.getElementById('language-select');
+                const selectedLanguage = select.value;
+                const selectedText = select.options[select.selectedIndex].text;
+                
+                if (selectedLanguage && !mentorState.formData.languages.includes(selectedLanguage)) {
+                    mentorState.formData.languages.push(selectedLanguage);
+                    
+                    const container = document.getElementById('added-languages');
+                    const languageDiv = document.createElement('div');
+                    languageDiv.className = 'flex items-center justify-between p-3 bg-gray-50 rounded-lg';
+                    languageDiv.innerHTML = `
+                        <span class="font-medium">${selectedText}</span>
+                        <button onclick="removeLanguage('${selectedLanguage}', this)" class="text-red-500 hover:text-red-700 text-sm">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    `;
+                    container.appendChild(languageDiv);
+                    
+                    select.value = '';
+                }
+            });
+        }
+
+        // Remove language function
+        function removeLanguage(language, button) {
+            mentorState.formData.languages = mentorState.formData.languages.filter(l => l !== language);
+            button.closest('div').remove();
+        }
+
+        // Setup file upload
+        function setupFileUpload() {
+            const uploadArea = document.getElementById('file-upload-area');
+            const fileInput = document.getElementById('id-upload');
+            const uploadStatus = document.getElementById('upload-status');
+            
+            uploadArea.addEventListener('click', () => fileInput.click());
+            
+            fileInput.addEventListener('change', function(e) {
+                if (e.target.files.length > 0) {
+                    uploadStatus.classList.remove('hidden');
+                    mentorState.formData.verification = true;
+                }
+            });
+        }
+
+        // Update summary for final step
+        function updateSummary() {
+            // Update role
+            document.getElementById('summary-role').textContent = mentorState.formData.teachingRole || 'Not specified';
+            
+            // Update subjects
+            const subjectsContainer = document.getElementById('summary-subjects');
+            subjectsContainer.innerHTML = mentorState.formData.subjects.map(s => 
+                `<span class="inline-block bg-primary text-white text-xs px-2 py-1 rounded-full mr-1 mb-1">${s}</span>`
+            ).join('');
+            
+            // Update age groups
+            const agesContainer = document.getElementById('summary-ages');
+            agesContainer.innerHTML = mentorState.formData.ageGroups.map(a => 
+                `<span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full mr-1 mb-1">${a}</span>`
+            ).join('');
+            
+            // Update teaching modes
+            const modesContainer = document.getElementById('summary-modes');
+            const modes = [];
+            if (document.querySelector('#step-5 input[type="checkbox"]:nth-child(1)').checked) modes.push('At home');
+            if (document.querySelector('#step-5 input[type="checkbox"]:nth-child(2)').checked) modes.push('Travel');
+            if (document.querySelector('#step-5 input[type="checkbox"]:nth-child(3)').checked) modes.push('Online');
+            modesContainer.innerHTML = modes.map(m => 
+                `<span class="inline-block bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full mr-1 mb-1">${m}</span>`
+            ).join('');
+            
+            // Update rate
+            const rate = document.getElementById('hourly-rate').value;
+            document.getElementById('summary-rate').textContent = rate ? `£${rate}/hour` : 'Not set';
+            
+            // Update languages
+            const languagesContainer = document.getElementById('summary-languages');
+            languagesContainer.innerHTML = mentorState.formData.languages.map(l => 
+                `<span class="inline-block bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full mr-1 mb-1">${l}</span>`
+            ).join('');
+        }
+
+        // Complete onboarding
+        function submitProfile() {
+            saveProgress();
+            alert('Profile submitted successfully! You will receive confirmation within 24-48 hours. Redirecting to mentor dashboard...');
+            // In a real app, this would redirect to the mentor dashboard
+            window.location.href = '/mentor-dashboard';
+        }
+
+        // Save progress to localStorage
+        function saveProgress() {
+            localStorage.setItem('mentorOnboardingProgress', JSON.stringify(mentorState));
+        }
+
+        // Load saved progress
+        function loadSavedProgress() {
+            const saved = localStorage.getItem('mentorOnboardingProgress');
+            if (saved) {
+                const data = JSON.parse(saved);
+                mentorState.currentStep = data.currentStep || 1;
+                mentorState.formData = data.formData || mentorState.formData;
+                // Restore form values based on saved data
+                restoreFormValues();
+            }
+        }
+
+        // Restore form values from saved data
+        function restoreFormValues() {
+            // Restore teaching role
+            if (mentorState.formData.teachingRole) {
+                const roleInput = document.querySelector(`input[name="teaching-role"][value="${mentorState.formData.teachingRole}"]`);
+                if (roleInput) roleInput.checked = true;
+            }
+            
+            // Restore subjects
+            mentorState.formData.subjects.forEach(subject => {
+                const subjectInput = document.querySelector(`#subject-grid input[value="${subject}"]`);
+                if (subjectInput) {
+                    subjectInput.checked = true;
+                    const card = subjectInput.closest('.subject-option').querySelector('.subject-card');
+                    card.classList.add('border-primary', 'bg-primary-light');
+                    card.classList.remove('border-gray-200');
+                }
+            });
+            
+            // Restore other form values as needed
+        }
+
+        // Utility function for debouncing
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        // Initialize on DOM ready
+        document.addEventListener('DOMContentLoaded', init);
+
+        // Make removeLanguage function global
+        window.removeLanguage = removeLanguage;
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowRight' && e.ctrlKey) {
+                nextStep();
+            } else if (e.key === 'ArrowLeft' && e.ctrlKey) {
+                prevStep();
+            }
+        });
+    </script>
+</body>
+</html>

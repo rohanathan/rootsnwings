@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule - Roots & Wings</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#00A2E8',
+                        'primary-dark': '#00468C',
+                        'primary-light': '#E6F7FF',
+                        'background': '#F9FBFF',
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-background font-sans">
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-40">
+        <div class="flex items-center justify-between px-6 py-4">
+            <!-- Left: Logo & Mobile Menu -->
+            <div class="flex items-center space-x-4">
+                <button id="mobile-menu-btn" class="md:hidden text-gray-600 hover:text-primary">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+                <h1 class="text-2xl font-bold text-primary-dark">Roots & Wings</h1>
+                <span class="hidden md:block text-sm text-gray-500">Mentor Portal</span>
+            </div>
+            
+            <!-- Right: Profile Dropdown -->
+            <div class="relative">
+                <button id="profile-dropdown-btn" class="flex items-center space-x-3 hover:bg-gray-50 rounded-lg px-3 py-2 transition-colors">
+                    <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+                        <span class="text-white font-semibold">PR</span>
+                    </div>
+                    <div class="hidden md:block text-left">
+                        <div class="text-sm font-semibold text-gray-900">Priya Sharma</div>
+                        <div class="text-xs text-gray-500">Kathak Mentor</div>
+                    </div>
+                    <i class="fas fa-chevron-down text-gray-400 text-sm"></i>
+                </button>
+                
+                <!-- Dropdown Menu -->
+                <div id="profile-dropdown" class="hidden absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-200 py-2">
+                    <a href="#" class="flex items-center space-x-3 px-4 py-2 text-gray-700 hover:bg-gray-50">
+                        <i class="fas fa-user text-gray-400"></i>
+                        <span>View Profile</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-2 text-gray-700 hover:bg-gray-50">
+                        <i class="fas fa-cog text-gray-400"></i>
+                        <span>Settings</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-2 text-gray-700 hover:bg-gray-50">
+                        <i class="fas fa-question-circle text-gray-400"></i>
+                        <span>Help & Support</span>
+                    </a>
+                    <hr class="my-2">
+                    <a href="#" class="flex items-center space-x-3 px-4 py-2 text-red-600 hover:bg-red-50">
+                        <i class="fas fa-sign-out-alt text-red-400"></i>
+                        <span>Log Out</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex">
+        <!-- Sidebar -->
+        <nav class="bg-white w-64 min-h-screen shadow-sm border-r border-gray-200 fixed md:static z-30 transition-transform duration-300 ease-in-out -translate-x-full md:translate-x-0" id="sidebar">
+            <div class="p-6">
+                <!-- Navigation Items -->
+                <div class="space-y-2">
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1">
+                        <i class="fas fa-home text-lg"></i>
+                        <span class="font-medium">Dashboard</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1">
+                        <i class="fas fa-chalkboard-teacher text-lg"></i>
+                        <span>My Classes</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1">
+                        <i class="fas fa-plus-circle text-lg"></i>
+                        <span>Host a Class</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1">
+                        <i class="fas fa-users text-lg"></i>
+                        <span>Workshops</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1 bg-primary text-white">
+                        <i class="fas fa-calendar-alt text-lg"></i>
+                        <span>Schedule</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1">
+                        <i class="fas fa-students text-lg"></i>
+                        <span>Students</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1">
+                        <i class="fas fa-pound-sign text-lg"></i>
+                        <span>Earnings</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1">
+                        <i class="fas fa-comments text-lg"></i>
+                        <span>Messages</span>
+                        <span class="ml-auto bg-red-500 text-white text-xs rounded-full px-2 py-1">3</span>
+                    </a>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="mt-8">
+                    <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Quick Actions</h3>
+                    <div class="space-y-2">
+                        <button class="w-full bg-primary text-white px-4 py-3 rounded-lg hover:bg-primary-dark transition-colors font-medium">
+                            <i class="fas fa-clock mr-2"></i>
+                            Set Availability
+                        </button>
+                        <button class="w-full border border-primary text-primary px-4 py-3 rounded-lg hover:bg-primary-light transition-colors font-medium">
+                            <i class="fas fa-video mr-2"></i>
+                            Start Session Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="flex-1 md:ml-0 p-6">
+            <!-- Page Header -->
+            <div class="flex items-center justify-between mb-8">
+                <div>
+                    <h1 class="text-3xl font-bold text-gray-900 mb-2">My Schedule</h1>
+                    <p class="text-gray-600">Manage your sessions, workshops, and availability</p>
+                </div>
+                <div class="flex space-x-3">
+                    <button class="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-200 transition-colors">
+                        <i class="fas fa-download mr-2"></i>
+                        Export Schedule
+                    </button>
+                    <button class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-dark transition-colors">
+                        <i class="fas fa-clock mr-2"></i>
+                        Set Availability
+                    </button>
+                </div>
+            </div>
+
+            <!-- Schedule Stats -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                <div class="bg-white rounded-xl p-6 border border-gray-200">
+                    <div class="flex items-center justify-between mb-2">
+                        <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-calendar-check text-green-600"></i>
+                        </div>
+                        <span class="text-green-500 text-sm font-medium">This week</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900">12</h3>
+                    <p class="text-gray-600 text-sm">Scheduled Sessions</p>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 border border-gray-200">
+                    <div class="flex items-center justify-between mb-2">
+                        <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-clock text-blue-600"></i>
+                        </div>
+                        <span class="text-blue-500 text-sm font-medium">Available</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900">18</h3>
+                    <p class="text-gray-600 text-sm">Open Time Slots</p>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 border border-gray-200">
+                    <div class="flex items-center justify-between mb-2">
+                        <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-users text-purple-600"></i>
+                        </div>
+                        <span class="text-purple-500 text-sm font-medium">Upcoming</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900">2</h3>
+                    <p class="text-gray-600 text-sm">Workshops</p>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 border border-gray-200">
+                    <div class="flex items-center justify-between mb-2">
+                        <div class="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-hourglass-half text-yellow-600"></i>
+                        </div>
+                        <span class="text-yellow-500 text-sm font-medium">This week</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900">20</h3>
+                    <p class="text-gray-600 text-sm">Teaching Hours</p>
+                </div>
+            </div>
+
+            <!-- Calendar Controls -->
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-4">
+                    <div class="flex items-center space-x-2">
+                        <button id="prev-week" class="w-10 h-10 bg-white border border-gray-300 rounded-lg flex items-center justify-center hover:bg-gray-50 transition-colors">
+                            <i class="fas fa-chevron-left text-gray-600"></i>
+                        </button>
+                        <h2 class="text-xl font-bold text-gray-900" id="current-week">July 22 - 28, 2025</h2>
+                        <button id="next-week" class="w-10 h-10 bg-white border border-gray-300 rounded-lg flex items-center justify-center hover:bg-gray-50 transition-colors">
+                            <i class="fas fa-chevron-right text-gray-600"></i>
+                        </button>
+                    </div>
+                    <button id="today-btn" class="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors">
+                        Today
+                    </button>
+                </div>
+                
+                <div class="flex items-center space-x-2">
+                    <button class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors view-btn active" data-view="week">
+                        Week
+                    </button>
+                    <button class="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors view-btn" data-view="month">
+                        Month
+                    </button>
+                </div>
+            </div>
+
+            <!-- Calendar View -->
+            <div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
+                <!-- Week View -->
+                <div id="week-view">
+                    <!-- Calendar Header -->
+                    <div class="grid grid-cols-8 border-b border-gray-200">
+                        <div class="p-4 font-semibold text-gray-600 text-sm">Time</div>
+                        <div class="p-4 text-center border-l border-gray-200">
+                            <div class="font-semibold text-gray-900">Mon</div>
+                            <div class="text-2xl font-bold text-gray-900">22</div>
+                            <div class="text-xs text-gray-500">Jul</div>
+                        </div>
+                        <div class="p-4 text-center border-l border-gray-200">
+                            <div class="font-semibold text-gray-900">Tue</div>
+                            <div class="text-2xl font-bold text-primary">23</div>
+                            <div class="text-xs text-gray-500">Jul</div>
+                        </div>
+                        <div class="p-4 text-center border-l border-gray-200">
+                            <div class="font-semibold text-gray-900">Wed</div>
+                            <div class="text-2xl font-bold text-gray-900">24</div>
+                            <div class="text-xs text-gray-500">Jul</div>
+                        </div>
+                        <div class="p-4 text-center border-l border-gray-200">
+                            <div class="font-semibold text-gray-900">Thu</div>
+                            <div class="text-2xl font-bold text-gray-900">25</div>
+                            <div class="text-xs text-gray-500">Jul</div>
+                        </div>
+                        <div class="p-4 text-center border-l border-gray-200">
+                            <div class="font-semibold text-gray-900">Fri</div>
+                            <div class="text-2xl font-bold text-gray-900">26</div>
+                            <div class="text-xs text-gray-500">Jul</div>
+                        </div>
+                        <div class="p-4 text-center border-l border-gray-200">
+                            <div class="font-semibold text-gray-900">Sat</div>
+                            <div class="text-2xl font-bold text-gray-900">27</div>
+                            <div class="text-xs text-gray-500">Jul</div>
+                        </div>
+                        <div class="p-4 text-center border-l border-gray-200">
+                            <div class="font-semibold text-gray-900">Sun</div>
+                            <div class="text-2xl font-bold text-gray-900">28</div>
+                            <div class="text-xs text-gray-500">Jul</div>
+                        </div>
+                    </div>
+
+                    <!-- Calendar Body -->
+                    <div class="max-h-96 overflow-y-auto">
+                        <!-- 9 AM Row -->
+                        <div class="grid grid-cols-8 border-b border-gray-100 min-h-16">
+                            <div class="p-3 text-sm text-gray-500 border-r border-gray-200">9:00 AM</div>
+                            <div class="border-l border-gray-200 p-2"></div>
+                            <div class="border-l border-gray-200 p-2"></div>
+                            <div class="border-l border-gray-200 p-2"></div>
+                            <div class="border-l border-gray-200 p-2"></div>
+                            <div class="border-l border-gray-200 p-2"></div>
+                            <div class="border-l border-gray-200 p-2"></div>
+                            <div class="border-l border-gray-200 p-2"></div>
+                        </div>
+
+                        <!-- 10 AM Row -->
+                        <div class="grid grid-cols-8 border-b border-gray-100 min-h-16">
+                            <div class="p-3 text-sm text-gray-500 border-r border-gray-200">10:00 AM</div>
+                            <div class="border-l border-gray-200 p-2"></div>
+                            <div class="border-l border-gray-200 p-2"></div>
+                            <div class="border-l border-gray-200 p-2"></div>
+                            <div class="border-l border-gray-200 p-2"></div>
+                            <div class="border-l border-gray-200 p-2"></div>
+                            <!-- Saturday Workshop -->
+                            <div class="border-l border-gray-200 p-2">
+                                <div class="bg-purple-100 border border-purple-300 rounded-lg p-2 text-xs">
+                                    <div class="font-semibold text-purple-800">Kathak Workshop</div>
+                                    <div class="text-purple-600">2:00-5:00 PM</div>
+                                    <div class="text-purple-600">8 participants</div>
+                                </div>
+                            </div>
+                            <!-- Sunday Workshop -->
+                            <div class="border-l border-gray-200 p-2">
+                                <div class="bg-orange-100 border border-orange-300 rounded-lg p-2 text-xs">
+                                    <div class="font-semibold text-orange-800">Vedic Chanting</div>
+                                    <div class="text-orange-600">10:00 AM-12:00 PM</div>
+                                    <div class="text-orange-600">Free Workshop</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 11 AM Row -->
+                        <div class="grid grid-cols-8 border-b border-gray-100 min-h-16">
+                            <div class="p-3 text-sm text-gray-500 border-r border-gray-200">11:00 AM</div>
+                            <div class="border-l border-gray-200 p-2"></div>
+                            <div class="border-l border-gray-200 p-2"></div>
+                            <div class="border-l border-gray-200 p-2"></div>
+                            <div class="border-l border-gray-200 p-2"></div>
+                            <div class="border-l border-gray-200 p-2"></div>
+                            <!-- Weekend Kathak Batch Saturday -->
+                            <div class="border-l border-gray-200 p-2">
+                                <div class="bg-green-100 border border-green-300 rounded-lg p-2 text-xs">
+                                    <div class="font-semibold text-green-800">Weekend Kathak</div>
+                                    <div class="text-green-600">10:00 AM-12:00 PM</div>
+                                    <div class="text-green-600">6 students</div>
+                                </div>
+                            </div>
+                            <!-- Weekend Kathak Batch Sunday -->
+                            <div class="border-l border-gray-200 p-2">
+                                <div class="bg-green-100 border border-green-300 rounded-lg p-2 text-xs">
+                                    <div class="font-semibold text-green-800">Weekend Kathak</div>
+                                    <div class="text-green-600">10:00 AM-12:00 PM</div>
+                                    <div class="text-green-600">6 students</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 3 PM Row -->
+                        <div class="grid grid-cols-8 border-b border-gray-100 min-h-16">
+                            <div class="p-3 text-sm text-gray-500 border-r border-gray-200">3:00 PM</div>
+                            <!-- Monday 1-on-1 -->
+                            <div class="border-l border-gray-200 p-2">
+                                <div class="bg-blue-100 border border-blue-300 rounded-lg p-2 text-xs">
+                                    <div class="font-semibold text-blue-800">Ananya M.</div>
+                                    <div class="text-blue-600">3:00-4:00 PM</div>
+                                    <div class="text-blue-600">1-on-1</div>
+                                </div>
+                            </div>
+                            <div class="border-l border-gray-200 p-2"></div>
+                            <!-- Wednesday 1-on-1 -->
+                            <div class="border-l border-gray-200 p-2">
+                                <div class="bg-blue-100 border border-blue-300 rounded-lg p-2 text-xs">
+                                    <div class="font-semibold text-blue-800">Shreya P.</div>
+                                    <div class="text-blue-600">6:00-7:00 PM</div>
+                                    <div class="text-blue-600">1-on-1</div>
+                                </div>
+                            </div>
+                            <div class="border-l border-gray-200 p-2"></div>
+                            <div class="border-l border-gray-200 p-2"></div>
+                            <div class="border-l border-gray-200 p-2"></div>
+                            <div class="border-l border-gray-200 p-2"></div>
+                        </div>
+
+                        <!-- 6 PM Row -->
+                        <div class="grid grid-cols-8 border-b border-gray-100 min-h-16">
+                            <div class="p-3 text-sm text-gray-500 border-r border-gray-200">6:00 PM</div>
+                            <div class="border-l border-gray-200 p-2"></div>
+                            <div class="border-l border-gray-200 p-2"></div>
+                            <div class="border-l border-gray-200 p-2"></div>
+                            <!-- Thursday Advanced Class -->
+                            <div class="border-l border-gray-200 p-2">
+                                <div class="bg-red-100 border border-red-300 rounded-lg p-2 text-xs">
+                                    <div class="font-semibold text-red-800">Advanced Dance</div>
+                                    <div class="text-red-600">6:00-8:00 PM</div>
+                                    <div class="text-red-600">4 students</div>
+                                </div>
+                            </div>
+                            <div class="border-l border-gray-200 p-2"></div>
+                            <div class="border-l border-gray-200 p-2"></div>
+                            <div class="border-l border-gray-200 p-2"></div>
+                        </div>
+
+                        <!-- 7 PM Row -->
+                        <div class="grid grid-cols-8 border-b border-gray-100 min-h-16">
+                            <div class="p-3 text-sm text-gray-500 border-r border-gray-200">7:00 PM</div>
+                            <div class="border-l border-gray-200 p-2"></div>
+                            <div class="border-l border-gray-200 p-2"></div>
+                            <div class="border-l border-gray-200 p-2"></div>
+                            <div class="border-l border-gray-200 p-2"></div>
+                            <!-- Friday Philosophy -->
+                            <div class="border-l border-gray-200 p-2">
+                                <div class="bg-teal-100 border border-teal-300 rounded-lg p-2 text-xs">
+                                    <div class="font-semibold text-teal-800">Philosophy</div>
+                                    <div class="text-teal-600">7:00-9:00 PM</div>
+                                    <div class="text-teal-600">6 students</div>
+                                </div>
+                            </div>
+                            <div class="border-l border-gray-200 p-2"></div>
+                            <div class="border-l border-gray-200 p-2"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Upcoming Sessions List -->
+            <div class="mt-8">
+                <h3 class="text-xl font-bold text-gray-900 mb-6">Next 7 Days</h3>
+                <div class="space-y-4">
+                    <!-- Today -->
+                    <div class="bg-white rounded-xl border border-gray-200 p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h4 class="text-lg font-semibold text-gray-900">Today - Tuesday, July 23</h4>
+                            <span class="text-sm text-primary font-medium">3 sessions</span>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="flex items-center space-x-4 p-3 bg-blue-50 rounded-lg">
+                                <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
+                                    <span class="text-white font-semibold text-sm">AM</span>
+                                </div>
+                                <div class="flex-1">
+                                    <h5 class="font-semibold text-gray-900">Ananya Mehta • One-on-One Session</h5>
+                                    <p class="text-sm text-gray-600">3:00 PM - 4:00 PM • Online • Kathak Basics</p>
+                                </div>
+                                <div class="flex space-x-2">
+                                    <button class="bg-primary text-white px-4 py-2 rounded-lg text-sm hover:bg-primary-dark transition-colors">
+                                        <i class="fas fa-video mr-1"></i>
+                                        Join
+                                    </button>
+                                    <button class="text-gray-500 hover:text-gray-700 p-2">
+                                        <i class="fas fa-ellipsis-h"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-4 p-3 bg-gray-50 rounded-lg">
+                                <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center">
+                                    <span class="text-white font-semibold text-sm">RK</span>
+                                </div>
+                                <div class="flex-1">
+                                    <h5 class="font-semibold text-gray-900">Raj Kumar • One-on-One Session</h5>
+                                    <p class="text-sm text-gray-600">5:00 PM - 6:00 PM • In-person • Advanced Techniques</p>
+                                </div>
+                                <div class="flex space-x-2">
+                                    <button class="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg text-sm hover:bg-gray-50 transition-colors">
+                                        Prepare
+                                    </button>
+                                    <button class="text-gray-500 hover:text-gray-700 p-2">
+                                        <i class="fas fa-ellipsis-h"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-4 p-3 bg-gray-50 rounded-lg">
+                                <div class="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center">
+                                    <span class="text-white font-semibold text-sm">SP</span>
+                                </div>
+                                <div class="flex-1">
+                                    <h5 class="font-semibold text-gray-900">Shreya Patel • One-on-One Session</h5>
+                                    <p class="text-sm text-gray-600">6:00 PM - 7:00 PM • Online • Performance Preparation</p>
+                                </div>
+                                <div class="flex space-x-2">
+                                    <button class="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg text-sm hover:bg-gray-50 transition-colors">
+                                        Prepare
+                                    </button>
+                                    <button class="text-gray-500 hover:text-gray-700 p-2">
+                                        <i class="fas fa-ellipsis-h"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tomorrow -->
+                    <div class="bg-white rounded-xl border border-gray-200 p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h4 class="text-lg font-semibold text-gray-900">Tomorrow - Wednesday, July 24</h4>
+                            <span class="text-sm text-gray-600 font-medium">1 session</span>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="flex items-center space-x-4 p-3 bg-gray-50 rounded-lg">
+                                <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center">
+                                    <span class="text-white font-semibold text-sm">MR</span>
+                                </div>
+                                <div class="flex-1">
+                                    <h5 class="font-semibold text-gray-900">Maya Rajan • One-on-One Session</h5>
+                                    <p class="text-sm text-gray-600">4:00 PM - 5:00 PM • Online • Intermediate Level</p>
+                                </div>
+                                <div class="flex space-x-2">
+                                    <button class="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg text-sm hover:bg-gray-50 transition-colors">
+                                        Prepare
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Weekend -->
+                    <div class="bg-white rounded-xl border border-gray-200 p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h4 class="text-lg font-semibold text-gray-900">Weekend - Saturday & Sunday</h4>
+                            <span class="text-sm text-green-600 font-medium">4 events</span>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="flex items-center space-x-4 p-3 bg-green-50 rounded-lg">
+                                <div class="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-users text-white"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h5 class="font-semibold text-gray-900">Weekend Kathak Batch</h5>
+                                    <p class="text-sm text-gray-600">Sat & Sun 10:00 AM - 12:00 PM • 6 students enrolled</p>
+                                </div>
+                                <div class="flex space-x-2">
+                                    <button class="bg-green-500 text-white px-4 py-2 rounded-lg text-sm hover:bg-green-600 transition-colors">
+                                        Manage
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-4 p-3 bg-purple-50 rounded-lg">
+                                <div class="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-graduation-cap text-white"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h5 class="font-semibold text-gray-900">Kathak Performance Workshop</h5>
+                                    <p class="text-sm text-gray-600">Saturday 2:00 PM - 5:00 PM • 8/12 participants</p>
+                                </div>
+                                <div class="flex space-x-2">
+                                    <button class="bg-purple-500 text-white px-4 py-2 rounded-lg text-sm hover:bg-purple-600 transition-colors">
+                                        Manage
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Mobile Sidebar Overlay -->
+    <div id="sidebar-overlay" class="hidden fixed inset-0 bg-black bg-opacity-50 z-20 md:hidden"></div>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebar-overlay');
+
+        mobileMenuBtn.addEventListener('click', function() {
+            sidebar.classList.toggle('-translate-x-full');
+            sidebarOverlay.classList.toggle('hidden');
+        });
+
+        sidebarOverlay.addEventListener('click', function() {
+            sidebar.classList.add('-translate-x-full');
+            sidebarOverlay.classList.add('hidden');
+        });
+
+        // Profile dropdown toggle
+        const profileDropdownBtn = document.getElementById('profile-dropdown-btn');
+        const profileDropdown = document.getElementById('profile-dropdown');
+
+        profileDropdownBtn.addEventListener('click', function() {
+            profileDropdown.classList.toggle('hidden');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!profileDropdownBtn.contains(e.target) && !profileDropdown.contains(e.target)) {
+                profileDropdown.classList.add('hidden');
+            }
+        });
+
+        // View toggle (Week/Month)
+        document.querySelectorAll('.view-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Remove active class from all buttons
+                document.querySelectorAll('.view-btn').forEach(b => {
+                    b.classList.remove('bg-primary', 'text-white');
+                    b.classList.add('bg-gray-100', 'text-gray-700');
+                });
+                
+                // Add active class to clicked button
+                this.classList.add('bg-primary', 'text-white');
+                this.classList.remove('bg-gray-100', 'text-gray-700');
+                
+                const view = this.getAttribute('data-view');
+                if (view === 'month') {
+                    // Month view would be implemented here
+                    console.log('Switch to month view');
+                }
+            });
+        });
+
+        // Calendar navigation
+        document.getElementById('prev-week').addEventListener('click', function() {
+            console.log('Previous week');
+            // Calendar navigation logic would go here
+        });
+
+        document.getElementById('next-week').addEventListener('click', function() {
+            console.log('Next week');
+            // Calendar navigation logic would go here
+        });
+
+        document.getElementById('today-btn').addEventListener('click', function() {
+            console.log('Go to today');
+            // Jump to current week logic would go here
+        });
+
+        // Sidebar navigation
+        document.querySelectorAll('nav a').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active classes from all items
+                document.querySelectorAll('nav a').forEach(i => {
+                    i.classList.remove('bg-primary', 'text-white');
+                    i.classList.add('text-gray-700');
+                });
+                
+                // Add active classes to clicked item (except current page)
+                if (!this.classList.contains('bg-primary')) {
+                    this.classList.add('bg-primary', 'text-white');
+                    this.classList.remove('text-gray-700');
+                }
+            });
+        });
+
+        // Auto-hide mobile sidebar on window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth >= 768) {
+                sidebar.classList.remove('-translate-x-full');
+                sidebarOverlay.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>

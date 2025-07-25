@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Priya Sharma - Mentor Profile | Roots & Wings</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#00A2E8',
+                        'primary-dark': '#00468C',
+                        'primary-light': '#f8fbff',
+                        'accent-light': '#e8f4ff'
+                    },
+                    fontFamily: {
+                        sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans text-gray-800 bg-gray-50">
+
+    <!-- Navigation Component -->
+    <nav class="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-sm shadow-lg">
+        <div class="max-w-7xl mx-auto px-5">
+            <div class="flex justify-between items-center py-4">
+                <a href="#" class="text-2xl font-bold text-primary-dark">Roots & Wings</a>
+                <div class="flex items-center space-x-6">
+                    <a href="#" class="text-gray-600 hover:text-primary transition-colors">← Back to Mentors</a>
+                    <a href="#" class="bg-primary hover:bg-blue-500 text-white px-4 py-2 rounded-full font-medium transition-colors">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-20">
+        <div class="max-w-7xl mx-auto px-5 py-8">
+            
+            <!-- Top Section: Profile + Pricing -->
+            <div class="grid lg:grid-cols-3 gap-8 mb-8">
+                
+                <!-- Mentor Profile Card Component -->
+                <div class="lg:col-span-2">
+                    <div class="bg-white rounded-2xl p-8 shadow-lg">
+                        <div class="flex flex-col md:flex-row items-start gap-6 mb-6">
+                            <!-- Profile Picture -->
+                            <div class="relative">
+                                <div class="w-32 h-32 bg-gradient-to-r from-primary to-primary-dark rounded-full flex items-center justify-center text-white text-4xl font-bold">
+                                    P
+                                </div>
+                                <!-- Verified Badge -->
+                                <div class="absolute -bottom-2 -right-2 bg-green-500 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold" title="Verified Mentor">
+                                    ✓
+                                </div>
+                            </div>
+
+                            <!-- Profile Info -->
+                            <div class="flex-1">
+                                <h1 class="text-3xl font-bold text-primary-dark mb-2">Priya Sharma</h1>
+                                
+                                <!-- Category Tags -->
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="px-3 py-1 bg-primary text-white text-sm font-medium rounded-full">Music</span>
+                                    <span class="px-3 py-1 bg-primary text-white text-sm font-medium rounded-full">Cultural Arts</span>
+                                    <span class="px-3 py-1 bg-primary text-white text-sm font-medium rounded-full">Dance</span>
+                                </div>
+
+                                <!-- Rating -->
+                                <div class="flex items-center gap-2 mb-6">
+                                    <div class="flex text-yellow-400">
+                                        <span>★★★★★</span>
+                                    </div>
+                                    <span class="text-lg font-semibold text-primary-dark">4.9</span>
+                                    <span class="text-gray-600">(32 reviews)</span>
+                                </div>
+
+                                <!-- Stats Icons -->
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                    <div class="text-center p-3 bg-gray-50 rounded-lg">
+                                        <div class="text-2xl mb-1">✅</div>
+                                        <div class="text-xs text-gray-600">Background Verified</div>
+                                    </div>
+                                    <div class="text-center p-3 bg-gray-50 rounded-lg">
+                                        <div class="text-2xl mb-1">⏰</div>
+                                        <div class="text-xs text-gray-600">500+ Hours</div>
+                                    </div>
+                                    <div class="text-center p-3 bg-gray-50 rounded-lg">
+                                        <div class="text-2xl mb-1">🔄</div>
+                                        <div class="text-xs text-gray-600">85% Repeat Students</div>
+                                    </div>
+                                    <div class="text-center p-3 bg-gray-50 rounded-lg">
+                                        <div class="text-2xl mb-1">💬</div>
+                                        <div class="text-xs text-gray-600">Replies in 30min</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- About Section Component -->
+                        <div class="border-t pt-6">
+                            <h2 class="text-xl font-bold text-primary-dark mb-4">About Priya Sharma</h2>
+                            <div id="bio-container">
+                                <p class="text-gray-700 leading-relaxed mb-4">
+                                    I'm a passionate Kathak dancer and instructor with over 10 years of experience teaching traditional Indian dance forms. Having trained under renowned masters in Mumbai and London, I bring authentic cultural knowledge combined with modern teaching methods...
+                                    <span id="bio-more" class="hidden">
+                                        I specialize in helping students of all ages connect with their cultural heritage through dance, music, and storytelling. My approach focuses on building confidence while maintaining respect for traditional forms. I offer classes in Hindi, English, and Gujarati.
+                                    </span>
+                                </p>
+                                <button id="read-more-btn" class="text-primary hover:text-primary-dark font-medium transition-colors">Read More</button>
+                            </div>
+                            
+                            <!-- Languages & Region -->
+                            <div class="flex flex-wrap gap-4 mt-6">
+                                <div>
+                                    <span class="font-semibold text-gray-700">Spoken Languages:</span>
+                                    <span class="text-gray-600 ml-2">English, Hindi, Gujarati</span>
+                                </div>
+                                <div>
+                                    <span class="font-semibold text-gray-700">Teaching Region:</span>
+                                    <span class="text-gray-600 ml-2">Birmingham & Online</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pricing Panel Component -->
+                <div class="lg:col-span-1">
+                    <div class="bg-white rounded-2xl p-6 shadow-lg sticky top-24">
+                        <!-- Pricing Header -->
+                        <div class="text-center mb-6">
+                            <div class="text-3xl font-bold text-primary-dark mb-2">£35<span class="text-lg text-gray-500">/hour</span></div>
+                            <div class="inline-flex items-center bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-medium">
+                                ✅ First Session is Free
+                            </div>
+                        </div>
+
+                        <!-- Features -->
+                        <div class="space-y-3 mb-6">
+                            <div class="flex items-center text-gray-700">
+                                <span class="text-primary mr-3">✅</span>
+                                One-on-One Sessions
+                            </div>
+                            <div class="flex items-center text-gray-700">
+                                <span class="text-primary mr-3">✅</span>
+                                Group Classes Available
+                            </div>
+                            <div class="flex items-center text-gray-700">
+                                <span class="text-primary mr-3">✅</span>
+                                Online & In-Person
+                            </div>
+                        </div>
+
+                        <!-- CTA Buttons -->
+                        <div class="space-y-3">
+                            <button class="w-full bg-primary hover:bg-blue-500 text-white py-3 rounded-full font-semibold transition-colors">
+                                Reserve Now
+                            </button>
+                            <button class="w-full border-2 border-primary text-primary hover:bg-primary hover:text-white py-3 rounded-full font-semibold transition-colors">
+                                Book Free Video Chat
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Session Types Component -->
+            <div class="bg-white rounded-2xl p-8 shadow-lg mb-8">
+                <h2 class="text-2xl font-bold text-primary-dark mb-6">Select Session Type</h2>
+                
+                <!-- Tab Navigation -->
+                <div class="flex flex-wrap border-b border-gray-200 mb-6">
+                    <button class="session-tab px-6 py-3 border-b-2 border-primary text-primary font-semibold" data-tab="one-on-one">
+                        One-on-One Sessions
+                    </button>
+                    <button class="session-tab px-6 py-3 border-b-2 border-transparent text-gray-500 hover:text-primary font-medium" data-tab="weekend-group">
+                        Weekend Group Batches
+                    </button>
+                    <button class="session-tab px-6 py-3 border-b-2 border-transparent text-gray-500 hover:text-primary font-medium" data-tab="weekday-group">
+                        Weekday Group Batches
+                    </button>
+                </div>
+
+                <!-- Tab Content -->
+                <div class="tab-content">
+                    <!-- One-on-One Sessions -->
+                    <div id="one-on-one" class="tab-pane">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <h3 class="text-lg font-semibold text-primary-dark mb-3">Personalised Learning</h3>
+                                <p class="text-gray-700 mb-4">1-hour personalised sessions tailored to your specific learning goals. Choose any topic within my expertise areas.</p>
+                                <ul class="space-y-2 text-gray-600">
+                                    <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Flexible scheduling</li>
+                                    <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Customised curriculum</li>
+                                    <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Progress tracking</li>
+                                    <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Recording provided</li>
+                                </ul>
+                            </div>
+                            <div class="bg-primary-light p-6 rounded-xl">
+                                <div class="text-2xl font-bold text-primary-dark mb-2">£35/session</div>
+                                <div class="text-sm text-gray-600 mb-4">Available slots throughout the week</div>
+                                <button class="w-full bg-primary hover:bg-blue-500 text-white py-3 rounded-full font-semibold transition-colors">
+                                    Explore Sessions
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Weekend Group Batches -->
+                    <div id="weekend-group" class="tab-pane hidden">
+                        <div class="grid md:grid-cols-3 gap-6">
+                            <div class="bg-gradient-to-br from-primary-light to-white p-6 rounded-xl border-2 border-primary-light">
+                                <h4 class="text-lg font-semibold text-primary-dark mb-2">4-Week Program</h4>
+                                <div class="text-sm text-gray-600 mb-4">8 sessions • Sat & Sun • 1 hour each</div>
+                                <div class="text-2xl font-bold text-primary-dark mb-4">£240</div>
+                                <button class="w-full bg-primary hover:bg-blue-500 text-white py-2 rounded-full font-medium transition-colors">
+                                    Explore Group Batches
+                                </button>
+                            </div>
+                            <div class="bg-gradient-to-br from-primary-light to-white p-6 rounded-xl border-2 border-primary">
+                                <div class="inline-block bg-primary text-white px-2 py-1 rounded-full text-xs font-medium mb-2">Most Popular</div>
+                                <h4 class="text-lg font-semibold text-primary-dark mb-2">8-Week Program</h4>
+                                <div class="text-sm text-gray-600 mb-4">16 sessions • Sat & Sun • 1 hour each</div>
+                                <div class="text-2xl font-bold text-primary-dark mb-4">£420</div>
+                                <button class="w-full bg-primary hover:bg-blue-500 text-white py-2 rounded-full font-medium transition-colors">
+                                    Explore Group Batches
+                                </button>
+                            </div>
+                            <div class="bg-gradient-to-br from-primary-light to-white p-6 rounded-xl border-2 border-primary-light">
+                                <h4 class="text-lg font-semibold text-primary-dark mb-2">12-Week Program</h4>
+                                <div class="text-sm text-gray-600 mb-4">24 sessions • Sat & Sun • 1 hour each</div>
+                                <div class="text-2xl font-bold text-primary-dark mb-4">£580</div>
+                                <button class="w-full bg-primary hover:bg-blue-500 text-white py-2 rounded-full font-medium transition-colors">
+                                    Explore Group Batches
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Weekday Group Batches -->
+                    <div id="weekday-group" class="tab-pane hidden">
+                        <div class="grid md:grid-cols-3 gap-6">
+                            <div class="bg-gradient-to-br from-primary-light to-white p-6 rounded-xl border-2 border-primary-light">
+                                <h4 class="text-lg font-semibold text-primary-dark mb-2">4-Week Intensive</h4>
+                                <div class="text-sm text-gray-600 mb-4">20 sessions • Mon-Fri • 1 hour each</div>
+                                <div class="text-2xl font-bold text-primary-dark mb-4">£500</div>
+                                <button class="w-full bg-primary hover:bg-blue-500 text-white py-2 rounded-full font-medium transition-colors">
+                                    Explore Group Batches
+                                </button>
+                            </div>
+                            <div class="bg-gradient-to-br from-primary-light to-white p-6 rounded-xl border-2 border-primary">
+                                <div class="inline-block bg-primary text-white px-2 py-1 rounded-full text-xs font-medium mb-2">Best Value</div>
+                                <h4 class="text-lg font-semibold text-primary-dark mb-2">8-Week Course</h4>
+                                <div class="text-sm text-gray-600 mb-4">40 sessions • Mon-Fri • 1 hour each</div>
+                                <div class="text-2xl font-bold text-primary-dark mb-4">£850</div>
+                                <button class="w-full bg-primary hover:bg-blue-500 text-white py-2 rounded-full font-medium transition-colors">
+                                    Explore Group Batches
+                                </button>
+                            </div>
+                            <div class="bg-gradient-to-br from-primary-light to-white p-6 rounded-xl border-2 border-primary-light">
+                                <h4 class="text-lg font-semibold text-primary-dark mb-2">12-Week Mastery</h4>
+                                <div class="text-sm text-gray-600 mb-4">60 sessions • Mon-Fri • 1 hour each</div>
+                                <div class="text-2xl font-bold text-primary-dark mb-4">£1,150</div>
+                                <button class="w-full bg-primary hover:bg-blue-500 text-white py-2 rounded-full font-medium transition-colors">
+                                    Explore Group Batches
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Custom Class Option -->
+                <div class="mt-8 p-4 bg-gray-50 rounded-xl text-center">
+                    <p class="text-gray-600 mb-3">❓ Not able to find a suitable session?</p>
+                    <button class="text-primary hover:text-primary-dark font-semibold transition-colors">
+                        Contact Mentor for Custom Class
+                    </button>
+                </div>
+            </div>
+
+            <!-- Two Column Layout: Availability + Reviews/Qualifications -->
+            <div class="grid lg:grid-cols-3 gap-8 mb-8">
+                
+                <!-- Left Side: Availability + Reviews -->
+                <div class="lg:col-span-2 space-y-8">
+                    
+                    <!-- Availability Component -->
+                    <div class="bg-white rounded-2xl p-8 shadow-lg">
+                        <h2 class="text-2xl font-bold text-primary-dark mb-6">Availability Snapshot</h2>
+                        
+                        <!-- Calendar Navigation -->
+                        <div class="flex items-center justify-between mb-4">
+                            <button class="p-2 hover:bg-gray-100 rounded-full transition-colors" id="prev-week">
+                                ← Previous Week
+                            </button>
+                            <h3 class="font-semibold text-gray-700" id="week-display">25-31 July 2025</h3>
+                            <button class="p-2 hover:bg-gray-100 rounded-full transition-colors" id="next-week">
+                                Next Week →
+                            </button>
+                        </div>
+
+                        <!-- Calendar Grid -->
+                        <div class="grid grid-cols-7 gap-2 mb-4">
+                            <div class="text-center text-sm font-medium text-gray-600 p-2">Mon</div>
+                            <div class="text-center text-sm font-medium text-gray-600 p-2">Tue</div>
+                            <div class="text-center text-sm font-medium text-gray-600 p-2">Wed</div>
+                            <div class="text-center text-sm font-medium text-gray-600 p-2">Thu</div>
+                            <div class="text-center text-sm font-medium text-gray-600 p-2">Fri</div>
+                            <div class="text-center text-sm font-medium text-gray-600 p-2">Sat</div>
+                            <div class="text-center text-sm font-medium text-gray-600 p-2">Sun</div>
+                            
+                            <!-- Day slots -->
+                            <div class="space-y-1">
+                                <div class="text-sm font-medium text-center">25</div>
+                                <div class="w-4 h-4 bg-green-400 rounded-full mx-auto" title="1-on-1 Available"></div>
+                                <div class="w-4 h-4 bg-blue-400 rounded-full mx-auto" title="Group Available"></div>
+                            </div>
+                            <div class="space-y-1">
+                                <div class="text-sm font-medium text-center">26</div>
+                                <div class="w-4 h-4 bg-gray-300 rounded-full mx-auto" title="Unavailable"></div>
+                                <div class="w-4 h-4 bg-blue-400 rounded-full mx-auto" title="Group Available"></div>
+                            </div>
+                            <div class="space-y-1">
+                                <div class="text-sm font-medium text-center">27</div>
+                                <div class="w-4 h-4 bg-green-400 rounded-full mx-auto" title="1-on-1 Available"></div>
+                                <div class="w-4 h-4 bg-gray-300 rounded-full mx-auto" title="Unavailable"></div>
+                            </div>
+                            <div class="space-y-1">
+                                <div class="text-sm font-medium text-center">28</div>
+                                <div class="w-4 h-4 bg-green-400 rounded-full mx-auto" title="1-on-1 Available"></div>
+                                <div class="w-4 h-4 bg-blue-400 rounded-full mx-auto" title="Group Available"></div>
+                            </div>
+                            <div class="space-y-1">
+                                <div class="text-sm font-medium text-center">29</div>
+                                <div class="w-4 h-4 bg-gray-300 rounded-full mx-auto" title="Unavailable"></div>
+                                <div class="w-4 h-4 bg-gray-300 rounded-full mx-auto" title="Unavailable"></div>
+                            </div>
+                            <div class="space-y-1">
+                                <div class="text-sm font-medium text-center">30</div>
+                                <div class="w-4 h-4 bg-green-400 rounded-full mx-auto" title="1-on-1 Available"></div>
+                                <div class="w-4 h-4 bg-blue-400 rounded-full mx-auto" title="Group Available"></div>
+                            </div>
+                            <div class="space-y-1">
+                                <div class="text-sm font-medium text-center">31</div>
+                                <div class="w-4 h-4 bg-green-400 rounded-full mx-auto" title="1-on-1 Available"></div>
+                                <div class="w-4 h-4 bg-blue-400 rounded-full mx-auto" title="Group Available"></div>
+                            </div>
+                        </div>
+
+                        <!-- Legend -->
+                        <div class="flex justify-center space-x-6 text-sm">
+                            <div class="flex items-center">
+                                <div class="w-3 h-3 bg-green-400 rounded-full mr-2"></div>
+                                <span>1-on-1 Available</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-3 h-3 bg-blue-400 rounded-full mr-2"></div>
+                                <span>Group Available</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-3 h-3 bg-gray-300 rounded-full mr-2"></div>
+                                <span>Unavailable</span>
+                            </div>
+                        </div>
+
+                        <p class="text-center text-sm text-gray-600 mt-4 italic">
+                            Full calendar available after session selection
+                        </p>
+                    </div>
+
+                    <!-- Reviews Component -->
+                    <div class="bg-white rounded-2xl p-8 shadow-lg">
+                        <div class="flex items-center justify-between mb-6">
+                            <h2 class="text-2xl font-bold text-primary-dark">Student Reviews</h2>
+                            <div class="text-right">
+                                <div class="text-2xl font-bold text-primary-dark">4.9</div>
+                                <div class="text-yellow-400">★★★★★</div>
+                                <div class="text-sm text-gray-600">32 reviews</div>
+                            </div>
+                        </div>
+
+                        <!-- Review Cards -->
+                        <div class="space-y-6" id="reviews-container">
+                            <div class="border-b border-gray-100 pb-6">
+                                <div class="flex items-start gap-4">
+                                    <div class="w-10 h-10 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold">
+                                        S
+                                    </div>
+                                    <div class="flex-1">
+                                        <div class="flex items-center gap-2 mb-2">
+                                            <h4 class="font-semibold text-gray-800">Sarah M.</h4>
+                                            <div class="text-yellow-400 text-sm">★★★★★</div>
+                                            <span class="text-sm text-gray-500">• 2 weeks ago</span>
+                                        </div>
+                                        <p class="text-gray-700">
+                                            "Priya is an exceptional teacher! My daughter learned so much about Kathak and Indian culture. The classes are engaging and Priya is very patient with beginners."
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="border-b border-gray-100 pb-6">
+                                <div class="flex items-start gap-4">
+                                    <div class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center text-white font-bold">
+                                        R
+                                    </div>
+                                    <div class="flex-1">
+                                        <div class="flex items-center gap-2 mb-2">
+                                            <h4 class="font-semibold text-gray-800">Raj P.</h4>
+                                            <div class="text-yellow-400 text-sm">★★★★★</div>
+                                            <span class="text-sm text-gray-500">• 1 month ago</span>
+                                        </div>
+                                        <p class="text-gray-700">
+                                            "Outstanding instructor with deep knowledge of traditional dance forms. The online sessions were well-structured and I felt connected to my cultural roots."
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="pb-6">
+                                <div class="flex items-start gap-4">
+                                    <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold">
+                                        M
+                                    </div>
+                                    <div class="flex-1">
+                                        <div class="flex items-center gap-2 mb-2">
+                                            <h4 class="font-semibold text-gray-800">Maya K.</h4>
+                                            <div class="text-yellow-400 text-sm">★★★★★</div>
+                                            <span class="text-sm text-gray-500">• 1 month ago</span>
+                                        </div>
+                                        <p class="text-gray-700">
+                                            "The group classes were fantastic! Great energy, supportive environment, and I learned both dance technique and cultural history. Highly recommend!"
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="w-full mt-4 text-primary hover:text-primary-dark font-semibold transition-colors">
+                            View All Reviews →
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right Side: Qualifications + Subjects + Contact -->
+                <div class="lg:col-span-1 space-y-8">
+                    
+                    <!-- Qualifications Component -->
+                    <div class="bg-white rounded-2xl p-6 shadow-lg">
+                        <h2 class="text-xl font-bold text-primary-dark mb-4">Certifications & Education</h2>
+                        
+                        <div class="space-y-4">
+                            <div class="border-b border-gray-100 pb-4">
+                                <div class="flex items-start gap-3">
+                                    <div class="w-8 h-8 bg-primary-light rounded-lg flex items-center justify-center text-primary font-bold text-xs">
+                                        📜
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-800">Master of Arts in Kathak</h4>
+                                        <p class="text-sm text-gray-600">Bharatiya Vidya Bhavan, London</p>
+                                        <p class="text-sm text-gray-500">2018</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="border-b border-gray-100 pb-4">
+                                <div class="flex items-start gap-3">
+                                    <div class="w-8 h-8 bg-primary-light rounded-lg flex items-center justify-center text-primary font-bold text-xs">
+                                        🎓
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-800">BA Music & Performance</h4>
+                                        <p class="text-sm text-gray-600">University of Birmingham</p>
+                                        <p class="text-sm text-gray-500">2015</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="pb-4">
+                                <div class="flex items-start gap-3">
+                                    <div class="w-8 h-8 bg-primary-light rounded-lg flex items-center justify-center text-primary font-bold text-xs">
+                                        ⭐
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-800">DBS Checked</h4>
+                                        <p class="text-sm text-gray-600">Enhanced Disclosure</p>
+                                        <p class="text-sm text-gray-500">Valid until 2025</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Subjects & Levels Component -->
+                    <div class="bg-white rounded-2xl p-6 shadow-lg">
+                        <h2 class="text-xl font-bold text-primary-dark mb-4">Subjects & Levels</h2>
+                        
+                        <!-- Subject Areas -->
+                        <div class="mb-6">
+                            <h4 class="font-semibold text-gray-700 mb-3">Subject Areas</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-primary text-white text-sm rounded-full">Kathak Dance</span>
+                                <span class="px-3 py-1 bg-primary text-white text-sm rounded-full">Bollywood</span>
+                                <span class="px-3 py-1 bg-primary text-white text-sm rounded-full">Folk Dance</span>
+                                <span class="px-3 py-1 bg-primary text-white text-sm rounded-full">Music Theory</span>
+                                <span class="px-3 py-1 bg-primary text-white text-sm rounded-full">Hindi Language</span>
+                            </div>
+                        </div>
+
+                        <!-- Levels -->
+                        <div class="mb-6">
+                            <h4 class="font-semibold text-gray-700 mb-3">Levels</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-green-100 text-green-700 text-sm rounded-full">Beginner</span>
+                                <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">Intermediate</span>
+                                <span class="px-3 py-1 bg-red-100 text-red-700 text-sm rounded-full">Advanced</span>
+                            </div>
+                        </div>
+
+                        <!-- Age Groups -->
+                        <div>
+                            <h4 class="font-semibold text-gray-700 mb-3">Age Groups</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">Children (5-12)</span>
+                                <span class="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-full">Teens (13-17)</span>
+                                <span class="px-3 py-1 bg-indigo-100 text-indigo-700 text-sm rounded-full">Adults (18+)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Mentor Component -->
+                    <div class="bg-white rounded-2xl p-6 shadow-lg">
+                        <h2 class="text-xl font-bold text-primary-dark mb-4">Contact Mentor</h2>
+                        
+                        <form class="space-y-4">
+                            <!-- Subject -->
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Subject</label>
+                                <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-primary focus:outline-none" placeholder="What would you like to learn?">
+                            </div>
+
+                            <!-- Message -->
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Message</label>
+                                <textarea rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-primary focus:outline-none resize-none" placeholder="Tell me about your learning goals..."></textarea>
+                            </div>
+
+                            <!-- Options -->
+                            <div class="space-y-3">
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="rounded border-gray-300 text-primary focus:ring-primary mr-3">
+                                    <span class="text-sm text-gray-700">Request Free Video Chat</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="rounded border-gray-300 text-primary focus:ring-primary mr-3">
+                                    <span class="text-sm text-gray-700">Request Custom Batch</span>
+                                </label>
+                            </div>
+
+                            <!-- Send Button -->
+                            <button type="submit" class="w-full bg-primary hover:bg-blue-500 text-white py-3 rounded-full font-semibold transition-colors">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- JavaScript Component -->
+    <script>
+        // Read More/Less functionality
+        const readMoreBtn = document.getElementById('read-more-btn');
+        const bioMore = document.getElementById('bio-more');
+        let isExpanded = false;
+
+        readMoreBtn.addEventListener('click', function() {
+            isExpanded = !isExpanded;
+            if (isExpanded) {
+                bioMore.classList.remove('hidden');
+                readMoreBtn.textContent = 'Read Less';
+            } else {
+                bioMore.classList.add('hidden');
+                readMoreBtn.textContent = 'Read More';
+            }
+        });
+
+        // Session tabs functionality
+        const sessionTabs = document.querySelectorAll('.session-tab');
+        const tabPanes = document.querySelectorAll('.tab-pane');
+
+        sessionTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                const targetTab = this.getAttribute('data-tab');
+                
+                // Update tab styles
+                sessionTabs.forEach(t => {
+                    t.classList.remove('border-primary', 'text-primary');
+                    t.classList.add('border-transparent', 'text-gray-500');
+                });
+                this.classList.add('border-primary', 'text-primary');
+                this.classList.remove('border-transparent', 'text-gray-500');
+                
+                // Update tab content
+                tabPanes.forEach(pane => {
+                    pane.classList.add('hidden');
+                });
+                document.getElementById(targetTab).classList.remove('hidden');
+            });
+        });
+
+        // Calendar navigation
+        const prevWeekBtn = document.getElementById('prev-week');
+        const nextWeekBtn = document.getElementById('next-week');
+        const weekDisplay = document.getElementById('week-display');
+
+        prevWeekBtn.addEventListener('click', function() {
+            // In real app, this would update the calendar data
+            console.log('Previous week clicked');
+        });
+
+        nextWeekBtn.addEventListener('click', function() {
+            // In real app, this would update the calendar data
+            console.log('Next week clicked');
+        });
+
+        // Form submission
+        const contactForm = document.querySelector('form');
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Message sent! Priya will respond within 30 minutes.');
+            this.reset();
+        });
+
+        // Enhanced button interactions
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('mouseenter', function() {
+                if (this.classList.contains('bg-primary')) {
+                    this.style.transform = 'translateY(-1px)';
+                }
+            });
+
+            btn.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Smooth scrolling for any anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

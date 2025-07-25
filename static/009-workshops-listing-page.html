@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upcoming Workshops - Roots & Wings</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#00A2E8',
+                        'primary-dark': '#00468C',
+                        'primary-light': '#f8fbff',
+                        'accent-light': '#e8f4ff'
+                    },
+                    fontFamily: {
+                        sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans text-gray-800 bg-gray-50">
+
+    <!-- Navigation Component -->
+    <nav class="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-sm shadow-lg">
+        <div class="max-w-7xl mx-auto px-5">
+            <div class="flex justify-between items-center py-4">
+                <a href="#" class="text-2xl font-bold text-primary-dark">Roots & Wings</a>
+                <ul class="hidden md:flex space-x-8">
+                    <li><a href="#" class="text-gray-700 hover:text-primary font-medium transition-colors">Home</a></li>
+                    <li><a href="#" class="text-gray-700 hover:text-primary font-medium transition-colors">Mentors</a></li>
+                    <li><a href="#" class="text-primary font-medium">Workshops</a></li>
+                    <li><a href="#" class="text-gray-700 hover:text-primary font-medium transition-colors">About</a></li>
+                </ul>
+                <div class="flex items-center space-x-4">
+                    <a href="#" class="text-gray-600 hover:text-primary transition-colors">Login</a>
+                    <a href="#" class="bg-primary hover:bg-blue-500 text-white px-4 py-2 rounded-full font-medium transition-colors">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header Component -->
+    <section class="bg-gradient-to-br from-primary-light to-accent-light pt-20 pb-12 mt-16">
+        <div class="max-w-7xl mx-auto px-5 text-center">
+            <h1 class="text-5xl font-bold text-primary-dark mb-4">Upcoming Workshops</h1>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-8">
+                Join special one-time events hosted by expert mentors. Explore new skills, dive deep into specific topics, and connect with fellow learners.
+            </p>
+            <div class="flex flex-wrap justify-center gap-6 text-sm text-gray-600">
+                <div class="flex items-center">
+                    <span class="text-2xl mr-2">🎯</span>
+                    <span>Focused learning sessions</span>
+                </div>
+                <div class="flex items-center">
+                    <span class="text-2xl mr-2">👥</span>
+                    <span>Small group experiences</span>
+                </div>
+                <div class="flex items-center">
+                    <span class="text-2xl mr-2">🆓</span>
+                    <span>Many free workshops</span>
+                </div>
+                <div class="flex items-center">
+                    <span class="text-2xl mr-2">📅</span>
+                    <span>Flexible one-time commitment</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filters Bar Component -->
+    <section class="bg-white shadow-lg sticky top-16 z-40 border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-5 py-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4">
+                <!-- Subject Filter -->
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">Subject</label>
+                    <select class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-primary focus:outline-none bg-white" id="subject-filter">
+                        <option value="">All Subjects</option>
+                        <option value="music">Music</option>
+                        <option value="dance">Dance</option>
+                        <option value="yoga">Yoga & Wellness</option>
+                        <option value="art">Art & Craft</option>
+                        <option value="language">Languages</option>
+                        <option value="cooking">Cooking</option>
+                        <option value="tech">Technology</option>
+                    </select>
+                </div>
+
+                <!-- Age Group Filter -->
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">Age Group</label>
+                    <select class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-primary focus:outline-none bg-white" id="age-filter">
+                        <option value="">All Ages</option>
+                        <option value="child">Children (5-12)</option>
+                        <option value="teen">Teenagers (13-17)</option>
+                        <option value="adult">Adults (18+)</option>
+                        <option value="family">Family Friendly</option>
+                    </select>
+                </div>
+
+                <!-- Mode Filter -->
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">Mode</label>
+                    <select class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-primary focus:outline-none bg-white" id="mode-filter">
+                        <option value="">All Modes</option>
+                        <option value="online">Online</option>
+                        <option value="in-person">In-Person</option>
+                        <option value="hybrid">Hybrid</option>
+                    </select>
+                </div>
+
+                <!-- Date Filter -->
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">When</label>
+                    <select class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-primary focus:outline-none bg-white" id="date-filter">
+                        <option value="">Any Time</option>
+                        <option value="today">Today</option>
+                        <option value="tomorrow">Tomorrow</option>
+                        <option value="this-week">This Week</option>
+                        <option value="next-week">Next Week</option>
+                        <option value="this-month">This Month</option>
+                    </select>
+                </div>
+
+                <!-- Price Filter -->
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">Price</label>
+                    <select class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-primary focus:outline-none bg-white" id="price-filter">
+                        <option value="">All Prices</option>
+                        <option value="free">Free</option>
+                        <option value="under-20">Under £20</option>
+                        <option value="20-50">£20 - £50</option>
+                        <option value="over-50">Over £50</option>
+                    </select>
+                </div>
+
+                <!-- Apply Filters -->
+                <div class="flex items-end">
+                    <button class="w-full bg-primary hover:bg-blue-500 text-white py-3 rounded-lg font-semibold transition-colors" onclick="applyFilters()">
+                        Apply Filters
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Results Count -->
+            <div class="mt-4 text-center text-gray-600">
+                <span id="results-count">Showing 12 workshops</span> • 
+                <button class="text-primary hover:text-primary-dark font-semibold" onclick="clearAllFilters()">Clear all filters</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Workshops Grid Component -->
+    <main class="max-w-7xl mx-auto px-5 py-12">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="workshops-grid">
+            
+            <!-- Workshop Card 1: Free Vedic Chanting -->
+            <div class="workshop-card bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 overflow-hidden"
+                 data-subject="music" data-age="adult" data-mode="online" data-price="free" data-date="this-week">
+                
+                <!-- Workshop Image -->
+                <div class="h-48 bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center relative">
+                    <span class="text-6xl text-white">🕉️</span>
+                    <!-- Free Badge -->
+                    <div class="absolute top-4 left-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+                        🆓 FREE
+                    </div>
+                    <!-- New Badge -->
+                    <div class="absolute top-4 right-4 bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+                        🔰 NEW
+                    </div>
+                </div>
+
+                <div class="p-6">
+                    <!-- Mentor Info -->
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center text-white font-bold">
+                            R
+                        </div>
+                        <div>
+                            <div class="font-semibold text-gray-800">Dr. Rajesh Patel</div>
+                            <div class="text-sm text-gray-500">🎓 Certified Mentor</div>
+                        </div>
+                    </div>
+
+                    <!-- Workshop Title -->
+                    <h3 class="text-xl font-bold text-primary-dark mb-3">Introduction to Vedic Chanting</h3>
+
+                    <!-- Workshop Details -->
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-gray-600 text-sm">
+                            <span class="mr-2">📅</span>
+                            <span>Saturday, July 27 • 2:00 PM - 4:00 PM</span>
+                        </div>
+                        <div class="flex items-center text-gray-600 text-sm">
+                            <span class="mr-2">⏱️</span>
+                            <span>2 hours</span>
+                        </div>
+                        <div class="flex items-center text-gray-600 text-sm">
+                            <span class="mr-2">💻</span>
+                            <span>Online via Zoom</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="px-2 py-1 bg-indigo-100 text-indigo-700 text-xs rounded-full">Adults</span>
+                            <span class="px-2 py-1 bg-green-100 text-green-700 text-xs rounded-full">Beginner</span>
+                        </div>
+                    </div>
+
+                    <!-- Description -->
+                    <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                        Discover the ancient art of Vedic chanting. Learn basic Sanskrit pronunciations and experience the meditative power of sacred sounds.
+                    </p>
+
+                    <!-- Capacity -->
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center text-sm text-gray-600">
+                            <span class="mr-2">👥</span>
+                            <span>5 spots left</span>
+                        </div>
+                        <div class="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+                    </div>
+
+                    <!-- CTA Button -->
+                    <button class="w-full bg-primary hover:bg-blue-500 text-white py-3 rounded-lg font-semibold transition-colors" onclick="registerWorkshop('vedic-chanting')">
+                        Register Free
+                    </button>
+                </div>
+            </div>
+
+            <!-- Workshop Card 2: Kathak Performance -->
+            <div class="workshop-card bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 overflow-hidden"
+                 data-subject="dance" data-age="teen" data-mode="in-person" data-price="under-20" data-date="next-week">
+                
+                <div class="h-48 bg-gradient-to-br from-purple-400 to-pink-500 flex items-center justify-center relative">
+                    <span class="text-6xl text-white">💃</span>
+                    <!-- Limited Seats Badge -->
+                    <div class="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold animate-pulse">
+                        🔥 Only 2 Left!
+                    </div>
+                </div>
+
+                <div class="p-6">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-white font-bold">
+                            P
+                        </div>
+                        <div>
+                            <div class="font-semibold text-gray-800">Priya Sharma</div>
+                            <div class="text-sm text-gray-500">🎓 Certified Mentor</div>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xl font-bold text-primary-dark mb-3">Kathak Performance Workshop</h3>
+
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-gray-600 text-sm">
+                            <span class="mr-2">📅</span>
+                            <span>Sunday, August 3 • 4:00 PM - 7:00 PM</span>
+                        </div>
+                        <div class="flex items-center text-gray-600 text-sm">
+                            <span class="mr-2">⏱️</span>
+                            <span>3 hours</span>
+                        </div>
+                        <div class="flex items-center text-gray-600 text-sm">
+                            <span class="mr-2">📍</span>
+                            <span>Birmingham Dance Studio</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="px-2 py-1 bg-purple-100 text-purple-700 text-xs rounded-full">Teens</span>
+                            <span class="px-2 py-1 bg-yellow-100 text-yellow-700 text-xs rounded-full">Intermediate</span>
+                        </div>
+                    </div>
+
+                    <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                        Master performance techniques and learn to tell stories through Kathak dance. Includes costume guidance and stage presence tips.
+                    </p>
+
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="text-2xl font-bold text-primary-dark">£18</div>
+                        <div class="flex items-center text-sm text-gray-600">
+                            <span class="mr-2">👥</span>
+                            <span>2 spots left</span>
+                        </div>
+                        <div class="w-3 h-3 bg-red-400 rounded-full animate-pulse"></div>
+                    </div>
+
+                    <button class="w-full bg-primary hover:bg-blue-500 text-white py-3 rounded-lg font-semibold transition-colors" onclick="registerWorkshop('kathak-performance')">
+                        Book Now - £18
+                    </button>
+                </div>
+            </div>
+
+            <!-- Workshop Card 3: Kids Art Workshop -->
+            <div class="workshop-card bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 overflow-hidden"
+                 data-subject="art" data-age="child" data-mode="in-person" data-price="under-20" data-date="this-week">
+                
+                <div class="h-48 bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center relative">
+                    <span class="text-6xl text-white">🎨</span>
+                    <!-- Family Friendly Badge -->
+                    <div class="absolute top-4 left-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+                        👨‍👩‍👧‍👦 Family
+                    </div>
+                </div>
+
+                <div class="p-6">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full flex items-center justify-center text-white font-bold">
+                            S
+                        </div>
+                        <div>
+                            <div class="font-semibold text-gray-800">Sarah Williams</div>
+                            <div class="text-sm text-gray-500">🎓 Certified Mentor</div>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xl font-bold text-primary-dark mb-3">Watercolor Magic for Kids</h3>
+
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-gray-600 text-sm">
+                            <span class="mr-2">📅</span>
+                            <span>Saturday, July 28 • 10:00 AM - 12:00 PM</span>
+                        </div>
+                        <div class="flex items-center text-gray-600 text-sm">
+                            <span class="mr-2">⏱️</span>
+                            <span>2 hours</span>
+                        </div>
+                        <div class="flex items-center text-gray-600 text-sm">
+                            <span class="mr-2">📍</span>
+                            <span>Bristol Community Centre</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="px-2 py-1 bg-green-100 text-green-700 text-xs rounded-full">Children</span>
+                            <span class="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded-full">Beginner</span>
+                        </div>
+                    </div>
+
+                    <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                        Fun watercolor techniques for young artists. All materials included. Perfect for developing creativity and fine motor skills.
+                    </p>
+
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="text-2xl font-bold text-primary-dark">£15</div>
+                        <div class="flex items-center text-sm text-gray-600">
+                            <span class="mr-2">👥</span>
+                            <span>8 spots left</span>
+                        </div>
+                        <div class="w-3 h-3 bg-green-400 rounded-full"></div>
+                    </div>
+
+                    <button class="w-full bg-primary hover:bg-blue-500 text-white py-3 rounded-lg font-semibold transition-colors" onclick="registerWorkshop('kids-watercolor')">
+                        Book Now - £15
+                    </button>
+                </div>
+            </div>
+
+            <!-- Workshop Card 4: Tech Workshop -->
+            <div class="workshop-card bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 overflow-hidden"
+                 data-subject="tech" data-age="teen" data-mode="online" data-price="20-50" data-date="next-week">
+                
+                <div class="h-48 bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center relative">
+                    <span class="text-6xl text-white">💻</span>
+                </div>
+
+                <div class="p-6">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full flex items-center justify-center text-white font-bold">
+                            D
+                        </div>
+                        <div>
+                            <div class="font-semibold text-gray-800">David Chen</div>
+                            <div class="text-sm text-gray-500">🎓 Certified Mentor</div>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xl font-bold text-primary-dark mb-3">Build Your First Mobile App</h3>
+
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-gray-600 text-sm">
+                            <span class="mr-2">📅</span>
+                            <span>Saturday, August 4 • 1:00 PM - 5:00 PM</span>
+                        </div>
+                        <div class="flex items-center text-gray-600 text-sm">
+                            <span class="mr-2">⏱️</span>
+                            <span>4 hours</span>
+                        </div>
+                        <div class="flex items-center text-gray-600 text-sm">
+                            <span class="mr-2">💻</span>
+                            <span>Online via Zoom</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="px-2 py-1 bg-purple-100 text-purple-700 text-xs rounded-full">Teens</span>
+                            <span class="px-2 py-1 bg-green-100 text-green-700 text-xs rounded-full">Beginner</span>
+                        </div>
+                    </div>
+
+                    <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                        Learn the basics of mobile app development using no-code tools. Create a working app by the end of the session!
+                    </p>
+
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="text-2xl font-bold text-primary-dark">£35</div>
+                        <div class="flex items-center text-sm text-gray-600">
+                            <span class="mr-2">👥</span>
+                            <span>12 spots left</span>
+                        </div>
+                        <div class="w-3 h-3 bg-green-400 rounded-full"></div>
+                    </div>
+
+                    <button class="w-full bg-primary hover:bg-blue-500 text-white py-3 rounded-lg font-semibold transition-colors" onclick="registerWorkshop('mobile-app')">
+                        Book Now - £35
+                    </button>
+                </div>
+            </div>
+
+            <!-- Workshop Card 5: Cooking Workshop -->
+            <div class="workshop-card bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 overflow-hidden"
+                 data-subject="cooking" data-age="family" data-mode="in-person" data-price="20-50" data-date="this-month">
+                
+                <div class="h-48 bg-gradient-to-br from-green-500 to-teal-600 flex items-center justify-center relative">
+                    <span class="text-6xl text-white">🍛</span>
+                    <!-- Popular Badge -->
+                    <div class="absolute top-4 left-4 bg-orange-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+                        🔥 Popular
+                    </div>
+                </div>
+
+                <div class="p-6">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-teal-600 rounded-full flex items-center justify-center text-white font-bold">
+                            A
+                        </div>
+                        <div>
+                            <div class="font-semibold text-gray-800">Anita Kumar</div>
+                            <div class="text-sm text-gray-500">🎓 Certified Mentor</div>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xl font-bold text-primary-dark mb-3">Authentic Indian Curry Masterclass</h3>
+
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-gray-600 text-sm">
+                            <span class="mr-2">📅</span>
+                            <span>Sunday, August 5 • 11:00 AM - 3:00 PM</span>
+                        </div>
+                        <div class="flex items-center text-gray-600 text-sm">
+                            <span class="mr-2">⏱️</span>
+                            <span>4 hours</span>
+                        </div>
+                        <div class="flex items-center text-gray-600 text-sm">
+                            <span class="mr-2">📍</span>
+                            <span>London Cooking Studio</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="px-2 py-1 bg-pink-100 text-pink-700 text-xs rounded-full">Family</span>
+                            <span class="px-2 py-1 bg-yellow-100 text-yellow-700 text-xs rounded-full">All Levels</span>
+                        </div>
+                    </div>
+
+                    <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                        Learn traditional curry-making techniques, spice combinations, and family recipes. Lunch included!
+                    </p>
+
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="text-2xl font-bold text-primary-dark">£45</div>
+                        <div class="flex items-center text-sm text-gray-600">
+                            <span class="mr-2">👥</span>
+                            <span>4 spots left</span>
+                        </div>
+                        <div class="w-3 h-3 bg-orange-400 rounded-full animate-pulse"></div>
+                    </div>
+
+                    <button class="w-full bg-primary hover:bg-blue-500 text-white py-3 rounded-lg font-semibold transition-colors" onclick="registerWorkshop('curry-masterclass')">
+                        Book Now - £45
+                    </button>
+                </div>
+            </div>
+
+            <!-- Workshop Card 6: Yoga Workshop -->
+            <div class="workshop-card bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 overflow-hidden"
+                 data-subject="yoga" data-age="adult" data-mode="hybrid" data-price="under-20" data-date="tomorrow">
+                
+                <div class="h-48 bg-gradient-to-br from-teal-400 to-blue-500 flex items-center justify-center relative">
+                    <span class="text-6xl text-white">🧘‍♀️</span>
+                    <!-- Tomorrow Badge -->
+                    <div class="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold animate-pulse">
+                        ⏰ Tomorrow!
+                    </div>
+                </div>
+
+                <div class="p-6">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-teal-400 to-blue-500 rounded-full flex items-center justify-center text-white font-bold">
+                            M
+                        </div>
+                        <div>
+                            <div class="font-semibold text-gray-800">Maya Patel</div>
+                            <div class="text-sm text-gray-500">🎓 Certified Mentor</div>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xl font-bold text-primary-dark mb-3">Stress Relief Yoga Session</h3>
+
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-gray-600 text-sm">
+                            <span class="mr-2">📅</span>
+                            <span>Tomorrow, July 26 • 7:00 PM - 8:30 PM</span>
+                        </div>
+                        <div class="flex items-center text-gray-600 text-sm">
+                            <span class="mr-2">⏱️</span>
+                            <span>1.5 hours</span>
+                        </div>
+                        <div class="flex items-center text-gray-600 text-sm">
+                            <span class="mr-2">🎭</span>
+                            <span>Hybrid (Online + In-person Manchester)</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="px-2 py-1 bg-indigo-100 text-indigo-700 text-xs rounded-full">Adults</span>
+                            <span class="px-2 py-1 bg-green-100 text-green-700 text-xs rounded-full">All Levels</span>
+                        </div>
+                    </div>
+
+                    <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                        Gentle yoga flow designed to release tension and promote relaxation. Perfect after a busy week.
+                    </p>
+
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="text-2xl font-bold text-primary-dark">£12</div>
+                        <div class="flex items-center text-sm text-gray-600">
+                            <span class="mr-2">👥</span>
+                            <span>15 spots left</span>
+                        </div>
+                        <div class="w-3 h-3 bg-green-400 rounded-full"></div>
+                    </div>
+
+                    <button class="w-full bg-primary hover:bg-blue-500 text-white py-3 rounded-lg font-semibold transition-colors" onclick="registerWorkshop('stress-yoga')">
+                        Book Now - £12
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Load More Button -->
+        <div class="text-center mt-12">
+            <button class="bg-gray-200 hover:bg-gray-300 text-gray-700 px-8 py-3 rounded-lg font-semibold transition-colors" onclick="loadMoreWorkshops()">
+                Load More Workshops
+            </button>
+        </div>
+    </main>
+
+    <!-- Footer CTA Section Component -->
+    <section class="bg-gradient-to-r from-primary-light to-accent-light py-16">
+        <div class="max-w-4xl mx-auto px-5 text-center">
+            <h2 class="text-3xl font-bold text-primary-dark mb-4">Have a topic in mind?</h2>
+            <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+                Can't find the perfect workshop? Our mentors love creating custom workshops based on learner demand. 
+                Share your idea and we'll help make it happen!
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button class="bg-primary hover:bg-blue-500 text-white px-8 py-4 rounded-full font-bold text-lg transition-colors" onclick="proposeWorkshop()">
+                    💡 Propose a Workshop
+                </button>
+                <button class="border-2 border-primary text-primary hover:bg-primary hover:text-white px-8 py-4 rounded-full font-bold text-lg transition-colors" onclick="requestCustom()">
+                    📝 Request Custom Session
+                </button>
+            </div>
+            <p class="text-sm text-gray-500 mt-6">
+                Popular requests: Advanced Bharatanatyam, Teen Cooking Classes, Family Art Sessions
+            </p>
+        </div>
+    </section>
+
+    <!-- JavaScript Component -->
+    <script>
+        // Filter functionality
+        function applyFilters() {
+            const subject = document.getElementById('subject-filter').value;
+            const age = document.getElementById('age-filter').value;
+            const mode = document.getElementById('mode-filter').value;
+            const date = document.getElementById('date-filter').value;
+            const price = document.getElementById('price-filter').value;
+
+            const workshopCards = document.querySelectorAll('.workshop-card');
+            let visibleCount = 0;
+
+            workshopCards.forEach(card => {
+                const cardSubject = card.getAttribute('data-subject');
+                const cardAge = card.getAttribute('data-age');
+                const cardMode = card.getAttribute('data-mode');
+                const cardDate = card.getAttribute('data-date');
+                const cardPrice = card.getAttribute('data-price');
+
+                const subjectMatch = !subject || cardSubject === subject;
+                const ageMatch = !age || cardAge === age || cardAge === 'family';
+                const modeMatch = !mode || cardMode === mode || cardMode === 'hybrid';
+                const dateMatch = !date || cardDate === date;
+                const priceMatch = !price || cardPrice === price;
+
+                if (subjectMatch && ageMatch && modeMatch && dateMatch && priceMatch) {
+                    card.style.display = 'block';
+                    card.style.animation = 'fadeIn 0.3s ease-in';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            // Update results count
+            document.getElementById('results-count').textContent = `Showing ${visibleCount} workshop${visibleCount !== 1 ? 's' : ''}`;
+        }
+
+        // Clear all filters
+        function clearAllFilters() {
+            document.getElementById('subject-filter').value = '';
+            document.getElementById('age-filter').value = '';
+            document.getElementById('mode-filter').value = '';
+            document.getElementById('date-filter').value = '';
+            document.getElementById('price-filter').value = '';
+            
+            // Show all workshops
+            document.querySelectorAll('.workshop-card').forEach(card => {
+                card.style.display = 'block';
+            });
+            
+            document.getElementById('results-count').textContent = 'Showing 12 workshops';
+        }
+
+        // Workshop registration
+        function registerWorkshop(workshopId) {
+            const button = event.target;
+            const originalText = button.textContent;
+            
+            // Show loading state
+            button.textContent = 'Processing...';
+            button.disabled = true;
+            button.classList.add('opacity-75');
+            
+            // Simulate registration process
+            setTimeout(() => {
+                if (originalText.includes('Free')) {
+                    alert(`🎉 Success! You're registered for this free workshop.\n\nConfirmation email sent with Zoom link and preparation materials.`);
+                } else {
+                    const price = originalText.match(/£\d+/)[0];
+                    alert(`🎉 Booking confirmed! Payment of ${price} processed.\n\nConfirmation email sent with location details and what to bring.`);
+                }
+                
+                // Update button to show registered state
+                button.textContent = '✅ Registered';
+                button.classList.remove('bg-primary', 'hover:bg-blue-500');
+                button.classList.add('bg-green-500');
+                button.disabled = true;
+                button.classList.remove('opacity-75');
+                
+                // Update capacity
+                const card = button.closest('.workshop-card');
+                const capacityElement = card.querySelector('span[class*="spots left"]');
+                if (capacityElement) {
+                    const currentSpots = parseInt(capacityElement.textContent);
+                    const newSpots = Math.max(0, currentSpots - 1);
+                    capacityElement.textContent = `${newSpots} spots left`;
+                    
+                    // Update indicator color
+                    const indicator = card.querySelector('div[class*="rounded-full"][class*="w-3"]');
+                    if (newSpots <= 2) {
+                        indicator.classList.remove('bg-green-400', 'bg-orange-400');
+                        indicator.classList.add('bg-red-400', 'animate-pulse');
+                    } else if (newSpots <= 5) {
+                        indicator.classList.remove('bg-green-400', 'bg-red-400');
+                        indicator.classList.add('bg-orange-400', 'animate-pulse');
+                    }
+                }
+                
+            }, 2000);
+        }
+
+        // Propose workshop functionality
+        function proposeWorkshop() {
+            const topics = [
+                "Advanced Bharatanatyam techniques",
+                "Teen entrepreneurship workshop", 
+                "Family meditation sessions",
+                "Indian classical music theory",
+                "Sustainable cooking practices",
+                "Digital art for beginners"
+            ];
+            
+            const randomTopic = topics[Math.floor(Math.random() * topics.length)];
+            
+            const userTopic = prompt(`💡 What workshop would you like to see?\n\nSuggestion: "${randomTopic}"\n\nEnter your idea:`);
+            
+            if (userTopic) {
+                alert(`🎉 Thank you for your suggestion!\n\n"${userTopic}"\n\nWe'll reach out to relevant mentors and notify you if we can arrange this workshop. Popular suggestions often become reality within 2-4 weeks!`);
+            }
+        }
+
+        // Request custom session
+        function requestCustom() {
+            alert('Opening custom session request form...\n\n📝 Tell us:\n• Your preferred topic\n• Group size\n• Preferred dates/times\n• Budget range\n\nOur mentors will create a personalized proposal for you!');
+        }
+
+        // Load more workshops
+        function loadMoreWorkshops() {
+            const button = event.target;
+            button.textContent = 'Loading...';
+            button.disabled = true;
+            
+            setTimeout(() => {
+                alert('Loading 6 more workshops...\n\n🎭 Advanced Drama Workshop\n🍽️ Vegan Indian Cooking\n🎵 Tabla for Beginners\n🎨 Digital Art Masterclass\n🧘 Family Yoga Session\n💻 AI for Creative Writing');
+                
+                button.textContent = 'Load More Workshops';
+                button.disabled = false;
+            }, 1500);
+        }
+
+        // Enhanced card interactions
+        document.querySelectorAll('.workshop-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-8px) scale(1.02)';
+            });
+
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Real-time capacity updates (simulation)
+        function simulateCapacityUpdates() {
+            const capacityElements = document.querySelectorAll('span[class*="spots left"]');
+            
+            capacityElements.forEach(element => {
+                if (Math.random() < 0.02) { // 2% chance per update
+                    const currentSpots = parseInt(element.textContent);
+                    if (currentSpots > 1) {
+                        const newSpots = currentSpots - 1;
+                        element.textContent = `${newSpots} spots left`;
+                        
+                        // Show brief notification
+                        const notification = document.createElement('div');
+                        notification.className = 'fixed top-20 right-5 bg-orange-100 border border-orange-400 text-orange-700 px-4 py-2 rounded-lg shadow-lg z-50';
+                        notification.textContent = '🔥 Someone just booked this workshop!';
+                        document.body.appendChild(notification);
+                        
+                        setTimeout(() => {
+                            notification.remove();
+                        }, 3000);
+                    }
+                }
+            });
+        }
+
+        // Update capacities every 30 seconds (for demo)
+        // setInterval(simulateCapacityUpdates, 30000);
+
+        // Add CSS animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Auto-apply filters on change for better UX
+        document.querySelectorAll('select').forEach(select => {
+            select.addEventListener('change', applyFilters);
+        });
+    </script>
+</body>
+</html>

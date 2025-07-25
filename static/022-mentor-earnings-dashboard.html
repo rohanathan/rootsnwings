@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Earnings - Roots & Wings</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#00A2E8',
+                        'primary-dark': '#00468C',
+                        'primary-light': '#E6F7FF',
+                        'background': '#F9FBFF',
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-background font-sans">
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-40">
+        <div class="flex items-center justify-between px-6 py-4">
+            <!-- Left: Logo & Mobile Menu -->
+            <div class="flex items-center space-x-4">
+                <button id="mobile-menu-btn" class="md:hidden text-gray-600 hover:text-primary">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+                <h1 class="text-2xl font-bold text-primary-dark">Roots & Wings</h1>
+                <span class="hidden md:block text-sm text-gray-500">Mentor Portal</span>
+            </div>
+            
+            <!-- Right: Profile Dropdown -->
+            <div class="relative">
+                <button id="profile-dropdown-btn" class="flex items-center space-x-3 hover:bg-gray-50 rounded-lg px-3 py-2 transition-colors">
+                    <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+                        <span class="text-white font-semibold">PS</span>
+                    </div>
+                    <div class="hidden md:block text-left">
+                        <div class="text-sm font-semibold text-gray-900">Priya Sharma</div>
+                        <div class="text-xs text-gray-500">Kathak Mentor</div>
+                    </div>
+                    <i class="fas fa-chevron-down text-gray-400 text-sm"></i>
+                </button>
+                
+                <!-- Dropdown Menu -->
+                <div id="profile-dropdown" class="hidden absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-200 py-2">
+                    <a href="#" class="flex items-center space-x-3 px-4 py-2 text-gray-700 hover:bg-gray-50">
+                        <i class="fas fa-user text-gray-400"></i>
+                        <span>View Profile</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-2 text-gray-700 hover:bg-gray-50">
+                        <i class="fas fa-cog text-gray-400"></i>
+                        <span>Settings</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-2 text-gray-700 hover:bg-gray-50">
+                        <i class="fas fa-question-circle text-gray-400"></i>
+                        <span>Help & Support</span>
+                    </a>
+                    <hr class="my-2">
+                    <a href="#" class="flex items-center space-x-3 px-4 py-2 text-red-600 hover:bg-red-50">
+                        <i class="fas fa-sign-out-alt text-red-400"></i>
+                        <span>Log Out</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex">
+        <!-- Sidebar -->
+        <nav class="bg-white w-64 min-h-screen shadow-sm border-r border-gray-200 fixed md:static z-30 transition-transform duration-300 ease-in-out -translate-x-full md:translate-x-0" id="sidebar">
+            <div class="p-6">
+                <!-- Navigation Items -->
+                <div class="space-y-2">
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1">
+                        <i class="fas fa-home text-lg"></i>
+                        <span class="font-medium">Dashboard</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1">
+                        <i class="fas fa-chalkboard-teacher text-lg"></i>
+                        <span>My Classes</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1">
+                        <i class="fas fa-plus-circle text-lg"></i>
+                        <span>Host a Class</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1">
+                        <i class="fas fa-users text-lg"></i>
+                        <span>Workshops</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1">
+                        <i class="fas fa-calendar-alt text-lg"></i>
+                        <span>Schedule</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1">
+                        <i class="fas fa-user-graduate text-lg"></i>
+                        <span>Students</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1 bg-primary text-white">
+                        <i class="fas fa-pound-sign text-lg"></i>
+                        <span>Earnings</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1">
+                        <i class="fas fa-comments text-lg"></i>
+                        <span>Messages</span>
+                        <span class="ml-auto bg-red-500 text-white text-xs rounded-full px-2 py-1">3</span>
+                    </a>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="mt-8">
+                    <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Quick Actions</h3>
+                    <div class="space-y-2">
+                        <button class="w-full bg-primary text-white px-4 py-3 rounded-lg hover:bg-primary-dark transition-colors font-medium">
+                            <i class="fas fa-envelope mr-2"></i>
+                            Send Message
+                        </button>
+                        <button class="w-full border border-primary text-primary px-4 py-3 rounded-lg hover:bg-primary-light transition-colors font-medium">
+                            <i class="fas fa-video mr-2"></i>
+                            Start Session Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="flex-1 md:ml-0 p-6">
+            <!-- Page Header -->
+            <div class="flex items-center justify-between mb-8">
+                <div>
+                    <h1 class="text-3xl font-bold text-gray-900 mb-2">Earnings</h1>
+                    <p class="text-gray-600">Track your income and manage your earnings</p>
+                </div>
+                <div class="flex space-x-3">
+                    <div class="relative">
+                        <select class="appearance-none bg-white border border-gray-300 rounded-lg px-4 py-2 pr-8 focus:ring-2 focus:ring-primary focus:border-primary">
+                            <option>Last 30 Days</option>
+                            <option>Last 3 Months</option>
+                            <option>This Year</option>
+                            <option>All Time</option>
+                        </select>
+                        <i class="fas fa-chevron-down absolute right-3 top-3 text-gray-400 pointer-events-none"></i>
+                    </div>
+                    <button class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-dark transition-colors">
+                        <i class="fas fa-download mr-2"></i>Export
+                    </button>
+                </div>
+            </div>
+
+            <!-- Earnings Overview Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                <!-- Total Earnings -->
+                <div class="bg-white rounded-xl p-6 border border-gray-200">
+                    <div class="flex items-center justify-between mb-2">
+                        <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-pound-sign text-green-600"></i>
+                        </div>
+                        <span class="text-green-500 text-sm font-medium">Total</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900">£2,847</h3>
+                    <p class="text-gray-600 text-sm">All Time Earnings</p>
+                </div>
+
+                <!-- This Month -->
+                <div class="bg-white rounded-xl p-6 border border-gray-200">
+                    <div class="flex items-center justify-between mb-2">
+                        <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-calendar text-blue-600"></i>
+                        </div>
+                        <span class="text-blue-500 text-sm font-medium">This Month</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900">£1,245</h3>
+                    <p class="text-gray-600 text-sm">July 2025</p>
+                </div>
+
+                <!-- Pending Payments -->
+                <div class="bg-white rounded-xl p-6 border border-gray-200">
+                    <div class="flex items-center justify-between mb-2">
+                        <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-clock text-orange-600"></i>
+                        </div>
+                        <span class="text-orange-500 text-sm font-medium">Pending</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900">£384</h3>
+                    <p class="text-gray-600 text-sm">Processing</p>
+                </div>
+
+                <!-- Hourly Rate -->
+                <div class="bg-white rounded-xl p-6 border border-gray-200">
+                    <div class="flex items-center justify-between mb-2">
+                        <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-star text-purple-600"></i>
+                        </div>
+                        <span class="text-purple-500 text-sm font-medium">Rate</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900">£45</h3>
+                    <p class="text-gray-600 text-sm">Per Hour</p>
+                </div>
+            </div>
+
+            <!-- Earnings Breakdown -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                <!-- Monthly Earnings -->
+                <div class="bg-white rounded-xl border border-gray-200 p-6">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-lg font-semibold text-gray-900">Monthly Overview</h3>
+                        <span class="text-sm text-gray-500">Last 6 Months</span>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between p-3 bg-primary-light rounded-lg">
+                            <div>
+                                <p class="font-medium text-gray-900">July 2025</p>
+                                <p class="text-sm text-gray-600">Current month</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-lg font-bold text-gray-900">£1,245</p>
+                                <p class="text-sm text-green-600">On track</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                            <div>
+                                <p class="font-medium text-gray-900">June 2025</p>
+                                <p class="text-sm text-gray-600">18 sessions</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-lg font-bold text-gray-900">£1,680</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                            <div>
+                                <p class="font-medium text-gray-900">May 2025</p>
+                                <p class="text-sm text-gray-600">16 sessions</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-lg font-bold text-gray-900">£1,520</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                            <div>
+                                <p class="font-medium text-gray-900">April 2025</p>
+                                <p class="text-sm text-gray-600">14 sessions</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-lg font-bold text-gray-900">£1,260</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Session Types -->
+                <div class="bg-white rounded-xl border border-gray-200 p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-6">Earnings by Type</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between p-4 border border-gray-100 rounded-lg">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-10 h-10 bg-primary-light rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-user text-primary"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-gray-900">1-on-1 Sessions</p>
+                                    <p class="text-sm text-gray-600">Individual Kathak lessons</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <p class="font-bold text-gray-900">£1,890</p>
+                                <p class="text-sm text-gray-500">59%</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between p-4 border border-gray-100 rounded-lg">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-users text-green-600"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-gray-900">Group Classes</p>
+                                    <p class="text-sm text-gray-600">Weekend & evening batches</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <p class="font-bold text-gray-900">£786</p>
+                                <p class="text-sm text-gray-500">31%</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between p-4 border border-gray-100 rounded-lg">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-calendar text-purple-600"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-gray-900">Workshops</p>
+                                    <p class="text-sm text-gray-600">Special events</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <p class="font-bold text-gray-900">£271</p>
+                                <p class="text-sm text-gray-500">10%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Transactions & Payment Info -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+                <!-- Recent Transactions -->
+                <div class="lg:col-span-2 bg-white rounded-xl border border-gray-200 p-6">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-lg font-semibold text-gray-900">Recent Transactions</h3>
+                        <button class="text-primary hover:text-primary-dark text-sm font-medium">View All</button>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-user text-green-600"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-gray-900">Ananya Mehta</p>
+                                    <p class="text-sm text-gray-500">1-on-1 Session • July 20, 2025</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <p class="font-medium text-gray-900">£45.00</p>
+                                <p class="text-sm text-green-600">Completed</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-users text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-gray-900">Weekend Kathak Batch</p>
+                                    <p class="text-sm text-gray-500">Group Session • July 19, 2025</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <p class="font-medium text-gray-900">£135.00</p>
+                                <p class="text-sm text-green-600">Completed</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-calendar text-purple-600"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-gray-900">Mindfulness Workshop</p>
+                                    <p class="text-sm text-gray-500">Special Event • July 18, 2025</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <p class="font-medium text-gray-900">£65.00</p>
+                                <p class="text-sm text-green-600">Completed</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between p-4 bg-orange-50 rounded-lg border border-orange-100">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-user text-orange-600"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-gray-900">Raj Kumar</p>
+                                    <p class="text-sm text-gray-500">1-on-1 Session • July 17, 2025</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <p class="font-medium text-gray-900">£45.00</p>
+                                <p class="text-sm text-orange-600">Processing</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-user text-green-600"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-gray-900">Maya Rajan</p>
+                                    <p class="text-sm text-gray-500">1-on-1 Session • July 16, 2025</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <p class="font-medium text-gray-900">£45.00</p>
+                                <p class="text-sm text-green-600">Completed</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payment Information -->
+                <div class="space-y-6">
+                    <!-- Next Payout -->
+                    <div class="bg-gradient-to-r from-primary to-primary-dark rounded-xl p-6 text-white">
+                        <h4 class="font-semibold mb-2">Next Payout</h4>
+                        <p class="text-2xl font-bold">£1,245.83</p>
+                        <p class="text-sm opacity-90 mb-4">July 25, 2025</p>
+                        <div class="flex items-center">
+                            <i class="fas fa-info-circle mr-2"></i>
+                            <span class="text-sm opacity-90">Automatic bank transfer</span>
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="bg-white rounded-xl border border-gray-200 p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h3>
+                        <div class="space-y-3">
+                            <button class="w-full flex items-center justify-between p-3 bg-primary-light rounded-lg hover:bg-primary text-primary hover:text-white transition-colors">
+                                <div class="flex items-center">
+                                    <i class="fas fa-university mr-3"></i>
+                                    <span class="font-medium">Payout Settings</span>
+                                </div>
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                            <button class="w-full flex items-center justify-between p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+                                <div class="flex items-center">
+                                    <i class="fas fa-receipt mr-3 text-gray-600"></i>
+                                    <span class="font-medium text-gray-900">Tax Documents</span>
+                                </div>
+                                <i class="fas fa-arrow-right text-gray-400"></i>
+                            </button>
+                            <button class="w-full flex items-center justify-between p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+                                <div class="flex items-center">
+                                    <i class="fas fa-download mr-3 text-gray-600"></i>
+                                    <span class="font-medium text-gray-900">Download Statement</span>
+                                </div>
+                                <i class="fas fa-arrow-right text-gray-400"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Performance Summary -->
+                    <div class="bg-white rounded-xl border border-gray-200 p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4">This Month</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between">
+                                <span class="text-gray-600">Sessions Taught</span>
+                                <span class="font-medium text-gray-900">28</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-gray-600">Average Rating</span>
+                                <div class="flex items-center">
+                                    <span class="font-medium text-gray-900 mr-1">4.9</span>
+                                    <i class="fas fa-star text-yellow-400 text-sm"></i>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-gray-600">Total Hours</span>
+                                <span class="font-medium text-gray-900">34 hours</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Mobile Sidebar Overlay -->
+    <div id="sidebar-overlay" class="hidden fixed inset-0 bg-black bg-opacity-50 z-20 md:hidden"></div>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebar-overlay');
+
+        mobileMenuBtn.addEventListener('click', function() {
+            sidebar.classList.toggle('-translate-x-full');
+            sidebarOverlay.classList.toggle('hidden');
+        });
+
+        sidebarOverlay.addEventListener('click', function() {
+            sidebar.classList.add('-translate-x-full');
+            sidebarOverlay.classList.add('hidden');
+        });
+
+        // Profile dropdown toggle
+        const profileDropdownBtn = document.getElementById('profile-dropdown-btn');
+        const profileDropdown = document.getElementById('profile-dropdown');
+
+        profileDropdownBtn.addEventListener('click', function() {
+            profileDropdown.classList.toggle('hidden');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!profileDropdownBtn.contains(e.target) && !profileDropdown.contains(e.target)) {
+                profileDropdown.classList.add('hidden');
+            }
+        });
+
+        // Sidebar navigation
+        document.querySelectorAll('nav a').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active classes from all items
+                document.querySelectorAll('nav a').forEach(i => {
+                    i.classList.remove('bg-primary', 'text-white');
+                    i.classList.add('text-gray-700');
+                });
+                
+                // Add active classes to clicked item (except current page)
+                if (!this.classList.contains('bg-primary')) {
+                    this.classList.add('bg-primary', 'text-white');
+                    this.classList.remove('text-gray-700');
+                }
+            });
+        });
+
+        // Auto-hide mobile sidebar on window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth >= 768) {
+                sidebar.classList.remove('-translate-x-full');
+                sidebarOverlay.classList.add('hidden');
+            }
+        });
+
+        // Add hover effects to transaction items
+        document.querySelectorAll('.space-y-4 > div').forEach(transaction => {
+            transaction.addEventListener('mouseenter', function() {
+                if (!this.classList.contains('bg-orange-50')) {
+                    this.style.transform = 'translateX(4px)';
+                }
+            });
+            
+            transaction.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateX(0)';
+            });
+        });
+    </script>
+</body>
+</html>

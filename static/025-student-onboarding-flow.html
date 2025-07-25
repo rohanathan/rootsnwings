@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Roots & Wings - Student Onboarding</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#00A2E8',
+                        'primary-dark': '#00468C',
+                        'primary-light': '#f8fbff',
+                        'accent-light': '#e8f4ff'
+                    },
+                    fontFamily: {
+                        sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @keyframes slideIn {
+            from { transform: translateX(20px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        .step-content {
+            animation: slideIn 0.5s ease-out;
+        }
+        .step-content.hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-primary-light min-h-screen">
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <h1 class="text-2xl font-bold text-primary-dark">Roots & Wings</h1>
+                    <span class="ml-4 text-gray-500">Join Our Learning Community</span>
+                </div>
+                <button class="text-gray-500 hover:text-gray-700" onclick="window.history.back()">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Progress Section -->
+        <div class="mb-8">
+            <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center space-x-4">
+                    <span class="text-sm text-gray-600">Step <span id="current-step">1</span> of <span id="total-steps">6</span></span>
+                    <div class="text-sm text-gray-500" id="step-title">Welcome</div>
+                </div>
+                <div class="text-sm text-gray-500 flex items-center">
+                    <i class="fas fa-save mr-1 text-green-500"></i>
+                    Progress saved
+                </div>
+            </div>
+            
+            <!-- Progress Bar -->
+            <div class="w-full bg-gray-200 rounded-full h-3">
+                <div class="bg-primary h-3 rounded-full transition-all duration-500" id="progress-bar" style="width: 16.67%"></div>
+            </div>
+        </div>
+
+        <!-- Main Content Container -->
+        <div class="bg-white rounded-2xl shadow-lg border border-gray-200 min-h-96">
+            
+            <!-- Step 1: Who's Learning? -->
+            <div class="step-content p-8" data-step="1" id="step-1">
+                <div class="max-w-2xl mx-auto text-center">
+                    <div class="w-20 h-20 bg-primary rounded-full mx-auto mb-6 flex items-center justify-center">
+                        <i class="fas fa-users text-white text-2xl"></i>
+                    </div>
+                    <h1 class="text-3xl font-bold text-gray-900 mb-4">Who will be learning with Roots & Wings?</h1>
+                    <p class="text-lg text-gray-600 mb-8">
+                        Help us create the perfect learning experience for you and your family
+                    </p>
+                    
+                    <!-- Learning Options -->
+                    <div class="space-y-4">
+                        <div class="learning-option p-6 border-2 border-gray-200 rounded-xl hover:border-primary hover:bg-primary-light transition-all cursor-pointer" data-option="myself">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-user text-blue-600 text-xl"></i>
+                                </div>
+                                <div class="text-left">
+                                    <h3 class="text-lg font-semibold text-gray-900">Just me</h3>
+                                    <p class="text-gray-600">I'm looking to learn something new</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="learning-option p-6 border-2 border-gray-200 rounded-xl hover:border-primary hover:bg-primary-light transition-all cursor-pointer" data-option="young-learners">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-child text-green-600 text-xl"></i>
+                                </div>
+                                <div class="text-left">
+                                    <h3 class="text-lg font-semibold text-gray-900">My Young Learners</h3>
+                                    <p class="text-gray-600">Children or teens in my family (under 18)</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="learning-option p-6 border-2 border-gray-200 rounded-xl hover:border-primary hover:bg-primary-light transition-all cursor-pointer" data-option="family">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-users text-purple-600 text-xl"></i>
+                                </div>
+                                <div class="text-left">
+                                    <h3 class="text-lg font-semibold text-gray-900">Both myself and my family</h3>
+                                    <p class="text-gray-600">Multiple family members will be learning</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 text-sm text-gray-500">
+                        <i class="fas fa-shield-alt mr-2 text-green-500"></i>
+                        We always collect parent/guardian details first for safety and account management
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2: Parent/Guardian Information -->
+            <div class="step-content p-8 hidden" data-step="2" id="step-2">
+                <div class="max-w-2xl mx-auto">
+                    <div class="text-center mb-8">
+                        <div class="w-16 h-16 bg-primary rounded-full mx-auto mb-4 flex items-center justify-center">
+                            <i class="fas fa-user-shield text-white text-xl"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-gray-900 mb-2">Your Account Information</h2>
+                        <p class="text-gray-600">Let's start with your details for account security and communication</p>
+                    </div>
+
+                    <div class="space-y-6">
+                        <!-- Personal Details -->
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">First Name</label>
+                                <input type="text" placeholder="Sarah" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Last Name</label>
+                                <input type="text" placeholder="Johnson" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Email Address</label>
+                            <input type="email" placeholder="sarah.johnson@email.com" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary">
+                            <p class="text-xs text-gray-500 mt-1">We'll use this for session confirmations and important updates</p>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Phone Number</label>
+                            <input type="tel" placeholder="+44 7123 456789" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Date of Birth</label>
+                            <input type="date" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Location</label>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <input type="text" placeholder="City" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary">
+                                <input type="text" placeholder="Postcode" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3: Your Learning Preferences (if applicable) -->
+            <div class="step-content p-8 hidden" data-step="3" id="step-3">
+                <div class="max-w-2xl mx-auto">
+                    <div class="text-center mb-8">
+                        <div class="w-16 h-16 bg-green-500 rounded-full mx-auto mb-4 flex items-center justify-center">
+                            <i class="fas fa-graduation-cap text-white text-xl"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-gray-900 mb-2">Your Learning Goals</h2>
+                        <p class="text-gray-600">What would you like to learn? (You can always add more later)</p>
+                    </div>
+
+                    <!-- Subject Categories -->
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900 mb-4">Subjects I'm interested in</h3>
+                            <div class="grid grid-cols-2 md:grid-cols-3 gap-3" id="adult-subjects">
+                                <label class="subject-option cursor-pointer">
+                                    <input type="checkbox" class="hidden" value="music">
+                                    <div class="subject-card p-4 border-2 border-gray-200 rounded-lg text-center hover:border-primary transition-colors">
+                                        <i class="fas fa-music text-primary mb-2 text-xl"></i>
+                                        <div class="text-sm font-medium">Music</div>
+                                    </div>
+                                </label>
+                                <label class="subject-option cursor-pointer">
+                                    <input type="checkbox" class="hidden" value="art">
+                                    <div class="subject-card p-4 border-2 border-gray-200 rounded-lg text-center hover:border-primary transition-colors">
+                                        <i class="fas fa-palette text-primary mb-2 text-xl"></i>
+                                        <div class="text-sm font-medium">Art & Craft</div>
+                                    </div>
+                                </label>
+                                <label class="subject-option cursor-pointer">
+                                    <input type="checkbox" class="hidden" value="languages">
+                                    <div class="subject-card p-4 border-2 border-gray-200 rounded-lg text-center hover:border-primary transition-colors">
+                                        <i class="fas fa-globe text-primary mb-2 text-xl"></i>
+                                        <div class="text-sm font-medium">Languages</div>
+                                    </div>
+                                </label>
+                                <label class="subject-option cursor-pointer">
+                                    <input type="checkbox" class="hidden" value="mindfulness">
+                                    <div class="subject-card p-4 border-2 border-gray-200 rounded-lg text-center hover:border-primary transition-colors">
+                                        <i class="fas fa-leaf text-primary mb-2 text-xl"></i>
+                                        <div class="text-sm font-medium">Mindfulness</div>
+                                    </div>
+                                </label>
+                                <label class="subject-option cursor-pointer">
+                                    <input type="checkbox" class="hidden" value="coding">
+                                    <div class="subject-card p-4 border-2 border-gray-200 rounded-lg text-center hover:border-primary transition-colors">
+                                        <i class="fas fa-code text-primary mb-2 text-xl"></i>
+                                        <div class="text-sm font-medium">Coding</div>
+                                    </div>
+                                </label>
+                                <label class="subject-option cursor-pointer">
+                                    <input type="checkbox" class="hidden" value="other">
+                                    <div class="subject-card p-4 border-2 border-gray-200 rounded-lg text-center hover:border-primary transition-colors">
+                                        <i class="fas fa-plus text-primary mb-2 text-xl"></i>
+                                        <div class="text-sm font-medium">Other</div>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Learning Preferences -->
+                        <div class="space-y-4">
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-900 mb-4">Preferred learning style</h3>
+                                <div class="space-y-3">
+                                    <label class="flex items-center space-x-3 p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                                        <input type="radio" name="learning-style" value="one-on-one" class="w-4 h-4 text-primary">
+                                        <div>
+                                            <div class="font-medium">1-on-1 Sessions</div>
+                                            <div class="text-sm text-gray-600">Personalized attention and custom pace</div>
+                                        </div>
+                                    </label>
+                                    <label class="flex items-center space-x-3 p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                                        <input type="radio" name="learning-style" value="group" class="w-4 h-4 text-primary">
+                                        <div>
+                                            <div class="font-medium">Group Classes</div>
+                                            <div class="text-sm text-gray-600">Learn with others and share experiences</div>
+                                        </div>
+                                    </label>
+                                    <label class="flex items-center space-x-3 p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                                        <input type="radio" name="learning-style" value="both" class="w-4 h-4 text-primary" checked>
+                                        <div>
+                                            <div class="font-medium">Both</div>
+                                            <div class="text-sm text-gray-600">I'm open to different formats</div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 4: Young Learners (if applicable) -->
+            <div class="step-content p-8 hidden" data-step="4" id="step-4">
+                <div class="max-w-2xl mx-auto">
+                    <div class="text-center mb-8">
+                        <div class="w-16 h-16 bg-purple-500 rounded-full mx-auto mb-4 flex items-center justify-center">
+                            <i class="fas fa-child text-white text-xl"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-gray-900 mb-2">Add Young Learners</h2>
+                        <p class="text-gray-600">Tell us about the children/teens who will be learning</p>
+                    </div>
+
+                    <!-- Young Learner Profiles -->
+                    <div id="young-learners-container">
+                        <!-- First Young Learner -->
+                        <div class="young-learner-profile bg-gray-50 rounded-xl p-6 mb-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-lg font-semibold text-gray-900">Young Learner #1</h3>
+                                <button class="remove-learner text-red-500 hover:text-red-700 text-sm" style="display: none;">
+                                    <i class="fas fa-trash mr-1"></i>Remove
+                                </button>
+                            </div>
+
+                            <div class="space-y-4">
+                                <div class="grid md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-sm font-semibold text-gray-700 mb-2">First Name</label>
+                                        <input type="text" placeholder="Emma" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-semibold text-gray-700 mb-2">Age</label>
+                                        <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary">
+                                            <option value="">Select age</option>
+                                            <option value="5">5 years</option>
+                                            <option value="6">6 years</option>
+                                            <option value="7">7 years</option>
+                                            <option value="8">8 years</option>
+                                            <option value="9">9 years</option>
+                                            <option value="10">10 years</option>
+                                            <option value="11">11 years</option>
+                                            <option value="12">12 years</option>
+                                            <option value="13">13 years</option>
+                                            <option value="14">14 years</option>
+                                            <option value="15">15 years</option>
+                                            <option value="16">16 years</option>
+                                            <option value="17">17 years</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Relationship to you</label>
+                                    <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary">
+                                        <option value="">Select relationship</option>
+                                        <option value="child">My child</option>
+                                        <option value="sibling">My sibling</option>
+                                        <option value="grandchild">My grandchild</option>
+                                        <option value="other">Other family member</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Interests & subjects they'd like to learn</label>
+                                    <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
+                                        <label class="youth-subject-option cursor-pointer">
+                                            <input type="checkbox" class="hidden" value="music">
+                                            <div class="subject-card p-3 border border-gray-200 rounded-lg text-center hover:border-primary transition-colors text-xs">
+                                                <i class="fas fa-music text-primary mb-1"></i>
+                                                <div class="font-medium">Music</div>
+                                            </div>
+                                        </label>
+                                        <label class="youth-subject-option cursor-pointer">
+                                            <input type="checkbox" class="hidden" value="art">
+                                            <div class="subject-card p-3 border border-gray-200 rounded-lg text-center hover:border-primary transition-colors text-xs">
+                                                <i class="fas fa-palette text-primary mb-1"></i>
+                                                <div class="font-medium">Art</div>
+                                            </div>
+                                        </label>
+                                        <label class="youth-subject-option cursor-pointer">
+                                            <input type="checkbox" class="hidden" value="sports">
+                                            <div class="subject-card p-3 border border-gray-200 rounded-lg text-center hover:border-primary transition-colors text-xs">
+                                                <i class="fas fa-running text-primary mb-1"></i>
+                                                <div class="font-medium">Sports</div>
+                                            </div>
+                                        </label>
+                                        <label class="youth-subject-option cursor-pointer">
+                                            <input type="checkbox" class="hidden" value="languages">
+                                            <div class="subject-card p-3 border border-gray-200 rounded-lg text-center hover:border-primary transition-colors text-xs">
+                                                <i class="fas fa-globe text-primary mb-1"></i>
+                                                <div class="font-medium">Languages</div>
+                                            </div>
+                                        </label>
+                                        <label class="youth-subject-option cursor-pointer">
+                                            <input type="checkbox" class="hidden" value="coding">
+                                            <div class="subject-card p-3 border border-gray-200 rounded-lg text-center hover:border-primary transition-colors text-xs">
+                                                <i class="fas fa-code text-primary mb-1"></i>
+                                                <div class="font-medium">Coding</div>
+                                            </div>
+                                        </label>
+                                        <label class="youth-subject-option cursor-pointer">
+                                            <input type="checkbox" class="hidden" value="maths">
+                                            <div class="subject-card p-3 border border-gray-200 rounded-lg text-center hover:border-primary transition-colors text-xs">
+                                                <i class="fas fa-calculator text-primary mb-1"></i>
+                                                <div class="font-medium">Maths</div>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Add Another Young Learner -->
+                    <button id="add-young-learner" class="w-full p-4 border-2 border-dashed border-gray-300 rounded-xl text-gray-600 hover:border-primary hover:text-primary transition-colors">
+                        <i class="fas fa-plus mr-2"></i>
+                        Add Another Young Learner
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 5: Preferences -->
+            <div class="step-content p-8 hidden" data-step="5" id="step-5">
+                <div class="max-w-2xl mx-auto">
+                    <div class="text-center mb-8">
+                        <div class="w-16 h-16 bg-orange-500 rounded-full mx-auto mb-4 flex items-center justify-center">
+                            <i class="fas fa-sliders-h text-white text-xl"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-gray-900 mb-2">Learning Preferences</h2>
+                        <p class="text-gray-600">Help us find the perfect mentors for your family</p>
+                    </div>
+
+                    <div class="space-y-6">
+                        <!-- Session Format -->
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900 mb-4">Preferred session format</h3>
+                            <div class="space-y-3">
+                                <label class="flex items-center space-x-3 p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                                    <input type="checkbox" class="w-4 h-4 text-primary" value="online">
+                                    <div>
+                                        <div class="font-medium">Online Sessions</div>
+                                        <div class="text-sm text-gray-600">Learn from home via video call</div>
+                                    </div>
+                                </label>
+                                <label class="flex items-center space-x-3 p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                                    <input type="checkbox" class="w-4 h-4 text-primary" value="in-person">
+                                    <div>
+                                        <div class="font-medium">In-Person Sessions</div>
+                                        <div class="text-sm text-gray-600">Face-to-face lessons in your area</div>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Language Preference -->
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900 mb-4">Language preference</h3>
+                            <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary">
+                                <option value="english">English</option>
+                                <option value="spanish">Spanish</option>
+                                <option value="french">French</option>
+                                <option value="hindi">Hindi</option>
+                                <option value="urdu">Urdu</option>
+                                <option value="punjabi">Punjabi</option>
+                                <option value="arabic">Arabic</option>
+                                <option value="any">Any language</option>
+                            </select>
+                        </div>
+
+                        <!-- Availability -->
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900 mb-4">Preferred time slots</h3>
+                            <div class="grid grid-cols-2 gap-3">
+                                <label class="flex items-center space-x-2 p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                                    <input type="checkbox" class="w-4 h-4 text-primary" value="morning">
+                                    <span>Morning (9AM-12PM)</span>
+                                </label>
+                                <label class="flex items-center space-x-2 p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                                    <input type="checkbox" class="w-4 h-4 text-primary" value="afternoon">
+                                    <span>Afternoon (12PM-5PM)</span>
+                                </label>
+                                <label class="flex items-center space-x-2 p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                                    <input type="checkbox" class="w-4 h-4 text-primary" value="evening">
+                                    <span>Evening (5PM-8PM)</span>
+                                </label>
+                                <label class="flex items-center space-x-2 p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                                    <input type="checkbox" class="w-4 h-4 text-primary" value="weekend">
+                                    <span>Weekends</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 6: Complete -->
+            <div class="step-content p-8 hidden" data-step="6" id="step-6">
+                <div class="max-w-2xl mx-auto text-center">
+                    <div class="w-20 h-20 bg-green-500 rounded-full mx-auto mb-6 flex items-center justify-center">
+                        <i class="fas fa-check text-white text-2xl"></i>
+                    </div>
+                    <h1 class="text-3xl font-bold text-gray-900 mb-4">Welcome to Roots & Wings! 🎉</h1>
+                    <p class="text-lg text-gray-600 mb-8">
+                        Your family learning profiles are ready. Let's find the perfect mentors for your journey!
+                    </p>
+                    
+                    <!-- Summary Cards -->
+                    <div class="space-y-4 mb-8">
+                        <div class="bg-blue-50 border border-blue-200 rounded-xl p-6 text-left">
+                            <h3 class="font-semibold text-gray-900 mb-2">Your Profile</h3>
+                            <p class="text-gray-600">Sarah Johnson • Adult Learning</p>
+                            <div class="flex items-center space-x-2 mt-2">
+                                <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Music</span>
+                                <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Art</span>
+                            </div>
+                        </div>
+
+                        <div class="bg-green-50 border border-green-200 rounded-xl p-6 text-left" id="young-learner-summary" style="display: none;">
+                            <h3 class="font-semibold text-gray-900 mb-2">Young Learners</h3>
+                            <div id="young-learner-list">
+                                <!-- Dynamically populated -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <button class="w-full bg-primary text-white py-4 rounded-xl font-semibold text-lg hover:bg-primary-dark transition-colors">
+                            <i class="fas fa-search mr-2"></i>
+                            Find Perfect Mentors
+                        </button>
+                        <button class="w-full border border-gray-300 text-gray-700 py-3 rounded-xl font-medium hover:bg-gray-50 transition-colors">
+                            <i class="fas fa-cog mr-2"></i>
+                            Customize Preferences Later
+                        </button>
+                    </div>
+
+                    <div class="mt-8 text-sm text-gray-500">
+                        <p>🎯 You can always add more family members or update preferences in your dashboard</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="flex justify-between items-center mt-8">
+            <button id="prev-button" class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors flex items-center" disabled>
+                <i class="fas fa-arrow-left mr-2"></i>
+                Previous
+            </button>
+            
+            <div class="flex space-x-4">
+                <button id="save-draft" class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors">
+                    Save & Continue Later
+                </button>
+                <button id="next-button" class="px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors flex items-center">
+                    Continue
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // State management
+        const onboardingState = {
+            currentStep: 1,
+            totalSteps: 6,
+            learningOption: null,
+            adultProfile: {},
+            youngLearners: [],
+            preferences: {},
+            stepTitles: [
+                'Who\'s Learning?',
+                'Your Information',
+                'Your Learning Goals',
+                'Young Learners',
+                'Preferences',
+                'Complete Setup'
+            ]
+        };
+
+        // Initialize
+        function init() {
+            updateDisplay();
+            setupEventListeners();
+            loadSavedProgress();
+        }
+
+        // Update all displays
+        function updateDisplay() {
+            updateProgressBar();
+            updateStepTitle();
+            updateButtons();
+            updateStepVisibility();
+        }
+
+        // Update progress bar and step counter
+        function updateProgressBar() {
+            const progress = (onboardingState.currentStep / onboardingState.totalSteps) * 100;
+            document.getElementById('progress-bar').style.width = `${progress}%`;
+            document.getElementById('current-step').textContent = onboardingState.currentStep;
+            document.getElementById('total-steps').textContent = onboardingState.totalSteps;
+        }
+
+        // Update step title
+        function updateStepTitle() {
+            const title = onboardingState.stepTitles[onboardingState.currentStep - 1];
+            document.getElementById('step-title').textContent = title;
+        }
+
+        // Update step visibility
+        function updateStepVisibility() {
+            // Hide all steps
+            document.querySelectorAll('.step-content').forEach(step => {
+                step.classList.add('hidden');
+            });
+            
+            // Show current step
+            const currentStep = document.getElementById(`step-${onboardingState.currentStep}`);
+            if (currentStep) {
+                currentStep.classList.remove('hidden');
+            }
+        }
+
+        // Update navigation buttons
+        function updateButtons() {
+            const prevBtn = document.getElementById('prev-button');
+            const nextBtn = document.getElementById('next-button');
+            
+            prevBtn.disabled = onboardingState.currentStep === 1;
+            prevBtn.style.opacity = onboardingState.currentStep === 1 ? '0.5' : '1';
+            
+            if (onboardingState.currentStep === onboardingState.totalSteps) {
+                nextBtn.innerHTML = '<i class="fas fa-check mr-2"></i>Get Started';
+                nextBtn.onclick = completeOnboarding;
+            } else {
+                nextBtn.innerHTML = 'Continue <i class="fas fa-arrow-right ml-2"></i>';
+                nextBtn.onclick = nextStep;
+            }
+        }
+
+        // Navigation functions
+        function nextStep() {
+            if (validateCurrentStep() && onboardingState.currentStep < onboardingState.totalSteps) {
+                // Skip steps based on learning option
+                if (shouldSkipStep(onboardingState.currentStep + 1)) {
+                    onboardingState.currentStep += 2;
+                } else {
+                    onboardingState.currentStep++;
+                }
+                updateDisplay();
+                saveProgress();
+            }
+        }
+
+        function prevStep() {
+            if (onboardingState.currentStep > 1) {
+                // Handle skipped steps going backwards
+                if (shouldSkipStep(onboardingState.currentStep - 1)) {
+                    onboardingState.currentStep -= 2;
+                } else {
+                    onboardingState.currentStep--;
+                }
+                updateDisplay();
+            }
+        }
+
+        // Determine if a step should be skipped based on learning option
+        function shouldSkipStep(stepNumber) {
+            const learningOption = onboardingState.learningOption;
+            
+            if (stepNumber === 3 && learningOption === 'young-learners') {
+                return true; // Skip adult learning preferences if only young learners
+            }
+            if (stepNumber === 4 && learningOption === 'myself') {
+                return true; // Skip young learners step if only adult learning
+            }
+            
+            return false;
+        }
+
+        // Validation
+        function validateCurrentStep() {
+            switch(onboardingState.currentStep) {
+                case 1:
+                    const selectedOption = document.querySelector('.learning-option.selected');
+                    if (!selectedOption) {
+                        alert('Please select who will be learning.');
+                        return false;
+                    }
+                    onboardingState.learningOption = selectedOption.dataset.option;
+                    break;
+                
+                case 2:
+                    const requiredFields = ['input[placeholder="Sarah"]', 'input[placeholder="Johnson"]', 'input[type="email"]'];
+                    for (let selector of requiredFields) {
+                        const field = document.querySelector(`#step-2 ${selector}`);
+                        if (!field || !field.value.trim()) {
+                            alert('Please fill in all required fields.');
+                            return false;
+                        }
+                    }
+                    break;
+            }
+            return true;
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            // Navigation buttons
+            document.getElementById('prev-button').onclick = prevStep;
+            document.getElementById('next-button').onclick = nextStep;
+            
+            // Learning option selection
+            document.querySelectorAll('.learning-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    document.querySelectorAll('.learning-option').forEach(opt => {
+                        opt.classList.remove('selected', 'border-primary', 'bg-primary-light');
+                        opt.classList.add('border-gray-200');
+                    });
+                    this.classList.add('selected', 'border-primary', 'bg-primary-light');
+                    this.classList.remove('border-gray-200');
+                });
+            });
+
+            // Subject selection
+            setupSubjectSelection('#adult-subjects');
+            
+            // Add young learner button
+            document.getElementById('add-young-learner').addEventListener('click', addYoungLearner);
+
+            // Save draft
+            document.getElementById('save-draft').addEventListener('click', function() {
+                saveProgress();
+                alert('Progress saved! You can continue later from where you left off.');
+            });
+
+            // Auto-save on form changes
+            document.addEventListener('change', saveProgress);
+            document.addEventListener('input', debounce(saveProgress, 1000));
+        }
+
+        // Setup subject selection functionality
+        function setupSubjectSelection(containerSelector) {
+            document.querySelectorAll(`${containerSelector} .subject-option`).forEach(option => {
+                option.addEventListener('click', function() {
+                    const checkbox = this.querySelector('input[type="checkbox"]');
+                    const card = this.querySelector('.subject-card');
+                    
+                    checkbox.checked = !checkbox.checked;
+                    
+                    if (checkbox.checked) {
+                        card.classList.add('border-primary', 'bg-primary-light');
+                        card.classList.remove('border-gray-200');
+                    } else {
+                        card.classList.remove('border-primary', 'bg-primary-light');
+                        card.classList.add('border-gray-200');
+                    }
+                });
+            });
+        }
+
+        // Add young learner profile
+        function addYoungLearner() {
+            const container = document.getElementById('young-learners-container');
+            const learnerCount = container.children.length + 1;
+            
+            const learnerHTML = `
+                <div class="young-learner-profile bg-gray-50 rounded-xl p-6 mb-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-semibold text-gray-900">Young Learner #${learnerCount}</h3>
+                        <button class="remove-learner text-red-500 hover:text-red-700 text-sm" onclick="removeLearner(this)">
+                            <i class="fas fa-trash mr-1"></i>Remove
+                        </button>
+                    </div>
+                    <!-- Same form fields as the template above -->
+                    <div class="space-y-4">
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">First Name</label>
+                                <input type="text" placeholder="Alex" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Age</label>
+                                <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary">
+                                    <option value="">Select age</option>
+                                    ${Array.from({length: 13}, (_, i) => `<option value="${i + 5}">${i + 5} years</option>`).join('')}
+                                </select>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Relationship to you</label>
+                            <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary">
+                                <option value="">Select relationship</option>
+                                <option value="child">My child</option>
+                                <option value="sibling">My sibling</option>
+                                <option value="grandchild">My grandchild</option>
+                                <option value="other">Other family member</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            container.insertAdjacentHTML('beforeend', learnerHTML);
+        }
+
+        // Remove young learner profile
+        function removeLearner(button) {
+            button.closest('.young-learner-profile').remove();
+            
+            // Renumber remaining learners
+            document.querySelectorAll('.young-learner-profile h3').forEach((title, index) => {
+                title.textContent = `Young Learner #${index + 1}`;
+            });
+        }
+
+        // Complete onboarding
+        function completeOnboarding() {
+            saveProgress();
+            // In a real app, this would redirect to the dashboard
+            alert('Welcome to Roots & Wings! Redirecting to your dashboard...');
+            window.location.href = '/student-dashboard';
+        }
+
+        // Save progress to localStorage
+        function saveProgress() {
+            localStorage.setItem('onboardingProgress', JSON.stringify(onboardingState));
+        }
+
+        // Load saved progress
+        function loadSavedProgress() {
+            const saved = localStorage.getItem('onboardingProgress');
+            if (saved) {
+                const data = JSON.parse(saved);
+                onboardingState.currentStep = data.currentStep || 1;
+                onboardingState.learningOption = data.learningOption || null;
+                // Restore other saved data
+            }
+        }
+
+        // Utility function for debouncing
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        // Initialize on DOM ready
+        document.addEventListener('DOMContentLoaded', init);
+
+        // Make removeLearner function global
+        window.removeLearner = removeLearner;
+    </script>
+</body>
+</html>

@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Sessions with Priya Sharma | Roots & Wings</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#00A2E8',
+                        'primary-dark': '#00468C',
+                        'primary-light': '#f8fbff',
+                        'accent-light': '#e8f4ff'
+                    },
+                    fontFamily: {
+                        sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans text-gray-800 bg-gray-50">
+
+    <!-- Navigation Component -->
+    <nav class="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-sm shadow-lg">
+        <div class="max-w-7xl mx-auto px-5">
+            <div class="flex justify-between items-center py-4">
+                <a href="#" class="text-2xl font-bold text-primary-dark">Roots & Wings</a>
+                <div class="flex items-center space-x-6">
+                    <a href="#" class="text-gray-600 hover:text-primary transition-colors">← Back to Profile</a>
+                    <a href="#" class="bg-primary hover:bg-blue-500 text-white px-4 py-2 rounded-full font-medium transition-colors">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mini Mentor Info Card Component (Sticky Header) -->
+    <div class="fixed top-16 w-full z-40 bg-white border-b border-gray-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-5 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Mentor Info -->
+                <div class="flex items-center gap-4">
+                    <div class="w-16 h-16 bg-gradient-to-r from-primary to-primary-dark rounded-full flex items-center justify-center text-white text-xl font-bold">
+                        P
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-bold text-primary-dark">Priya Sharma</h2>
+                        <p class="text-sm text-gray-600">Kathak Dance & Cultural Arts</p>
+                        <div class="flex items-center gap-2 mt-1">
+                            <div class="flex text-yellow-400 text-sm">★★★★★</div>
+                            <span class="text-sm text-gray-600">4.9 (32 reviews)</span>
+                            <span class="px-2 py-1 bg-green-100 text-green-700 text-xs font-medium rounded-full ml-2">
+                                First Session Free
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="hidden md:flex items-center gap-3">
+                    <button class="text-primary hover:text-primary-dark font-medium transition-colors">
+                        💬 Message Mentor
+                    </button>
+                    <button class="bg-primary hover:bg-blue-500 text-white px-6 py-2 rounded-full font-semibold transition-colors">
+                        Book Now
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="pt-32 pb-16">
+        <div class="max-w-7xl mx-auto px-5">
+            
+            <!-- Session Type Info Component -->
+            <div class="bg-white rounded-2xl p-8 shadow-lg mb-8">
+                <div class="grid lg:grid-cols-3 gap-8 items-center">
+                    <!-- Session Details -->
+                    <div class="lg:col-span-2">
+                        <h1 class="text-3xl font-bold text-primary-dark mb-3">One-on-One Sessions</h1>
+                        <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                            Book a personalised session at your convenience. Get individual attention and customised learning tailored to your specific goals.
+                        </p>
+                        
+                        <!-- Session Features -->
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="space-y-3">
+                                <div class="flex items-center text-gray-700">
+                                    <span class="text-2xl mr-3">💰</span>
+                                    <div>
+                                        <div class="font-semibold">£35 per session</div>
+                                        <div class="text-sm text-gray-500">First session is FREE</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center text-gray-700">
+                                    <span class="text-2xl mr-3">⏱️</span>
+                                    <div>
+                                        <div class="font-semibold">60 minutes</div>
+                                        <div class="text-sm text-gray-500">Full hour of focused learning</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="space-y-3">
+                                <div class="flex items-center text-gray-700">
+                                    <span class="text-2xl mr-3">🌐</span>
+                                    <div>
+                                        <div class="font-semibold">Online & In-Person</div>
+                                        <div class="text-sm text-gray-500">Your choice of format</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center text-gray-700">
+                                    <span class="text-2xl mr-3">📅</span>
+                                    <div>
+                                        <div class="font-semibold">Flexible Scheduling</div>
+                                        <div class="text-sm text-gray-500">Book up to 2 weeks ahead</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Stats -->
+                    <div class="bg-gradient-to-br from-primary-light to-white p-6 rounded-xl border border-gray-100">
+                        <h3 class="font-bold text-primary-dark mb-4">Session Highlights</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm text-gray-600">Response Time</span>
+                                <span class="font-semibold text-primary-dark">30 min</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm text-gray-600">Repeat Students</span>
+                                <span class="font-semibold text-primary-dark">85%</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm text-gray-600">Cancellation</span>
+                                <span class="font-semibold text-primary-dark">24h notice</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm text-gray-600">Languages</span>
+                                <span class="font-semibold text-primary-dark">EN, HI, GU</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Date & Time Slot Picker Component -->
+            <div class="bg-white rounded-2xl p-8 shadow-lg mb-8">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-2xl font-bold text-primary-dark">Select Date & Time</h2>
+                    <div class="flex items-center gap-4 text-sm">
+                        <div class="flex items-center">
+                            <div class="w-3 h-3 bg-green-400 rounded-full mr-2"></div>
+                            <span>Available</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-3 h-3 bg-blue-400 rounded-full mr-2"></div>
+                            <span>Free Session</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-3 h-3 bg-gray-300 rounded-full mr-2"></div>
+                            <span>Unavailable</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Calendar Navigation -->
+                <div class="flex items-center justify-between mb-6">
+                    <button class="flex items-center px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors" id="prev-week">
+                        ← Previous Week
+                    </button>
+                    <h3 class="text-lg font-semibold text-gray-700" id="week-display">25-31 July 2025</h3>
+                    <button class="flex items-center px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors" id="next-week">
+                        Next Week →
+                    </button>
+                </div>
+
+                <!-- 7-Day Calendar Grid -->
+                <div class="grid grid-cols-1 lg:grid-cols-7 gap-6">
+                    <!-- Monday -->
+                    <div class="calendar-day">
+                        <div class="text-center mb-4 p-3 bg-gray-50 rounded-lg">
+                            <div class="text-sm font-medium text-gray-500">Monday</div>
+                            <div class="text-xl font-bold text-gray-800">25</div>
+                            <div class="text-xs text-gray-500">July</div>
+                        </div>
+                        <div class="space-y-2">
+                            <button class="w-full py-3 bg-green-100 hover:bg-green-200 text-green-800 rounded-lg font-medium transition-colors time-slot" 
+                                    data-time="09:00" data-date="2025-07-25" data-type="paid">
+                                9:00 AM
+                            </button>
+                            <button class="w-full py-3 bg-gray-200 text-gray-500 rounded-lg cursor-not-allowed" disabled>
+                                11:00 AM
+                            </button>
+                            <button class="w-full py-3 bg-green-100 hover:bg-green-200 text-green-800 rounded-lg font-medium transition-colors time-slot" 
+                                    data-time="14:00" data-date="2025-07-25" data-type="paid">
+                                2:00 PM
+                            </button>
+                            <button class="w-full py-3 bg-blue-100 hover:bg-blue-200 text-blue-800 rounded-lg font-medium transition-colors time-slot" 
+                                    data-time="16:00" data-date="2025-07-25" data-type="free">
+                                4:00 PM <span class="text-xs">(FREE)</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Tuesday -->
+                    <div class="calendar-day">
+                        <div class="text-center mb-4 p-3 bg-gray-50 rounded-lg">
+                            <div class="text-sm font-medium text-gray-500">Tuesday</div>
+                            <div class="text-xl font-bold text-gray-800">26</div>
+                            <div class="text-xs text-gray-500">July</div>
+                        </div>
+                        <div class="space-y-2">
+                            <button class="w-full py-3 bg-gray-200 text-gray-500 rounded-lg cursor-not-allowed" disabled>
+                                9:00 AM
+                            </button>
+                            <button class="w-full py-3 bg-green-100 hover:bg-green-200 text-green-800 rounded-lg font-medium transition-colors time-slot" 
+                                    data-time="11:00" data-date="2025-07-26" data-type="paid">
+                                11:00 AM
+                            </button>
+                            <button class="w-full py-3 bg-green-100 hover:bg-green-200 text-green-800 rounded-lg font-medium transition-colors time-slot" 
+                                    data-time="15:00" data-date="2025-07-26" data-type="paid">
+                                3:00 PM
+                            </button>
+                            <button class="w-full py-3 bg-gray-200 text-gray-500 rounded-lg cursor-not-allowed" disabled>
+                                5:00 PM
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Wednesday -->
+                    <div class="calendar-day">
+                        <div class="text-center mb-4 p-3 bg-gray-50 rounded-lg">
+                            <div class="text-sm font-medium text-gray-500">Wednesday</div>
+                            <div class="text-xl font-bold text-gray-800">27</div>
+                            <div class="text-xs text-gray-500">July</div>
+                        </div>
+                        <div class="space-y-2">
+                            <button class="w-full py-3 bg-blue-100 hover:bg-blue-200 text-blue-800 rounded-lg font-medium transition-colors time-slot" 
+                                    data-time="10:00" data-date="2025-07-27" data-type="free">
+                                10:00 AM <span class="text-xs">(FREE)</span>
+                            </button>
+                            <button class="w-full py-3 bg-green-100 hover:bg-green-200 text-green-800 rounded-lg font-medium transition-colors time-slot" 
+                                    data-time="13:00" data-date="2025-07-27" data-type="paid">
+                                1:00 PM
+                            </button>
+                            <button class="w-full py-3 bg-green-100 hover:bg-green-200 text-green-800 rounded-lg font-medium transition-colors time-slot" 
+                                    data-time="16:30" data-date="2025-07-27" data-type="paid">
+                                4:30 PM
+                            </button>
+                            <button class="w-full py-3 bg-gray-200 text-gray-500 rounded-lg cursor-not-allowed" disabled>
+                                6:00 PM
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Thursday -->
+                    <div class="calendar-day">
+                        <div class="text-center mb-4 p-3 bg-gray-50 rounded-lg">
+                            <div class="text-sm font-medium text-gray-500">Thursday</div>
+                            <div class="text-xl font-bold text-gray-800">28</div>
+                            <div class="text-xs text-gray-500">July</div>
+                        </div>
+                        <div class="space-y-2">
+                            <button class="w-full py-3 bg-green-100 hover:bg-green-200 text-green-800 rounded-lg font-medium transition-colors time-slot" 
+                                    data-time="09:30" data-date="2025-07-28" data-type="paid">
+                                9:30 AM
+                            </button>
+                            <button class="w-full py-3 bg-gray-200 text-gray-500 rounded-lg cursor-not-allowed" disabled>
+                                12:00 PM
+                            </button>
+                            <button class="w-full py-3 bg-green-100 hover:bg-green-200 text-green-800 rounded-lg font-medium transition-colors time-slot" 
+                                    data-time="14:30" data-date="2025-07-28" data-type="paid">
+                                2:30 PM
+                            </button>
+                            <button class="w-full py-3 bg-green-100 hover:bg-green-200 text-green-800 rounded-lg font-medium transition-colors time-slot" 
+                                    data-time="17:00" data-date="2025-07-28" data-type="paid">
+                                5:00 PM
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Friday -->
+                    <div class="calendar-day">
+                        <div class="text-center mb-4 p-3 bg-gray-50 rounded-lg">
+                            <div class="text-sm font-medium text-gray-500">Friday</div>
+                            <div class="text-xl font-bold text-gray-800">29</div>
+                            <div class="text-xs text-gray-500">July</div>
+                        </div>
+                        <div class="space-y-2">
+                            <button class="w-full py-3 bg-gray-200 text-gray-500 rounded-lg cursor-not-allowed" disabled>
+                                9:00 AM
+                            </button>
+                            <button class="w-full py-3 bg-green-100 hover:bg-green-200 text-green-800 rounded-lg font-medium transition-colors time-slot" 
+                                    data-time="11:30" data-date="2025-07-29" data-type="paid">
+                                11:30 AM
+                            </button>
+                            <button class="w-full py-3 bg-blue-100 hover:bg-blue-200 text-blue-800 rounded-lg font-medium transition-colors time-slot" 
+                                    data-time="15:30" data-date="2025-07-29" data-type="free">
+                                3:30 PM <span class="text-xs">(FREE)</span>
+                            </button>
+                            <button class="w-full py-3 bg-green-100 hover:bg-green-200 text-green-800 rounded-lg font-medium transition-colors time-slot" 
+                                    data-time="18:00" data-date="2025-07-29" data-type="paid">
+                                6:00 PM
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Saturday -->
+                    <div class="calendar-day">
+                        <div class="text-center mb-4 p-3 bg-primary-light rounded-lg">
+                            <div class="text-sm font-medium text-primary">Saturday</div>
+                            <div class="text-xl font-bold text-primary-dark">30</div>
+                            <div class="text-xs text-primary">July</div>
+                        </div>
+                        <div class="space-y-2">
+                            <button class="w-full py-3 bg-green-100 hover:bg-green-200 text-green-800 rounded-lg font-medium transition-colors time-slot" 
+                                    data-time="10:00" data-date="2025-07-30" data-type="paid">
+                                10:00 AM
+                            </button>
+                            <button class="w-full py-3 bg-green-100 hover:bg-green-200 text-green-800 rounded-lg font-medium transition-colors time-slot" 
+                                    data-time="12:30" data-date="2025-07-30" data-type="paid">
+                                12:30 PM
+                            </button>
+                            <button class="w-full py-3 bg-blue-100 hover:bg-blue-200 text-blue-800 rounded-lg font-medium transition-colors time-slot" 
+                                    data-time="15:00" data-date="2025-07-30" data-type="free">
+                                3:00 PM <span class="text-xs">(FREE)</span>
+                            </button>
+                            <button class="w-full py-3 bg-green-100 hover:bg-green-200 text-green-800 rounded-lg font-medium transition-colors time-slot" 
+                                    data-time="17:30" data-date="2025-07-30" data-type="paid">
+                                5:30 PM
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Sunday -->
+                    <div class="calendar-day">
+                        <div class="text-center mb-4 p-3 bg-primary-light rounded-lg">
+                            <div class="text-sm font-medium text-primary">Sunday</div>
+                            <div class="text-xl font-bold text-primary-dark">31</div>
+                            <div class="text-xs text-primary">July</div>
+                        </div>
+                        <div class="space-y-2">
+                            <button class="w-full py-3 bg-green-100 hover:bg-green-200 text-green-800 rounded-lg font-medium transition-colors time-slot" 
+                                    data-time="11:00" data-date="2025-07-31" data-type="paid">
+                                11:00 AM
+                            </button>
+                            <button class="w-full py-3 bg-gray-200 text-gray-500 rounded-lg cursor-not-allowed" disabled>
+                                1:00 PM
+                            </button>
+                            <button class="w-full py-3 bg-green-100 hover:bg-green-200 text-green-800 rounded-lg font-medium transition-colors time-slot" 
+                                    data-time="16:00" data-date="2025-07-31" data-type="paid">
+                                4:00 PM
+                            </button>
+                            <button class="w-full py-3 bg-blue-100 hover:bg-blue-200 text-blue-800 rounded-lg font-medium transition-colors time-slot" 
+                                    data-time="18:30" data-date="2025-07-31" data-type="free">
+                                6:30 PM <span class="text-xs">(FREE)</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Option Component -->
+            <div class="bg-gradient-to-r from-primary-light to-accent-light rounded-2xl p-8 text-center">
+                <h3 class="text-xl font-bold text-primary-dark mb-3">Not finding a suitable time?</h3>
+                <p class="text-gray-600 mb-6 max-w-2xl mx-auto">
+                    Can't see a time that works for you? Priya offers flexible scheduling and can often accommodate special requests. Send her a message to discuss custom timing.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button class="bg-primary hover:bg-blue-500 text-white px-8 py-3 rounded-full font-semibold transition-colors">
+                        💬 Contact Mentor
+                    </button>
+                    <button class="border-2 border-primary text-primary hover:bg-primary hover:text-white px-8 py-3 rounded-full font-semibold transition-colors">
+                        📞 Request Phone Call
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Booking Confirmation Modal Component -->
+    <div id="booking-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-3xl p-8 max-w-md w-full max-h-[90vh] overflow-y-auto">
+            <div class="text-center mb-6">
+                <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span class="text-2xl">✓</span>
+                </div>
+                <h3 class="text-2xl font-bold text-primary-dark mb-2">Confirm Your Session</h3>
+                <p class="text-gray-600">Review your booking details before confirming</p>
+            </div>
+
+            <!-- Booking Details -->
+            <div class="space-y-4 mb-6">
+                <div class="bg-gray-50 p-4 rounded-xl">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-sm font-medium text-gray-600">Mentor</span>
+                        <span class="font-semibold text-primary-dark">Priya Sharma</span>
+                    </div>
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-sm font-medium text-gray-600">Session Type</span>
+                        <span class="font-semibold text-primary-dark">One-on-One</span>
+                    </div>
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-sm font-medium text-gray-600">Date & Time</span>
+                        <span class="font-semibold text-primary-dark" id="selected-datetime">--</span>
+                    </div>
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-sm font-medium text-gray-600">Duration</span>
+                        <span class="font-semibold text-primary-dark">60 minutes</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm font-medium text-gray-600">Price</span>
+                        <span class="font-bold text-lg text-primary-dark" id="session-price">£35</span>
+                    </div>
+                </div>
+
+                <!-- Session Format -->
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">Session Format</label>
+                    <div class="grid grid-cols-2 gap-3">
+                        <label class="flex items-center p-3 border border-gray-200 rounded-lg cursor-pointer hover:border-primary transition-colors">
+                            <input type="radio" name="format" value="online" class="text-primary mr-3" checked>
+                            <span class="text-sm">📱 Online</span>
+                        </label>
+                        <label class="flex items-center p-3 border border-gray-200 rounded-lg cursor-pointer hover:border-primary transition-colors">
+                            <input type="radio" name="format" value="in-person" class="text-primary mr-3">
+                            <span class="text-sm">🏠 In-Person</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Special Requests -->
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">Special Requests (Optional)</label>
+                    <textarea class="w-full p-3 border border-gray-200 rounded-lg resize-none focus:border-primary focus:outline-none" 
+                              rows="3" placeholder="Any specific topics or goals for this session?"></textarea>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex gap-3">
+                <button class="flex-1 border-2 border-gray-300 text-gray-700 py-3 rounded-full font-semibold hover:border-gray-400 transition-colors" 
+                        onclick="closeBookingModal()">
+                    Cancel
+                </button>
+                <button class="flex-1 bg-primary hover:bg-blue-500 text-white py-3 rounded-full font-semibold transition-colors" 
+                        onclick="confirmBooking()">
+                    Confirm Booking
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Component -->
+    <script>
+        // Selected session data
+        let selectedSession = {
+            date: '',
+            time: '',
+            type: '',
+            price: ''
+        };
+
+        // Time slot selection
+        document.querySelectorAll('.time-slot').forEach(slot => {
+            slot.addEventListener('click', function() {
+                const date = this.getAttribute('data-date');
+                const time = this.getAttribute('data-time');
+                const type = this.getAttribute('data-type');
+                
+                // Store selection
+                selectedSession = {
+                    date: date,
+                    time: time,
+                    type: type,
+                    price: type === 'free' ? 'FREE' : '£35'
+                };
+
+                // Update modal
+                updateBookingModal();
+                
+                // Show modal
+                document.getElementById('booking-modal').classList.remove('hidden');
+            });
+        });
+
+        // Update booking modal with selected session data
+        function updateBookingModal() {
+            const dateObj = new Date(selectedSession.date + 'T' + selectedSession.time);
+            const formattedDate = dateObj.toLocaleDateString('en-GB', { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+            
+            document.getElementById('selected-datetime').textContent = formattedDate;
+            document.getElementById('session-price').textContent = selectedSession.price;
+            
+            // Update price styling for free sessions
+            const priceElement = document.getElementById('session-price');
+            if (selectedSession.type === 'free') {
+                priceElement.classList.add('text-green-600');
+                priceElement.classList.remove('text-primary-dark');
+            } else {
+                priceElement.classList.add('text-primary-dark');
+                priceElement.classList.remove('text-green-600');
+            }
+        }
+
+        // Close booking modal
+        function closeBookingModal() {
+            document.getElementById('booking-modal').classList.add('hidden');
+        }
+
+        // Confirm booking
+        function confirmBooking() {
+            // In a real app, this would send the booking data to the backend
+            alert(`Booking confirmed! You'll receive a confirmation email shortly. 
+                   \nSession: ${selectedSession.price} session with Priya Sharma
+                   \nDate: ${selectedSession.date} at ${selectedSession.time}`);
+            closeBookingModal();
+        }
+
+        // Calendar navigation
+        let currentWeekOffset = 0;
+        const weekDisplay = document.getElementById('week-display');
+        const prevWeekBtn = document.getElementById('prev-week');
+        const nextWeekBtn = document.getElementById('next-week');
+
+        function updateWeekDisplay() {
+            // In a real app, this would update the calendar data
+            const baseDate = new Date('2025-07-25');
+            const weekStart = new Date(baseDate.getTime() + (currentWeekOffset * 7 * 24 * 60 * 60 * 1000));
+            const weekEnd = new Date(weekStart.getTime() + (6 * 24 * 60 * 60 * 1000));
+            
+            const options = { day: 'numeric', month: 'short' };
+            const startStr = weekStart.toLocaleDateString('en-GB', options);
+            const endStr = weekEnd.toLocaleDateString('en-GB', options);
+            
+            weekDisplay.textContent = `${startStr} - ${endStr} ${weekStart.getFullYear()}`;
+        }
+
+        prevWeekBtn.addEventListener('click', function() {
+            if (currentWeekOffset > -2) { // Limit to 2 weeks in the past
+                currentWeekOffset--;
+                updateWeekDisplay();
+                // In real app: loadWeekData(currentWeekOffset);
+            }
+        });
+
+        nextWeekBtn.addEventListener('click', function() {
+            if (currentWeekOffset < 4) { // Limit to 4 weeks in the future
+                currentWeekOffset++;
+                updateWeekDisplay();
+                // In real app: loadWeekData(currentWeekOffset);
+            }
+        });
+
+        // Enhanced hover effects for time slots
+        document.querySelectorAll('.time-slot').forEach(slot => {
+            slot.addEventListener('mouseenter', function() {
+                if (!this.disabled) {
+                    this.style.transform = 'translateY(-2px)';
+                    this.style.boxShadow = '0 4px 12px rgba(0, 162, 232, 0.15)';
+                }
+            });
+
+            slot.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = 'none';
+            });
+        });
+
+        // Close modal when clicking outside
+        document.getElementById('booking-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeBookingModal();
+            }
+        });
+
+        // Keyboard support for modal
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeBookingModal();
+            }
+        });
+
+        // Mobile responsive calendar (stack vertically on small screens)
+        function handleResize() {
+            const calendarGrid = document.querySelector('.grid.grid-cols-1.lg\\:grid-cols-7');
+            if (window.innerWidth < 1024) {
+                calendarGrid.classList.remove('lg:grid-cols-7');
+                calendarGrid.classList.add('grid-cols-1', 'md:grid-cols-2');
+            } else {
+                calendarGrid.classList.add('lg:grid-cols-7');
+                calendarGrid.classList.remove('grid-cols-1', 'md:grid-cols-2');
+            }
+        }
+
+        window.addEventListener('resize', handleResize);
+        handleResize(); // Call on load
+
+        // Quick book button in header
+        document.querySelector('.bg-primary.hover\\:bg-blue-500.text-white.px-6.py-2').addEventListener('click', function() {
+            // Scroll to calendar section
+            document.querySelector('.bg-white.rounded-2xl.p-8.shadow-lg.mb-8:nth-child(2)').scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        });
+
+        // Auto-update available slots (simulate real-time updates)
+        function simulateSlotUpdates() {
+            // Randomly disable some slots to simulate bookings
+            const availableSlots = document.querySelectorAll('.time-slot:not([disabled])');
+            if (availableSlots.length > 0 && Math.random() < 0.1) { // 10% chance
+                const randomSlot = availableSlots[Math.floor(Math.random() * availableSlots.length)];
+                randomSlot.disabled = true;
+                randomSlot.classList.remove('bg-green-100', 'hover:bg-green-200', 'text-green-800');
+                randomSlot.classList.add('bg-gray-200', 'text-gray-500', 'cursor-not-allowed');
+                randomSlot.textContent = randomSlot.textContent.replace('(FREE)', '') + ' - Booked';
+            }
+        }
+
+        // Simulate updates every 30 seconds
+        // setInterval(simulateSlotUpdates, 30000);
+    </script>
+</body>
+</html>

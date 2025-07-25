@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workshops - Roots & Wings</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#00A2E8',
+                        'primary-dark': '#00468C',
+                        'primary-light': '#E6F7FF',
+                        'background': '#F9FBFF',
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-background font-sans">
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-40">
+        <div class="flex items-center justify-between px-6 py-4">
+            <!-- Left: Logo & Mobile Menu -->
+            <div class="flex items-center space-x-4">
+                <button id="mobile-menu-btn" class="md:hidden text-gray-600 hover:text-primary">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+                <h1 class="text-2xl font-bold text-primary-dark">Roots & Wings</h1>
+                <span class="hidden md:block text-sm text-gray-500">Mentor Portal</span>
+            </div>
+            
+            <!-- Right: Profile Dropdown -->
+            <div class="relative">
+                <button id="profile-dropdown-btn" class="flex items-center space-x-3 hover:bg-gray-50 rounded-lg px-3 py-2 transition-colors">
+                    <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+                        <span class="text-white font-semibold">PR</span>
+                    </div>
+                    <div class="hidden md:block text-left">
+                        <div class="text-sm font-semibold text-gray-900">Priya Sharma</div>
+                        <div class="text-xs text-gray-500">Kathak Mentor</div>
+                    </div>
+                    <i class="fas fa-chevron-down text-gray-400 text-sm"></i>
+                </button>
+                
+                <!-- Dropdown Menu -->
+                <div id="profile-dropdown" class="hidden absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-200 py-2">
+                    <a href="#" class="flex items-center space-x-3 px-4 py-2 text-gray-700 hover:bg-gray-50">
+                        <i class="fas fa-user text-gray-400"></i>
+                        <span>View Profile</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-2 text-gray-700 hover:bg-gray-50">
+                        <i class="fas fa-cog text-gray-400"></i>
+                        <span>Settings</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-2 text-gray-700 hover:bg-gray-50">
+                        <i class="fas fa-question-circle text-gray-400"></i>
+                        <span>Help & Support</span>
+                    </a>
+                    <hr class="my-2">
+                    <a href="#" class="flex items-center space-x-3 px-4 py-2 text-red-600 hover:bg-red-50">
+                        <i class="fas fa-sign-out-alt text-red-400"></i>
+                        <span>Log Out</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex">
+        <!-- Sidebar -->
+        <nav class="bg-white w-64 min-h-screen shadow-sm border-r border-gray-200 fixed md:static z-30 transition-transform duration-300 ease-in-out -translate-x-full md:translate-x-0" id="sidebar">
+            <div class="p-6">
+                <!-- Navigation Items -->
+                <div class="space-y-2">
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1">
+                        <i class="fas fa-home text-lg"></i>
+                        <span class="font-medium">Dashboard</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1">
+                        <i class="fas fa-chalkboard-teacher text-lg"></i>
+                        <span>My Classes</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1">
+                        <i class="fas fa-plus-circle text-lg"></i>
+                        <span>Host a Class</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1 bg-primary text-white">
+                        <i class="fas fa-users text-lg"></i>
+                        <span>Workshops</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1">
+                        <i class="fas fa-calendar-alt text-lg"></i>
+                        <span>Schedule</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1">
+                        <i class="fas fa-students text-lg"></i>
+                        <span>Students</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1">
+                        <i class="fas fa-pound-sign text-lg"></i>
+                        <span>Earnings</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1">
+                        <i class="fas fa-comments text-lg"></i>
+                        <span>Messages</span>
+                        <span class="ml-auto bg-red-500 text-white text-xs rounded-full px-2 py-1">3</span>
+                    </a>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="mt-8">
+                    <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Quick Actions</h3>
+                    <div class="space-y-2">
+                        <button class="w-full bg-primary text-white px-4 py-3 rounded-lg hover:bg-primary-dark transition-colors font-medium">
+                            <i class="fas fa-plus mr-2"></i>
+                            Create Workshop
+                        </button>
+                        <button class="w-full border border-primary text-primary px-4 py-3 rounded-lg hover:bg-primary-light transition-colors font-medium">
+                            <i class="fas fa-video mr-2"></i>
+                            Start Session Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="flex-1 md:ml-0 p-6">
+            <!-- Page Header -->
+            <div class="flex items-center justify-between mb-8">
+                <div>
+                    <h1 class="text-3xl font-bold text-gray-900 mb-2">My Workshops</h1>
+                    <p class="text-gray-600">Manage your special events and masterclasses</p>
+                </div>
+                <button class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary-dark transition-colors font-semibold" onclick="showCreateWorkshop()">
+                    <i class="fas fa-plus mr-2"></i>
+                    Create Workshop
+                </button>
+            </div>
+
+            <!-- Workshop Stats -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                <div class="bg-white rounded-xl p-6 border border-gray-200">
+                    <div class="flex items-center justify-between mb-2">
+                        <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-calendar-check text-green-600"></i>
+                        </div>
+                        <span class="text-green-500 text-sm font-medium">+2</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900">4</h3>
+                    <p class="text-gray-600 text-sm">Active Workshops</p>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 border border-gray-200">
+                    <div class="flex items-center justify-between mb-2">
+                        <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-users text-blue-600"></i>
+                        </div>
+                        <span class="text-blue-500 text-sm font-medium">This month</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900">47</h3>
+                    <p class="text-gray-600 text-sm">Total Attendees</p>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 border border-gray-200">
+                    <div class="flex items-center justify-between mb-2">
+                        <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-star text-purple-600"></i>
+                        </div>
+                        <span class="text-purple-500 text-sm font-medium">Avg rating</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900">4.8</h3>
+                    <p class="text-gray-600 text-sm">Workshop Rating</p>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 border border-gray-200">
+                    <div class="flex items-center justify-between mb-2">
+                        <div class="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-pound-sign text-yellow-600"></i>
+                        </div>
+                        <span class="text-green-500 text-sm font-medium">+£180</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900">£620</h3>
+                    <p class="text-gray-600 text-sm">Workshop Earnings</p>
+                </div>
+            </div>
+
+            <!-- Workshop Tabs -->
+            <div class="mb-6">
+                <div class="flex border-b border-gray-200">
+                    <button class="px-6 py-3 border-b-2 border-primary text-primary font-semibold workshop-tab active" data-tab="active">
+                        Active Workshops
+                    </button>
+                    <button class="px-6 py-3 border-b-2 border-transparent text-gray-500 hover:text-gray-700 workshop-tab" data-tab="upcoming">
+                        Upcoming Events
+                    </button>
+                    <button class="px-6 py-3 border-b-2 border-transparent text-gray-500 hover:text-gray-700 workshop-tab" data-tab="past">
+                        Past Workshops
+                    </button>
+                    <button class="px-6 py-3 border-b-2 border-transparent text-gray-500 hover:text-gray-700 workshop-tab" data-tab="drafts">
+                        Drafts
+                    </button>
+                </div>
+            </div>
+
+            <!-- Active Workshops Tab Content -->
+            <div id="active-tab" class="tab-content">
+                <div class="grid lg:grid-cols-2 gap-6">
+                    <!-- Workshop 1: Kathak Performance Workshop -->
+                    <div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
+                        <div class="aspect-video bg-gradient-to-br from-purple-100 to-pink-100 relative">
+                            <div class="absolute top-4 left-4">
+                                <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full font-medium">Active</span>
+                            </div>
+                            <div class="absolute top-4 right-4">
+                                <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full font-medium">In-person</span>
+                            </div>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <i class="fas fa-users text-purple-300 text-4xl"></i>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Kathak Performance Workshop</h3>
+                            <p class="text-gray-600 text-sm mb-4">Master the art of Kathak storytelling through dance and expression in this intensive weekend workshop.</p>
+                            
+                            <div class="space-y-3 mb-4">
+                                <div class="flex items-center text-sm text-gray-600">
+                                    <i class="fas fa-calendar mr-3 text-gray-400"></i>
+                                    <span>Saturday, July 27 • 2:00 PM - 5:00 PM</span>
+                                </div>
+                                <div class="flex items-center text-sm text-gray-600">
+                                    <i class="fas fa-map-marker-alt mr-3 text-gray-400"></i>
+                                    <span>Birmingham Community Centre</span>
+                                </div>
+                                <div class="flex items-center text-sm text-gray-600">
+                                    <i class="fas fa-users mr-3 text-gray-400"></i>
+                                    <span>8/12 participants</span>
+                                </div>
+                                <div class="flex items-center text-sm text-gray-600">
+                                    <i class="fas fa-tag mr-3 text-gray-400"></i>
+                                    <span>£45 per person</span>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center space-x-2 mb-4">
+                                <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full">Adults</span>
+                                <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Intermediate</span>
+                                <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">Limited Seats</span>
+                            </div>
+
+                            <div class="flex space-x-3">
+                                <button class="flex-1 bg-primary text-white py-2 px-4 rounded-lg hover:bg-primary-dark transition-colors text-sm font-medium">
+                                    Manage Workshop
+                                </button>
+                                <button class="border border-gray-300 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-50 transition-colors text-sm">
+                                    View Details
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Workshop 2: Introduction to Vedic Chanting -->
+                    <div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
+                        <div class="aspect-video bg-gradient-to-br from-orange-100 to-yellow-100 relative">
+                            <div class="absolute top-4 left-4">
+                                <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full font-medium">Active</span>
+                            </div>
+                            <div class="absolute top-4 right-4">
+                                <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full font-medium">Online</span>
+                            </div>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <i class="fas fa-microphone text-orange-300 text-4xl"></i>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Introduction to Vedic Chanting</h3>
+                            <p class="text-gray-600 text-sm mb-4">Discover the ancient art of Vedic chanting and its spiritual significance in this beginner-friendly session.</p>
+                            
+                            <div class="space-y-3 mb-4">
+                                <div class="flex items-center text-sm text-gray-600">
+                                    <i class="fas fa-calendar mr-3 text-gray-400"></i>
+                                    <span>Sunday, July 28 • 10:00 AM - 12:00 PM</span>
+                                </div>
+                                <div class="flex items-center text-sm text-gray-600">
+                                    <i class="fas fa-globe mr-3 text-gray-400"></i>
+                                    <span>Online via Zoom</span>
+                                </div>
+                                <div class="flex items-center text-sm text-gray-600">
+                                    <i class="fas fa-users mr-3 text-gray-400"></i>
+                                    <span>12/15 participants</span>
+                                </div>
+                                <div class="flex items-center text-sm text-gray-600">
+                                    <i class="fas fa-tag mr-3 text-gray-400"></i>
+                                    <span>Free Workshop</span>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center space-x-2 mb-4">
+                                <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">All Ages</span>
+                                <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">Beginner</span>
+                                <span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded-full">Free</span>
+                            </div>
+
+                            <div class="flex space-x-3">
+                                <button class="flex-1 bg-primary text-white py-2 px-4 rounded-lg hover:bg-primary-dark transition-colors text-sm font-medium">
+                                    Manage Workshop
+                                </button>
+                                <button class="border border-gray-300 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-50 transition-colors text-sm">
+                                    View Details
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Workshop 3: Classical Dance for Beginners -->
+                    <div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
+                        <div class="aspect-video bg-gradient-to-br from-pink-100 to-rose-100 relative">
+                            <div class="absolute top-4 left-4">
+                                <span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded-full font-medium">Waiting</span>
+                            </div>
+                            <div class="absolute top-4 right-4">
+                                <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full font-medium">Hybrid</span>
+                            </div>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <i class="fas fa-music text-pink-300 text-4xl"></i>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Classical Dance for Beginners</h3>
+                            <p class="text-gray-600 text-sm mb-4">Perfect introduction to classical Indian dance forms, covering basic positions and simple choreography.</p>
+                            
+                            <div class="space-y-3 mb-4">
+                                <div class="flex items-center text-sm text-gray-600">
+                                    <i class="fas fa-calendar mr-3 text-gray-400"></i>
+                                    <span>Saturday, August 3 • 3:00 PM - 6:00 PM</span>
+                                </div>
+                                <div class="flex items-center text-sm text-gray-600">
+                                    <i class="fas fa-map-marker-alt mr-3 text-gray-400"></i>
+                                    <span>Birmingham + Online</span>
+                                </div>
+                                <div class="flex items-center text-sm text-gray-600">
+                                    <i class="fas fa-users mr-3 text-gray-400"></i>
+                                    <span>3/10 participants</span>
+                                </div>
+                                <div class="flex items-center text-sm text-gray-600">
+                                    <i class="fas fa-tag mr-3 text-gray-400"></i>
+                                    <span>£25 per person</span>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center space-x-2 mb-4">
+                                <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">Children</span>
+                                <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Beginner</span>
+                                <span class="bg-orange-100 text-orange-800 text-xs px-2 py-1 rounded-full">Need 7 more</span>
+                            </div>
+
+                            <div class="flex space-x-3">
+                                <button class="flex-1 bg-yellow-500 text-white py-2 px-4 rounded-lg hover:bg-yellow-600 transition-colors text-sm font-medium">
+                                    Promote Workshop
+                                </button>
+                                <button class="border border-gray-300 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-50 transition-colors text-sm">
+                                    Edit Details
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Workshop 4: Philosophy & Mindfulness -->
+                    <div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
+                        <div class="aspect-video bg-gradient-to-br from-teal-100 to-cyan-100 relative">
+                            <div class="absolute top-4 left-4">
+                                <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full font-medium">Active</span>
+                            </div>
+                            <div class="absolute top-4 right-4">
+                                <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full font-medium">Online</span>
+                            </div>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <i class="fas fa-leaf text-teal-300 text-4xl"></i>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Philosophy & Mindfulness Session</h3>
+                            <p class="text-gray-600 text-sm mb-4">Explore ancient philosophical concepts and modern mindfulness practices for inner peace and clarity.</p>
+                            
+                            <div class="space-y-3 mb-4">
+                                <div class="flex items-center text-sm text-gray-600">
+                                    <i class="fas fa-calendar mr-3 text-gray-400"></i>
+                                    <span>Friday, August 2 • 7:00 PM - 9:00 PM</span>
+                                </div>
+                                <div class="flex items-center text-sm text-gray-600">
+                                    <i class="fas fa-globe mr-3 text-gray-400"></i>
+                                    <span>Online via Zoom</span>
+                                </div>
+                                <div class="flex items-center text-sm text-gray-600">
+                                    <i class="fas fa-users mr-3 text-gray-400"></i>
+                                    <span>6/8 participants</span>
+                                </div>
+                                <div class="flex items-center text-sm text-gray-600">
+                                    <i class="fas fa-tag mr-3 text-gray-400"></i>
+                                    <span>£12 per person</span>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center space-x-2 mb-4">
+                                <span class="bg-indigo-100 text-indigo-800 text-xs px-2 py-1 rounded-full">Adults</span>
+                                <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">All Levels</span>
+                                <span class="bg-teal-100 text-teal-800 text-xs px-2 py-1 rounded-full">Evening</span>
+                            </div>
+
+                            <div class="flex space-x-3">
+                                <button class="flex-1 bg-primary text-white py-2 px-4 rounded-lg hover:bg-primary-dark transition-colors text-sm font-medium">
+                                    Manage Workshop
+                                </button>
+                                <button class="border border-gray-300 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-50 transition-colors text-sm">
+                                    View Details
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Other Tab Contents (Hidden by default) -->
+            <div id="upcoming-tab" class="tab-content hidden">
+                <div class="text-center py-12">
+                    <i class="fas fa-calendar-plus text-gray-300 text-6xl mb-4"></i>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">No Upcoming Workshops</h3>
+                    <p class="text-gray-600 mb-6">You don't have any scheduled workshops yet.</p>
+                    <button class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary-dark transition-colors font-semibold">
+                        Create New Workshop
+                    </button>
+                </div>
+            </div>
+
+            <div id="past-tab" class="tab-content hidden">
+                <div class="text-center py-12">
+                    <i class="fas fa-history text-gray-300 text-6xl mb-4"></i>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Past Workshops</h3>
+                    <p class="text-gray-600">Your completed workshops will appear here.</p>
+                </div>
+            </div>
+
+            <div id="drafts-tab" class="tab-content hidden">
+                <div class="text-center py-12">
+                    <i class="fas fa-edit text-gray-300 text-6xl mb-4"></i>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Draft Workshops</h3>
+                    <p class="text-gray-600 mb-6">Continue working on your saved workshop drafts.</p>
+                    <button class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary-dark transition-colors font-semibold">
+                        Create New Workshop
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Mobile Sidebar Overlay -->
+    <div id="sidebar-overlay" class="hidden fixed inset-0 bg-black bg-opacity-50 z-20 md:hidden"></div>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebar-overlay');
+
+        mobileMenuBtn.addEventListener('click', function() {
+            sidebar.classList.toggle('-translate-x-full');
+            sidebarOverlay.classList.toggle('hidden');
+        });
+
+        sidebarOverlay.addEventListener('click', function() {
+            sidebar.classList.add('-translate-x-full');
+            sidebarOverlay.classList.add('hidden');
+        });
+
+        // Profile dropdown toggle
+        const profileDropdownBtn = document.getElementById('profile-dropdown-btn');
+        const profileDropdown = document.getElementById('profile-dropdown');
+
+        profileDropdownBtn.addEventListener('click', function() {
+            profileDropdown.classList.toggle('hidden');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!profileDropdownBtn.contains(e.target) && !profileDropdown.contains(e.target)) {
+                profileDropdown.classList.add('hidden');
+            }
+        });
+
+        // Workshop tabs functionality
+        document.querySelectorAll('.workshop-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                const tabName = this.getAttribute('data-tab');
+                
+                // Remove active class from all tabs
+                document.querySelectorAll('.workshop-tab').forEach(t => {
+                    t.classList.remove('border-primary', 'text-primary');
+                    t.classList.add('border-transparent', 'text-gray-500');
+                });
+                
+                // Add active class to clicked tab
+                this.classList.add('border-primary', 'text-primary');
+                this.classList.remove('border-transparent', 'text-gray-500');
+                
+                // Hide all tab contents
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    content.classList.add('hidden');
+                });
+                
+                // Show selected tab content
+                document.getElementById(tabName + '-tab').classList.remove('hidden');
+            });
+        });
+
+        // Sidebar navigation
+        document.querySelectorAll('nav a').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active classes from all items
+                document.querySelectorAll('nav a').forEach(i => {
+                    i.classList.remove('bg-primary', 'text-white');
+                    i.classList.add('text-gray-700');
+                });
+                
+                // Add active classes to clicked item (except current page)
+                if (!this.classList.contains('bg-primary')) {
+                    this.classList.add('bg-primary', 'text-white');
+                    this.classList.remove('text-gray-700');
+                }
+            });
+        });
+
+        // Show create workshop form
+        function showCreateWorkshop() {
+            console.log('Opening create workshop form');
+            // This would typically show a modal or redirect to creation page
+            alert('Create Workshop form would open here');
+        }
+
+        // Auto-hide mobile sidebar on window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth >= 768) {
+                sidebar.classList.remove('-translate-x-full');
+                sidebarOverlay.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>

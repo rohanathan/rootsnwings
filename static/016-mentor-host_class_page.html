@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Host a Class - Roots & Wings</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#00A2E8',
+                        'primary-dark': '#00468C',
+                        'primary-light': '#E6F7FF',
+                        'background': '#F9FBFF',
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-background font-sans">
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-40">
+        <div class="flex items-center justify-between px-6 py-4">
+            <!-- Left: Logo & Mobile Menu -->
+            <div class="flex items-center space-x-4">
+                <button id="mobile-menu-btn" class="md:hidden text-gray-600 hover:text-primary">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+                <h1 class="text-2xl font-bold text-primary-dark">Roots & Wings</h1>
+                <span class="hidden md:block text-sm text-gray-500">Mentor Portal</span>
+            </div>
+            
+            <!-- Right: Profile Dropdown -->
+            <div class="relative">
+                <button id="profile-dropdown-btn" class="flex items-center space-x-3 hover:bg-gray-50 rounded-lg px-3 py-2 transition-colors">
+                    <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+                        <span class="text-white font-semibold">PR</span>
+                    </div>
+                    <div class="hidden md:block text-left">
+                        <div class="text-sm font-semibold text-gray-900">Priya Sharma</div>
+                        <div class="text-xs text-gray-500">Kathak Mentor</div>
+                    </div>
+                    <i class="fas fa-chevron-down text-gray-400 text-sm"></i>
+                </button>
+                
+                <!-- Dropdown Menu -->
+                <div id="profile-dropdown" class="hidden absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-200 py-2">
+                    <a href="#" class="flex items-center space-x-3 px-4 py-2 text-gray-700 hover:bg-gray-50">
+                        <i class="fas fa-user text-gray-400"></i>
+                        <span>View Profile</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-2 text-gray-700 hover:bg-gray-50">
+                        <i class="fas fa-cog text-gray-400"></i>
+                        <span>Settings</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-2 text-gray-700 hover:bg-gray-50">
+                        <i class="fas fa-question-circle text-gray-400"></i>
+                        <span>Help & Support</span>
+                    </a>
+                    <hr class="my-2">
+                    <a href="#" class="flex items-center space-x-3 px-4 py-2 text-red-600 hover:bg-red-50">
+                        <i class="fas fa-sign-out-alt text-red-400"></i>
+                        <span>Log Out</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex">
+        <!-- Sidebar -->
+        <nav class="bg-white w-64 min-h-screen shadow-sm border-r border-gray-200 fixed md:static z-30 transition-transform duration-300 ease-in-out -translate-x-full md:translate-x-0" id="sidebar">
+            <div class="p-6">
+                <!-- Navigation Items -->
+                <div class="space-y-2">
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1">
+                        <i class="fas fa-home text-lg"></i>
+                        <span class="font-medium">Dashboard</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1">
+                        <i class="fas fa-chalkboard-teacher text-lg"></i>
+                        <span>My Classes</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1 bg-primary text-white">
+                        <i class="fas fa-plus-circle text-lg"></i>
+                        <span>Host a Class</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1">
+                        <i class="fas fa-users text-lg"></i>
+                        <span>Workshops</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1">
+                        <i class="fas fa-calendar-alt text-lg"></i>
+                        <span>Schedule</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1">
+                        <i class="fas fa-students text-lg"></i>
+                        <span>Students</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1">
+                        <i class="fas fa-pound-sign text-lg"></i>
+                        <span>Earnings</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1">
+                        <i class="fas fa-comments text-lg"></i>
+                        <span>Messages</span>
+                        <span class="ml-auto bg-red-500 text-white text-xs rounded-full px-2 py-1">3</span>
+                    </a>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="mt-8">
+                    <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Quick Actions</h3>
+                    <div class="space-y-2">
+                        <button class="w-full bg-primary text-white px-4 py-3 rounded-lg hover:bg-primary-dark transition-colors font-medium">
+                            <i class="fas fa-video mr-2"></i>
+                            Start Session Now
+                        </button>
+                        <button class="w-full border border-primary text-primary px-4 py-3 rounded-lg hover:bg-primary-light transition-colors font-medium">
+                            <i class="fas fa-plus mr-2"></i>
+                            Create Workshop
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="flex-1 md:ml-0 p-6">
+            <!-- Page Header -->
+            <div class="mb-8">
+                <h1 class="text-3xl font-bold text-gray-900 mb-2">Host a Class</h1>
+                <p class="text-gray-600">Create a new class to share your expertise with students across the UK.</p>
+            </div>
+
+            <!-- Class Type Selection -->
+            <div class="grid lg:grid-cols-3 gap-8 mb-8">
+                <!-- One-on-One Sessions -->
+                <div class="bg-white rounded-xl p-6 border border-gray-200 transition-all duration-300 hover:shadow-lg cursor-pointer" onclick="selectClassType('one-on-one')">
+                    <div class="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-user text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">One-on-One Sessions</h3>
+                    <p class="text-gray-600 mb-4">Personalized learning experience with individual attention.</p>
+                    <div class="flex items-center text-sm text-green-600">
+                        <i class="fas fa-check-circle mr-2"></i>
+                        <span>Most popular • Highest earning potential</span>
+                    </div>
+                </div>
+
+                <!-- Group Classes -->
+                <div class="bg-white rounded-xl p-6 border border-gray-200 transition-all duration-300 hover:shadow-lg cursor-pointer" onclick="selectClassType('group')">
+                    <div class="w-16 h-16 bg-green-100 rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-users text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Group Classes</h3>
+                    <p class="text-gray-600 mb-4">Small group learning with collaborative environment.</p>
+                    <div class="flex items-center text-sm text-green-600">
+                        <i class="fas fa-check-circle mr-2"></i>
+                        <span>Great for building community</span>
+                    </div>
+                </div>
+
+                <!-- Workshops -->
+                <div class="bg-white rounded-xl p-6 border border-gray-200 transition-all duration-300 hover:shadow-lg cursor-pointer" onclick="selectClassType('workshop')">
+                    <div class="w-16 h-16 bg-purple-100 rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-graduation-cap text-purple-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Special Workshops</h3>
+                    <p class="text-gray-600 mb-4">One-time events and masterclasses for unique topics.</p>
+                    <div class="flex items-center text-sm text-green-600">
+                        <i class="fas fa-check-circle mr-2"></i>
+                        <span>Flexible scheduling • High visibility</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Class Creation Form -->
+            <div class="bg-white rounded-xl border border-gray-200" id="class-form">
+                <div class="border-b border-gray-200 p-6">
+                    <h2 class="text-xl font-bold text-gray-900">Class Details</h2>
+                    <p class="text-gray-600">Fill in the information below to create your class</p>
+                </div>
+
+                <div class="p-6">
+                    <form class="space-y-8">
+                        <!-- Basic Information -->
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-900 mb-2">Class Title</label>
+                                <input type="text" placeholder="e.g., Beginner Kathak Dance for Teens" 
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                                <p class="text-xs text-gray-500 mt-1">Make it descriptive and engaging</p>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-900 mb-2">Subject Category</label>
+                                <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                                    <option>Select a category</option>
+                                    <option>Music</option>
+                                    <option>Dance</option>
+                                    <option>Art & Craft</option>
+                                    <option>Languages</option>
+                                    <option>Coding</option>
+                                    <option>Philosophy</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Description -->
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-900 mb-2">Class Description</label>
+                            <textarea rows="4" placeholder="Describe what students will learn, your teaching approach, and what makes this class special..."
+                                     class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"></textarea>
+                            <div class="flex justify-between items-center mt-1">
+                                <p class="text-xs text-gray-500">Help students understand what to expect</p>
+                                <span class="text-xs text-gray-400">0/500 characters</span>
+                            </div>
+                        </div>
+
+                        <!-- Level & Age Group -->
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-900 mb-3">Skill Level</label>
+                                <div class="space-y-2">
+                                    <label class="flex items-center">
+                                        <input type="checkbox" class="w-4 h-4 text-primary focus:ring-primary rounded">
+                                        <span class="ml-3 text-gray-700">Beginner</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="checkbox" class="w-4 h-4 text-primary focus:ring-primary rounded">
+                                        <span class="ml-3 text-gray-700">Intermediate</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="checkbox" class="w-4 h-4 text-primary focus:ring-primary rounded">
+                                        <span class="ml-3 text-gray-700">Advanced</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-900 mb-3">Age Group</label>
+                                <div class="space-y-2">
+                                    <label class="flex items-center">
+                                        <input type="checkbox" class="w-4 h-4 text-primary focus:ring-primary rounded">
+                                        <span class="ml-3 text-gray-700">Children (5-12 years)</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="checkbox" class="w-4 h-4 text-primary focus:ring-primary rounded">
+                                        <span class="ml-3 text-gray-700">Teens (13-17 years)</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="checkbox" class="w-4 h-4 text-primary focus:ring-primary rounded">
+                                        <span class="ml-3 text-gray-700">Adults (18+ years)</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Class Format & Scheduling -->
+                        <div class="border-t border-gray-200 pt-8">
+                            <h3 class="text-lg font-bold text-gray-900 mb-6">Schedule & Format</h3>
+                            
+                            <div class="grid md:grid-cols-3 gap-6 mb-6">
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-900 mb-2">Session Duration</label>
+                                    <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                                        <option>45 minutes</option>
+                                        <option>60 minutes</option>
+                                        <option>90 minutes</option>
+                                        <option>120 minutes</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-900 mb-2">Max Students</label>
+                                    <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                                        <option>1 (One-on-one)</option>
+                                        <option>2-3 students</option>
+                                        <option>4-6 students</option>
+                                        <option>7-10 students</option>
+                                        <option>10+ students</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-900 mb-2">Teaching Mode</label>
+                                    <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                                        <option>Online only</option>
+                                        <option>In-person only</option>
+                                        <option>Both online & in-person</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Weekly Schedule -->
+                            <div class="mb-6">
+                                <label class="block text-sm font-semibold text-gray-900 mb-3">Available Days & Times</label>
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                    <label class="flex items-center p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50">
+                                        <input type="checkbox" class="w-4 h-4 text-primary focus:ring-primary rounded">
+                                        <span class="ml-3 font-medium">Monday</span>
+                                    </label>
+                                    <label class="flex items-center p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50">
+                                        <input type="checkbox" class="w-4 h-4 text-primary focus:ring-primary rounded">
+                                        <span class="ml-3 font-medium">Tuesday</span>
+                                    </label>
+                                    <label class="flex items-center p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50">
+                                        <input type="checkbox" class="w-4 h-4 text-primary focus:ring-primary rounded">
+                                        <span class="ml-3 font-medium">Wednesday</span>
+                                    </label>
+                                    <label class="flex items-center p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50">
+                                        <input type="checkbox" class="w-4 h-4 text-primary focus:ring-primary rounded">
+                                        <span class="ml-3 font-medium">Thursday</span>
+                                    </label>
+                                    <label class="flex items-center p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50">
+                                        <input type="checkbox" class="w-4 h-4 text-primary focus:ring-primary rounded">
+                                        <span class="ml-3 font-medium">Friday</span>
+                                    </label>
+                                    <label class="flex items-center p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50">
+                                        <input type="checkbox" class="w-4 h-4 text-primary focus:ring-primary rounded">
+                                        <span class="ml-3 font-medium">Saturday</span>
+                                    </label>
+                                    <label class="flex items-center p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50">
+                                        <input type="checkbox" class="w-4 h-4 text-primary focus:ring-primary rounded">
+                                        <span class="ml-3 font-medium">Sunday</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Time Slots -->
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-900 mb-2">Start Time</label>
+                                    <input type="time" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-900 mb-2">End Time</label>
+                                    <input type="time" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pricing -->
+                        <div class="border-t border-gray-200 pt-8">
+                            <h3 class="text-lg font-bold text-gray-900 mb-6">Pricing</h3>
+                            
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-900 mb-2">Price per Session</label>
+                                    <div class="relative">
+                                        <span class="absolute left-3 top-3 text-gray-500">£</span>
+                                        <input type="number" placeholder="35" min="10" max="200"
+                                               class="w-full pl-8 pr-16 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                                        <span class="absolute right-3 top-3 text-gray-500">/session</span>
+                                    </div>
+                                    <p class="text-xs text-gray-500 mt-1">Average rate: £25-45 per session</p>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-900 mb-2">Package Discount (Optional)</label>
+                                    <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                                        <option>No package discount</option>
+                                        <option>5% off (4+ sessions)</option>
+                                        <option>10% off (8+ sessions)</option>
+                                        <option>15% off (12+ sessions)</option>
+                                        <option>Custom discount</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Materials & Requirements -->
+                        <div class="border-t border-gray-200 pt-8">
+                            <h3 class="text-lg font-bold text-gray-900 mb-6">Materials & Requirements</h3>
+                            
+                            <div class="space-y-6">
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-900 mb-2">What students need to bring/have</label>
+                                    <textarea rows="3" placeholder="List any materials, equipment, or software students need for the class..."
+                                             class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"></textarea>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-900 mb-2">What you'll provide</label>
+                                    <textarea rows="3" placeholder="Describe any materials, resources, or tools you'll provide during the class..."
+                                             class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="border-t border-gray-200 pt-8">
+                            <div class="flex flex-col sm:flex-row gap-4 sm:justify-end">
+                                <button type="button" class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors">
+                                    Save as Draft
+                                </button>
+                                <button type="button" class="px-6 py-3 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors">
+                                    Preview Class
+                                </button>
+                                <button type="submit" class="px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors font-semibold">
+                                    Publish Class
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Mobile Sidebar Overlay -->
+    <div id="sidebar-overlay" class="hidden fixed inset-0 bg-black bg-opacity-50 z-20 md:hidden"></div>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebar-overlay');
+
+        mobileMenuBtn.addEventListener('click', function() {
+            sidebar.classList.toggle('-translate-x-full');
+            sidebarOverlay.classList.toggle('hidden');
+        });
+
+        sidebarOverlay.addEventListener('click', function() {
+            sidebar.classList.add('-translate-x-full');
+            sidebarOverlay.classList.add('hidden');
+        });
+
+        // Profile dropdown toggle
+        const profileDropdownBtn = document.getElementById('profile-dropdown-btn');
+        const profileDropdown = document.getElementById('profile-dropdown');
+
+        profileDropdownBtn.addEventListener('click', function() {
+            profileDropdown.classList.toggle('hidden');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!profileDropdownBtn.contains(e.target) && !profileDropdown.contains(e.target)) {
+                profileDropdown.classList.add('hidden');
+            }
+        });
+
+        // Class type selection
+        function selectClassType(type) {
+            console.log('Selected class type:', type);
+            // Add visual feedback
+            document.querySelectorAll('.cursor-pointer').forEach(card => {
+                card.classList.remove('ring-2', 'ring-primary', 'border-primary');
+            });
+            event.currentTarget.classList.add('ring-2', 'ring-primary', 'border-primary');
+        }
+
+        // Sidebar navigation
+        document.querySelectorAll('nav a').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active classes from all items
+                document.querySelectorAll('nav a').forEach(i => {
+                    i.classList.remove('bg-primary', 'text-white');
+                    i.classList.add('text-gray-700');
+                });
+                
+                // Add active classes to clicked item (except current page)
+                if (!this.classList.contains('bg-primary')) {
+                    this.classList.add('bg-primary', 'text-white');
+                    this.classList.remove('text-gray-700');
+                }
+            });
+        });
+
+        // Form character counter
+        document.querySelectorAll('textarea').forEach(textarea => {
+            textarea.addEventListener('input', function() {
+                const maxLength = 500;
+                const currentLength = this.value.length;
+                const counter = this.parentElement.querySelector('span');
+                if (counter && counter.textContent.includes('characters')) {
+                    counter.textContent = `${currentLength}/${maxLength} characters`;
+                    
+                    if (currentLength > maxLength * 0.9) {
+                        counter.classList.add('text-red-500');
+                    } else {
+                        counter.classList.remove('text-red-500');
+                    }
+                }
+            });
+        });
+
+        // Auto-hide mobile sidebar on window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth >= 768) {
+                sidebar.classList.remove('-translate-x-full');
+                sidebarOverlay.classList.add('hidden');
+            }
+        });
+
+        // Form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            console.log('Class creation form submitted');
+            
+            // Show success message (you can replace with actual submission logic)
+            alert('Class created successfully! It will be reviewed and published within 24 hours.');
+        });
+    </script>
+</body>
+</html>

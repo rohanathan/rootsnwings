@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messages - Roots & Wings</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#00A2E8',
+                        'primary-dark': '#00468C',
+                        'primary-light': '#f8fbff',
+                        'accent-light': '#e8f4ff',
+                        'purple-primary': '#8B5CF6',
+                        'green-primary': '#10B981'
+                    },
+                    fontFamily: {
+                        sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="font-sans text-gray-800 bg-primary-light min-h-screen">
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-40">
+        <div class="flex items-center justify-between px-6 py-4">
+            <!-- Left: Logo & Mobile Menu -->
+            <div class="flex items-center space-x-4">
+                <button id="mobile-menu-btn" class="md:hidden text-gray-600 hover:text-primary">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+                <h1 class="text-2xl font-bold text-primary-dark">Roots & Wings</h1>
+                <span class="hidden md:block text-sm text-gray-500">Family Learning Hub</span>
+            </div>
+            
+            <!-- Center: Profile Switcher -->
+            <div class="hidden md:flex items-center space-x-2 bg-gray-100 rounded-lg p-1">
+                <button id="adult-profile-btn" class="profile-switch-btn px-4 py-2 rounded-md bg-white text-gray-700 font-medium transition-all shadow-sm">
+                    <i class="fas fa-user mr-2"></i>My Profile
+                </button>
+                <button id="family-profile-btn" class="profile-switch-btn px-4 py-2 rounded-md text-gray-600 hover:bg-white transition-all">
+                    <i class="fas fa-users mr-2"></i>Family View
+                </button>
+            </div>
+            
+            <!-- Right: Profile Dropdown -->
+            <div class="relative">
+                <button id="profile-dropdown-btn" class="flex items-center space-x-3 hover:bg-gray-50 rounded-lg px-3 py-2 transition-colors">
+                    <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+                        <span class="text-white font-semibold">SJ</span>
+                    </div>
+                    <div class="hidden md:block text-left">
+                        <div class="text-sm font-semibold text-gray-900">Sarah Johnson</div>
+                        <div class="text-xs text-gray-500">Parent & Learner</div>
+                    </div>
+                    <i class="fas fa-chevron-down text-gray-400 text-sm"></i>
+                </button>
+                
+                <!-- Dropdown Menu -->
+                <div id="profile-dropdown" class="hidden absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-200 py-2">
+                    <a href="#" class="flex items-center space-x-3 px-4 py-2 text-gray-700 hover:bg-gray-50">
+                        <i class="fas fa-user text-gray-400"></i>
+                        <span>Manage Profiles</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-2 text-gray-700 hover:bg-gray-50">
+                        <i class="fas fa-plus text-gray-400"></i>
+                        <span>Add Young Learner</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-2 text-gray-700 hover:bg-gray-50">
+                        <i class="fas fa-cog text-gray-400"></i>
+                        <span>Settings</span>
+                    </a>
+                    <hr class="my-2">
+                    <a href="#" class="flex items-center space-x-3 px-4 py-2 text-red-600 hover:bg-red-50">
+                        <i class="fas fa-sign-out-alt text-red-400"></i>
+                        <span>Log Out</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex">
+        <!-- Sidebar -->
+        <nav class="bg-white w-64 min-h-screen shadow-sm border-r border-gray-200 fixed md:static z-30 transition-transform duration-300 ease-in-out -translate-x-full md:translate-x-0" id="sidebar">
+            <div class="p-6">
+                <!-- Main Navigation -->
+                <div class="space-y-2 mb-8">
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1">
+                        <i class="fas fa-home text-lg"></i>
+                        <span class="font-medium">Dashboard</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1">
+                        <i class="fas fa-search text-lg"></i>
+                        <span>Explore Mentors</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1">
+                        <i class="fas fa-calendar-alt text-lg"></i>
+                        <span>My Bookings</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1">
+                        <i class="fas fa-heart text-lg"></i>
+                        <span>Saved Mentors</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1">
+                        <i class="fas fa-users text-lg"></i>
+                        <span>Workshops</span>
+                    </a>
+                </div>
+
+                <!-- Young Learners Section -->
+                <div class="border-t border-gray-200 pt-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider">Young Learners</h3>
+                        <button id="add-learner-btn" class="text-purple-primary hover:text-purple-600 text-sm">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="space-y-2" id="young-learners-nav">
+                        <a href="#" class="young-learner-nav flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-purple-50 hover:translate-x-1">
+                            <div class="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
+                                <span class="text-purple-600 text-xs font-semibold">E</span>
+                            </div>
+                            <div class="flex-1">
+                                <div class="text-sm font-medium">Emma (12)</div>
+                                <div class="text-xs text-gray-500">Music, Art</div>
+                            </div>
+                        </a>
+                        
+                        <a href="#" class="young-learner-nav flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-green-50 hover:translate-x-1">
+                            <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+                                <span class="text-green-600 text-xs font-semibold">J</span>
+                            </div>
+                            <div class="flex-1">
+                                <div class="text-sm font-medium">Jake (15)</div>
+                                <div class="text-xs text-gray-500">Coding, Maths</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Family Management -->
+                <div class="border-t border-gray-200 pt-6 mt-6">
+                    <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">Family Management</h3>
+                    <div class="space-y-2">
+                        <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1">
+                            <i class="fas fa-chart-line text-lg"></i>
+                            <span>Progress Reports</span>
+                        </a>
+                        <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1">
+                            <i class="fas fa-credit-card text-lg"></i>
+                            <span>Billing & Payments</span>
+                        </a>
+                        <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1 bg-primary text-white">
+                            <i class="fas fa-comments text-lg"></i>
+                            <span class="font-medium">Messages</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Overlay for mobile sidebar -->
+        <div id="sidebar-overlay" class="hidden md:hidden fixed inset-0 bg-black bg-opacity-50 z-20"></div>
+
+        <!-- Main Content -->
+        <main class="flex-1 md:ml-0">
+            <!-- Welcome Section -->
+            <div class="bg-white border-b border-gray-200 px-6 py-8">
+                <div class="max-w-7xl mx-auto">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between">
+                        <div>
+                            <h1 class="text-3xl font-bold text-gray-900 mb-2">💬 Messages</h1>
+                            <p class="text-gray-600">Stay connected with your mentors and family learning community</p>
+                        </div>
+                        <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3 mt-4 md:mt-0">
+                            <button class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary-dark transition-colors">
+                                <i class="fas fa-plus mr-2"></i>New Message
+                            </button>
+                            <button class="border border-gray-300 text-gray-700 px-6 py-3 rounded-lg hover:bg-gray-50 transition-colors">
+                                <i class="fas fa-archive mr-2"></i>View Archived
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-6 py-8">
+                <!-- Message Overview -->
+                <section class="mb-8">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                        <div class="bg-white rounded-xl p-6 text-center shadow-sm hover:shadow-lg transition-shadow border-l-4 border-blue-500">
+                            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-inbox text-blue-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-800">12</h3>
+                            <p class="text-gray-600 text-sm">Unread Messages</p>
+                        </div>
+                        
+                        <div class="bg-white rounded-xl p-6 text-center shadow-sm hover:shadow-lg transition-shadow border-l-4 border-green-primary">
+                            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-user-graduate text-green-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-800">5</h3>
+                            <p class="text-gray-600 text-sm">Active Mentors</p>
+                        </div>
+                        
+                        <div class="bg-white rounded-xl p-6 text-center shadow-sm hover:shadow-lg transition-shadow border-l-4 border-purple-primary">
+                            <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-comments text-purple-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-800">28</h3>
+                            <p class="text-gray-600 text-sm">Total Conversations</p>
+                        </div>
+                        
+                        <div class="bg-white rounded-xl p-6 text-center shadow-sm hover:shadow-lg transition-shadow border-l-4 border-orange-500">
+                            <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-clock text-orange-500 text-xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-800">2</h3>
+                            <p class="text-gray-600 text-sm">Pending Replies</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Messages Layout -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Conversations List -->
+                    <div class="bg-white rounded-xl shadow-sm">
+                        <!-- Search Bar -->
+                        <div class="p-6 border-b border-gray-200">
+                            <div class="relative">
+                                <input type="text" placeholder="Search conversations..." class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary">
+                                <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+                            </div>
+                        </div>
+
+                        <!-- Conversation List -->
+                        <div class="divide-y divide-gray-200 max-h-96 overflow-y-auto">
+                            <!-- Active Conversation -->
+                            <div class="p-4 hover:bg-gray-50 cursor-pointer border-l-4 border-primary bg-primary-light" data-conversation="priya">
+                                <div class="flex items-start space-x-3">
+                                    <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                        <span class="text-purple-600 font-semibold text-sm">P</span>
+                                    </div>
+                                    <div class="flex-1 min-w-0">
+                                        <div class="flex items-center justify-between">
+                                            <h4 class="font-medium text-gray-900 truncate">Priya Sharma</h4>
+                                            <span class="text-xs text-gray-500">2h ago</span>
+                                        </div>
+                                        <p class="text-sm text-gray-600 truncate">Great progress in today's piano lesson! Emma is...</p>
+                                        <div class="flex items-center space-x-2 mt-1">
+                                            <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full">Emma's Mentor</span>
+                                            <span class="w-2 h-2 bg-primary rounded-full"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Other Conversations -->
+                            <div class="p-4 hover:bg-gray-50 cursor-pointer" data-conversation="alex">
+                                <div class="flex items-start space-x-3">
+                                    <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                        <span class="text-green-600 font-semibold text-sm">A</span>
+                                    </div>
+                                    <div class="flex-1 min-w-0">
+                                        <div class="flex items-center justify-between">
+                                            <h4 class="font-medium text-gray-900 truncate">Alex Kumar</h4>
+                                            <span class="text-xs text-gray-500">5h ago</span>
+                                        </div>
+                                        <p class="text-sm text-gray-600 truncate">Jake completed the Python module excellently. I've...</p>
+                                        <div class="flex items-center space-x-2 mt-1">
+                                            <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">Jake's Mentor</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="p-4 hover:bg-gray-50 cursor-pointer" data-conversation="marcus">
+                                <div class="flex items-start space-x-3">
+                                    <div class="w-10 h-10 bg-pink-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                        <span class="text-pink-600 font-semibold text-sm">M</span>
+                                    </div>
+                                    <div class="flex-1 min-w-0">
+                                        <div class="flex items-center justify-between">
+                                            <h4 class="font-medium text-gray-900 truncate">Marcus Chen</h4>
+                                            <span class="text-xs text-gray-500">1d ago</span>
+                                        </div>
+                                        <p class="text-sm text-gray-600 truncate">Emma's watercolor techniques are improving so much...</p>
+                                        <div class="flex items-center space-x-2 mt-1">
+                                            <span class="bg-pink-100 text-pink-800 text-xs px-2 py-1 rounded-full">Art Mentor</span>
+                                            <span class="w-2 h-2 bg-orange-400 rounded-full"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="p-4 hover:bg-gray-50 cursor-pointer" data-conversation="support">
+                                <div class="flex items-start space-x-3">
+                                    <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                        <i class="fas fa-headset text-blue-600"></i>
+                                    </div>
+                                    <div class="flex-1 min-w-0">
+                                        <div class="flex items-center justify-between">
+                                            <h4 class="font-medium text-gray-900 truncate">Roots & Wings Support</h4>
+                                            <span class="text-xs text-gray-500">3d ago</span>
+                                        </div>
+                                        <p class="text-sm text-gray-600 truncate">Welcome to Roots & Wings! Here's how to get started...</p>
+                                        <div class="flex items-center space-x-2 mt-1">
+                                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Support Team</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Message Thread -->
+                    <div class="lg:col-span-2 bg-white rounded-xl shadow-sm flex flex-col h-96">
+                        <!-- Chat Header -->
+                        <div class="p-6 border-b border-gray-200">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
+                                    <span class="text-purple-600 font-semibold">P</span>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-gray-900">Priya Sharma</h3>
+                                    <p class="text-sm text-gray-600">Classical Music Mentor • Emma's Teacher</p>
+                                </div>
+                                <div class="ml-auto flex items-center space-x-2">
+                                    <button class="text-gray-500 hover:text-gray-700 p-2">
+                                        <i class="fas fa-phone"></i>
+                                    </button>
+                                    <button class="text-gray-500 hover:text-gray-700 p-2">
+                                        <i class="fas fa-video"></i>
+                                    </button>
+                                    <button class="text-gray-500 hover:text-gray-700 p-2">
+                                        <i class="fas fa-ellipsis-v"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Messages -->
+                        <div class="flex-1 p-6 overflow-y-auto space-y-4">
+                            <!-- Received Message -->
+                            <div class="flex items-start space-x-3">
+                                <div class="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <span class="text-purple-600 font-semibold text-xs">P</span>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="bg-gray-100 rounded-lg px-4 py-2 max-w-xs">
+                                        <p class="text-sm text-gray-900">Great progress in today's piano lesson! Emma is really getting the hang of reading music notation. I'm impressed with how quickly she's picking up the finger positions.</p>
+                                    </div>
+                                    <p class="text-xs text-gray-500 mt-1">2 hours ago</p>
+                                </div>
+                            </div>
+
+                            <!-- Sent Message -->
+                            <div class="flex items-start space-x-3 justify-end">
+                                <div class="flex-1">
+                                    <div class="bg-primary text-white rounded-lg px-4 py-2 max-w-xs ml-auto">
+                                        <p class="text-sm">Thank you so much! Emma was so excited after the lesson. She's been practicing at home and really enjoys the pieces you've chosen for her.</p>
+                                    </div>
+                                    <p class="text-xs text-gray-500 mt-1 text-right">2 hours ago</p>
+                                </div>
+                                <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
+                                    <span class="text-white font-semibold text-xs">S</span>
+                                </div>
+                            </div>
+
+                            <!-- Received Message -->
+                            <div class="flex items-start space-x-3">
+                                <div class="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <span class="text-purple-600 font-semibold text-xs">P</span>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="bg-gray-100 rounded-lg px-4 py-2 max-w-xs">
+                                        <p class="text-sm text-gray-900">That's wonderful to hear! I can see her confidence growing. For next week, I'd like her to focus on "Für Elise" - the first 16 measures. I'll send you the sheet music.</p>
+                                    </div>
+                                    <p class="text-xs text-gray-500 mt-1">2 hours ago</p>
+                                </div>
+                            </div>
+
+                            <!-- System Message -->
+                            <div class="flex justify-center">
+                                <div class="bg-blue-50 text-blue-800 text-xs px-3 py-1 rounded-full">
+                                    <i class="fas fa-paperclip mr-1"></i>
+                                    Priya shared a file: "Für Elise - Beginner.pdf"
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Message Input -->
+                        <div class="p-6 border-t border-gray-200">
+                            <div class="flex items-center space-x-3">
+                                <button class="text-gray-500 hover:text-gray-700 p-2">
+                                    <i class="fas fa-paperclip"></i>
+                                </button>
+                                <div class="flex-1">
+                                    <input type="text" placeholder="Type your message..." class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary">
+                                </div>
+                                <button class="bg-primary text-white p-2 rounded-lg hover:bg-primary-dark transition-colors">
+                                    <i class="fas fa-paper-plane"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <section class="mt-8">
+                    <h2 class="text-xl font-semibold text-gray-900 mb-6">Quick Actions</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                        <button class="bg-white rounded-xl p-6 shadow-sm hover:shadow-lg transition-all duration-200 hover:translate-y-1 border border-gray-200 hover:border-primary">
+                            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-user-plus text-blue-600 text-xl"></i>
+                            </div>
+                            <h3 class="font-semibold text-gray-900 mb-2">Message New Mentor</h3>
+                            <p class="text-gray-600 text-sm">Start a conversation with a potential mentor</p>
+                        </button>
+
+                        <button class="bg-white rounded-xl p-6 shadow-sm hover:shadow-lg transition-all duration-200 hover:translate-y-1 border border-gray-200 hover:border-primary">
+                            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-users text-green-600 text-xl"></i>
+                            </div>
+                            <h3 class="font-semibold text-gray-900 mb-2">Group Discussions</h3>
+                            <p class="text-gray-600 text-sm">Join workshops and group learning chats</p>
+                        </button>
+
+                        <button class="bg-white rounded-xl p-6 shadow-sm hover:shadow-lg transition-all duration-200 hover:translate-y-1 border border-gray-200 hover:border-primary">
+                            <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-archive text-purple-600 text-xl"></i>
+                            </div>
+                            <h3 class="font-semibold text-gray-900 mb-2">Archived Messages</h3>
+                            <p class="text-gray-600 text-sm">View your message history and archives</p>
+                        </button>
+
+                        <button class="bg-white rounded-xl p-6 shadow-sm hover:shadow-lg transition-all duration-200 hover:translate-y-1 border border-gray-200 hover:border-primary">
+                            <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-cog text-orange-600 text-xl"></i>
+                            </div>
+                            <h3 class="font-semibold text-gray-900 mb-2">Message Settings</h3>
+                            <p class="text-gray-600 text-sm">Customize notifications and preferences</p>
+                        </button>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Mobile sidebar toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebar-overlay');
+
+        mobileMenuBtn.addEventListener('click', function() {
+            sidebar.classList.toggle('-translate-x-full');
+            sidebarOverlay.classList.toggle('hidden');
+        });
+
+        sidebarOverlay.addEventListener('click', function() {
+            sidebar.classList.add('-translate-x-full');
+            sidebarOverlay.classList.add('hidden');
+        });
+
+        // Profile dropdown
+        const profileDropdownBtn = document.getElementById('profile-dropdown-btn');
+        const profileDropdown = document.getElementById('profile-dropdown');
+
+        profileDropdownBtn.addEventListener('click', function() {
+            profileDropdown.classList.toggle('hidden');
+        });
+
+        // Profile switcher
+        const adultProfileBtn = document.getElementById('adult-profile-btn');
+        const familyProfileBtn = document.getElementById('family-profile-btn');
+
+        adultProfileBtn.addEventListener('click', function() {
+            adultProfileBtn.classList.add('bg-white', 'text-gray-700', 'shadow-sm');
+            adultProfileBtn.classList.remove('text-gray-600');
+            familyProfileBtn.classList.remove('bg-white', 'text-gray-700', 'shadow-sm');
+            familyProfileBtn.classList.add('text-gray-600');
+        });
+
+        familyProfileBtn.addEventListener('click', function() {
+            familyProfileBtn.classList.add('bg-white', 'text-gray-700', 'shadow-sm');
+            familyProfileBtn.classList.remove('text-gray-600');
+            adultProfileBtn.classList.remove('bg-white', 'text-gray-700', 'shadow-sm');
+            adultProfileBtn.classList.add('text-gray-600');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!profileDropdownBtn.contains(e.target) && !profileDropdown.contains(e.target)) {
+                profileDropdown.classList.add('hidden');
+            }
+        });
+
+        // Conversation switching
+        document.querySelectorAll('[data-conversation]').forEach(conversation => {
+            conversation.addEventListener('click', function() {
+                // Remove active state from all conversations
+                document.querySelectorAll('[data-conversation]').forEach(conv => {
+                    conv.classList.remove('border-l-4', 'border-primary', 'bg-primary-light');
+                });
+                
+                // Add active state to clicked conversation
+                this.classList.add('border-l-4', 'border-primary', 'bg-primary-light');
+                
+                // In a real app, this would load the conversation messages
+                console.log('Loading conversation:', this.dataset.conversation);
+            });
+        });
+
+        // Send message functionality
+        document.querySelector('input[placeholder="Type your message..."]').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        document.querySelector('.fa-paper-plane').parentElement.addEventListener('click', sendMessage);
+
+        function sendMessage() {
+            const input = document.querySelector('input[placeholder="Type your message..."]');
+            const message = input.value.trim();
+            
+            if (message) {
+                // In a real app, this would send the message
+                console.log('Sending message:', message);
+                input.value = '';
+            }
+        }
+
+        // Auto-hide mobile sidebar on window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth >= 768) {
+                sidebar.classList.remove('-translate-x-full');
+                sidebarOverlay.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Achievements - Roots & Wings</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#00A2E8',
+                        'primary-dark': '#00468C',
+                        'primary-light': '#f8fbff',
+                        'accent-light': '#e8f4ff',
+                        'purple-primary': '#8B5CF6',
+                        'green-primary': '#10B981',
+                        'gold': '#F59E0B'
+                    },
+                    fontFamily: {
+                        sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="font-sans text-gray-800 bg-primary-light min-h-screen">
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-40">
+        <div class="flex items-center justify-between px-6 py-4">
+            <!-- Left: Logo & Mobile Menu -->
+            <div class="flex items-center space-x-4">
+                <button id="mobile-menu-btn" class="md:hidden text-gray-600 hover:text-primary">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+                <h1 class="text-2xl font-bold text-primary-dark">Roots & Wings</h1>
+                <span class="hidden md:block text-sm text-gray-500">Family Learning Hub</span>
+            </div>
+            
+            <!-- Center: Emma's Info -->
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 bg-purple-primary rounded-full flex items-center justify-center">
+                    <span class="text-white font-semibold">E</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="text-sm font-semibold text-gray-900">Emma Johnson</div>
+                    <div class="text-xs text-gray-500">Level 5 Explorer • 850 XP</div>
+                </div>
+            </div>
+            
+            <!-- Right: Profile Dropdown -->
+            <div class="relative">
+                <button id="profile-dropdown-btn" class="flex items-center space-x-3 hover:bg-gray-50 rounded-lg px-3 py-2 transition-colors">
+                    <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+                        <span class="text-white font-semibold">SJ</span>
+                    </div>
+                    <div class="hidden md:block text-left">
+                        <div class="text-sm font-semibold text-gray-900">Sarah Johnson</div>
+                        <div class="text-xs text-gray-500">Parent & Learner</div>
+                    </div>
+                    <i class="fas fa-chevron-down text-gray-400 text-sm"></i>
+                </button>
+                
+                <!-- Dropdown Menu -->
+                <div id="profile-dropdown" class="hidden absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-200 py-2">
+                    <a href="#" class="flex items-center space-x-3 px-4 py-2 text-gray-700 hover:bg-gray-50">
+                        <i class="fas fa-user text-gray-400"></i>
+                        <span>Manage Profiles</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-2 text-gray-700 hover:bg-gray-50">
+                        <i class="fas fa-cog text-gray-400"></i>
+                        <span>Settings</span>
+                    </a>
+                    <hr class="my-2">
+                    <a href="#" class="flex items-center space-x-3 px-4 py-2 text-red-600 hover:bg-red-50">
+                        <i class="fas fa-sign-out-alt text-red-400"></i>
+                        <span>Log Out</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex">
+        <!-- Sidebar -->
+        <nav class="bg-white w-64 min-h-screen shadow-sm border-r border-gray-200 fixed md:static z-30 transition-transform duration-300 ease-in-out -translate-x-full md:translate-x-0" id="sidebar">
+            <div class="p-6">
+                <!-- Emma's Navigation -->
+                <div class="space-y-2 mb-8">
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-purple-50 hover:translate-x-1">
+                        <i class="fas fa-home text-lg"></i>
+                        <span class="font-medium">My Dashboard</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-purple-50 hover:translate-x-1">
+                        <i class="fas fa-calendar-alt text-lg"></i>
+                        <span>My Schedule</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-purple-50 hover:translate-x-1">
+                        <i class="fas fa-book text-lg"></i>
+                        <span>My Classes</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-200 ease-in-out hover:bg-purple-50 hover:translate-x-1 bg-purple-primary text-white">
+                        <i class="fas fa-trophy text-lg"></i>
+                        <span class="font-medium">Achievements</span>
+                    </a>
+                </div>
+
+                <!-- Current Classes -->
+                <div class="border-t border-gray-200 pt-6">
+                    <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">My Classes</h3>
+                    <div class="space-y-2">
+                        <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-purple-50 hover:translate-x-1">
+                            <div class="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-music text-purple-600 text-xs"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="text-sm font-medium">Piano Lessons</div>
+                                <div class="text-xs text-gray-500">with Priya</div>
+                            </div>
+                        </a>
+                        
+                        <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-purple-50 hover:translate-x-1">
+                            <div class="w-8 h-8 bg-pink-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-paint-brush text-pink-600 text-xs"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="text-sm font-medium">Watercolor Art</div>
+                                <div class="text-xs text-gray-500">with Marcus</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Family Navigation -->
+                <div class="border-t border-gray-200 pt-6 mt-6">
+                    <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">Family</h3>
+                    <div class="space-y-2">
+                        <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1">
+                            <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                                <span class="text-blue-600 text-xs font-semibold">S</span>
+                            </div>
+                            <div class="flex-1">
+                                <div class="text-sm font-medium">Mum's Classes</div>
+                                <div class="text-xs text-gray-500">Classical Music</div>
+                            </div>
+                        </a>
+                        
+                        <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-green-50 hover:translate-x-1">
+                            <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+                                <span class="text-green-600 text-xs font-semibold">J</span>
+                            </div>
+                            <div class="flex-1">
+                                <div class="text-sm font-medium">Jake's Classes</div>
+                                <div class="text-xs text-gray-500">Coding, Maths</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Overlay for mobile sidebar -->
+        <div id="sidebar-overlay" class="hidden md:hidden fixed inset-0 bg-black bg-opacity-50 z-20"></div>
+
+        <!-- Main Content -->
+        <main class="flex-1 md:ml-0">
+            <!-- Welcome Section -->
+            <div class="bg-gradient-to-r from-gold to-yellow-300 text-white px-6 py-8">
+                <div class="max-w-7xl mx-auto">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between">
+                        <div>
+                            <h1 class="text-3xl font-bold mb-2">🏆 My Achievements</h1>
+                            <p class="text-yellow-100">You're doing amazing! Keep learning and growing!</p>
+                        </div>
+                        <div class="flex items-center space-x-4 mt-4 md:mt-0">
+                            <div class="text-right">
+                                <div class="text-2xl font-bold">Level 5</div>
+                                <div class="text-sm text-yellow-100">Explorer</div>
+                            </div>
+                            <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
+                                <span class="text-2xl font-bold">5</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-6 py-8">
+                <!-- Progress Overview -->
+                <section class="mb-8">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                        <!-- Total Points -->
+                        <div class="bg-white rounded-xl p-6 text-center shadow-sm hover:shadow-lg transition-shadow border-l-4 border-gold">
+                            <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                                <i class="fas fa-star text-gold text-xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-800">850</h3>
+                            <p class="text-gray-600 text-sm">Total Points</p>
+                        </div>
+                        
+                        <!-- Badges Earned -->
+                        <div class="bg-white rounded-xl p-6 text-center shadow-sm hover:shadow-lg transition-shadow border-l-4 border-purple-primary">
+                            <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                                <i class="fas fa-medal text-purple-primary text-xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-800">8</h3>
+                            <p class="text-gray-600 text-sm">Badges Earned</p>
+                        </div>
+                        
+                        <!-- Current Streak -->
+                        <div class="bg-white rounded-xl p-6 text-center shadow-sm hover:shadow-lg transition-shadow border-l-4 border-green-primary">
+                            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                                <i class="fas fa-fire text-green-primary text-xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-800">7</h3>
+                            <p class="text-gray-600 text-sm">Day Streak</p>
+                        </div>
+                        
+                        <!-- Sessions Completed -->
+                        <div class="bg-white rounded-xl p-6 text-center shadow-sm hover:shadow-lg transition-shadow border-l-4 border-blue-500">
+                            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                                <i class="fas fa-graduation-cap text-blue-500 text-xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-800">24</h3>
+                            <p class="text-gray-600 text-sm">Sessions Done</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Level Progress Bar -->
+                <section class="mb-8">
+                    <div class="bg-white rounded-xl p-6 shadow-sm">
+                        <div class="flex items-center justify-between mb-4">
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-900">Level Progress</h3>
+                                <p class="text-gray-600 text-sm">150 more points to reach Level 6 Champion!</p>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-2xl font-bold text-gold">Level 5</span>
+                                <p class="text-sm text-gray-500">Explorer</p>
+                            </div>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-4 mb-2">
+                            <div class="bg-gradient-to-r from-gold to-yellow-400 h-4 rounded-full relative" style="width: 85%">
+                                <div class="absolute right-0 top-0 h-4 w-4 bg-white rounded-full border-2 border-gold transform translate-x-2"></div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between text-sm text-gray-500">
+                            <span>800 XP</span>
+                            <span>850 / 1000 XP</span>
+                            <span>1000 XP</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Recent Achievements -->
+                <section class="mb-8">
+                    <h2 class="text-xl font-semibold text-gray-900 mb-6">🎉 Recent Achievements</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <!-- New Achievement -->
+                        <div class="bg-white rounded-xl p-6 shadow-sm relative overflow-hidden border border-gold">
+                            <div class="absolute top-0 right-0 bg-gold text-white text-xs px-2 py-1 rounded-bl-lg">
+                                NEW!
+                            </div>
+                            <div class="text-center">
+                                <div class="w-16 h-16 bg-gradient-to-r from-gold to-yellow-400 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse">
+                                    <i class="fas fa-star text-white text-2xl"></i>
+                                </div>
+                                <h3 class="font-semibold text-gray-900 mb-2">Session Master!</h3>
+                                <p class="text-gray-600 text-sm mb-3">Completed 25 learning sessions</p>
+                                <div class="flex justify-center items-center space-x-2">
+                                    <span class="bg-gold text-white text-xs px-2 py-1 rounded-full">+100 XP</span>
+                                    <span class="text-xs text-gray-500">2 hours ago</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Recent Achievement -->
+                        <div class="bg-white rounded-xl p-6 shadow-sm">
+                            <div class="text-center">
+                                <div class="w-16 h-16 bg-gradient-to-r from-green-400 to-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <i class="fas fa-fire text-white text-2xl"></i>
+                                </div>
+                                <h3 class="font-semibold text-gray-900 mb-2">Week Warrior</h3>
+                                <p class="text-gray-600 text-sm mb-3">Learned for 7 days in a row</p>
+                                <div class="flex justify-center items-center space-x-2">
+                                    <span class="bg-green-primary text-white text-xs px-2 py-1 rounded-full">+75 XP</span>
+                                    <span class="text-xs text-gray-500">Yesterday</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Weekly Challenge -->
+                        <div class="bg-white rounded-xl p-6 shadow-sm">
+                            <div class="text-center">
+                                <div class="w-16 h-16 bg-gradient-to-r from-purple-400 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <i class="fas fa-clock text-white text-2xl"></i>
+                                </div>
+                                <h3 class="font-semibold text-gray-900 mb-2">On Time Pro</h3>
+                                <p class="text-gray-600 text-sm mb-3">Never missed a scheduled session</p>
+                                <div class="flex justify-center items-center space-x-2">
+                                    <span class="bg-purple-primary text-white text-xs px-2 py-1 rounded-full">+60 XP</span>
+                                    <span class="text-xs text-gray-500">3 days ago</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- All Badges -->
+                <section class="mb-8">
+                    <h2 class="text-xl font-semibold text-gray-900 mb-6">🏆 Badge Collection</h2>
+                    <div class="bg-white rounded-xl p-6 shadow-sm">
+                        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                            <!-- Earned Badges -->
+                            <div class="text-center group cursor-pointer" data-achievement="earned">
+                                <div class="w-16 h-16 bg-gradient-to-r from-gold to-yellow-400 rounded-full flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition-transform">
+                                    <i class="fas fa-graduation-cap text-white text-xl"></i>
+                                </div>
+                                <p class="text-xs font-medium text-gray-900">First Session</p>
+                                <p class="text-xs text-green-600">✓ Earned</p>
+                            </div>
+
+                            <div class="text-center group cursor-pointer" data-achievement="earned">
+                                <div class="w-16 h-16 bg-gradient-to-r from-blue-400 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition-transform">
+                                    <i class="fas fa-clock text-white text-xl"></i>
+                                </div>
+                                <p class="text-xs font-medium text-gray-900">On Time</p>
+                                <p class="text-xs text-green-600">✓ Earned</p>
+                            </div>
+
+                            <div class="text-center group cursor-pointer" data-achievement="earned">
+                                <div class="w-16 h-16 bg-gradient-to-r from-green-400 to-green-600 rounded-full flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition-transform">
+                                    <i class="fas fa-fire text-white text-xl"></i>
+                                </div>
+                                <p class="text-xs font-medium text-gray-900">Streak Starter</p>
+                                <p class="text-xs text-green-600">✓ Earned</p>
+                            </div>
+
+                            <div class="text-center group cursor-pointer" data-achievement="earned">
+                                <div class="w-16 h-16 bg-gradient-to-r from-purple-400 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition-transform">
+                                    <i class="fas fa-heart text-white text-xl"></i>
+                                </div>
+                                <p class="text-xs font-medium text-gray-900">Helpful Learner</p>
+                                <p class="text-xs text-green-600">✓ Earned</p>
+                            </div>
+
+                            <!-- Locked Badges -->
+                            <div class="text-center group cursor-pointer" data-achievement="locked">
+                                <div class="w-16 h-16 bg-gray-300 rounded-full flex items-center justify-center mx-auto mb-2 group-hover:scale-105 transition-transform">
+                                    <i class="fas fa-crown text-gray-500 text-xl"></i>
+                                </div>
+                                <p class="text-xs font-medium text-gray-500">Champion</p>
+                                <p class="text-xs text-gray-400">Reach Level 10</p>
+                            </div>
+
+                            <div class="text-center group cursor-pointer" data-achievement="locked">
+                                <div class="w-16 h-16 bg-gray-300 rounded-full flex items-center justify-center mx-auto mb-2 group-hover:scale-105 transition-transform">
+                                    <i class="fas fa-rocket text-gray-500 text-xl"></i>
+                                </div>
+                                <p class="text-xs font-medium text-gray-500">Speed Learner</p>
+                                <p class="text-xs text-gray-400">3 sessions in one day</p>
+                            </div>
+
+                            <div class="text-center group cursor-pointer" data-achievement="earned">
+                                <div class="w-16 h-16 bg-gradient-to-r from-pink-400 to-pink-600 rounded-full flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition-transform">
+                                    <i class="fas fa-star text-white text-xl"></i>
+                                </div>
+                                <p class="text-xs font-medium text-gray-900">Star Learner</p>
+                                <p class="text-xs text-green-600">✓ Earned</p>
+                            </div>
+
+                            <div class="text-center group cursor-pointer" data-achievement="locked">
+                                <div class="w-16 h-16 bg-gray-300 rounded-full flex items-center justify-center mx-auto mb-2 group-hover:scale-105 transition-transform">
+                                    <i class="fas fa-users text-gray-500 text-xl"></i>
+                                </div>
+                                <p class="text-xs font-medium text-gray-500">Social Learner</p>
+                                <p class="text-xs text-gray-400">Join 5 workshops</p>
+                            </div>
+
+                            <div class="text-center group cursor-pointer" data-achievement="locked">
+                                <div class="w-16 h-16 bg-gray-300 rounded-full flex items-center justify-center mx-auto mb-2 group-hover:scale-105 transition-transform">
+                                    <i class="fas fa-calendar text-gray-500 text-xl"></i>
+                                </div>
+                                <p class="text-xs font-medium text-gray-500">Monthly Hero</p>
+                                <p class="text-xs text-gray-400">30 day streak</p>
+                            </div>
+
+                            <div class="text-center group cursor-pointer" data-achievement="locked">
+                                <div class="w-16 h-16 bg-gray-300 rounded-full flex items-center justify-center mx-auto mb-2 group-hover:scale-105 transition-transform">
+                                    <i class="fas fa-gem text-gray-500 text-xl"></i>
+                                </div>
+                                <p class="text-xs font-medium text-gray-500">Diamond Level</p>
+                                <p class="text-xs text-gray-400">1000 points</p>
+                            </div>
+
+                            <div class="text-center group cursor-pointer" data-achievement="locked">
+                                <div class="w-16 h-16 bg-gray-300 rounded-full flex items-center justify-center mx-auto mb-2 group-hover:scale-105 transition-transform">
+                                    <i class="fas fa-trophy text-gray-500 text-xl"></i>
+                                </div>
+                                <p class="text-xs font-medium text-gray-500">Master Learner</p>
+                                <p class="text-xs text-gray-400">50 sessions</p>
+                            </div>
+
+                            <div class="text-center group cursor-pointer" data-achievement="locked">
+                                <div class="w-16 h-16 bg-gray-300 rounded-full flex items-center justify-center mx-auto mb-2 group-hover:scale-105 transition-transform">
+                                    <i class="fas fa-medal text-gray-500 text-xl"></i>
+                                </div>
+                                <p class="text-xs font-medium text-gray-500">Perfect Streak</p>
+                                <p class="text-xs text-gray-400">14 day streak</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Current Challenges -->
+                <section class="mb-8">
+                    <h2 class="text-xl font-semibold text-gray-900 mb-6">🎯 Current Challenges</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Challenge 1 -->
+                        <div class="bg-white rounded-xl p-6 shadow-sm border border-blue-200">
+                            <div class="flex items-center space-x-3 mb-4">
+                                <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-target text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-gray-900">Practice Pro</h3>
+                                    <p class="text-xs text-gray-500">Weekly Challenge</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-4">Complete 5 sessions this week</p>
+                            <div class="mb-3">
+                                <div class="flex justify-between text-sm mb-1">
+                                    <span>Progress</span>
+                                    <span class="text-blue-600">3/5</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-500 h-2 rounded-full" style="width: 60%"></div>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xs text-gray-500">2 days left</span>
+                                <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">+100 XP</span>
+                            </div>
+                        </div>
+
+                        <!-- Challenge 2 -->
+                        <div class="bg-white rounded-xl p-6 shadow-sm border border-green-200">
+                            <div class="flex items-center space-x-3 mb-4">
+                                <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-fire text-green-600"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-gray-900">Streak Builder</h3>
+                                    <p class="text-xs text-gray-500">Daily Challenge</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-4">Keep your learning streak going for 10 days</p>
+                            <div class="mb-3">
+                                <div class="flex justify-between text-sm mb-1">
+                                    <span>Progress</span>
+                                    <span class="text-green-600">7/10</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-green-500 h-2 rounded-full" style="width: 70%"></div>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xs text-gray-500">3 more days</span>
+                                <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">+150 XP</span>
+                            </div>
+                        </div>
+
+                        <!-- Challenge 3 -->
+                        <div class="bg-white rounded-xl p-6 shadow-sm border border-purple-200">
+                            <div class="flex items-center space-x-3 mb-4">
+                                <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-users text-purple-600"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-gray-900">Social Learner</h3>
+                                    <p class="text-xs text-gray-500">Monthly Challenge</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-4">Join 2 group workshops this month</p>
+                            <div class="mb-3">
+                                <div class="flex justify-between text-sm mb-1">
+                                    <span>Progress</span>
+                                    <span class="text-purple-600">1/2</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-purple-500 h-2 rounded-full" style="width: 50%"></div>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xs text-gray-500">20 days left</span>
+                                <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full">+200 XP</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Mobile sidebar toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebar-overlay');
+
+        mobileMenuBtn.addEventListener('click', function() {
+            sidebar.classList.toggle('-translate-x-full');
+            sidebarOverlay.classList.toggle('hidden');
+        });
+
+        sidebarOverlay.addEventListener('click', function() {
+            sidebar.classList.add('-translate-x-full');
+            sidebarOverlay.classList.add('hidden');
+        });
+
+        // Profile dropdown
+        const profileDropdownBtn = document.getElementById('profile-dropdown-btn');
+        const profileDropdown = document.getElementById('profile-dropdown');
+
+        profileDropdownBtn.addEventListener('click', function() {
+            profileDropdown.classList.toggle('hidden');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!profileDropdownBtn.contains(e.target) && !profileDropdown.contains(e.target)) {
+                profileDropdown.classList.add('hidden');
+            }
+        });
+
+        // Auto-hide mobile sidebar on window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth >= 768) {
+                sidebar.classList.remove('-translate-x-full');
+                sidebarOverlay.classList.add('hidden');
+            }
+        });
+
+        // Badge hover effects
+        document.querySelectorAll('[data-achievement]').forEach(badge => {
+            badge.addEventListener('click', function() {
+                if (this.dataset.achievement === 'earned') {
+                    // Show achievement details
+                    alert('Achievement unlocked! Great job!');
+                } else {
+                    // Show how to unlock
+                    const requirement = this.querySelector('.text-gray-400').textContent;
+                    alert(`Keep learning! ${requirement} to unlock this badge.`);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

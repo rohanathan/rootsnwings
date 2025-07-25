@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Bookings - Roots & Wings</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#00A2E8',
+                        'primary-dark': '#00468C',
+                        'primary-light': '#f8fbff',
+                        'accent-light': '#e8f4ff',
+                        'purple-primary': '#8B5CF6',
+                        'green-primary': '#10B981'
+                    },
+                    fontFamily: {
+                        sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="font-sans text-gray-800 bg-primary-light min-h-screen">
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-40">
+        <div class="flex items-center justify-between px-6 py-4">
+            <!-- Left: Logo & Mobile Menu -->
+            <div class="flex items-center space-x-4">
+                <button id="mobile-menu-btn" class="md:hidden text-gray-600 hover:text-primary">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+                <h1 class="text-2xl font-bold text-primary-dark">Roots & Wings</h1>
+                <span class="hidden md:block text-sm text-gray-500">Family Learning Hub</span>
+            </div>
+            
+            <!-- Center: View Switcher -->
+            <div class="hidden md:flex items-center space-x-2 bg-gray-100 rounded-lg p-1">
+                <button id="all-bookings-btn" class="view-switch-btn px-4 py-2 rounded-md bg-white text-gray-700 font-medium transition-all shadow-sm">
+                    <i class="fas fa-calendar-alt mr-2"></i>All Bookings
+                </button>
+                <button id="upcoming-btn" class="view-switch-btn px-4 py-2 rounded-md text-gray-600 hover:bg-white transition-all">
+                    <i class="fas fa-clock mr-2"></i>Upcoming
+                </button>
+                <button id="past-btn" class="view-switch-btn px-4 py-2 rounded-md text-gray-600 hover:bg-white transition-all">
+                    <i class="fas fa-history mr-2"></i>Past
+                </button>
+            </div>
+            
+            <!-- Right: Profile Dropdown -->
+            <div class="relative">
+                <button id="profile-dropdown-btn" class="flex items-center space-x-3 hover:bg-gray-50 rounded-lg px-3 py-2 transition-colors">
+                    <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+                        <span class="text-white font-semibold">SJ</span>
+                    </div>
+                    <div class="hidden md:block text-left">
+                        <div class="text-sm font-semibold text-gray-900">Sarah Johnson</div>
+                        <div class="text-xs text-gray-500">Parent & Learner</div>
+                    </div>
+                    <i class="fas fa-chevron-down text-gray-400 text-sm"></i>
+                </button>
+                
+                <!-- Dropdown Menu -->
+                <div id="profile-dropdown" class="hidden absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-200 py-2">
+                    <a href="#" class="flex items-center space-x-3 px-4 py-2 text-gray-700 hover:bg-gray-50">
+                        <i class="fas fa-home text-gray-400"></i>
+                        <span>Back to Dashboard</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-2 text-gray-700 hover:bg-gray-50">
+                        <i class="fas fa-user text-gray-400"></i>
+                        <span>Manage Profiles</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-2 text-gray-700 hover:bg-gray-50">
+                        <i class="fas fa-cog text-gray-400"></i>
+                        <span>Settings</span>
+                    </a>
+                    <hr class="my-2">
+                    <a href="#" class="flex items-center space-x-3 px-4 py-2 text-red-600 hover:bg-red-50">
+                        <i class="fas fa-sign-out-alt text-red-400"></i>
+                        <span>Log Out</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex">
+        <!-- Sidebar -->
+        <nav class="bg-white w-64 min-h-screen shadow-sm border-r border-gray-200 fixed md:static z-30 transition-transform duration-300 ease-in-out -translate-x-full md:translate-x-0" id="sidebar">
+            <div class="p-6">
+                <!-- Main Navigation -->
+                <div class="space-y-2 mb-8">
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1">
+                        <i class="fas fa-home text-lg"></i>
+                        <span class="font-medium">Dashboard</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1">
+                        <i class="fas fa-search text-lg"></i>
+                        <span>Explore Mentors</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1 bg-primary text-white">
+                        <i class="fas fa-calendar-alt text-lg"></i>
+                        <span class="font-medium">My Bookings</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1">
+                        <i class="fas fa-heart text-lg"></i>
+                        <span>Saved Mentors</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1">
+                        <i class="fas fa-users text-lg"></i>
+                        <span>Workshops</span>
+                    </a>
+                </div>
+
+                <!-- Young Learners Section -->
+                <div class="border-t border-gray-200 pt-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider">Young Learners</h3>
+                        <button id="add-learner-btn" class="text-purple-primary hover:text-purple-600 text-sm">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="space-y-2" id="young-learners-nav">
+                        <a href="#" class="young-learner-nav flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-purple-50 hover:translate-x-1">
+                            <div class="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
+                                <span class="text-purple-600 text-xs font-semibold">E</span>
+                            </div>
+                            <div class="flex-1">
+                                <div class="text-sm font-medium">Emma (12)</div>
+                                <div class="text-xs text-gray-500">4 active bookings</div>
+                            </div>
+                        </a>
+                        
+                        <a href="#" class="young-learner-nav flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-green-50 hover:translate-x-1">
+                            <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+                                <span class="text-green-600 text-xs font-semibold">J</span>
+                            </div>
+                            <div class="flex-1">
+                                <div class="text-sm font-medium">Jake (15)</div>
+                                <div class="text-xs text-gray-500">6 active bookings</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Filters -->
+                <div class="border-t border-gray-200 pt-6 mt-6">
+                    <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">Quick Filters</h3>
+                    <div class="space-y-2">
+                        <button class="filter-btn w-full flex items-center justify-between px-4 py-2 text-left text-gray-700 hover:bg-gray-50 rounded-lg transition-colors" data-filter="today">
+                            <span class="text-sm">Today's Sessions</span>
+                            <span class="bg-red-100 text-red-800 text-xs px-2 py-1 rounded-full">3</span>
+                        </button>
+                        <button class="filter-btn w-full flex items-center justify-between px-4 py-2 text-left text-gray-700 hover:bg-gray-50 rounded-lg transition-colors" data-filter="this-week">
+                            <span class="text-sm">This Week</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">12</span>
+                        </button>
+                        <button class="filter-btn w-full flex items-center justify-between px-4 py-2 text-left text-gray-700 hover:bg-gray-50 rounded-lg transition-colors" data-filter="pending">
+                            <span class="text-sm">Needs Action</span>
+                            <span class="bg-orange-100 text-orange-800 text-xs px-2 py-1 rounded-full">2</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Overlay for mobile sidebar -->
+        <div id="sidebar-overlay" class="hidden md:hidden fixed inset-0 bg-black bg-opacity-50 z-20"></div>
+
+        <!-- Main Content -->
+        <main class="flex-1 md:ml-0">
+            <!-- Page Header -->
+            <div class="bg-white border-b border-gray-200 px-6 py-8">
+                <div class="max-w-7xl mx-auto">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between">
+                        <div>
+                            <h1 class="text-3xl font-bold text-gray-900 mb-2">My Bookings</h1>
+                            <p class="text-gray-600">Manage all your family's learning sessions</p>
+                        </div>
+                        <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3 mt-4 md:mt-0">
+                            <button class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary-dark transition-colors">
+                                <i class="fas fa-plus mr-2"></i>Book New Session
+                            </button>
+                            <button class="border border-gray-300 text-gray-700 px-6 py-3 rounded-lg hover:bg-gray-50 transition-colors">
+                                <i class="fas fa-download mr-2"></i>Export Calendar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-6 py-8">
+                <!-- Family Booking Summary -->
+                <section class="mb-8">
+                    <h2 class="text-xl font-semibold text-gray-900 mb-6">Family Overview</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div class="bg-white rounded-xl p-6 text-center shadow-sm hover:shadow-lg transition-shadow">
+                            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-clock text-green-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-800">13</h3>
+                            <p class="text-gray-600 text-sm">Upcoming Sessions</p>
+                        </div>
+                        
+                        <div class="bg-white rounded-xl p-6 text-center shadow-sm hover:shadow-lg transition-shadow">
+                            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-calendar-check text-blue-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-800">47</h3>
+                            <p class="text-gray-600 text-sm">Completed Sessions</p>
+                        </div>
+                        
+                        <div class="bg-white rounded-xl p-6 text-center shadow-sm hover:shadow-lg transition-shadow">
+                            <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-user-graduate text-purple-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-800">8</h3>
+                            <p class="text-gray-600 text-sm">Active Mentors</p>
+                        </div>
+                        
+                        <div class="bg-white rounded-xl p-6 text-center shadow-sm hover:shadow-lg transition-shadow">
+                            <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-calendar-times text-orange-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-800">2</h3>
+                            <p class="text-gray-600 text-sm">Needs Reschedule</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Today's Sessions (Priority) -->
+                <section class="mb-8">
+                    <div class="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-6 border border-blue-100">
+                        <div class="flex items-center justify-between mb-6">
+                            <div>
+                                <h2 class="text-xl font-semibold text-gray-900">Today's Sessions</h2>
+                                <p class="text-gray-600">Tuesday, July 22, 2025</p>
+                            </div>
+                            <span class="bg-red-100 text-red-800 text-sm px-3 py-1 rounded-full font-medium">3 sessions</span>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <!-- Sarah's Session -->
+                            <div class="bg-white rounded-xl p-6 border border-gray-200 hover:border-primary transition-colors">
+                                <div class="flex items-start justify-between">
+                                    <div class="flex items-start space-x-4">
+                                        <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
+                                            <span class="text-white font-semibold">SJ</span>
+                                        </div>
+                                        <div class="flex-1">
+                                            <div class="flex items-center space-x-2 mb-1">
+                                                <h4 class="font-semibold text-gray-900">Classical Music Session</h4>
+                                                <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">You</span>
+                                            </div>
+                                            <p class="text-gray-600 text-sm mb-2">with Priya Sharma • 1-on-1 Session</p>
+                                            <div class="flex items-center space-x-4 text-sm text-gray-500">
+                                                <span><i class="fas fa-clock mr-1"></i>2:00 PM - 3:00 PM</span>
+                                                <span><i class="fas fa-video mr-1"></i>Online</span>
+                                                <span><i class="fas fa-circle text-green-500 mr-1"></i>Ready to join</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <button class="bg-primary text-white px-4 py-2 rounded-lg text-sm hover:bg-primary-dark transition-colors">
+                                            <i class="fas fa-video mr-2"></i>Join Now
+                                        </button>
+                                        <button class="text-gray-400 hover:text-gray-600 p-2">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Emma's Session -->
+                            <div class="bg-white rounded-xl p-6 border border-gray-200 hover:border-purple-primary transition-colors">
+                                <div class="flex items-start justify-between">
+                                    <div class="flex items-start space-x-4">
+                                        <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                            <span class="text-purple-600 font-semibold">E</span>
+                                        </div>
+                                        <div class="flex-1">
+                                            <div class="flex items-center space-x-2 mb-1">
+                                                <h4 class="font-semibold text-gray-900">Art Fundamentals</h4>
+                                                <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full">Emma</span>
+                                            </div>
+                                            <p class="text-gray-600 text-sm mb-2">with Marcus Chen • Weekend Group Batch</p>
+                                            <div class="flex items-center space-x-4 text-sm text-gray-500">
+                                                <span><i class="fas fa-clock mr-1"></i>4:00 PM - 5:00 PM</span>
+                                                <span><i class="fas fa-video mr-1"></i>Online</span>
+                                                <span><i class="fas fa-circle text-yellow-500 mr-1"></i>Starts in 2h</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <button class="bg-purple-primary text-white px-4 py-2 rounded-lg text-sm hover:bg-purple-600 transition-colors">
+                                            <i class="fas fa-eye mr-2"></i>Monitor
+                                        </button>
+                                        <button class="text-gray-400 hover:text-gray-600 p-2">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Jake's Session -->
+                            <div class="bg-white rounded-xl p-6 border border-gray-200 hover:border-green-primary transition-colors">
+                                <div class="flex items-start justify-between">
+                                    <div class="flex items-start space-x-4">
+                                        <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                            <span class="text-green-600 font-semibold">J</span>
+                                        </div>
+                                        <div class="flex-1">
+                                            <div class="flex items-center space-x-2 mb-1">
+                                                <h4 class="font-semibold text-gray-900">Python Basics</h4>
+                                                <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">Jake</span>
+                                            </div>
+                                            <p class="text-gray-600 text-sm mb-2">with Alex Kumar • Weekday Intensive</p>
+                                            <div class="flex items-center space-x-4 text-sm text-gray-500">
+                                                <span><i class="fas fa-clock mr-1"></i>6:00 PM - 7:00 PM</span>
+                                                <span><i class="fas fa-video mr-1"></i>Online</span>
+                                                <span><i class="fas fa-circle text-gray-400 mr-1"></i>Starts in 4h</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <button class="bg-green-primary text-white px-4 py-2 rounded-lg text-sm hover:bg-green-600 transition-colors">
+                                            <i class="fas fa-eye mr-2"></i>Monitor
+                                        </button>
+                                        <button class="text-gray-400 hover:text-gray-600 p-2">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- All Bookings with Tabs -->
+                <section>
+                    <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+                        <!-- Tab Navigation -->
+                        <div class="border-b border-gray-200">
+                            <nav class="flex">
+                                <button class="booking-tab flex-1 py-4 px-6 text-center font-medium text-primary border-b-2 border-primary bg-primary-light" data-tab="upcoming">
+                                    Upcoming Sessions (13)
+                                </button>
+                                <button class="booking-tab flex-1 py-4 px-6 text-center font-medium text-gray-500 border-b-2 border-transparent hover:text-gray-700" data-tab="completed">
+                                    Completed (47)
+                                </button>
+                                <button class="booking-tab flex-1 py-4 px-6 text-center font-medium text-gray-500 border-b-2 border-transparent hover:text-gray-700" data-tab="cancelled">
+                                    Cancelled (3)
+                                </button>
+                            </nav>
+                        </div>
+
+                        <!-- Tab Content -->
+                        <div class="p-6">
+                            <!-- Upcoming Sessions Tab -->
+                            <div id="upcoming-tab" class="tab-content">
+                                <div class="space-y-6">
+                                    <!-- This Week -->
+                                    <div>
+                                        <h3 class="text-lg font-semibold text-gray-900 mb-4">This Week</h3>
+                                        <div class="space-y-4">
+                                            <!-- Tomorrow -->
+                                            <div class="border border-gray-200 rounded-lg p-4 hover:border-primary transition-colors">
+                                                <div class="flex items-center justify-between mb-2">
+                                                    <span class="text-sm font-medium text-gray-500">Tomorrow, July 23</span>
+                                                    <span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded-full">Confirmation needed</span>
+                                                </div>
+                                                <div class="flex items-start space-x-4">
+                                                    <div class="w-10 h-10 bg-gray-300 rounded-full flex-shrink-0"></div>
+                                                    <div class="flex-1">
+                                                        <h4 class="font-medium text-gray-900">Jake's Advanced Algebra</h4>
+                                                        <p class="text-gray-600 text-sm">with Dr. Sarah Mills • 1-on-1 Session</p>
+                                                        <div class="flex items-center space-x-4 mt-1 text-sm text-gray-500">
+                                                            <span><i class="fas fa-clock mr-1"></i>3:00 PM - 4:00 PM</span>
+                                                            <span><i class="fas fa-video mr-1"></i>Online</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex items-center space-x-2">
+                                                        <button class="bg-green-500 text-white px-3 py-1 rounded text-sm">Confirm</button>
+                                                        <button class="text-gray-400 hover:text-gray-600">
+                                                            <i class="fas fa-ellipsis-v"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Thursday -->
+                                            <div class="border border-gray-200 rounded-lg p-4 hover:border-purple-primary transition-colors">
+                                                <div class="flex items-center justify-between mb-2">
+                                                    <span class="text-sm font-medium text-gray-500">Thursday, July 24</span>
+                                                    <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">Confirmed</span>
+                                                </div>
+                                                <div class="flex items-start space-x-4">
+                                                    <div class="w-10 h-10 bg-gray-300 rounded-full flex-shrink-0"></div>
+                                                    <div class="flex-1">
+                                                        <h4 class="font-medium text-gray-900">Emma's Piano Practice</h4>
+                                                        <p class="text-gray-600 text-sm">with Priya Sharma • 1-on-1 Session</p>
+                                                        <div class="flex items-center space-x-4 mt-1 text-sm text-gray-500">
+                                                            <span><i class="fas fa-clock mr-1"></i>5:00 PM - 6:00 PM</span>
+                                                            <span><i class="fas fa-video mr-1"></i>Online</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex items-center space-x-2">
+                                                        <button class="text-blue-600 text-sm hover:underline">Reschedule</button>
+                                                        <button class="text-gray-400 hover:text-gray-600">
+                                                            <i class="fas fa-ellipsis-v"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Next Week -->
+                                    <div>
+                                        <h3 class="text-lg font-semibold text-gray-900 mb-4">Next Week</h3>
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                            <div class="border border-gray-200 rounded-lg p-4">
+                                                <div class="text-sm font-medium text-gray-500 mb-2">Mon, July 28 - Fri, Aug 1</div>
+                                                <h4 class="font-medium text-gray-900">Jake's Python Intensive</h4>
+                                                <p class="text-gray-600 text-sm">with Alex Kumar • Weekday Batch</p>
+                                                <div class="flex items-center justify-between mt-3">
+                                                    <span class="text-sm text-gray-500">Mon-Fri, 6:00-7:00 PM</span>
+                                                    <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">Confirmed</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="border border-gray-200 rounded-lg p-4">
+                                                <div class="text-sm font-medium text-gray-500 mb-2">Sat, July 26 & Sun, July 27</div>
+                                                <h4 class="font-medium text-gray-900">Emma's Art Workshop</h4>
+                                                <p class="text-gray-600 text-sm">with Marcus Chen • Weekend Batch</p>
+                                                <div class="flex items-center justify-between mt-3">
+                                                    <span class="text-sm text-gray-500">Sat-Sun, 4:00-5:00 PM</span>
+                                                    <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">Confirmed</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Completed Sessions Tab -->
+                            <div id="completed-tab" class="tab-content hidden">
+                                <div class="space-y-4">
+                                    <div class="flex items-center justify-between mb-4">
+                                        <p class="text-gray-600">47 completed sessions across all family members</p>
+                                        <button class="text-primary hover:text-primary-dark text-sm">Download Report</button>
+                                    </div>
+                                    
+                                    <div class="border border-gray-200 rounded-lg p-4">
+                                        <div class="flex items-start space-x-4">
+                                            <div class="w-10 h-10 bg-gray-300 rounded-full flex-shrink-0"></div>
+                                            <div class="flex-1">
+                                                <h4 class="font-medium text-gray-900">Classical Music Session</h4>
+                                                <p class="text-gray-600 text-sm">with Priya Sharma • You</p>
+                                                <div class="flex items-center space-x-4 mt-1 text-sm text-gray-500">
+                                                    <span><i class="fas fa-calendar mr-1"></i>July 21, 2:00-3:00 PM</span>
+                                                    <span><i class="fas fa-star text-yellow-500 mr-1"></i>5.0 rating</span>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-center space-x-2">
+                                                <button class="text-blue-600 text-sm hover:underline">Book Again</button>
+                                                <button class="text-gray-400 hover:text-gray-600">
+                                                    <i class="fas fa-ellipsis-v"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="text-center py-8">
+                                        <button class="text-primary hover:text-primary-dark">Load More Sessions</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Cancelled Sessions Tab -->
+                            <div id="cancelled-tab" class="tab-content hidden">
+                                <div class="space-y-4">
+                                    <p class="text-gray-600 mb-4">3 cancelled sessions</p>
+                                    
+                                    <div class="border border-red-200 rounded-lg p-4 bg-red-50">
+                                        <div class="flex items-start space-x-4">
+                                            <div class="w-10 h-10 bg-gray-300 rounded-full flex-shrink-0"></div>
+                                            <div class="flex-1">
+                                                <h4 class="font-medium text-gray-900">Emma's Art Session</h4>
+                                                <p class="text-gray-600 text-sm">with Marcus Chen • Cancelled by mentor</p>
+                                                <div class="flex items-center space-x-4 mt-1 text-sm text-gray-500">
+                                                    <span><i class="fas fa-calendar mr-1"></i>July 19, 4:00-5:00 PM</span>
+                                                    <span class="text-red-600">Refund processed</span>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-center space-x-2">
+                                                <button class="text-blue-600 text-sm hover:underline">Rebook</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Mobile sidebar toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebar-overlay');
+
+        mobileMenuBtn.addEventListener('click', function() {
+            sidebar.classList.toggle('-translate-x-full');
+            sidebarOverlay.classList.toggle('hidden');
+        });
+
+        sidebarOverlay.addEventListener('click', function() {
+            sidebar.classList.add('-translate-x-full');
+            sidebarOverlay.classList.add('hidden');
+        });
+
+        // Profile dropdown
+        const profileDropdownBtn = document.getElementById('profile-dropdown-btn');
+        const profileDropdown = document.getElementById('profile-dropdown');
+
+        profileDropdownBtn.addEventListener('click', function() {
+            profileDropdown.classList.toggle('hidden');
+        });
+
+        // View switcher
+        const viewSwitchBtns = document.querySelectorAll('.view-switch-btn');
+        viewSwitchBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                viewSwitchBtns.forEach(b => {
+                    b.classList.remove('bg-white', 'text-gray-700', 'shadow-sm');
+                    b.classList.add('text-gray-600');
+                });
+                this.classList.add('bg-white', 'text-gray-700', 'shadow-sm');
+                this.classList.remove('text-gray-600');
+            });
+        });
+
+        // Booking tabs
+        const bookingTabs = document.querySelectorAll('.booking-tab');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        bookingTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                const targetTab = this.getAttribute('data-tab');
+                
+                // Remove active classes from all tabs
+                bookingTabs.forEach(t => {
+                    t.classList.remove('text-primary', 'border-primary', 'bg-primary-light');
+                    t.classList.add('text-gray-500', 'border-transparent');
+                });
+                
+                // Add active classes to clicked tab
+                this.classList.add('text-primary', 'border-primary', 'bg-primary-light');
+                this.classList.remove('text-gray-500', 'border-transparent');
+                
+                // Hide all tab contents
+                tabContents.forEach(content => {
+                    content.classList.add('hidden');
+                });
+                
+                // Show target tab content
+                document.getElementById(targetTab + '-tab').classList.remove('hidden');
+            });
+        });
+
+        // Quick filters
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const filter = this.getAttribute('data-filter');
+                // Filter logic would go here
+                console.log('Filtering by:', filter);
+            });
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!profileDropdownBtn.contains(e.target) && !profileDropdown.contains(e.target)) {
+                profileDropdown.classList.add('hidden');
+            }
+        });
+
+        // Auto-hide mobile sidebar on window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth >= 768) {
+                sidebar.classList.remove('-translate-x-full');
+                sidebarOverlay.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>

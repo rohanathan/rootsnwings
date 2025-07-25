@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family Learning Hub - Roots & Wings</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#00A2E8',
+                        'primary-dark': '#00468C',
+                        'primary-light': '#f8fbff',
+                        'accent-light': '#e8f4ff',
+                        'purple-primary': '#8B5CF6',
+                        'green-primary': '#10B981'
+                    },
+                    fontFamily: {
+                        sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="font-sans text-gray-800 bg-primary-light min-h-screen">
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-40">
+        <div class="flex items-center justify-between px-6 py-4">
+            <!-- Left: Logo & Mobile Menu -->
+            <div class="flex items-center space-x-4">
+                <button id="mobile-menu-btn" class="md:hidden text-gray-600 hover:text-primary">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+                <h1 class="text-2xl font-bold text-primary-dark">Roots & Wings</h1>
+                <span class="hidden md:block text-sm text-gray-500">Family Learning Hub</span>
+            </div>
+            
+            <!-- Center: Profile Switcher -->
+            <div class="hidden md:flex items-center space-x-2 bg-gray-100 rounded-lg p-1">
+                <button id="adult-profile-btn" class="profile-switch-btn px-4 py-2 rounded-md bg-white text-gray-700 font-medium transition-all shadow-sm">
+                    <i class="fas fa-user mr-2"></i>My Profile
+                </button>
+                <button id="family-profile-btn" class="profile-switch-btn px-4 py-2 rounded-md text-gray-600 hover:bg-white transition-all">
+                    <i class="fas fa-users mr-2"></i>Family View
+                </button>
+            </div>
+            
+            <!-- Right: Profile Dropdown -->
+            <div class="relative">
+                <button id="profile-dropdown-btn" class="flex items-center space-x-3 hover:bg-gray-50 rounded-lg px-3 py-2 transition-colors">
+                    <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+                        <span class="text-white font-semibold">SJ</span>
+                    </div>
+                    <div class="hidden md:block text-left">
+                        <div class="text-sm font-semibold text-gray-900">Sarah Johnson</div>
+                        <div class="text-xs text-gray-500">Parent & Learner</div>
+                    </div>
+                    <i class="fas fa-chevron-down text-gray-400 text-sm"></i>
+                </button>
+                
+                <!-- Dropdown Menu -->
+                <div id="profile-dropdown" class="hidden absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-200 py-2">
+                    <a href="#" class="flex items-center space-x-3 px-4 py-2 text-gray-700 hover:bg-gray-50">
+                        <i class="fas fa-user text-gray-400"></i>
+                        <span>Manage Profiles</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-2 text-gray-700 hover:bg-gray-50">
+                        <i class="fas fa-plus text-gray-400"></i>
+                        <span>Add Young Learner</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-2 text-gray-700 hover:bg-gray-50">
+                        <i class="fas fa-cog text-gray-400"></i>
+                        <span>Settings</span>
+                    </a>
+                    <hr class="my-2">
+                    <a href="#" class="flex items-center space-x-3 px-4 py-2 text-red-600 hover:bg-red-50">
+                        <i class="fas fa-sign-out-alt text-red-400"></i>
+                        <span>Log Out</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex">
+        <!-- Sidebar -->
+        <nav class="bg-white w-64 min-h-screen shadow-sm border-r border-gray-200 fixed md:static z-30 transition-transform duration-300 ease-in-out -translate-x-full md:translate-x-0" id="sidebar">
+            <div class="p-6">
+                <!-- Main Navigation -->
+                <div class="space-y-2 mb-8">
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1 bg-primary text-white">
+                        <i class="fas fa-home text-lg"></i>
+                        <span class="font-medium">Dashboard</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1">
+                        <i class="fas fa-search text-lg"></i>
+                        <span>Explore Mentors</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1">
+                        <i class="fas fa-calendar-alt text-lg"></i>
+                        <span>My Bookings</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1">
+                        <i class="fas fa-heart text-lg"></i>
+                        <span>Saved Mentors</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1">
+                        <i class="fas fa-users text-lg"></i>
+                        <span>Workshops</span>
+                    </a>
+                </div>
+
+                <!-- Young Learners Section -->
+                <div class="border-t border-gray-200 pt-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider">Young Learners</h3>
+                        <button id="add-learner-btn" class="text-purple-primary hover:text-purple-600 text-sm">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="space-y-2" id="young-learners-nav">
+                        <a href="#" class="young-learner-nav flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-purple-50 hover:translate-x-1">
+                            <div class="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
+                                <span class="text-purple-600 text-xs font-semibold">E</span>
+                            </div>
+                            <div class="flex-1">
+                                <div class="text-sm font-medium">Emma (12)</div>
+                                <div class="text-xs text-gray-500">Music, Art</div>
+                            </div>
+                        </a>
+                        
+                        <a href="#" class="young-learner-nav flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-green-50 hover:translate-x-1">
+                            <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+                                <span class="text-green-600 text-xs font-semibold">J</span>
+                            </div>
+                            <div class="flex-1">
+                                <div class="text-sm font-medium">Jake (15)</div>
+                                <div class="text-xs text-gray-500">Coding, Maths</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Family Management -->
+                <div class="border-t border-gray-200 pt-6 mt-6">
+                    <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">Family Management</h3>
+                    <div class="space-y-2">
+                        <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1">
+                            <i class="fas fa-chart-line text-lg"></i>
+                            <span>Progress Reports</span>
+                        </a>
+                        <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1">
+                            <i class="fas fa-credit-card text-lg"></i>
+                            <span>Billing & Payments</span>
+                        </a>
+                        <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1">
+                            <i class="fas fa-bell text-lg"></i>
+                            <span>Notifications</span>
+                        </a>
+                        <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1">
+                            <i class="fas fa-comments text-lg"></i>
+                            <span>Messages</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Overlay for mobile sidebar -->
+        <div id="sidebar-overlay" class="hidden md:hidden fixed inset-0 bg-black bg-opacity-50 z-20"></div>
+
+        <!-- Main Content -->
+        <main class="flex-1 md:ml-0">
+            <!-- Welcome Section -->
+            <div class="bg-white border-b border-gray-200 px-6 py-8">
+                <div class="max-w-7xl mx-auto">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between">
+                        <div>
+                            <h1 class="text-3xl font-bold text-gray-900 mb-2">Welcome back, Sarah! 👋</h1>
+                            <p class="text-gray-600">Your family learning journey continues today</p>
+                        </div>
+                        <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3 mt-4 md:mt-0">
+                            <button class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary-dark transition-colors">
+                                <i class="fas fa-video mr-2"></i>Join Today's Session
+                            </button>
+                            <button class="border border-gray-300 text-gray-700 px-6 py-3 rounded-lg hover:bg-gray-50 transition-colors">
+                                <i class="fas fa-search mr-2"></i>Find New Mentors
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-6 py-8">
+                <!-- Family Overview Stats -->
+                <section class="mb-8">
+                    <h2 class="text-xl font-semibold text-gray-900 mb-6">Family Learning Overview</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div class="bg-white rounded-xl p-6 text-center shadow-sm hover:shadow-lg transition-shadow">
+                            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-users text-blue-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-800">3</h3>
+                            <p class="text-gray-600 text-sm">Active Learners</p>
+                        </div>
+                        
+                        <div class="bg-white rounded-xl p-6 text-center shadow-sm hover:shadow-lg transition-shadow">
+                            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-book text-green-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-800">24</h3>
+                            <p class="text-gray-600 text-sm">Total Sessions</p>
+                        </div>
+                        
+                        <div class="bg-white rounded-xl p-6 text-center shadow-sm hover:shadow-lg transition-shadow">
+                            <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-user-graduate text-purple-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-800">5</h3>
+                            <p class="text-gray-600 text-sm">Mentors</p>
+                        </div>
+                        
+                        <div class="bg-white rounded-xl p-6 text-center shadow-sm hover:shadow-lg transition-shadow">
+                            <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-star text-orange-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-800">4.9</h3>
+                            <p class="text-gray-600 text-sm">Avg Rating</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Upcoming Sessions & Quick Actions -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+                    <!-- Upcoming Sessions -->
+                    <div class="lg:col-span-2">
+                        <div class="bg-white rounded-xl shadow-sm p-6">
+                            <div class="flex items-center justify-between mb-6">
+                                <h3 class="text-lg font-semibold text-gray-900">Today's Sessions</h3>
+                                <a href="#" class="text-primary hover:text-primary-dark text-sm font-medium">View All</a>
+                            </div>
+                            
+                            <div class="space-y-4">
+                                <!-- Adult Session -->
+                                <div class="border border-gray-200 rounded-lg p-4 hover:border-primary transition-colors">
+                                    <div class="flex items-start space-x-4">
+                                        <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
+                                            <span class="text-white font-semibold">SJ</span>
+                                        </div>
+                                        <div class="flex-1">
+                                            <div class="flex items-center justify-between">
+                                                <h4 class="font-medium text-gray-900">Your Session - Classical Music</h4>
+                                                <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">You</span>
+                                            </div>
+                                            <p class="text-gray-600 text-sm">with Priya Sharma</p>
+                                            <div class="flex items-center space-x-4 mt-2 text-sm text-gray-500">
+                                                <span><i class="fas fa-clock mr-1"></i>2:00 PM - 3:00 PM</span>
+                                                <span><i class="fas fa-video mr-1"></i>Online</span>
+                                            </div>
+                                        </div>
+                                        <button class="bg-primary text-white px-4 py-2 rounded-lg text-sm hover:bg-primary-dark transition-colors">
+                                            Join
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Emma's Session -->
+                                <div class="border border-gray-200 rounded-lg p-4 hover:border-purple-primary transition-colors">
+                                    <div class="flex items-start space-x-4">
+                                        <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                            <span class="text-purple-600 font-semibold">E</span>
+                                        </div>
+                                        <div class="flex-1">
+                                            <div class="flex items-center justify-between">
+                                                <h4 class="font-medium text-gray-900">Emma's Session - Art Fundamentals</h4>
+                                                <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full">Emma</span>
+                                            </div>
+                                            <p class="text-gray-600 text-sm">with Marcus Chen</p>
+                                            <div class="flex items-center space-x-4 mt-2 text-sm text-gray-500">
+                                                <span><i class="fas fa-clock mr-1"></i>4:00 PM - 5:00 PM</span>
+                                                <span><i class="fas fa-video mr-1"></i>Online</span>
+                                            </div>
+                                        </div>
+                                        <button class="bg-purple-primary text-white px-4 py-2 rounded-lg text-sm hover:bg-purple-600 transition-colors">
+                                            Monitor
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Jake's Session -->
+                                <div class="border border-gray-200 rounded-lg p-4 hover:border-green-primary transition-colors">
+                                    <div class="flex items-start space-x-4">
+                                        <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                            <span class="text-green-600 font-semibold">J</span>
+                                        </div>
+                                        <div class="flex-1">
+                                            <div class="flex items-center justify-between">
+                                                <h4 class="font-medium text-gray-900">Jake's Session - Python Basics</h4>
+                                                <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">Jake</span>
+                                            </div>
+                                            <p class="text-gray-600 text-sm">with Alex Kumar</p>
+                                            <div class="flex items-center space-x-4 mt-2 text-sm text-gray-500">
+                                                <span><i class="fas fa-clock mr-1"></i>6:00 PM - 7:00 PM</span>
+                                                <span><i class="fas fa-video mr-1"></i>Online</span>
+                                            </div>
+                                        </div>
+                                        <button class="bg-green-primary text-white px-4 py-2 rounded-lg text-sm hover:bg-green-600 transition-colors">
+                                            Monitor
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div>
+                        <div class="bg-white rounded-xl shadow-sm p-6">
+                            <h3 class="text-lg font-semibold text-gray-900 mb-6">Quick Actions</h3>
+                            <div class="space-y-4">
+                                <button class="w-full flex items-center space-x-3 p-4 border border-gray-200 rounded-lg hover:border-primary hover:bg-primary-light transition-colors">
+                                    <i class="fas fa-plus text-primary"></i>
+                                    <span class="font-medium">Add Young Learner</span>
+                                </button>
+                                
+                                <button class="w-full flex items-center space-x-3 p-4 border border-gray-200 rounded-lg hover:border-primary hover:bg-primary-light transition-colors">
+                                    <i class="fas fa-search text-primary"></i>
+                                    <span class="font-medium">Find New Mentors</span>
+                                </button>
+                                
+                                <button class="w-full flex items-center space-x-3 p-4 border border-gray-200 rounded-lg hover:border-primary hover:bg-primary-light transition-colors">
+                                    <i class="fas fa-calendar-plus text-primary"></i>
+                                    <span class="font-medium">Schedule Session</span>
+                                </button>
+                                
+                                <button class="w-full flex items-center space-x-3 p-4 border border-gray-200 rounded-lg hover:border-primary hover:bg-primary-light transition-colors">
+                                    <i class="fas fa-chart-line text-primary"></i>
+                                    <span class="font-medium">View Progress</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Young Learners Progress -->
+                <section class="mb-8">
+                    <div class="flex items-center justify-between mb-6">
+                        <h2 class="text-xl font-semibold text-gray-900">Young Learners Progress</h2>
+                        <button class="text-primary hover:text-primary-dark text-sm font-medium">View Detailed Reports</button>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Emma's Progress -->
+                        <div class="bg-white rounded-xl shadow-sm p-6 border-l-4 border-purple-primary">
+                            <div class="flex items-center space-x-4 mb-4">
+                                <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
+                                    <span class="text-purple-600 font-semibold">E</span>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-gray-900">Emma Johnson</h3>
+                                    <p class="text-gray-600 text-sm">Age 12 • Music & Art</p>
+                                </div>
+                            </div>
+                            
+                            <div class="space-y-3">
+                                <div>
+                                    <div class="flex justify-between text-sm mb-1">
+                                        <span>Piano Progress</span>
+                                        <span class="text-purple-600">75%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div class="bg-purple-primary h-2 rounded-full" style="width: 75%"></div>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <div class="flex justify-between text-sm mb-1">
+                                        <span>Watercolor Painting</span>
+                                        <span class="text-purple-600">60%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div class="bg-purple-primary h-2 rounded-full" style="width: 60%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center justify-between mt-4 pt-4 border-t border-gray-200">
+                                <span class="text-sm text-gray-600">Next session: Today 4:00 PM</span>
+                                <button class="text-purple-primary hover:text-purple-600 text-sm font-medium">View Details</button>
+                            </div>
+                        </div>
+
+                        <!-- Jake's Progress -->
+                        <div class="bg-white rounded-xl shadow-sm p-6 border-l-4 border-green-primary">
+                            <div class="flex items-center space-x-4 mb-4">
+                                <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                                    <span class="text-green-600 font-semibold">J</span>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-gray-900">Jake Johnson</h3>
+                                    <p class="text-gray-600 text-sm">Age 15 • Coding & Maths</p>
+                                </div>
+                            </div>
+                            
+                            <div class="space-y-3">
+                                <div>
+                                    <div class="flex justify-between text-sm mb-1">
+                                        <span>Python Programming</span>
+                                        <span class="text-green-600">85%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div class="bg-green-primary h-2 rounded-full" style="width: 85%"></div>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <div class="flex justify-between text-sm mb-1">
+                                        <span>Advanced Algebra</span>
+                                        <span class="text-green-600">70%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div class="bg-green-primary h-2 rounded-full" style="width: 70%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center justify-between mt-4 pt-4 border-t border-gray-200">
+                                <span class="text-sm text-gray-600">Next session: Today 6:00 PM</span>
+                                <button class="text-green-primary hover:text-green-600 text-sm font-medium">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Recent Activity & Notifications -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Recent Activity -->
+                    <div class="bg-white rounded-xl shadow-sm p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-6">Recent Activity</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start space-x-3">
+                                <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-check text-green-600 text-xs"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="text-sm text-gray-900">Jake completed Python Basics - Module 3</p>
+                                    <p class="text-xs text-gray-500">2 hours ago</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-3">
+                                <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-star text-blue-600 text-xs"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="text-sm text-gray-900">Emma received 5-star feedback from Marcus</p>
+                                    <p class="text-xs text-gray-500">Yesterday</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-3">
+                                <div class="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-calendar text-purple-600 text-xs"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="text-sm text-gray-900">You booked a session with Priya Sharma</p>
+                                    <p class="text-xs text-gray-500">2 days ago</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Messages & Notifications -->
+                    <div class="bg-white rounded-xl shadow-sm p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-6">Messages & Updates</h3>
+                        <div class="space-y-4">
+                            <div class="border border-gray-200 rounded-lg p-4">
+                                <div class="flex items-center space-x-3 mb-2">
+                                    <div class="w-8 h-8 bg-gray-300 rounded-full"></div>
+                                    <div>
+                                        <p class="font-medium text-sm">Priya Sharma</p>
+                                        <p class="text-xs text-gray-500">Classical Music Mentor</p>
+                                    </div>
+                                </div>
+                                <p class="text-sm text-gray-700">"Great progress in today's lesson! Looking forward to our next session."</p>
+                                <p class="text-xs text-gray-500 mt-2">1 hour ago</p>
+                            </div>
+                            
+                            <div class="border border-gray-200 rounded-lg p-4">
+                                <div class="flex items-center space-x-3 mb-2">
+                                    <div class="w-8 h-8 bg-gray-300 rounded-full"></div>
+                                    <div>
+                                        <p class="font-medium text-sm">Alex Kumar</p>
+                                        <p class="text-xs text-gray-500">Programming Mentor</p>
+                                    </div>
+                                </div>
+                                <p class="text-sm text-gray-700">"Jake is doing excellent work with Python. Suggested some extra practice exercises."</p>
+                                <p class="text-xs text-gray-500 mt-2">3 hours ago</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Mobile sidebar toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebar-overlay');
+
+        mobileMenuBtn.addEventListener('click', function() {
+            sidebar.classList.toggle('-translate-x-full');
+            sidebarOverlay.classList.toggle('hidden');
+        });
+
+        sidebarOverlay.addEventListener('click', function() {
+            sidebar.classList.add('-translate-x-full');
+            sidebarOverlay.classList.add('hidden');
+        });
+
+        // Profile dropdown
+        const profileDropdownBtn = document.getElementById('profile-dropdown-btn');
+        const profileDropdown = document.getElementById('profile-dropdown');
+
+        profileDropdownBtn.addEventListener('click', function() {
+            profileDropdown.classList.toggle('hidden');
+        });
+
+        // Profile switcher
+        const adultProfileBtn = document.getElementById('adult-profile-btn');
+        const familyProfileBtn = document.getElementById('family-profile-btn');
+
+        adultProfileBtn.addEventListener('click', function() {
+            adultProfileBtn.classList.add('bg-white', 'text-gray-700', 'shadow-sm');
+            adultProfileBtn.classList.remove('text-gray-600');
+            familyProfileBtn.classList.remove('bg-white', 'text-gray-700', 'shadow-sm');
+            familyProfileBtn.classList.add('text-gray-600');
+        });
+
+        familyProfileBtn.addEventListener('click', function() {
+            familyProfileBtn.classList.add('bg-white', 'text-gray-700', 'shadow-sm');
+            familyProfileBtn.classList.remove('text-gray-600');
+            adultProfileBtn.classList.remove('bg-white', 'text-gray-700', 'shadow-sm');
+            adultProfileBtn.classList.add('text-gray-600');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!profileDropdownBtn.contains(e.target) && !profileDropdown.contains(e.target)) {
+                profileDropdown.classList.add('hidden');
+            }
+        });
+
+        // Young learner navigation
+        document.querySelectorAll('.young-learner-nav').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                // Here you would navigate to the specific young learner's dashboard
+                console.log('Navigate to young learner dashboard');
+            });
+        });
+
+        // Auto-hide mobile sidebar on window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth >= 768) {
+                sidebar.classList.remove('-translate-x-full');
+                sidebarOverlay.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>

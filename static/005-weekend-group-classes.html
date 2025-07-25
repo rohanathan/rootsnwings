@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weekend Group Classes with Priya Sharma | Roots & Wings</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#00A2E8',
+                        'primary-dark': '#00468C',
+                        'primary-light': '#f8fbff',
+                        'accent-light': '#e8f4ff'
+                    },
+                    fontFamily: {
+                        sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans text-gray-800 bg-gray-50">
+
+    <!-- Navigation Component -->
+    <nav class="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-sm shadow-lg">
+        <div class="max-w-7xl mx-auto px-5">
+            <div class="flex justify-between items-center py-4">
+                <a href="#" class="text-2xl font-bold text-primary-dark">Roots & Wings</a>
+                <div class="flex items-center space-x-6">
+                    <a href="#" class="text-gray-600 hover:text-primary transition-colors">← Back to Profile</a>
+                    <a href="#" class="bg-primary hover:bg-blue-500 text-white px-4 py-2 rounded-full font-medium transition-colors">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mini Mentor Info Card Component -->
+    <div class="fixed top-16 w-full z-40 bg-white border-b border-gray-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-5 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-4">
+                    <div class="w-14 h-14 bg-gradient-to-r from-primary to-primary-dark rounded-full flex items-center justify-center text-white text-lg font-bold">
+                        P
+                    </div>
+                    <div>
+                        <h2 class="text-lg font-bold text-primary-dark">Priya Sharma</h2>
+                        <p class="text-sm text-gray-600">Kathak Dance & Cultural Arts</p>
+                        <div class="flex items-center gap-2">
+                            <div class="flex text-yellow-400 text-xs">★★★★★</div>
+                            <span class="text-xs text-gray-600">4.9 (32 reviews)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center gap-3">
+                    <span class="text-sm text-gray-600">🏠 Birmingham & Online</span>
+                    <button class="text-primary hover:text-primary-dark font-medium transition-colors text-sm">
+                        💬 Message
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="pt-32 pb-16">
+        <div class="max-w-7xl mx-auto px-5">
+            
+            <!-- Page Header Component -->
+            <div class="text-center mb-12">
+                <h1 class="text-4xl font-bold text-primary-dark mb-4">Weekend Group Classes</h1>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                    Learn with a group every weekend. Affordable, structured learning with fellow enthusiasts. 
+                    Build friendships while mastering traditional dance forms.
+                </p>
+                <div class="flex flex-wrap justify-center gap-6 mt-8 text-sm text-gray-600">
+                    <div class="flex items-center">
+                        <span class="text-2xl mr-2">👥</span>
+                        <span>Small Groups (4-8 students)</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-2xl mr-2">📅</span>
+                        <span>Every Saturday & Sunday</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-2xl mr-2">💰</span>
+                        <span>Save up to 40% vs individual sessions</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filter Bar Component -->
+            <div class="bg-white rounded-2xl p-6 shadow-lg mb-8">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">Level</label>
+                        <select class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-primary focus:outline-none bg-white" id="level-filter">
+                            <option value="">All Levels</option>
+                            <option value="beginner">Beginner</option>
+                            <option value="intermediate">Intermediate</option>
+                            <option value="advanced">Advanced</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">Age Group</label>
+                        <select class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-primary focus:outline-none bg-white" id="age-filter">
+                            <option value="">All Ages</option>
+                            <option value="child">Children (5-12)</option>
+                            <option value="teen">Teenagers (13-17)</option>
+                            <option value="adult">Adults (18+)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">Time</label>
+                        <select class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-primary focus:outline-none bg-white" id="time-filter">
+                            <option value="">All Times</option>
+                            <option value="morning">Morning (9-12 PM)</option>
+                            <option value="afternoon">Afternoon (12-5 PM)</option>
+                            <option value="evening">Evening (5-8 PM)</option>
+                        </select>
+                    </div>
+                    <div class="flex items-end">
+                        <button class="w-full bg-primary hover:bg-blue-500 text-white py-3 rounded-lg font-semibold transition-colors">
+                            Apply Filters
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Batch Cards Grid Component -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12" id="batches-grid">
+                
+                <!-- Batch Card 1: 4-Week Beginner Child -->
+                <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 batch-card" 
+                     data-level="beginner" data-age="child" data-time="morning">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-primary-dark mb-2">4-Week Beginner Batch</h3>
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="px-3 py-1 bg-green-100 text-green-700 text-sm font-medium rounded-full">
+                                    👶 Children (5-12)
+                                </span>
+                                <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm font-medium rounded-full">
+                                    ⭐ Beginner
+                                </span>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-2xl font-bold text-primary-dark">£120</div>
+                            <div class="text-sm text-gray-500">8 sessions</div>
+                        </div>
+                    </div>
+
+                    <!-- Date & Time Info -->
+                    <div class="space-y-3 mb-6">
+                        <div class="flex items-center text-gray-700">
+                            <span class="text-xl mr-3">📅</span>
+                            <div>
+                                <div class="font-semibold">Sat 10 Aug - Sun 1 Sep</div>
+                                <div class="text-sm text-gray-500">4 weekends</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center text-gray-700">
+                            <span class="text-xl mr-3">⏰</span>
+                            <div>
+                                <div class="font-semibold">Sat & Sun | 10:00 AM - 11:00 AM</div>
+                                <div class="text-sm text-gray-500">1 hour each session</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center text-gray-700">
+                            <span class="text-xl mr-3">💻</span>
+                            <div>
+                                <div class="font-semibold">Online via Zoom</div>
+                                <div class="text-sm text-gray-500">Interactive & engaging</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Capacity & CTA -->
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="flex items-center">
+                            <span class="text-lg mr-2">👥</span>
+                            <span class="text-sm text-gray-600">3 seats left</span>
+                        </div>
+                        <div class="w-3 h-3 bg-orange-400 rounded-full animate-pulse" title="Filling up fast"></div>
+                    </div>
+
+                    <button class="w-full bg-primary hover:bg-blue-500 text-white py-3 rounded-full font-semibold transition-colors">
+                        Reserve Your Spot
+                    </button>
+                </div>
+
+                <!-- Batch Card 2: 8-Week Intermediate Teen -->
+                <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 batch-card relative" 
+                     data-level="intermediate" data-age="teen" data-time="afternoon">
+                    <!-- Popular Badge -->
+                    <div class="absolute -top-3 left-6 bg-gradient-to-r from-orange-400 to-pink-400 text-white px-4 py-1 rounded-full text-sm font-bold">
+                        🔥 Most Popular
+                    </div>
+                    
+                    <div class="flex items-start justify-between mb-4 mt-2">
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-primary-dark mb-2">8-Week Intermediate Batch</h3>
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="px-3 py-1 bg-purple-100 text-purple-700 text-sm font-medium rounded-full">
+                                    👦 Teens (13-17)
+                                </span>
+                                <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm font-medium rounded-full">
+                                    ⚡ Intermediate
+                                </span>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-2xl font-bold text-primary-dark">£200</div>
+                            <div class="text-sm text-gray-500">16 sessions</div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3 mb-6">
+                        <div class="flex items-center text-gray-700">
+                            <span class="text-xl mr-3">📅</span>
+                            <div>
+                                <div class="font-semibold">Sat 17 Aug - Sun 15 Sep</div>
+                                <div class="text-sm text-gray-500">8 weekends</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center text-gray-700">
+                            <span class="text-xl mr-3">⏰</span>
+                            <div>
+                                <div class="font-semibold">Sat & Sun | 2:00 PM - 3:00 PM</div>
+                                <div class="text-sm text-gray-500">Perfect for school schedules</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center text-gray-700">
+                            <span class="text-xl mr-3">🏠</span>
+                            <div>
+                                <div class="font-semibold">In-Person (Birmingham)</div>
+                                <div class="text-sm text-gray-500">Community centre venue</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="flex items-center">
+                            <span class="text-lg mr-2">👥</span>
+                            <span class="text-sm text-gray-600">2 seats left</span>
+                        </div>
+                        <div class="w-3 h-3 bg-red-400 rounded-full animate-pulse" title="Almost full"></div>
+                    </div>
+
+                    <button class="w-full bg-primary hover:bg-blue-500 text-white py-3 rounded-full font-semibold transition-colors">
+                        Reserve Your Spot
+                    </button>
+                </div>
+
+                <!-- Batch Card 3: 12-Week Advanced Adult -->
+                <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 batch-card" 
+                     data-level="advanced" data-age="adult" data-time="evening">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-primary-dark mb-2">12-Week Advanced Mastery</h3>
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="px-3 py-1 bg-indigo-100 text-indigo-700 text-sm font-medium rounded-full">
+                                    👩‍🦳 Adults (18+)
+                                </span>
+                                <span class="px-3 py-1 bg-red-100 text-red-700 text-sm font-medium rounded-full">
+                                    🏆 Advanced
+                                </span>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-2xl font-bold text-primary-dark">£320</div>
+                            <div class="text-sm text-gray-500">24 sessions</div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3 mb-6">
+                        <div class="flex items-center text-gray-700">
+                            <span class="text-xl mr-3">📅</span>
+                            <div>
+                                <div class="font-semibold">Sat 24 Aug - Sun 17 Nov</div>
+                                <div class="text-sm text-gray-500">12 weekends</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center text-gray-700">
+                            <span class="text-xl mr-3">⏰</span>
+                            <div>
+                                <div class="font-semibold">Sat & Sun | 6:00 PM - 7:00 PM</div>
+                                <div class="text-sm text-gray-500">Evening sessions</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center text-gray-700">
+                            <span class="text-xl mr-3">🎭</span>
+                            <div>
+                                <div class="font-semibold">Hybrid (Online + In-person)</div>
+                                <div class="text-sm text-gray-500">Best of both worlds</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="flex items-center">
+                            <span class="text-lg mr-2">👥</span>
+                            <span class="text-sm text-gray-600">6 seats left</span>
+                        </div>
+                        <div class="w-3 h-3 bg-green-400 rounded-full" title="Good availability"></div>
+                    </div>
+
+                    <button class="w-full bg-primary hover:bg-blue-500 text-white py-3 rounded-full font-semibold transition-colors">
+                        Reserve Your Spot
+                    </button>
+                </div>
+
+                <!-- Batch Card 4: 4-Week Adult Beginner -->
+                <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 batch-card" 
+                     data-level="beginner" data-age="adult" data-time="morning">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-primary-dark mb-2">4-Week Adult Discovery</h3>
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="px-3 py-1 bg-indigo-100 text-indigo-700 text-sm font-medium rounded-full">
+                                    👩‍🦳 Adults (18+)
+                                </span>
+                                <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm font-medium rounded-full">
+                                    ⭐ Beginner
+                                </span>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-2xl font-bold text-primary-dark">£140</div>
+                            <div class="text-sm text-gray-500">8 sessions</div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3 mb-6">
+                        <div class="flex items-center text-gray-700">
+                            <span class="text-xl mr-3">📅</span>
+                            <div>
+                                <div class="font-semibold">Sat 31 Aug - Sun 22 Sep</div>
+                                <div class="text-sm text-gray-500">4 weekends</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center text-gray-700">
+                            <span class="text-xl mr-3">⏰</span>
+                            <div>
+                                <div class="font-semibold">Sat & Sun | 11:00 AM - 12:00 PM</div>
+                                <div class="text-sm text-gray-500">Perfect weekend start</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center text-gray-700">
+                            <span class="text-xl mr-3">🏠</span>
+                            <div>
+                                <div class="font-semibold">In-Person (Birmingham)</div>
+                                <div class="text-sm text-gray-500">Welcoming studio space</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="flex items-center">
+                            <span class="text-lg mr-2">👥</span>
+                            <span class="text-sm text-gray-600">5 seats left</span>
+                        </div>
+                        <div class="w-3 h-3 bg-green-400 rounded-full" title="Good availability"></div>
+                    </div>
+
+                    <button class="w-full bg-primary hover:bg-blue-500 text-white py-3 rounded-full font-semibold transition-colors">
+                        Reserve Your Spot
+                    </button>
+                </div>
+
+                <!-- Batch Card 5: 8-Week Teen Advanced -->
+                <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 batch-card" 
+                     data-level="advanced" data-age="teen" data-time="afternoon">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-primary-dark mb-2">8-Week Teen Performance</h3>
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="px-3 py-1 bg-purple-100 text-purple-700 text-sm font-medium rounded-full">
+                                    👦 Teens (13-17)
+                                </span>
+                                <span class="px-3 py-1 bg-red-100 text-red-700 text-sm font-medium rounded-full">
+                                    🏆 Advanced
+                                </span>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-2xl font-bold text-primary-dark">£240</div>
+                            <div class="text-sm text-gray-500">16 sessions</div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3 mb-6">
+                        <div class="flex items-center text-gray-700">
+                            <span class="text-xl mr-3">📅</span>
+                            <div>
+                                <div class="font-semibold">Sat 7 Sep - Sun 2 Nov</div>
+                                <div class="text-sm text-gray-500">8 weekends</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center text-gray-700">
+                            <span class="text-xl mr-3">⏰</span>
+                            <div>
+                                <div class="font-semibold">Sat & Sun | 3:00 PM - 4:00 PM</div>
+                                <div class="text-sm text-gray-500">Performance focused</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center text-gray-700">
+                            <span class="text-xl mr-3">💻</span>
+                            <div>
+                                <div class="font-semibold">Online via Zoom</div>
+                                <div class="text-sm text-gray-500">Advanced techniques</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="flex items-center">
+                            <span class="text-lg mr-2">👥</span>
+                            <span class="text-sm text-gray-600">4 seats left</span>
+                        </div>
+                        <div class="w-3 h-3 bg-yellow-400 rounded-full" title="Moderate availability"></div>
+                    </div>
+
+                    <button class="w-full bg-primary hover:bg-blue-500 text-white py-3 rounded-full font-semibold transition-colors">
+                        Reserve Your Spot
+                    </button>
+                </div>
+
+                <!-- Batch Card 6: 4-Week Child Intermediate -->
+                <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 batch-card" 
+                     data-level="intermediate" data-age="child" data-time="morning">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-primary-dark mb-2">4-Week Child Improver</h3>
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="px-3 py-1 bg-green-100 text-green-700 text-sm font-medium rounded-full">
+                                    👶 Children (5-12)
+                                </span>
+                                <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm font-medium rounded-full">
+                                    ⚡ Intermediate
+                                </span>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-2xl font-bold text-primary-dark">£130</div>
+                            <div class="text-sm text-gray-500">8 sessions</div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3 mb-6">
+                        <div class="flex items-center text-gray-700">
+                            <span class="text-xl mr-3">📅</span>
+                            <div>
+                                <div class="font-semibold">Sat 14 Sep - Sun 6 Oct</div>
+                                <div class="text-sm text-gray-500">4 weekends</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center text-gray-700">
+                            <span class="text-xl mr-3">⏰</span>
+                            <div>
+                                <div class="font-semibold">Sat & Sun | 9:00 AM - 10:00 AM</div>
+                                <div class="text-sm text-gray-500">Early bird sessions</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center text-gray-700">
+                            <span class="text-xl mr-3">🎭</span>
+                            <div>
+                                <div class="font-semibold">Hybrid (Online + In-person)</div>
+                                <div class="text-sm text-gray-500">Flexible format</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="flex items-center">
+                            <span class="text-lg mr-2">👥</span>
+                            <span class="text-sm text-gray-600">7 seats left</span>
+                        </div>
+                        <div class="w-3 h-3 bg-green-400 rounded-full" title="Good availability"></div>
+                    </div>
+
+                    <button class="w-full bg-primary hover:bg-blue-500 text-white py-3 rounded-full font-semibold transition-colors">
+                        Reserve Your Spot
+                    </button>
+                </div>
+            </div>
+
+            <!-- Bottom CTA Section Component -->
+            <div class="bg-gradient-to-r from-orange-100 via-pink-100 to-purple-100 rounded-2xl p-8 text-center">
+                <h3 class="text-2xl font-bold text-primary-dark mb-4">Not finding a suitable batch?</h3>
+                <p class="text-gray-600 mb-6 max-w-2xl mx-auto leading-relaxed">
+                    Don't worry! Priya regularly starts new batches based on demand. Share your preferences and she'll let you know when a perfect batch becomes available.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button class="bg-primary hover:bg-blue-500 text-white px-8 py-3 rounded-full font-semibold transition-colors">
+                        💬 Contact Mentor
+                    </button>
+                    <button class="border-2 border-primary text-primary hover:bg-primary hover:text-white px-8 py-3 rounded-full font-semibold transition-colors">
+                        🔔 Get Notified of New Batches
+                    </button>
+                </div>
+                <div class="mt-6 text-sm text-gray-500">
+                    Or try our <a href="#" class="text-primary hover:text-primary-dark font-semibold">one-on-one sessions</a> for immediate start
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- JavaScript Component -->
+    <script>
+        // Filter functionality
+        const levelFilter = document.getElementById('level-filter');
+        const ageFilter = document.getElementById('age-filter');
+        const timeFilter = document.getElementById('time-filter');
+        const batchCards = document.querySelectorAll('.batch-card');
+
+        function applyFilters() {
+            const selectedLevel = levelFilter.value;
+            const selectedAge = ageFilter.value;
+            const selectedTime = timeFilter.value;
+
+            batchCards.forEach(card => {
+                const cardLevel = card.getAttribute('data-level');
+                const cardAge = card.getAttribute('data-age');
+                const cardTime = card.getAttribute('data-time');
+
+                const levelMatch = !selectedLevel || cardLevel === selectedLevel;
+                const ageMatch = !selectedAge || cardAge === selectedAge;
+                const timeMatch = !selectedTime || cardTime === selectedTime;
+
+                if (levelMatch && ageMatch && timeMatch) {
+                    card.style.display = 'block';
+                    card.style.animation = 'fadeIn 0.3s ease-in';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            // Update results count
+            const visibleCards = document.querySelectorAll('.batch-card[style*="display: block"], .batch-card:not([style*="display: none"])');
+            console.log(`Showing ${visibleCards.length} batch(es)`);
+        }
+
+        // Apply filters button
+        document.querySelector('button[class*="bg-primary"]').addEventListener('click', applyFilters);
+
+        // Real-time filtering on change
+        levelFilter.addEventListener('change', applyFilters);
+        ageFilter.addEventListener('change', applyFilters);
+        timeFilter.addEventListener('change', applyFilters);
+
+        // Reserve spot functionality
+        document.querySelectorAll('button[class*="Reserve Your Spot"]').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const card = this.closest('.batch-card');
+                const batchTitle = card.querySelector('h3').textContent;
+                
+                // Simulate booking process
+                this.textContent = 'Processing...';
+                this.disabled = true;
+                
+                setTimeout(() => {
+                    alert(`Great! You're interested in "${batchTitle}". 
+                           \nRedirecting to booking form...`);
+                    
+                    // Reset button
+                    this.textContent = 'Reserve Your Spot';
+                    this.disabled = false;
+                    
+                    // In real app: window.location.href = `/book/${batch-id}`;
+                }, 1500);
+            });
+        });
+
+        // Enhanced card hover effects
+        batchCards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-8px) scale(1.02)';
+                this.style.boxShadow = '0 20px 40px rgba(0, 70, 140, 0.15)';
+            });
+
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+                this.style.boxShadow = '';
+            });
+        });
+
+        // Capacity indicator animations
+        document.querySelectorAll('.animate-pulse').forEach(indicator => {
+            // Add dynamic urgency colors based on capacity
+            const capacityText = indicator.parentElement.querySelector('span').textContent;
+            const seatsLeft = parseInt(capacityText.match(/\d+/)[0]);
+            
+            if (seatsLeft <= 2) {
+                indicator.classList.remove('bg-orange-400', 'bg-yellow-400');
+                indicator.classList.add('bg-red-400');
+            } else if (seatsLeft <= 4) {
+                indicator.classList.remove('bg-red-400', 'bg-green-400');
+                indicator.classList.add('bg-orange-400');
+            }
+        });
+
+        // Contact mentor functionality
+        document.querySelectorAll('button[class*="Contact Mentor"], button[class*="Get Notified"]').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                if (this.textContent.includes('Contact')) {
+                    // Open contact form/modal
+                    alert('Opening contact form...\nShare your preferred level, age group, and timing!');
+                } else if (this.textContent.includes('Notified')) {
+                    // Subscribe to notifications
+                    alert('You\'ll be notified when new batches matching your interests are available!');
+                }
+            });
+        });
+
+        // Add CSS animation for filter results
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            
+            .batch-card {
+                transition: all 0.3s ease;
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Simulate real-time seat updates (for demo)
+        function simulateSeatUpdates() {
+            const capacityElements = document.querySelectorAll('.batch-card span[class*="text-gray-600"]');
+            
+            capacityElements.forEach(element => {
+                if (element.textContent.includes('seats left') && Math.random() < 0.05) { // 5% chance
+                    let currentSeats = parseInt(element.textContent.match(/\d+/)[0]);
+                    if (currentSeats > 1) {
+                        currentSeats--;
+                        element.textContent = `${currentSeats} seats left`;
+                        
+                        // Update indicator color
+                        const indicator = element.parentElement.querySelector('div[class*="rounded-full"]');
+                        if (currentSeats <= 2) {
+                            indicator.classList.remove('bg-orange-400', 'bg-yellow-400', 'bg-green-400');
+                            indicator.classList.add('bg-red-400', 'animate-pulse');
+                        } else if (currentSeats <= 4) {
+                            indicator.classList.remove('bg-red-400', 'bg-yellow-400', 'bg-green-400');
+                            indicator.classList.add('bg-orange-400', 'animate-pulse');
+                        }
+                    }
+                }
+            });
+        }
+
+        // Update seats every 30 seconds (for demo purposes)
+        // setInterval(simulateSeatUpdates, 30000);
+
+        // Mobile responsive adjustments
+        function handleMobileLayout() {
+            const grid = document.getElementById('batches-grid');
+            if (window.innerWidth < 768) {
+                grid.classList.remove('md:grid-cols-2', 'lg:grid-cols-3');
+                grid.classList.add('grid-cols-1');
+            } else if (window.innerWidth < 1024) {
+                grid.classList.remove('grid-cols-1', 'lg:grid-cols-3');
+                grid.classList.add('md:grid-cols-2');
+            } else {
+                grid.classList.remove('grid-cols-1', 'md:grid-cols-2');
+                grid.classList.add('lg:grid-cols-3');
+            }
+        }
+
+        window.addEventListener('resize', handleMobileLayout);
+        handleMobileLayout(); // Call on load
+    </script>
+</body>
+</html>

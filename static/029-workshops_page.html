@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workshops - Roots & Wings</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#00A2E8',
+                        'primary-dark': '#00468C',
+                        'primary-light': '#f8fbff',
+                        'accent-light': '#e8f4ff',
+                        'purple-primary': '#8B5CF6',
+                        'green-primary': '#10B981',
+                        'orange-primary': '#F59E0B'
+                    },
+                    fontFamily: {
+                        sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="font-sans text-gray-800 bg-primary-light min-h-screen">
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-40">
+        <div class="flex items-center justify-between px-6 py-4">
+            <!-- Left: Logo & Mobile Menu -->
+            <div class="flex items-center space-x-4">
+                <button id="mobile-menu-btn" class="md:hidden text-gray-600 hover:text-primary">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+                <h1 class="text-2xl font-bold text-primary-dark">Roots & Wings</h1>
+                <span class="hidden md:block text-sm text-gray-500">Family Learning Hub</span>
+            </div>
+            
+            <!-- Center: Search & Filter -->
+            <div class="hidden md:flex items-center space-x-4 flex-1 max-w-2xl mx-8">
+                <div class="relative flex-1">
+                    <input type="text" placeholder="Search workshops..." class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary">
+                    <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+                </div>
+                <select class="border border-gray-300 rounded-lg px-4 py-2 text-gray-700 focus:ring-2 focus:ring-primary focus:border-primary">
+                    <option value="">All Locations</option>
+                    <option value="online">Online</option>
+                    <option value="london">London</option>
+                    <option value="manchester">Manchester</option>
+                    <option value="birmingham">Birmingham</option>
+                </select>
+            </div>
+            
+            <!-- Right: Profile Dropdown -->
+            <div class="relative">
+                <button id="profile-dropdown-btn" class="flex items-center space-x-3 hover:bg-gray-50 rounded-lg px-3 py-2 transition-colors">
+                    <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+                        <span class="text-white font-semibold">SJ</span>
+                    </div>
+                    <div class="hidden md:block text-left">
+                        <div class="text-sm font-semibold text-gray-900">Sarah Johnson</div>
+                        <div class="text-xs text-gray-500">Parent & Learner</div>
+                    </div>
+                    <i class="fas fa-chevron-down text-gray-400 text-sm"></i>
+                </button>
+                
+                <!-- Dropdown Menu -->
+                <div id="profile-dropdown" class="hidden absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-200 py-2">
+                    <a href="#" class="flex items-center space-x-3 px-4 py-2 text-gray-700 hover:bg-gray-50">
+                        <i class="fas fa-home text-gray-400"></i>
+                        <span>Back to Dashboard</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-2 text-gray-700 hover:bg-gray-50">
+                        <i class="fas fa-calendar-plus text-gray-400"></i>
+                        <span>Create Workshop</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-2 text-gray-700 hover:bg-gray-50">
+                        <i class="fas fa-bookmark text-gray-400"></i>
+                        <span>My Bookings</span>
+                    </a>
+                    <hr class="my-2">
+                    <a href="#" class="flex items-center space-x-3 px-4 py-2 text-red-600 hover:bg-red-50">
+                        <i class="fas fa-sign-out-alt text-red-400"></i>
+                        <span>Log Out</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex">
+        <!-- Sidebar -->
+        <nav class="bg-white w-64 min-h-screen shadow-sm border-r border-gray-200 fixed md:static z-30 transition-transform duration-300 ease-in-out -translate-x-full md:translate-x-0" id="sidebar">
+            <div class="p-6">
+                <!-- Main Navigation -->
+                <div class="space-y-2 mb-8">
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1">
+                        <i class="fas fa-home text-lg"></i>
+                        <span class="font-medium">Dashboard</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1">
+                        <i class="fas fa-search text-lg"></i>
+                        <span>Explore Mentors</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1">
+                        <i class="fas fa-calendar-alt text-lg"></i>
+                        <span>My Bookings</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1">
+                        <i class="fas fa-heart text-lg"></i>
+                        <span>Saved Mentors</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1 bg-primary text-white">
+                        <i class="fas fa-users text-lg"></i>
+                        <span class="font-medium">Workshops</span>
+                    </a>
+                </div>
+
+                <!-- Workshop Categories -->
+                <div class="border-t border-gray-200 pt-6">
+                    <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">Categories</h3>
+                    <div class="space-y-2">
+                        <button class="category-filter w-full flex items-center justify-between px-4 py-2 text-left text-gray-700 hover:bg-primary-light rounded-lg transition-colors bg-primary-light border border-primary-dark" data-category="all">
+                            <span class="text-sm">All Workshops</span>
+                            <span class="bg-primary text-white text-xs px-2 py-1 rounded-full">24</span>
+                        </button>
+                        <button class="category-filter w-full flex items-center justify-between px-4 py-2 text-left text-gray-700 hover:bg-primary-light rounded-lg transition-colors" data-category="art">
+                            <span class="text-sm">Art & Craft</span>
+                            <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full">8</span>
+                        </button>
+                        <button class="category-filter w-full flex items-center justify-between px-4 py-2 text-left text-gray-700 hover:bg-primary-light rounded-lg transition-colors" data-category="music">
+                            <span class="text-sm">Music</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">6</span>
+                        </button>
+                        <button class="category-filter w-full flex items-center justify-between px-4 py-2 text-left text-gray-700 hover:bg-primary-light rounded-lg transition-colors" data-category="tech">
+                            <span class="text-sm">Technology</span>
+                            <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">5</span>
+                        </button>
+                        <button class="category-filter w-full flex items-center justify-between px-4 py-2 text-left text-gray-700 hover:bg-primary-light rounded-lg transition-colors" data-category="wellness">
+                            <span class="text-sm">Wellness</span>
+                            <span class="bg-orange-100 text-orange-800 text-xs px-2 py-1 rounded-full">3</span>
+                        </button>
+                        <button class="category-filter w-full flex items-center justify-between px-4 py-2 text-left text-gray-700 hover:bg-primary-light rounded-lg transition-colors" data-category="language">
+                            <span class="text-sm">Languages</span>
+                            <span class="bg-pink-100 text-pink-800 text-xs px-2 py-1 rounded-full">2</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Quick Filters -->
+                <div class="border-t border-gray-200 pt-6 mt-6">
+                    <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">Quick Filters</h3>
+                    <div class="space-y-2">
+                        <button class="filter-btn w-full flex items-center justify-between px-4 py-2 text-left text-gray-700 hover:bg-gray-50 rounded-lg transition-colors" data-filter="today">
+                            <span class="text-sm">Today</span>
+                            <span class="bg-red-100 text-red-800 text-xs px-2 py-1 rounded-full">2</span>
+                        </button>
+                        <button class="filter-btn w-full flex items-center justify-between px-4 py-2 text-left text-gray-700 hover:bg-gray-50 rounded-lg transition-colors" data-filter="weekend">
+                            <span class="text-sm">This Weekend</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">7</span>
+                        </button>
+                        <button class="filter-btn w-full flex items-center justify-between px-4 py-2 text-left text-gray-700 hover:bg-gray-50 rounded-lg transition-colors" data-filter="free">
+                            <span class="text-sm">Free Events</span>
+                            <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">5</span>
+                        </button>
+                        <button class="filter-btn w-full flex items-center justify-between px-4 py-2 text-left text-gray-700 hover:bg-gray-50 rounded-lg transition-colors" data-filter="family">
+                            <span class="text-sm">Family Friendly</span>
+                            <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full">9</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Overlay for mobile sidebar -->
+        <div id="sidebar-overlay" class="hidden md:hidden fixed inset-0 bg-black bg-opacity-50 z-20"></div>
+
+        <!-- Main Content -->
+        <main class="flex-1 md:ml-0">
+            <!-- Page Header -->
+            <div class="bg-gradient-to-r from-blue-50 to-purple-50 border-b border-gray-200 px-6 py-8">
+                <div class="max-w-7xl mx-auto">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between">
+                        <div>
+                            <h1 class="text-3xl font-bold text-gray-900 mb-2">Workshops & Events</h1>
+                            <p class="text-gray-600">Discover one-time workshops and special learning events</p>
+                        </div>
+                        <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3 mt-4 md:mt-0">
+                            <button class="border border-gray-300 text-gray-700 px-6 py-3 rounded-lg hover:bg-gray-50 transition-colors flex items-center">
+                                <i class="fas fa-filter mr-2"></i>Advanced Filters
+                            </button>
+                            <button class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary-dark transition-colors">
+                                <i class="fas fa-plus mr-2"></i>Create Workshop
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-6 py-8">
+                <!-- Featured Workshops -->
+                <section class="mb-12">
+                    <div class="bg-gradient-to-r from-orange-50 to-red-50 rounded-2xl p-8 border border-orange-100">
+                        <div class="text-center mb-8">
+                            <h2 class="text-2xl font-bold text-gray-900 mb-2">🌟 Featured This Week</h2>
+                            <p class="text-gray-600">Don't miss these special workshops with limited spots</p>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <!-- Featured Workshop 1 -->
+                            <div class="bg-white rounded-xl p-6 shadow-lg border border-orange-200 hover:shadow-xl transition-all duration-200">
+                                <div class="relative mb-4">
+                                    <div class="w-full h-32 bg-gradient-to-br from-orange-100 to-red-100 rounded-lg flex items-center justify-center">
+                                        <i class="fas fa-palette text-3xl text-orange-600"></i>
+                                    </div>
+                                    <span class="absolute top-2 right-2 bg-red-500 text-white text-xs px-2 py-1 rounded-full">3 spots left</span>
+                                </div>
+                                <h3 class="text-lg font-semibold text-gray-900 mb-2">Digital Art Masterclass</h3>
+                                <p class="text-gray-600 text-sm mb-3">Learn professional digital painting techniques from award-winning artist</p>
+                                <div class="flex items-center space-x-4 text-sm text-gray-500 mb-4">
+                                    <span><i class="fas fa-calendar mr-1"></i>Saturday, July 26</span>
+                                    <span><i class="fas fa-clock mr-1"></i>2:00-5:00 PM</span>
+                                </div>
+                                <div class="flex items-center space-x-2 mb-4">
+                                    <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full">Art</span>
+                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Online</span>
+                                    <span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded-full">Adult</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-lg font-bold text-gray-900">£45</span>
+                                    <button class="bg-orange-primary text-white px-4 py-2 rounded-lg text-sm hover:bg-orange-600 transition-colors">
+                                        Register Now
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Featured Workshop 2 -->
+                            <div class="bg-white rounded-xl p-6 shadow-lg border border-purple-200 hover:shadow-xl transition-all duration-200">
+                                <div class="relative mb-4">
+                                    <div class="w-full h-32 bg-gradient-to-br from-purple-100 to-blue-100 rounded-lg flex items-center justify-center">
+                                        <i class="fas fa-code text-3xl text-purple-600"></i>
+                                    </div>
+                                    <span class="absolute top-2 right-2 bg-green-500 text-white text-xs px-2 py-1 rounded-full">Available</span>
+                                </div>
+                                <h3 class="text-lg font-semibold text-gray-900 mb-2">Kids Coding Bootcamp</h3>
+                                <p class="text-gray-600 text-sm mb-3">Introduction to programming for children using fun games and projects</p>
+                                <div class="flex items-center space-x-4 text-sm text-gray-500 mb-4">
+                                    <span><i class="fas fa-calendar mr-1"></i>Sunday, July 27</span>
+                                    <span><i class="fas fa-clock mr-1"></i>10:00 AM-12:00 PM</span>
+                                </div>
+                                <div class="flex items-center space-x-2 mb-4">
+                                    <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">Technology</span>
+                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Online</span>
+                                    <span class="bg-pink-100 text-pink-800 text-xs px-2 py-1 rounded-full">Children</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-lg font-bold text-gray-900">£25</span>
+                                    <button class="bg-purple-primary text-white px-4 py-2 rounded-lg text-sm hover:bg-purple-600 transition-colors">
+                                        Register Now
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Featured Workshop 3 -->
+                            <div class="bg-white rounded-xl p-6 shadow-lg border border-green-200 hover:shadow-xl transition-all duration-200">
+                                <div class="relative mb-4">
+                                    <div class="w-full h-32 bg-gradient-to-br from-green-100 to-teal-100 rounded-lg flex items-center justify-center">
+                                        <i class="fas fa-music text-3xl text-green-600"></i>
+                                    </div>
+                                    <span class="absolute top-2 right-2 bg-blue-500 text-white text-xs px-2 py-1 rounded-full">7 spots left</span>
+                                </div>
+                                <h3 class="text-lg font-semibold text-gray-900 mb-2">Family Music Circle</h3>
+                                <p class="text-gray-600 text-sm mb-3">Musical storytelling and instrument exploration for the whole family</p>
+                                <div class="flex items-center space-x-4 text-sm text-gray-500 mb-4">
+                                    <span><i class="fas fa-calendar mr-1"></i>Saturday, July 26</span>
+                                    <span><i class="fas fa-clock mr-1"></i>4:00-5:30 PM</span>
+                                </div>
+                                <div class="flex items-center space-x-2 mb-4">
+                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Music</span>
+                                    <span class="bg-orange-100 text-orange-800 text-xs px-2 py-1 rounded-full">London</span>
+                                    <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full">Family</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-lg font-bold text-gray-900">Free</span>
+                                    <button class="bg-green-primary text-white px-4 py-2 rounded-lg text-sm hover:bg-green-600 transition-colors">
+                                        Register Now
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Upcoming Workshops -->
+                <section class="mb-8">
+                    <div class="flex items-center justify-between mb-6">
+                        <h2 class="text-xl font-semibold text-gray-900">Upcoming Workshops</h2>
+                        <div class="flex items-center space-x-2">
+                            <button id="grid-view" class="p-2 text-gray-400 hover:text-primary transition-colors bg-primary-light rounded">
+                                <i class="fas fa-th-large"></i>
+                            </button>
+                            <button id="list-view" class="p-2 text-gray-400 hover:text-primary transition-colors">
+                                <i class="fas fa-list"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Grid View -->
+                    <div id="workshops-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Workshop Card 1 -->
+                        <div class="workshop-card bg-white rounded-xl p-6 shadow-sm hover:shadow-lg transition-all duration-200 border border-gray-200" data-category="art">
+                            <div class="relative mb-4">
+                                <div class="w-full h-32 bg-gradient-to-br from-pink-100 to-purple-100 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-paint-brush text-3xl text-pink-600"></i>
+                                </div>
+                                <span class="absolute top-2 right-2 bg-green-500 text-white text-xs px-2 py-1 rounded-full">Available</span>
+                            </div>
+                            <h3 class="text-lg font-semibold text-gray-900 mb-2">Watercolor Landscapes</h3>
+                            <p class="text-gray-600 text-sm mb-3">Create beautiful landscape paintings using watercolor techniques</p>
+                            <div class="flex items-center space-x-4 text-sm text-gray-500 mb-4">
+                                <span><i class="fas fa-calendar mr-1"></i>July 28</span>
+                                <span><i class="fas fa-clock mr-1"></i>2:00-4:00 PM</span>
+                            </div>
+                            <div class="flex items-center space-x-2 mb-4">
+                                <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full">Art</span>
+                                <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Online</span>
+                                <span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded-full">Teen</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-lg font-bold text-gray-900">£30</span>
+                                <button class="bg-primary text-white px-4 py-2 rounded-lg text-sm hover:bg-primary-dark transition-colors">
+                                    Register
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Workshop Card 2 -->
+                        <div class="workshop-card bg-white rounded-xl p-6 shadow-sm hover:shadow-lg transition-all duration-200 border border-gray-200" data-category="music">
+                            <div class="relative mb-4">
+                                <div class="w-full h-32 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-guitar text-3xl text-blue-600"></i>
+                                </div>
+                                <span class="absolute top-2 right-2 bg-orange-500 text-white text-xs px-2 py-1 rounded-full">5 spots left</span>
+                            </div>
+                            <h3 class="text-lg font-semibold text-gray-900 mb-2">Acoustic Guitar Basics</h3>
+                            <p class="text-gray-600 text-sm mb-3">Learn fundamental guitar chords and simple songs</p>
+                            <div class="flex items-center space-x-4 text-sm text-gray-500 mb-4">
+                                <span><i class="fas fa-calendar mr-1"></i>July 29</span>
+                                <span><i class="fas fa-clock mr-1"></i>6:00-8:00 PM</span>
+                            </div>
+                            <div class="flex items-center space-x-2 mb-4">
+                                <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Music</span>
+                                <span class="bg-orange-100 text-orange-800 text-xs px-2 py-1 rounded-full">Birmingham</span>
+                                <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">Adult</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-lg font-bold text-gray-900">£35</span>
+                                <button class="bg-primary text-white px-4 py-2 rounded-lg text-sm hover:bg-primary-dark transition-colors">
+                                    Register
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Workshop Card 3 -->
+                        <div class="workshop-card bg-white rounded-xl p-6 shadow-sm hover:shadow-lg transition-all duration-200 border border-gray-200" data-category="tech">
+                            <div class="relative mb-4">
+                                <div class="w-full h-32 bg-gradient-to-br from-green-100 to-emerald-100 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-robot text-3xl text-green-600"></i>
+                                </div>
+                                <span class="absolute top-2 right-2 bg-green-500 text-white text-xs px-2 py-1 rounded-full">Available</span>
+                            </div>
+                            <h3 class="text-lg font-semibold text-gray-900 mb-2">AI for Beginners</h3>
+                            <p class="text-gray-600 text-sm mb-3">Introduction to artificial intelligence and machine learning concepts</p>
+                            <div class="flex items-center space-x-4 text-sm text-gray-500 mb-4">
+                                <span><i class="fas fa-calendar mr-1"></i>July 30</span>
+                                <span><i class="fas fa-clock mr-1"></i>7:00-9:00 PM</span>
+                            </div>
+                            <div class="flex items-center space-x-2 mb-4">
+                                <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">Technology</span>
+                                <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Online</span>
+                                <span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded-full">Adult</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-lg font-bold text-gray-900">Free</span>
+                                <button class="bg-primary text-white px-4 py-2 rounded-lg text-sm hover:bg-primary-dark transition-colors">
+                                    Register
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Workshop Card 4 -->
+                        <div class="workshop-card bg-white rounded-xl p-6 shadow-sm hover:shadow-lg transition-all duration-200 border border-gray-200" data-category="wellness">
+                            <div class="relative mb-4">
+                                <div class="w-full h-32 bg-gradient-to-br from-orange-100 to-amber-100 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-lotus text-3xl text-orange-600"></i>
+                                </div>
+                                <span class="absolute top-2 right-2 bg-blue-500 text-white text-xs px-2 py-1 rounded-full">12 spots left</span>
+                            </div>
+                            <h3 class="text-lg font-semibold text-gray-900 mb-2">Mindfulness for Families</h3>
+                            <p class="text-gray-600 text-sm mb-3">Practice meditation and mindfulness techniques as a family</p>
+                            <div class="flex items-center space-x-4 text-sm text-gray-500 mb-4">
+                                <span><i class="fas fa-calendar mr-1"></i>Aug 1</span>
+                                <span><i class="fas fa-clock mr-1"></i>10:00 AM-12:00 PM</span>
+                            </div>
+                            <div class="flex items-center space-x-2 mb-4">
+                                <span class="bg-orange-100 text-orange-800 text-xs px-2 py-1 rounded-full">Wellness</span>
+                                <span class="bg-orange-100 text-orange-800 text-xs px-2 py-1 rounded-full">Manchester</span>
+                                <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full">Family</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-lg font-bold text-gray-900">£20</span>
+                                <button class="bg-primary text-white px-4 py-2 rounded-lg text-sm hover:bg-primary-dark transition-colors">
+                                    Register
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Workshop Card 5 -->
+                        <div class="workshop-card bg-white rounded-xl p-6 shadow-sm hover:shadow-lg transition-all duration-200 border border-gray-200" data-category="language">
+                            <div class="relative mb-4">
+                                <div class="w-full h-32 bg-gradient-to-br from-pink-100 to-rose-100 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-globe text-3xl text-pink-600"></i>
+                                </div>
+                                <span class="absolute top-2 right-2 bg-green-500 text-white text-xs px-2 py-1 rounded-full">Available</span>
+                            </div>
+                            <h3 class="text-lg font-semibold text-gray-900 mb-2">Spanish Conversation</h3>
+                            <p class="text-gray-600 text-sm mb-3">Practice conversational Spanish in a friendly group setting</p>
+                            <div class="flex items-center space-x-4 text-sm text-gray-500 mb-4">
+                                <span><i class="fas fa-calendar mr-1"></i>Aug 2</span>
+                                <span><i class="fas fa-clock mr-1"></i>7:00-8:30 PM</span>
+                            </div>
+                            <div class="flex items-center space-x-2 mb-4">
+                                <span class="bg-pink-100 text-pink-800 text-xs px-2 py-1 rounded-full">Languages</span>
+                                <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Online</span>
+                                <span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded-full">Intermediate</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-lg font-bold text-gray-900">£15</span>
+                                <button class="bg-primary text-white px-4 py-2 rounded-lg text-sm hover:bg-primary-dark transition-colors">
+                                    Register
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Workshop Card 6 -->
+                        <div class="workshop-card bg-white rounded-xl p-6 shadow-sm hover:shadow-lg transition-all duration-200 border border-gray-200" data-category="art">
+                            <div class="relative mb-4">
+                                <div class="w-full h-32 bg-gradient-to-br from-indigo-100 to-purple-100 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-scissors text-3xl text-indigo-600"></i>
+                                </div>
+                                <span class="absolute top-2 right-2 bg-red-500 text-white text-xs px-2 py-1 rounded-full">2 spots left</span>
+                            </div>
+                            <h3 class="text-lg font-semibold text-gray-900 mb-2">Paper Crafts for Kids</h3>
+                            <p class="text-gray-600 text-sm mb-3">Create amazing paper crafts and origami with children</p>
+                            <div class="flex items-center space-x-4 text-sm text-gray-500 mb-4">
+                                <span><i class="fas fa-calendar mr-1"></i>Aug 3</span>
+                                <span><i class="fas fa-clock mr-1"></i>3:00-5:00 PM</span>
+                            </div>
+                            <div class="flex items-center space-x-2 mb-4">
+                                <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full">Art</span>
+                                <span class="bg-orange-100 text-orange-800 text-xs px-2 py-1 rounded-full">Leeds</span>
+                                <span class="bg-pink-100 text-pink-800 text-xs px-2 py-1 rounded-full">Children</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-lg font-bold text-gray-900">£18</span>
+                                <button class="bg-primary text-white px-4 py-2 rounded-lg text-sm hover:bg-primary-dark transition-colors">
+                                    Register
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Load More -->
+                    <div class="text-center mt-8">
+                        <button class="text-primary hover:text-primary-dark font-medium">
+                            Load More Workshops
+                        </button>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Mobile sidebar toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebar-overlay');
+
+        mobileMenuBtn.addEventListener('click', function() {
+            sidebar.classList.toggle('-translate-x-full');
+            sidebarOverlay.classList.toggle('hidden');
+        });
+
+        sidebarOverlay.addEventListener('click', function() {
+            sidebar.classList.add('-translate-x-full');
+            sidebarOverlay.classList.add('hidden');
+        });
+
+        // Profile dropdown
+        const profileDropdownBtn = document.getElementById('profile-dropdown-btn');
+        const profileDropdown = document.getElementById('profile-dropdown');
+
+        profileDropdownBtn.addEventListener('click', function() {
+            profileDropdown.classList.toggle('hidden');
+        });
+
+        // Category filters
+        const categoryFilters = document.querySelectorAll('.category-filter');
+        categoryFilters.forEach(filter => {
+            filter.addEventListener('click', function() {
+                const category = this.getAttribute('data-category');
+                
+                // Remove active class from all filters
+                categoryFilters.forEach(f => {
+                    f.classList.remove('bg-primary-light', 'border', 'border-primary-dark');
+                });
+                
+                // Add active class to clicked filter
+                this.classList.add('bg-primary-light', 'border', 'border-primary-dark');
+                
+                // Filter workshops
+                filterWorkshops(category);
+            });
+        });
+
+        function filterWorkshops(category) {
+            const workshopCards = document.querySelectorAll('.workshop-card');
+            
+            workshopCards.forEach(card => {
+                const cardCategory = card.getAttribute('data-category');
+                
+                if (category === 'all' || cardCategory === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // View toggle
+        const gridViewBtn = document.getElementById('grid-view');
+        const listViewBtn = document.getElementById('list-view');
+        const workshopsGrid = document.getElementById('workshops-grid');
+
+        gridViewBtn.addEventListener('click', function() {
+            this.classList.add('bg-primary-light');
+            listViewBtn.classList.remove('bg-primary-light');
+            workshopsGrid.className = 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6';
+        });
+
+        listViewBtn.addEventListener('click', function() {
+            this.classList.add('bg-primary-light');
+            gridViewBtn.classList.remove('bg-primary-light');
+            workshopsGrid.className = 'grid grid-cols-1 gap-4';
+        });
+
+        // Quick filters
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const filter = this.getAttribute('data-filter');
+                // Filter logic would go here
+                console.log('Filtering by:', filter);
+            });
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!profileDropdownBtn.contains(e.target) && !profileDropdown.contains(e.target)) {
+                profileDropdown.classList.add('hidden');
+            }
+        });
+
+        // Auto-hide mobile sidebar on window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth >= 768) {
+                sidebar.classList.remove('-translate-x-full');
+                sidebarOverlay.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>

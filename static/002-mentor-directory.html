@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentor Profiles - Roots & Wings</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#00A2E8',
+                        'primary-dark': '#00468C',
+                        'primary-light': '#f8fbff',
+                        'accent-light': '#e8f4ff'
+                    },
+                    fontFamily: {
+                        sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans text-gray-800 bg-white">
+
+    <!-- Navigation Component -->
+    <nav class="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-sm shadow-lg">
+        <div class="max-w-7xl mx-auto px-5">
+            <div class="flex justify-between items-center py-4">
+                <!-- Logo -->
+                <a href="#" class="text-2xl font-bold text-primary-dark">
+                    Roots & Wings
+                </a>
+
+                <!-- Desktop Menu -->
+                <ul class="hidden md:flex space-x-8">
+                    <li><a href="#home" class="text-gray-700 hover:text-primary font-medium transition-colors">Home</a></li>
+                    <li><a href="#mentors" class="text-primary font-medium">Mentor Profiles</a></li>
+                    <li><a href="#workshops" class="text-gray-700 hover:text-primary font-medium transition-colors">Workshops</a></li>
+                    <li><a href="#enroll" class="text-gray-700 hover:text-primary font-medium transition-colors">Enroll</a></li>
+                    <li><a href="#faq" class="text-gray-700 hover:text-primary font-medium transition-colors">FAQ</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section Component -->
+    <section class="bg-gradient-to-br from-primary-light to-accent-light pt-20 pb-12 mt-16">
+        <div class="max-w-4xl mx-auto px-5 text-center">
+            <h1 class="text-5xl font-bold text-primary-dark mb-4">
+                Find the Right Mentor in the UK
+            </h1>
+            <p class="text-lg text-gray-600 leading-relaxed">
+                Browse based on your subject, interests, or preferred language. Connect with experienced mentors who share your cultural background and learning goals.
+            </p>
+        </div>
+    </section>
+
+    <!-- Filter Panel Component -->
+    <section class="bg-white shadow-lg sticky top-16 z-40 border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-5 py-8">
+            <!-- Filters Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 mb-6">
+                <!-- Subject Filter -->
+                <div>
+                    <label class="block text-sm font-semibold text-primary-dark mb-2" for="subject-filter">
+                        Subject / Field
+                    </label>
+                    <select class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition-colors bg-white" id="subject-filter" aria-label="Filter by subject">
+                        <option value="">All Subjects</option>
+                        <option value="music">Classical Music</option>
+                        <option value="art">Art & Craft</option>
+                        <option value="mindfulness">Mindfulness</option>
+                        <option value="spoken-word">Spoken Word</option>
+                        <option value="philosophy">Philosophy</option>
+                        <option value="coding">Coding</option>
+                        <option value="languages">Languages</option>
+                        <option value="drama">Drama</option>
+                    </select>
+                </div>
+
+                <!-- Age Group Filter -->
+                <div>
+                    <label class="block text-sm font-semibold text-primary-dark mb-2" for="age-filter">
+                        Age Group
+                    </label>
+                    <select class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition-colors bg-white" id="age-filter" aria-label="Filter by age group">
+                        <option value="">All Ages</option>
+                        <option value="children">Children (5-12)</option>
+                        <option value="teens">Teenagers (13-17)</option>
+                        <option value="young-adults">Young Adults (18-25)</option>
+                        <option value="adults">Adults (26+)</option>
+                        <option value="seniors">Seniors (60+)</option>
+                    </select>
+                </div>
+
+                <!-- Location Filter -->
+                <div>
+                    <label class="block text-sm font-semibold text-primary-dark mb-2" for="location-filter">
+                        Location
+                    </label>
+                    <div class="relative">
+                        <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" aria-hidden="true">📍</span>
+                        <input type="text" 
+                               class="w-full pl-10 pr-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition-colors" 
+                               id="location-filter" 
+                               placeholder="City or postcode" 
+                               aria-label="Enter location">
+                    </div>
+                </div>
+
+                <!-- Language Filter -->
+                <div>
+                    <label class="block text-sm font-semibold text-primary-dark mb-2" for="language-filter">
+                        Language
+                    </label>
+                    <select class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition-colors bg-white" id="language-filter" aria-label="Filter by language">
+                        <option value="">Any Language</option>
+                        <option value="english">English</option>
+                        <option value="hindi">Hindi</option>
+                        <option value="urdu">Urdu</option>
+                        <option value="punjabi">Punjabi</option>
+                        <option value="spanish">Spanish</option>
+                        <option value="french">French</option>
+                        <option value="arabic">Arabic</option>
+                    </select>
+                </div>
+
+                <!-- Availability Filter -->
+                <div>
+                    <label class="block text-sm font-semibold text-primary-dark mb-2" for="availability-filter">
+                        Availability
+                    </label>
+                    <select class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition-colors bg-white" id="availability-filter" aria-label="Filter by availability">
+                        <option value="">Any Time</option>
+                        <option value="morning">Morning (9AM-12PM)</option>
+                        <option value="afternoon">Afternoon (12PM-5PM)</option>
+                        <option value="evening">Evening (5PM-9PM)</option>
+                        <option value="weekend">Weekends</option>
+                    </select>
+                </div>
+
+                <!-- Price Range Filter -->
+                <div>
+                    <label class="block text-sm font-semibold text-primary-dark mb-2">
+                        Price Range
+                    </label>
+                    <div class="flex items-center space-x-3">
+                        <span class="text-sm font-medium text-primary-dark min-w-[40px]">£10</span>
+                        <input type="range" 
+                               class="flex-1 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider" 
+                               id="price-slider" 
+                               min="10" max="100" value="50" 
+                               aria-label="Price range slider">
+                        <span class="text-sm font-medium text-primary-dark min-w-[40px]" id="price-max">£50</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filter Actions & Sort -->
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                <!-- Action Buttons -->
+                <div class="flex space-x-3">
+                    <button class="bg-primary hover:bg-blue-500 text-white px-6 py-3 rounded-full font-semibold transition-colors" aria-label="Apply filters">
+                        Apply Filters
+                    </button>
+                    <button class="border-2 border-gray-300 hover:border-primary hover:text-primary text-gray-600 px-6 py-3 rounded-full font-medium transition-colors" aria-label="Clear all filters">
+                        Clear All
+                    </button>
+                </div>
+
+                <!-- Sort Dropdown -->
+                <div class="flex items-center space-x-3">
+                    <label class="text-sm font-semibold text-primary-dark" for="sort-select">
+                        Sort by:
+                    </label>
+                    <select class="px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none bg-white" id="sort-select" aria-label="Sort mentors">
+                        <option value="relevance">Relevance</option>
+                        <option value="price-low">Price (Low to High)</option>
+                        <option value="price-high">Price (High to Low)</option>
+                        <option value="rating">Highest Rating</option>
+                        <option value="newest">Newest First</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Header Component -->
+    <div class="max-w-7xl mx-auto px-5 py-6">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="text-gray-600">
+                Showing <strong id="results-count" class="text-primary-dark">24</strong> mentors in the UK
+            </div>
+        </div>
+    </div>
+
+    <!-- Mentors Grid Component -->
+    <main class="max-w-7xl mx-auto px-5 pb-16">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="mentors-grid">
+            
+            <!-- Mentor Card 1 -->
+            <div class="bg-white border-2 border-gray-100 rounded-2xl p-6 hover:border-primary hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group relative">
+                <!-- Mentor Header -->
+                <div class="flex items-start gap-5 mb-5">
+                    <div class="w-20 h-20 bg-gradient-to-r from-primary to-primary-dark rounded-full flex items-center justify-center text-white text-2xl font-bold flex-shrink-0" 
+                         data-name="Priya Sharma" aria-label="Priya Sharma's profile picture">
+                        P
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-xl font-bold text-primary-dark mb-1">Priya Sharma</h3>
+                        <p class="text-sm text-gray-500 mb-3">Birmingham, West Midlands</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-green-100 text-green-700 text-xs font-medium rounded-full">Online</span>
+                            <span class="px-3 py-1 bg-orange-100 text-orange-700 text-xs font-medium rounded-full">In-person</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rating -->
+                <div class="flex items-center gap-2 mb-4">
+                    <span class="text-yellow-400" aria-label="5 star rating">★★★★★</span>
+                    <span class="text-sm text-gray-600">4.9 (32 reviews)</span>
+                </div>
+
+                <!-- Subject Tags -->
+                <div class="mb-4">
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-primary text-white text-xs font-medium rounded-full">Kathak Dance</span>
+                        <span class="px-3 py-1 bg-primary text-white text-xs font-medium rounded-full">Bollywood</span>
+                    </div>
+                </div>
+
+                <!-- Price & Badges -->
+                <div class="flex items-center justify-between mb-5">
+                    <div class="text-2xl font-bold text-primary-dark">
+                        £35<span class="text-sm font-normal text-gray-500">/hour</span>
+                    </div>
+                    <div class="flex gap-2">
+                        <span class="px-3 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded-full">1st Lesson Free</span>
+                        <span class="px-3 py-1 bg-yellow-400 text-yellow-900 text-xs font-semibold rounded-full">Ambassador</span>
+                    </div>
+                </div>
+
+                <!-- Actions -->
+                <div class="flex items-center gap-3">
+                    <button class="flex-1 bg-primary hover:bg-blue-500 text-white py-3 rounded-full font-semibold transition-colors group-hover:bg-blue-500" 
+                            aria-label="View Priya Sharma's profile">
+                        View Profile
+                    </button>
+                    <button class="w-11 h-11 border-2 border-gray-200 hover:border-red-400 hover:text-red-400 rounded-full flex items-center justify-center transition-colors favorite-btn" 
+                            aria-label="Add to favorites">
+                        ♡
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mentor Card 2 -->
+            <div class="bg-white border-2 border-gray-100 rounded-2xl p-6 hover:border-primary hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group relative">
+                <div class="flex items-start gap-5 mb-5">
+                    <div class="w-20 h-20 bg-gradient-to-r from-primary to-primary-dark rounded-full flex items-center justify-center text-white text-2xl font-bold flex-shrink-0" 
+                         data-name="James Mitchell" aria-label="James Mitchell's profile picture">
+                        J
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-xl font-bold text-primary-dark mb-1">James Mitchell</h3>
+                        <p class="text-sm text-gray-500 mb-3">London, Greater London</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-orange-100 text-orange-700 text-xs font-medium rounded-full">In-person</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-2 mb-4">
+                    <span class="text-yellow-400" aria-label="5 star rating">★★★★★</span>
+                    <span class="text-sm text-gray-600">4.8 (45 reviews)</span>
+                </div>
+
+                <div class="mb-4">
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-primary text-white text-xs font-medium rounded-full">Piano</span>
+                        <span class="px-3 py-1 bg-primary text-white text-xs font-medium rounded-full">Music Theory</span>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-between mb-5">
+                    <div class="text-2xl font-bold text-primary-dark">
+                        £45<span class="text-sm font-normal text-gray-500">/hour</span>
+                    </div>
+                    <div class="flex gap-2">
+                        <span class="px-3 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded-full">1st Lesson Free</span>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-3">
+                    <button class="flex-1 bg-primary hover:bg-blue-500 text-white py-3 rounded-full font-semibold transition-colors group-hover:bg-blue-500" 
+                            aria-label="View James Mitchell's profile">
+                        View Profile
+                    </button>
+                    <button class="w-11 h-11 border-2 border-gray-200 hover:border-red-400 hover:text-red-400 rounded-full flex items-center justify-center transition-colors favorite-btn" 
+                            aria-label="Add to favorites">
+                        ♡
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mentor Card 3 -->
+            <div class="bg-white border-2 border-gray-100 rounded-2xl p-6 hover:border-primary hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group relative">
+                <div class="flex items-start gap-5 mb-5">
+                    <div class="w-20 h-20 bg-gradient-to-r from-primary to-primary-dark rounded-full flex items-center justify-center text-white text-2xl font-bold flex-shrink-0" 
+                         data-name="Amara Johnson" aria-label="Amara Johnson's profile picture">
+                        A
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-xl font-bold text-primary-dark mb-1">Amara Johnson</h3>
+                        <p class="text-sm text-gray-500 mb-3">Manchester, Greater Manchester</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-green-100 text-green-700 text-xs font-medium rounded-full">Online</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-2 mb-4">
+                    <span class="text-yellow-400" aria-label="5 star rating">★★★★★</span>
+                    <span class="text-sm text-gray-600">4.9 (28 reviews)</span>
+                </div>
+
+                <div class="mb-4">
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-primary text-white text-xs font-medium rounded-full">Creative Writing</span>
+                        <span class="px-3 py-1 bg-primary text-white text-xs font-medium rounded-full">Poetry</span>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-between mb-5">
+                    <div class="text-2xl font-bold text-primary-dark">
+                        £30<span class="text-sm font-normal text-gray-500">/hour</span>
+                    </div>
+                    <div class="flex gap-2">
+                        <span class="px-3 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded-full">1st Lesson Free</span>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-3">
+                    <button class="flex-1 bg-primary hover:bg-blue-500 text-white py-3 rounded-full font-semibold transition-colors group-hover:bg-blue-500" 
+                            aria-label="View Amara Johnson's profile">
+                        View Profile
+                    </button>
+                    <button class="w-11 h-11 border-2 border-gray-200 hover:border-red-400 hover:text-red-400 rounded-full flex items-center justify-center transition-colors favorite-btn" 
+                            aria-label="Add to favorites">
+                        ♡
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mentor Card 4 -->
+            <div class="bg-white border-2 border-gray-100 rounded-2xl p-6 hover:border-primary hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group relative">
+                <div class="flex items-start gap-5 mb-5">
+                    <div class="w-20 h-20 bg-gradient-to-r from-primary to-primary-dark rounded-full flex items-center justify-center text-white text-2xl font-bold flex-shrink-0" 
+                         data-name="Dr. Rajesh Patel" aria-label="Dr. Rajesh Patel's profile picture">
+                        R
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-xl font-bold text-primary-dark mb-1">Dr. Rajesh Patel</h3>
+                        <p class="text-sm text-gray-500 mb-3">Leicester, Leicestershire</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-green-100 text-green-700 text-xs font-medium rounded-full">Online</span>
+                            <span class="px-3 py-1 bg-orange-100 text-orange-700 text-xs font-medium rounded-full">In-person</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-2 mb-4">
+                    <span class="text-yellow-400" aria-label="4 star rating">★★★★☆</span>
+                    <span class="text-sm text-gray-600">4.7 (18 reviews)</span>
+                </div>
+
+                <div class="mb-4">
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-primary text-white text-xs font-medium rounded-full">Philosophy</span>
+                        <span class="px-3 py-1 bg-primary text-white text-xs font-medium rounded-full">Meditation</span>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-between mb-5">
+                    <div class="text-2xl font-bold text-primary-dark">
+                        £40<span class="text-sm font-normal text-gray-500">/hour</span>
+                    </div>
+                    <div class="flex gap-2">
+                        <span class="px-3 py-1 bg-yellow-400 text-yellow-900 text-xs font-semibold rounded-full">Ambassador</span>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-3">
+                    <button class="flex-1 bg-primary hover:bg-blue-500 text-white py-3 rounded-full font-semibold transition-colors group-hover:bg-blue-500" 
+                            aria-label="View Dr. Rajesh Patel's profile">
+                        View Profile
+                    </button>
+                    <button class="w-11 h-11 border-2 border-gray-200 hover:border-red-400 hover:text-red-400 rounded-full flex items-center justify-center transition-colors favorite-btn" 
+                            aria-label="Add to favorites">
+                        ♡
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mentor Card 5 -->
+            <div class="bg-white border-2 border-gray-100 rounded-2xl p-6 hover:border-primary hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group relative">
+                <div class="flex items-start gap-5 mb-5">
+                    <div class="w-20 h-20 bg-gradient-to-r from-primary to-primary-dark rounded-full flex items-center justify-center text-white text-2xl font-bold flex-shrink-0" 
+                         data-name="Sarah Williams" aria-label="Sarah Williams's profile picture">
+                        S
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-xl font-bold text-primary-dark mb-1">Sarah Williams</h3>
+                        <p class="text-sm text-gray-500 mb-3">Bristol, Bristol</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-orange-100 text-orange-700 text-xs font-medium rounded-full">In-person</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-2 mb-4">
+                    <span class="text-yellow-400" aria-label="5 star rating">★★★★★</span>
+                    <span class="text-sm text-gray-600">4.6 (12 reviews)</span>
+                </div>
+
+                <div class="mb-4">
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-primary text-white text-xs font-medium rounded-full">Watercolour</span>
+                        <span class="px-3 py-1 bg-primary text-white text-xs font-medium rounded-full">Art History</span>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-between mb-5">
+                    <div class="text-2xl font-bold text-primary-dark">
+                        £25<span class="text-sm font-normal text-gray-500">/hour</span>
+                    </div>
+                    <div class="flex gap-2">
+                        <span class="px-3 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded-full">1st Lesson Free</span>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-3">
+                    <button class="flex-1 bg-primary hover:bg-blue-500 text-white py-3 rounded-full font-semibold transition-colors group-hover:bg-blue-500" 
+                            aria-label="View Sarah Williams's profile">
+                        View Profile
+                    </button>
+                    <button class="w-11 h-11 border-2 border-gray-200 hover:border-red-400 hover:text-red-400 rounded-full flex items-center justify-center transition-colors favorite-btn" 
+                            aria-label="Add to favorites">
+                        ♡
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mentor Card 6 -->
+            <div class="bg-white border-2 border-gray-100 rounded-2xl p-6 hover:border-primary hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group relative">
+                <div class="flex items-start gap-5 mb-5">
+                    <div class="w-20 h-20 bg-gradient-to-r from-primary to-primary-dark rounded-full flex items-center justify-center text-white text-2xl font-bold flex-shrink-0" 
+                         data-name="Hassan Ali" aria-label="Hassan Ali's profile picture">
+                        H
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-xl font-bold text-primary-dark mb-1">Hassan Ali</h3>
+                        <p class="text-sm text-gray-500 mb-3">Bradford, West Yorkshire</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-green-100 text-green-700 text-xs font-medium rounded-full">Online</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-2 mb-4">
+                    <span class="text-yellow-400" aria-label="5 star rating">★★★★★</span>
+                    <span class="text-sm text-gray-600">4.8 (22 reviews)</span>
+                </div>
+
+                <div class="mb-4">
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-primary text-white text-xs font-medium rounded-full">Arabic</span>
+                        <span class="px-3 py-1 bg-primary text-white text-xs font-medium rounded-full">Calligraphy</span>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-between mb-5">
+                    <div class="text-2xl font-bold text-primary-dark">
+                        £32<span class="text-sm font-normal text-gray-500">/hour</span>
+                    </div>
+                    <div class="flex gap-2">
+                        <span class="px-3 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded-full">1st Lesson Free</span>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-3">
+                    <button class="flex-1 bg-primary hover:bg-blue-500 text-white py-3 rounded-full font-semibold transition-colors group-hover:bg-blue-500" 
+                            aria-label="View Hassan Ali's profile">
+                        View Profile
+                    </button>
+                    <button class="w-11 h-11 border-2 border-gray-200 hover:border-red-400 hover:text-red-400 rounded-full flex items-center justify-center transition-colors favorite-btn" 
+                            aria-label="Add to favorites">
+                        ♡
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pagination Component -->
+        <div class="flex justify-center items-center space-x-4 mt-12">
+            <button class="px-4 py-2 border-2 border-gray-200 hover:border-primary hover:text-primary rounded-lg transition-colors" aria-label="Previous page">
+                ← Previous
+            </button>
+            <button class="px-4 py-2 bg-primary text-white border-2 border-primary rounded-lg" aria-label="Page 1">
+                1
+            </button>
+            <button class="px-4 py-2 border-2 border-gray-200 hover:border-primary hover:text-primary rounded-lg transition-colors" aria-label="Page 2">
+                2
+            </button>
+            <button class="px-4 py-2 border-2 border-gray-200 hover:border-primary hover:text-primary rounded-lg transition-colors" aria-label="Page 3">
+                3
+            </button>
+            <span class="text-gray-400 px-2">...</span>
+            <button class="px-4 py-2 border-2 border-gray-200 hover:border-primary hover:text-primary rounded-lg transition-colors" aria-label="Page 8">
+                8
+            </button>
+            <button class="px-4 py-2 border-2 border-gray-200 hover:border-primary hover:text-primary rounded-lg transition-colors" aria-label="Next page">
+                Next →
+            </button>
+        </div>
+    </main>
+
+    <!-- Loading State Component (Hidden by default) -->
+    <div id="loading-state" class="hidden text-center py-12">
+        <div class="inline-block w-8 h-8 border-4 border-gray-300 border-t-primary rounded-full animate-spin mb-4"></div>
+        <p class="text-gray-600">Finding the perfect mentors for you...</p>
+    </div>
+
+    <!-- JavaScript Component -->
+    <script>
+        // Custom slider styling
+        const style = document.createElement('style');
+        style.textContent = `
+            .slider::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                appearance: none;
+                width: 20px;
+                height: 20px;
+                background: #00A2E8;
+                border-radius: 50%;
+                cursor: pointer;
+            }
+            
+            .slider::-moz-range-thumb {
+                width: 20px;
+                height: 20px;
+                background: #00A2E8;
+                border-radius: 50%;
+                cursor: pointer;
+                border: none;
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Price range slider functionality
+        const priceSlider = document.getElementById('price-slider');
+        const priceMax = document.getElementById('price-max');
+
+        priceSlider.addEventListener('input', function() {
+            priceMax.textContent = `£${this.value}`;
+        });
+
+        // Filter functionality
+        const applyFiltersBtn = document.querySelector('[aria-label="Apply filters"]');
+        const clearFiltersBtn = document.querySelector('[aria-label="Clear all filters"]');
+        const filtersElements = document.querySelectorAll('select, input[type="text"], input[type="range"]');
+
+        applyFiltersBtn.addEventListener('click', function() {
+            showLoadingState();
+            
+            setTimeout(() => {
+                hideLoadingState();
+                updateResultsCount();
+                announceFilterChange('Filters applied. Results updated.');
+            }, 1000);
+        });
+
+        clearFiltersBtn.addEventListener('click', function() {
+            // Clear all filters
+            filtersElements.forEach(element => {
+                if (element.type === 'range') {
+                    element.value = 50;
+                    priceMax.textContent = '£50';
+                } else {
+                    element.value = '';
+                }
+            });
+            
+            // Reset results
+            document.getElementById('results-count').textContent = '24';
+            announceFilterChange('All filters cleared.');
+        });
+
+        // Sort functionality
+        const sortSelect = document.getElementById('sort-select');
+        sortSelect.addEventListener('change', function() {
+            showLoadingState();
+            
+            setTimeout(() => {
+                hideLoadingState();
+                announceFilterChange(`Sorted by: ${this.options[this.selectedIndex].text}`);
+            }, 500);
+        });
+
+        // Favorite functionality
+        document.querySelectorAll('.favorite-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                this.classList.toggle('text-red-500');
+                this.classList.toggle('border-red-500');
+                this.classList.toggle('bg-red-50');
+                
+                const isFavorited = this.classList.contains('text-red-500');
+                this.innerHTML = isFavorited ? '♥' : '♡';
+                this.setAttribute('aria-label', 
+                    isFavorited ? 'Remove from favorites' : 'Add to favorites'
+                );
+                
+                // Visual feedback
+                if (isFavorited) {
+                    this.classList.add('scale-110');
+                    setTimeout(() => this.classList.remove('scale-110'), 150);
+                }
+            });
+        });
+
+        // Pagination functionality
+        document.querySelectorAll('[aria-label^="Page"], [aria-label$="page"]').forEach(btn => {
+            btn.addEventListener('click', function() {
+                if (this.textContent.includes('Previous') || this.textContent.includes('Next')) {
+                    // Handle prev/next
+                    showLoadingState();
+                    setTimeout(() => {
+                        hideLoadingState();
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }, 500);
+                } else if (!this.classList.contains('bg-primary')) {
+                    // Handle page number
+                    document.querySelector('.bg-primary').classList.remove('bg-primary', 'text-white', 'border-primary');
+                    document.querySelector('.bg-primary')?.classList.add('border-gray-200', 'hover:border-primary', 'hover:text-primary');
+                    
+                    this.classList.add('bg-primary', 'text-white', 'border-primary');
+                    this.classList.remove('border-gray-200', 'hover:border-primary', 'hover:text-primary');
+                    
+                    showLoadingState();
+                    setTimeout(() => {
+                        hideLoadingState();
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }, 500);
+                }
+            });
+        });
+
+        // Helper functions
+        function showLoadingState() {
+            document.getElementById('mentors-grid').classList.add('hidden');
+            document.getElementById('loading-state').classList.remove('hidden');
+        }
+
+        function hideLoadingState() {
+            document.getElementById('loading-state').classList.add('hidden');
+            document.getElementById('mentors-grid').classList.remove('hidden');
+        }
+
+        function updateResultsCount() {
+            const count = Math.floor(Math.random() * 20) + 5; // Random count between 5-25
+            document.getElementById('results-count').textContent = count;
+        }
+
+        // Enhanced mentor card interactions
+        document.querySelectorAll('.group').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-8px) scale(1.02)';
+            });
+
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+
+            // Keyboard navigation
+            card.setAttribute('tabindex', '0');
+            card.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    const profileBtn = this.querySelector('[aria-label*="View"]');
+                    if (profileBtn) profileBtn.click();
+                }
+            });
+        });
+
+        // Filter accessibility - announce changes to screen readers
+        function announceFilterChange(message) {
+            const announcement = document.createElement('div');
+            announcement.setAttribute('aria-live', 'polite');
+            announcement.setAttribute('aria-atomic', 'true');
+            announcement.style.position = 'absolute';
+            announcement.style.left = '-10000px';
+            announcement.textContent = message;
+            document.body.appendChild(announcement);
+            
+            setTimeout(() => {
+                document.body.removeChild(announcement);
+            }, 1000);
+        }
+
+        // Add filter change announcements
+        filtersElements.forEach(element => {
+            element.addEventListener('change', function() {
+                if (this.value) {
+                    const label = this.previousElementSibling?.textContent || 'Filter';
+                    announceFilterChange(`${label} changed to: ${this.value}`);
+                }
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

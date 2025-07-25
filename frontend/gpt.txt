@@ -1,0 +1,434 @@
+/*
+================================================================================
+File: src/context/AuthContext.tsx (Create this new file and folder)
+================================================================================
+This is the most important new file. It creates a global "context" to manage
+user authentication state and the visibility of the login modal. This lets any
+component in your app know if a user is logged in or open the login modal.
+*/
+'use client';
+
+import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { onAuthStateChanged, User } from 'firebase/auth';
+import { auth } from '@/lib/firebase';
+import LoginModal from '@/components/LoginModal'; // We will create this component
+
+// Define the shape of our context data
+interface AuthContextType {
+  user: User | null;
+  loading: boolean;
+  isLoginModalOpen: boolean;
+  openLoginModal: () => void;
+  closeLoginModal: () => void;
+}
+
+// Create the context with a default value
+const AuthContext = createContext<AuthContextType | undefined>(undefined);
+
+// Create the AuthProvider component
+export function AuthProvider({ children }: { children: ReactNode }) {
+  const [user, setUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+
+  useEffect(() => {
+    // Listen for authentication state changes
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      setLoading(false);
+    });
+
+    // Cleanup subscription on unmount
+    return () => unsubscribe();
+  }, []);
+
+  const openLoginModal = () => setIsLoginModalOpen(true);
+  const closeLoginModal = () => setIsLoginModalOpen(false);
+
+  const value = {
+    user,
+    loading,
+    isLoginModalOpen,
+    openLoginModal,
+    closeLoginModal,
+  };
+
+  return (
+    <AuthContext.Provider value={value}>
+      {!loading && children}
+      <LoginModal />
+    </AuthContext.Provider>
+  );
+}
+
+// Create a custom hook to easily use the auth context
+export function useAuth() {
+  const context = useContext(AuthContext);
+  if (context === undefined) {
+    throw new Error('useAuth must be used within an AuthProvider');
+  }
+  return context;
+}
+
+
+/*
+================================================================================
+File: src/app/layout.tsx (Update this file)
+================================================================================
+We'll wrap the entire layout with our new AuthProvider and change the Login
+button to use the context to open the modal.
+*/
+import type { Metadata } from "next";
+import Link from 'next/link';
+import ThemeRegistry from '@/components/ThemeRegistry';
+import { AuthProvider, useAuth } from '@/context/AuthContext'; // Import AuthProvider
+import AuthNav from "@/components/AuthNav"; // We'll create this small component
+
+export const metadata: Metadata = {
+  title: "Roots & Wings",
+  description: "Mentorship Platform",
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en">
+      <body>
+        <ThemeRegistry>
+          <AuthProvider> {/* Wrap everything with AuthProvider */}
+            <div className="min-h-screen flex flex-col bg-slate-50">
+              <header className="bg-blue-700 text-white p-4 shadow-md sticky top-0 z-50">
+                <nav className="container mx-auto flex items-center gap-6">
+                  <Link href="/" className="font-bold text-lg">Roots & Wings</Link>
+                  <div className="flex-grow"></div>
+                  <Link href="/mentors" className="hover:underline">Find a Mentor</Link>
+                  <AuthNav /> {/* Use the new AuthNav component */}
+                </nav>
+              </header>
+
+              <main className="flex-grow">
+                {children}
+              </main>
+
+              <footer className="bg-gray-100 text-center p-4 mt-8">
+                © {new Date().getFullYear()} Roots & Wings
+              </footer>
+            </div>
+          </AuthProvider>
+        </ThemeRegistry>
+      </body>
+    </html>
+  );
+}
+
+
+/*
+================================================================================
+File: src/components/AuthNav.tsx (Create this new file)
+================================================================================
+This component handles the logic for the navigation bar's auth button.
+It shows "Login" if the user is signed out, and a link to the dashboard
+if they are signed in.
+*/
+'use client';
+
+import React from 'react';
+import Link from 'next/link';
+import { useAuth } from '@/context/AuthContext';
+import { Button } from '@mui/material';
+import { signOut } from 'firebase/auth';
+import { auth } from '@/lib/firebase';
+
+export default function AuthNav() {
+  const { user, openLoginModal } = useAuth();
+
+  const handleSignOut = async () => {
+    await signOut(auth);
+  }
+
+  if (user) {
+    return (
+        <div className="flex items-center gap-4">
+            <Link href="/dashboard" className="hover:underline">Dashboard</Link>
+            <Button variant="contained" color="secondary" onClick={handleSignOut} size="small">
+                Sign Out
+            </Button>
+        </div>
+    );
+  }
+
+  return (
+    <Button
+      onClick={openLoginModal}
+      variant="contained"
+      sx={{ 
+        backgroundColor: 'white', 
+        color: 'primary.main',
+        '&:hover': { backgroundColor: 'gray.100' }
+       }}
+    >
+      Login / Sign Up
+    </Button>
+  );
+}
+
+
+/*
+================================================================================
+File: src/components/LoginModal.tsx (Create this new file)
+================================================================================
+This is the reusable modal component for logging in. It uses the AuthContext
+to control its own visibility.
+*/
+'use client';
+
+import React, { useState } from 'react';
+import { useAuth } from '@/context/AuthContext';
+import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import { auth } from '@/lib/firebase';
+import { Dialog, DialogContent, Box, Typography, Button, CircularProgress, IconButton } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
+
+export default function LoginModal() {
+  const { isLoginModalOpen, closeLoginModal, user } = useAuth();
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
+  const googleProvider = new GoogleAuthProvider();
+
+  const handleSignIn = async () => {
+    setIsLoading(true);
+    setError('');
+    try {
+      await signInWithPopup(auth, googleProvider);
+      // On successful sign-in, close the modal
+      closeLoginModal();
+    } catch (error) {
+      console.error("Authentication Error:", error);
+      setError("Failed to sign in. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+  
+  // If user is logged in, don't render the modal
+  if(user) return null;
+
+  return (
+    <Dialog open={isLoginModalOpen} onClose={closeLoginModal} maxWidth="xs" fullWidth>
+      <DialogContent sx={{ position: 'relative', p: 4 }}>
+        <IconButton
+          aria-label="close"
+          onClick={closeLoginModal}
+          sx={{
+            position: 'absolute',
+            right: 8,
+            top: 8,
+            color: (theme) => theme.palette.grey[500],
+          }}
+        >
+          <CloseIcon />
+        </IconButton>
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
+        >
+          <Typography component="h1" variant="h5" sx={{ mb: 1 }}>
+            Welcome Back
+          </Typography>
+          <Typography color="text.secondary" sx={{ mb: 3 }}>
+            Sign in to continue your journey.
+          </Typography>
+
+          {isLoading ? (
+            <CircularProgress />
+          ) : (
+            <Button
+              type="button"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2, py: 1.5 }}
+              onClick={handleSignIn}
+            >
+              Sign In with Google
+            </Button>
+          )}
+          {error && (
+            <Typography color="error" sx={{ mt: 2 }}>
+              {error}
+            </Typography>
+          )}
+        </Box>
+      </DialogContent>
+    </Dialog>
+  );
+}
+
+
+/*
+================================================================================
+File: src/app/page.tsx (Update this file)
+================================================================================
+This is your main home page. It's clean and composed of other components.
+It uses Tailwind CSS for layout.
+*/
+import HeroSection from '@/components/HeroSection';
+import FeaturedMentors from '@/components/FeaturedMentors';
+
+export default function HomePage() {
+  return (
+    <div>
+      <HeroSection />
+      <FeaturedMentors />
+    </div>
+  );
+}
+
+
+/*
+================================================================================
+File: src/components/HeroSection.tsx (Update this file)
+================================================================================
+A dedicated component for the hero section of your home page.
+*/
+'use client';
+
+import React from 'react';
+import { Button, Typography } from '@mui/material';
+import { useAuth } from '@/context/AuthContext';
+
+export default function HeroSection() {
+    const { openLoginModal } = useAuth();
+  return (
+    <div className="text-center py-20 px-4 sm:px-6 lg:px-8 bg-white">
+      <Typography variant="h2" component="h1" className="font-extrabold text-gray-900">
+        Unlock Your Potential.
+      </Typography>
+      <Typography variant="h5" component="p" className="mt-4 text-gray-600">
+        Find the perfect mentor to guide you on your professional journey.
+      </Typography>
+      <div className="mt-8">
+        <Button variant="contained" color="primary" size="large" onClick={openLoginModal}>
+          Get Started - It's Free
+        </Button>
+      </div>
+    </div>
+  );
+}
+
+
+/*
+================================================================================
+File: src/components/FeaturedMentors.tsx (Create this new file)
+================================================================================
+This component will display a grid of mentor cards. For now, it uses
+mock data. Later, we will fetch this from Firestore.
+*/
+import React from 'react';
+import { Typography, Grid } from '@mui/material';
+import MentorCard from './MentorCard';
+import { Mentor } from '@/types/mentor'; // Make sure this type is defined
+
+// Mock data - we will replace this with Firestore data later
+const mockMentors: Mentor[] = [
+  {
+    id: '1',
+    name: 'Sarah Chen',
+    title: 'Senior Software Engineer at Google',
+    skills: ['React', 'TypeScript', 'System Design'],
+    photoURL: 'https://i.pravatar.cc/300?img=1',
+  },
+  {
+    id: '2',
+    name: 'David Lee',
+    title: 'Product Manager at Spotify',
+    skills: ['Product Strategy', 'Agile', 'User Research'],
+    photoURL: 'https://i.pravatar.cc/300?img=2',
+  },
+  {
+    id: '3',
+    name: 'Maria Garcia',
+    title: 'UX/UI Design Lead at Airbnb',
+    skills: ['Figma', 'Prototyping', 'Design Systems'],
+    photoURL: 'https://i.pravatar.cc/300?img=3',
+  },
+];
+
+export default function FeaturedMentors() {
+  return (
+    <div className="container mx-auto px-4 py-16">
+      <Typography variant="h4" component="h2" className="text-center font-bold mb-10">
+        Meet Our Mentors
+      </Typography>
+      <Grid container spacing={4}>
+        {mockMentors.map((mentor) => (
+          <Grid item key={mentor.id} xs={12} sm={6} md={4}>
+            <MentorCard mentor={mentor} />
+          </Grid>
+        ))}
+      </Grid>
+    </div>
+  );
+}
+
+
+/*
+================================================================================
+File: src/components/MentorCard.tsx (Create this new file)
+================================================================================
+A reusable card component to display a single mentor's information.
+*/
+import React from 'react';
+import { Card, CardContent, CardMedia, Typography, Box, Chip } from '@mui/material';
+import { Mentor } from '@/types/mentor';
+
+interface MentorCardProps {
+  mentor: Mentor;
+}
+
+export default function MentorCard({ mentor }: MentorCardProps) {
+  return (
+    <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column', borderRadius: 4, transition: 'transform 0.2s', '&:hover': { transform: 'scale(1.03)' } }}>
+      <CardMedia
+        component="img"
+        height="200"
+        image={mentor.photoURL}
+        alt={mentor.name}
+      />
+      <CardContent sx={{ flexGrow: 1 }}>
+        <Typography gutterBottom variant="h5" component="div">
+          {mentor.name}
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+          {mentor.title}
+        </Typography>
+        <Box sx={{ mt: 2 }}>
+          {mentor.skills.map((skill) => (
+            <Chip key={skill} label={skill} sx={{ mr: 1, mb: 1 }} />
+          ))}
+        </Box>
+      </CardContent>
+    </Card>
+  );
+}
+
+
+/*
+================================================================================
+File: src/types/mentor.ts (Update or create this file)
+================================================================================
+Defining a TypeScript 'type' for our mentor data helps prevent bugs and
+makes our code easier to understand.
+*/
+export interface Mentor {
+    id: string;
+    name: string;
+    title: string;
+    skills: string[];
+    photoURL: string;
+}

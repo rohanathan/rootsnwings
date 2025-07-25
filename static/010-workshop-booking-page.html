@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Workshop - Roots & Wings</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#00A2E8',
+                        'primary-dark': '#00468C',
+                        'primary-light': '#f8fbff',
+                        'accent-light': '#e8f4ff'
+                    },
+                    fontFamily: {
+                        sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans text-gray-800 bg-gray-50">
+
+    <!-- Navigation Component -->
+    <nav class="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-sm shadow-lg">
+        <div class="max-w-7xl mx-auto px-5">
+            <div class="flex justify-between items-center py-4">
+                <a href="#" class="text-2xl font-bold text-primary-dark">Roots & Wings</a>
+                <div class="flex items-center space-x-6">
+                    <a href="#" class="text-gray-600 hover:text-primary transition-colors">← Back to Workshops</a>
+                    <a href="#" class="text-gray-600 hover:text-primary transition-colors">Help</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Step Indicator Component -->
+    <div class="fixed top-16 w-full z-40 bg-white border-b border-gray-200">
+        <div class="max-w-4xl mx-auto px-5 py-6">
+            <div class="flex items-center justify-center">
+                <!-- Step 1: Browse Workshops -->
+                <div class="flex items-center">
+                    <div class="w-10 h-10 bg-green-500 text-white rounded-full flex items-center justify-center font-bold">
+                        ✓
+                    </div>
+                    <div class="ml-3">
+                        <div class="text-sm font-semibold text-green-600">Step 1</div>
+                        <div class="text-xs text-gray-500">Browse Workshops</div>
+                    </div>
+                </div>
+
+                <!-- Connector Line -->
+                <div class="flex-1 h-px bg-primary mx-4"></div>
+
+                <!-- Step 2: Book Workshop -->
+                <div class="flex items-center">
+                    <div class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center font-bold">
+                        2
+                    </div>
+                    <div class="ml-3">
+                        <div class="text-sm font-semibold text-primary">Step 2</div>
+                        <div class="text-xs text-gray-500">Book Workshop</div>
+                    </div>
+                </div>
+
+                <!-- Connector Line -->
+                <div class="flex-1 h-px bg-gray-300 mx-4"></div>
+
+                <!-- Step 3: Confirmation -->
+                <div class="flex items-center">
+                    <div class="w-10 h-10 bg-gray-300 text-gray-500 rounded-full flex items-center justify-center font-bold">
+                        3
+                    </div>
+                    <div class="ml-3">
+                        <div class="text-sm font-semibold text-gray-500">Step 3</div>
+                        <div class="text-xs text-gray-500">Confirmation</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="pt-40 pb-16">
+        <div class="max-w-7xl mx-auto px-5">
+            
+            <!-- Page Header -->
+            <div class="text-center mb-8">
+                <h1 class="text-3xl font-bold text-primary-dark mb-2">Book Your Workshop</h1>
+                <p class="text-gray-600">Review details and complete your registration</p>
+            </div>
+
+            <!-- Main Layout: Workshop Summary + Booking Form -->
+            <div class="grid lg:grid-cols-3 gap-8">
+                
+                <!-- Workshop Summary Card - Right Panel -->
+                <div class="lg:col-span-1 lg:order-2">
+                    <div class="bg-white rounded-2xl shadow-xl border border-gray-100 sticky top-40">
+                        <!-- Workshop Hero -->
+                        <div class="h-32 bg-gradient-to-br from-orange-400 to-red-500 rounded-t-2xl flex items-center justify-center relative">
+                            <span class="text-5xl text-white">🕉️</span>
+                            <!-- Free Badge -->
+                            <div class="absolute top-4 left-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+                                🆓 FREE
+                            </div>
+                        </div>
+
+                        <div class="p-6">
+                            <!-- Workshop Title -->
+                            <h2 class="text-xl font-bold text-primary-dark mb-4">Introduction to Vedic Chanting</h2>
+
+                            <!-- Mentor Info -->
+                            <div class="flex items-center gap-3 mb-6">
+                                <div class="w-14 h-14 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center text-white font-bold">
+                                    R
+                                </div>
+                                <div>
+                                    <div class="font-semibold text-gray-800">Dr. Rajesh Patel</div>
+                                    <div class="text-sm text-gray-500">🎓 Certified Mentor</div>
+                                    <div class="flex text-yellow-400 text-xs">★★★★★</div>
+                                </div>
+                            </div>
+
+                            <!-- Workshop Details -->
+                            <div class="space-y-4 mb-6">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-xl">📅</span>
+                                    <div>
+                                        <div class="font-semibold text-gray-700">Date & Time</div>
+                                        <div class="text-primary-dark font-bold">Saturday, July 27</div>
+                                        <div class="text-sm text-gray-500">2:00 PM - 4:00 PM (BST)</div>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center gap-3">
+                                    <span class="text-xl">⏱️</span>
+                                    <div>
+                                        <div class="font-semibold text-gray-700">Duration</div>
+                                        <div class="text-primary-dark font-bold">2 hours</div>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center gap-3">
+                                    <span class="text-xl">💻</span>
+                                    <div>
+                                        <div class="font-semibold text-gray-700">Mode</div>
+                                        <div class="text-primary-dark font-bold">Online via Zoom</div>
+                                        <div class="text-sm text-gray-500">Link sent after registration</div>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center gap-3">
+                                    <span class="text-xl">🎯</span>
+                                    <div>
+                                        <div class="font-semibold text-gray-700">Category</div>
+                                        <div class="text-primary-dark font-bold">Music & Spirituality</div>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center gap-3">
+                                    <span class="text-xl">🎓</span>
+                                    <div>
+                                        <div class="font-semibold text-gray-700">Level & Age</div>
+                                        <div class="flex gap-2 mt-1">
+                                            <span class="px-2 py-1 bg-green-100 text-green-700 text-xs rounded-full">Beginner</span>
+                                            <span class="px-2 py-1 bg-indigo-100 text-indigo-700 text-xs rounded-full">Adults</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center gap-3">
+                                    <span class="text-xl">👥</span>
+                                    <div>
+                                        <div class="font-semibold text-gray-700">Capacity</div>
+                                        <div class="text-primary-dark font-bold">Maximum 15 participants</div>
+                                        <div class="text-sm text-green-600">✅ 5 spots remaining</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Price Summary -->
+                            <div class="border-t pt-6">
+                                <div class="flex justify-between items-center mb-4">
+                                    <span class="text-lg font-semibold text-gray-700">Workshop Fee</span>
+                                    <span class="text-2xl font-bold text-green-600">FREE</span>
+                                </div>
+                                <div class="text-sm text-gray-600 mb-4">
+                                    ✨ This workshop is offered free as part of our community outreach program
+                                </div>
+                                <div class="bg-green-50 p-4 rounded-xl">
+                                    <h4 class="font-semibold text-green-800 mb-2">What's Included:</h4>
+                                    <ul class="text-sm text-green-700 space-y-1">
+                                        <li>✓ 2-hour interactive session</li>
+                                        <li>✓ Digital practice materials</li>
+                                        <li>✓ Recording for 7-day access</li>
+                                        <li>✓ Certificate of participation</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Booking Form - Left Section -->
+                <div class="lg:col-span-2 lg:order-1">
+                    <div class="bg-white rounded-2xl shadow-xl border border-gray-100 p-8">
+                        <h2 class="text-2xl font-bold text-primary-dark mb-6">Registration Details</h2>
+
+                        <form id="workshop-booking-form">
+                            <!-- Primary Learner Section -->
+                            <div class="mb-8">
+                                <h3 class="text-lg font-semibold text-primary-dark mb-4">👤 Learner Information</h3>
+                                
+                                <div class="grid md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label class="block text-sm font-semibold text-gray-700 mb-2">First Name *</label>
+                                        <input type="text" class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-primary focus:outline-none" 
+                                               placeholder="Enter first name" value="Sarah" required>
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-semibold text-gray-700 mb-2">Last Name *</label>
+                                        <input type="text" class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-primary focus:outline-none" 
+                                               placeholder="Enter last name" value="Johnson" required>
+                                    </div>
+                                </div>
+
+                                <div class="grid md:grid-cols-2 gap-6 mt-4">
+                                    <div>
+                                        <label class="block text-sm font-semibold text-gray-700 mb-2">Email Address *</label>
+                                        <input type="email" class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-primary focus:outline-none" 
+                                               placeholder="Enter email" value="sarah.johnson@email.com" required>
+                                        <p class="text-xs text-gray-500 mt-1">Workshop link will be sent to this email</p>
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-semibold text-gray-700 mb-2">Phone Number</label>
+                                        <input type="tel" class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-primary focus:outline-none" 
+                                               placeholder="Enter phone number" value="+44 7123 456789">
+                                        <p class="text-xs text-gray-500 mt-1">For workshop reminders (optional)</p>
+                                    </div>
+                                </div>
+
+                                <div class="mt-4">
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Age *</label>
+                                    <select class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-primary focus:outline-none bg-white" required>
+                                        <option value="">Select age range</option>
+                                        <option value="18-25">18-25 years</option>
+                                        <option value="26-35" selected>26-35 years</option>
+                                        <option value="36-50">36-50 years</option>
+                                        <option value="51-65">51-65 years</option>
+                                        <option value="65+">65+ years</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Child Registration (if applicable) -->
+                            <div class="mb-8 hidden" id="child-section">
+                                <h3 class="text-lg font-semibold text-primary-dark mb-4">👶 Child Registration</h3>
+                                
+                                <div class="bg-blue-50 p-4 rounded-lg mb-4">
+                                    <p class="text-sm text-blue-800">
+                                        <strong>Parent/Guardian Notice:</strong> For participants under 18, a parent or guardian must complete this registration and supervise online sessions.
+                                    </p>
+                                </div>
+
+                                <div class="grid md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label class="block text-sm font-semibold text-gray-700 mb-2">Child's Name</label>
+                                        <input type="text" class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-primary focus:outline-none" 
+                                               placeholder="Enter child's name">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-semibold text-gray-700 mb-2">Child's Age</label>
+                                        <select class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-primary focus:outline-none bg-white">
+                                            <option value="">Select age</option>
+                                            <option value="5">5 years</option>
+                                            <option value="6">6 years</option>
+                                            <option value="7">7 years</option>
+                                            <option value="8">8 years</option>
+                                            <option value="9">9 years</option>
+                                            <option value="10">10 years</option>
+                                            <option value="11">11 years</option>
+                                            <option value="12">12 years</option>
+                                            <option value="13">13 years</option>
+                                            <option value="14">14 years</option>
+                                            <option value="15">15 years</option>
+                                            <option value="16">16 years</option>
+                                            <option value="17">17 years</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Special Requirements -->
+                            <div class="mb-8">
+                                <h3 class="text-lg font-semibold text-primary-dark mb-4">📋 Additional Information</h3>
+                                
+                                <div class="mb-4">
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Experience Level</label>
+                                    <select class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-primary focus:outline-none bg-white">
+                                        <option value="complete-beginner" selected>Complete beginner</option>
+                                        <option value="some-exposure">Some exposure to chanting/meditation</option>
+                                        <option value="familiar">Familiar with Sanskrit basics</option>
+                                        <option value="experienced">Experienced practitioner</option>
+                                    </select>
+                                </div>
+
+                                <div class="mb-4">
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Dietary Restrictions/Accessibility Needs</label>
+                                    <textarea class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-primary focus:outline-none resize-none" 
+                                              rows="3" placeholder="Any special accommodations we should know about? (Optional)"></textarea>
+                                </div>
+
+                                <div class="mb-4">
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">How did you hear about this workshop?</label>
+                                    <select class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-primary focus:outline-none bg-white">
+                                        <option value="">Please select</option>
+                                        <option value="website">Roots & Wings website</option>
+                                        <option value="social-media">Social media</option>
+                                        <option value="friend">Friend recommendation</option>
+                                        <option value="mentor">Mentor referral</option>
+                                        <option value="google">Google search</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Emergency Contact (for minors) -->
+                            <div class="mb-8 hidden" id="emergency-contact">
+                                <h3 class="text-lg font-semibold text-primary-dark mb-4">🚨 Emergency Contact</h3>
+                                <div class="grid md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label class="block text-sm font-semibold text-gray-700 mb-2">Contact Name</label>
+                                        <input type="text" class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-primary focus:outline-none" 
+                                               placeholder="Parent/Guardian name">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-semibold text-gray-700 mb-2">Contact Phone</label>
+                                        <input type="tel" class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-primary focus:outline-none" 
+                                               placeholder="Emergency contact number">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Terms and Agreements -->
+                            <div class="mb-8">
+                                <h3 class="text-lg font-semibold text-primary-dark mb-4">✅ Terms & Agreements</h3>
+                                
+                                <div class="space-y-4">
+                                    <label class="flex items-start gap-3 cursor-pointer">
+                                        <input type="checkbox" class="mt-1 rounded border-gray-300 text-primary focus:ring-primary" required>
+                                        <div class="text-sm text-gray-700 leading-relaxed">
+                                            I agree to the 
+                                            <a href="#" class="text-primary hover:text-primary-dark font-semibold">Terms of Service</a> 
+                                            and 
+                                            <a href="#" class="text-primary hover:text-primary-dark font-semibold">Privacy Policy</a>
+                                        </div>
+                                    </label>
+
+                                    <label class="flex items-start gap-3 cursor-pointer">
+                                        <input type="checkbox" class="mt-1 rounded border-gray-300 text-primary focus:ring-primary" required>
+                                        <div class="text-sm text-gray-700 leading-relaxed">
+                                            I understand the workshop cancellation policy: Free cancellation up to 2 hours before the session starts.
+                                        </div>
+                                    </label>
+
+                                    <label class="flex items-start gap-3 cursor-pointer">
+                                        <input type="checkbox" class="mt-1 rounded border-gray-300 text-primary focus:ring-primary">
+                                        <div class="text-sm text-gray-700 leading-relaxed">
+                                            I consent to the session being recorded for educational purposes. Recordings are only shared with participants.
+                                        </div>
+                                    </label>
+
+                                    <label class="flex items-start gap-3 cursor-pointer">
+                                        <input type="checkbox" class="mt-1 rounded border-gray-300 text-primary focus:ring-primary">
+                                        <div class="text-sm text-gray-700 leading-relaxed">
+                                            I'd like to receive email updates about future workshops and events from Roots & Wings.
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Pre-workshop Preparation -->
+                            <div class="mb-8">
+                                <div class="bg-gradient-to-r from-yellow-50 to-orange-50 p-6 rounded-2xl">
+                                    <h4 class="font-bold text-primary-dark mb-3">📚 Pre-Workshop Preparation</h4>
+                                    <p class="text-sm text-gray-700 mb-4">To get the most out of your workshop experience:</p>
+                                    <ul class="text-sm text-gray-700 space-y-2">
+                                        <li class="flex items-start gap-2">
+                                            <span class="text-green-500 mt-0.5">✓</span>
+                                            <span>Find a quiet space where you won't be disturbed</span>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <span class="text-green-500 mt-0.5">✓</span>
+                                            <span>Have a notebook and pen ready for notes</span>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <span class="text-green-500 mt-0.5">✓</span>
+                                            <span>Test your Zoom setup 15 minutes before the session</span>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <span class="text-green-500 mt-0.5">✓</span>
+                                            <span>Wear comfortable clothing suitable for gentle movement</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="mt-8 space-y-4">
+                        <!-- Main CTA -->
+                        <button class="w-full bg-primary hover:bg-blue-500 text-white py-4 rounded-2xl font-bold text-lg transition-all duration-300 hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                                id="confirm-booking-btn" onclick="confirmWorkshopBooking()">
+                            ✅ Confirm Free Registration
+                        </button>
+
+                        <!-- Secondary Actions -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <button class="w-full border-2 border-gray-300 hover:border-primary text-gray-700 hover:text-primary py-3 rounded-lg font-semibold transition-colors"
+                                    onclick="contactMentor()">
+                                💬 Message Dr. Rajesh Patel
+                            </button>
+                            <button class="w-full border-2 border-primary text-primary hover:bg-primary hover:text-white py-3 rounded-lg font-semibold transition-colors"
+                                    onclick="saveForLater()">
+                                📌 Save for Later
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Important Notice -->
+                    <div class="mt-6 bg-blue-50 p-6 rounded-2xl">
+                        <h4 class="font-bold text-primary-dark mb-3">📧 What happens after registration?</h4>
+                        <ul class="space-y-2 text-sm text-gray-700">
+                            <li class="flex items-start gap-2">
+                                <span class="text-blue-500 mt-1">✓</span>
+                                <span><strong>Instant confirmation:</strong> You'll receive an email confirmation immediately</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-blue-500 mt-1">✓</span>
+                                <span><strong>Workshop materials:</strong> Pre-session reading and practice materials sent 24 hours before</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-blue-500 mt-1">✓</span>
+                                <span><strong>Zoom link:</strong> Workshop link and instructions sent 2 hours before start time</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-blue-500 mt-1">✓</span>
+                                <span><strong>Mentor contact:</strong> Dr. Rajesh will personally welcome you to the session</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Success Modal Component (Initially Hidden) -->
+    <div id="success-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-3xl p-8 max-w-md w-full text-center">
+            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <span class="text-3xl">🎉</span>
+            </div>
+            <h3 class="text-2xl font-bold text-primary-dark mb-4">Registration Confirmed!</h3>
+            <p class="text-gray-600 mb-6">
+                Wonderful! You're registered for "Introduction to Vedic Chanting" with Dr. Rajesh Patel. 
+                Check your email for confirmation and workshop materials.
+            </p>
+            <div class="space-y-3">
+                <button class="w-full bg-primary hover:bg-blue-500 text-white py-3 rounded-full font-semibold transition-colors"
+                        onclick="addToCalendar()">
+                    📅 Add to Calendar
+                </button>
+                <button class="w-full border-2 border-gray-300 text-gray-700 py-3 rounded-full font-semibold transition-colors"
+                        onclick="viewMyBookings()">
+                    View My Workshops
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Component -->
+    <script>
+        // Form validation
+        function validateForm() {
+            const requiredFields = document.querySelectorAll('input[required], select[required]');
+            const requiredCheckboxes = document.querySelectorAll('input[type="checkbox"][required]');
+            
+            let isValid = true;
+
+            // Check required fields
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    isValid = false;
+                    field.classList.add('border-red-500');
+                } else {
+                    field.classList.remove('border-red-500');
+                }
+            });
+
+            // Check required checkboxes
+            requiredCheckboxes.forEach(checkbox => {
+                if (!checkbox.checked) {
+                    isValid = false;
+                    checkbox.parentElement.classList.add('text-red-600');
+                } else {
+                    checkbox.parentElement.classList.remove('text-red-600');
+                }
+            });
+
+            return isValid;
+        }
+
+        // Real-time validation
+        document.querySelectorAll('input, select').forEach(field => {
+            field.addEventListener('blur', function() {
+                if (this.hasAttribute('required') && !this.value.trim()) {
+                    this.classList.add('border-red-500');
+                } else {
+                    this.classList.remove('border-red-500');
+                }
+            });
+        });
+
+        // Confirm workshop booking
+        function confirmWorkshopBooking() {
+            if (!validateForm()) {
+                alert('Please fill in all required fields and accept the terms.');
+                return;
+            }
+
+            const btn = document.getElementById('confirm-booking-btn');
+            btn.textContent = 'Processing Registration...';
+            btn.disabled = true;
+
+            // Simulate booking process
+            setTimeout(() => {
+                showSuccessModal();
+                
+                // Update capacity in summary
+                const capacityElement = document.querySelector('.text-green-600');
+                if (capacityElement) {
+                    capacityElement.textContent = '✅ 4 spots remaining';
+                }
+            }, 2000);
+        }
+
+        // Show success modal
+        function showSuccessModal() {
+            document.getElementById('success-modal').classList.remove('hidden');
+        }
+
+        // Close success modal
+        function closeSuccessModal() {
+            document.getElementById('success-modal').classList.add('hidden');
+        }
+
+        // Contact mentor
+        function contactMentor() {
+            alert('Opening message thread with Dr. Rajesh Patel...\n\n"Hi Dr. Patel! I\'m excited about the Vedic Chanting workshop. Do you have any preparation recommendations for a complete beginner?"');
+        }
+
+        // Save for later
+        function saveForLater() {
+            alert('Workshop saved to your wishlist!\n\nYou can complete registration anytime before the workshop. We\'ll send you a reminder 24 hours before registration closes.');
+        }
+
+        // Add to calendar
+        function addToCalendar() {
+            const startDate = new Date('2025-07-27T14:00:00').toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+            const endDate = new Date('2025-07-27T16:00:00').toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+            const title = 'Introduction to Vedic Chanting - Roots & Wings Workshop';
+            const details = 'Online workshop with Dr. Rajesh Patel. Check email for Zoom link.';
+            
+            const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${startDate}/${endDate}&details=${encodeURIComponent(details)}`;
+            
+            window.open(url, '_blank');
+            closeSuccessModal();
+        }
+
+        // View my bookings
+        function viewMyBookings() {
+            closeSuccessModal();
+            alert('Redirecting to your dashboard where you can view all your bookings...');
+        }
+
+        // Age-based form adaptation
+        document.querySelector('select').addEventListener('change', function() {
+            const childSection = document.getElementById('child-section');
+            const emergencyContact = document.getElementById('emergency-contact');
+            
+            // This would be more sophisticated in a real app
+            // For now, keeping adult focus since this workshop is for adults
+        });
+
+        // Auto-save form data
+        function autoSaveFormData() {
+            const formData = new FormData(document.getElementById('workshop-booking-form'));
+            const data = Object.fromEntries(formData);
+            
+            // In real app: localStorage.setItem('workshopBookingData', JSON.stringify(data));
+            console.log('Form data auto-saved:', data);
+        }
+
+        // Auto-save every 30 seconds
+        setInterval(autoSaveFormData, 30000);
+
+        // Prevent accidental page leave
+        let formModified = false;
+        document.querySelectorAll('input, select, textarea').forEach(field => {
+            field.addEventListener('change', () => formModified = true);
+        });
+
+        window.addEventListener('beforeunload', function(e) {
+            if (formModified) {
+                e.preventDefault();
+                e.returnValue = 'You have unsaved changes. Are you sure you want to leave?';
+            }
+        });
+
+        // Close modal when clicking outside
+        document.getElementById('success-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeSuccessModal();
+            }
+        });
+
+        // Keyboard support
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeSuccessModal();
+            }
+        });
+
+        // Enhanced accessibility
+        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    this.checked = !this.checked;
+                    this.dispatchEvent(new Event('change'));
+                }
+            });
+        });
+
+        // Dynamic button text based on price
+        function updateButtonText() {
+            const isFree = document.querySelector('.text-green-600') && document.querySelector('.text-green-600').textContent.includes('FREE');
+            const btn = document.getElementById('confirm-booking-btn');
+            
+            if (isFree) {
+                btn.textContent = '✅ Confirm Free Registration';
+            } else {
+                btn.textContent = '💳 Proceed to Payment';
+            }
+        }
+
+        // Initialize page
+        updateButtonText();
+    </script>
+</body>
+</html>

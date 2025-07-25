@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Workshop - Roots & Wings</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#00A2E8',
+                        'primary-dark': '#00468C',
+                        'primary-light': '#E6F7FF',
+                        'background': '#F9FBFF',
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-background font-sans">
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-40">
+        <div class="flex items-center justify-between px-6 py-4">
+            <!-- Left: Logo & Mobile Menu -->
+            <div class="flex items-center space-x-4">
+                <button id="mobile-menu-btn" class="md:hidden text-gray-600 hover:text-primary">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+                <h1 class="text-2xl font-bold text-primary-dark">Roots & Wings</h1>
+                <span class="hidden md:block text-sm text-gray-500">Mentor Portal</span>
+            </div>
+            
+            <!-- Right: Profile Dropdown -->
+            <div class="relative">
+                <button id="profile-dropdown-btn" class="flex items-center space-x-3 hover:bg-gray-50 rounded-lg px-3 py-2 transition-colors">
+                    <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+                        <span class="text-white font-semibold">PR</span>
+                    </div>
+                    <div class="hidden md:block text-left">
+                        <div class="text-sm font-semibold text-gray-900">Priya Sharma</div>
+                        <div class="text-xs text-gray-500">Kathak Mentor</div>
+                    </div>
+                    <i class="fas fa-chevron-down text-gray-400 text-sm"></i>
+                </button>
+                
+                <!-- Dropdown Menu -->
+                <div id="profile-dropdown" class="hidden absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-200 py-2">
+                    <a href="#" class="flex items-center space-x-3 px-4 py-2 text-gray-700 hover:bg-gray-50">
+                        <i class="fas fa-user text-gray-400"></i>
+                        <span>View Profile</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-2 text-gray-700 hover:bg-gray-50">
+                        <i class="fas fa-cog text-gray-400"></i>
+                        <span>Settings</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-2 text-gray-700 hover:bg-gray-50">
+                        <i class="fas fa-question-circle text-gray-400"></i>
+                        <span>Help & Support</span>
+                    </a>
+                    <hr class="my-2">
+                    <a href="#" class="flex items-center space-x-3 px-4 py-2 text-red-600 hover:bg-red-50">
+                        <i class="fas fa-sign-out-alt text-red-400"></i>
+                        <span>Log Out</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex">
+        <!-- Sidebar -->
+        <nav class="bg-white w-64 min-h-screen shadow-sm border-r border-gray-200 fixed md:static z-30 transition-transform duration-300 ease-in-out -translate-x-full md:translate-x-0" id="sidebar">
+            <div class="p-6">
+                <!-- Navigation Items -->
+                <div class="space-y-2">
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1">
+                        <i class="fas fa-home text-lg"></i>
+                        <span class="font-medium">Dashboard</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1">
+                        <i class="fas fa-chalkboard-teacher text-lg"></i>
+                        <span>My Classes</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1">
+                        <i class="fas fa-plus-circle text-lg"></i>
+                        <span>Host a Class</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1 bg-primary text-white">
+                        <i class="fas fa-users text-lg"></i>
+                        <span>Workshops</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1">
+                        <i class="fas fa-calendar-alt text-lg"></i>
+                        <span>Schedule</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1">
+                        <i class="fas fa-students text-lg"></i>
+                        <span>Students</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1">
+                        <i class="fas fa-pound-sign text-lg"></i>
+                        <span>Earnings</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1">
+                        <i class="fas fa-comments text-lg"></i>
+                        <span>Messages</span>
+                        <span class="ml-auto bg-red-500 text-white text-xs rounded-full px-2 py-1">3</span>
+                    </a>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="mt-8">
+                    <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Quick Actions</h3>
+                    <div class="space-y-2">
+                        <button class="w-full bg-primary text-white px-4 py-3 rounded-lg hover:bg-primary-dark transition-colors font-medium">
+                            <i class="fas fa-plus mr-2"></i>
+                            Create Workshop
+                        </button>
+                        <button class="w-full border border-primary text-primary px-4 py-3 rounded-lg hover:bg-primary-light transition-colors font-medium">
+                            <i class="fas fa-video mr-2"></i>
+                            Start Session Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="flex-1 md:ml-0 p-6">
+            <!-- Page Header -->
+            <div class="mb-8">
+                <div class="flex items-center space-x-4 mb-4">
+                    <button onclick="window.history.back()" class="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center hover:bg-gray-200 transition-colors">
+                        <i class="fas fa-arrow-left text-gray-600"></i>
+                    </button>
+                    <div>
+                        <h1 class="text-3xl font-bold text-gray-900">Create New Workshop</h1>
+                        <p class="text-gray-600">Design a special event or masterclass to share your expertise</p>
+                    </div>
+                </div>
+                
+                <!-- Progress Indicator -->
+                <div class="flex items-center space-x-2 text-sm text-gray-600">
+                    <span class="w-6 h-6 bg-primary text-white rounded-full flex items-center justify-center text-xs font-semibold">1</span>
+                    <span class="text-primary font-medium">Workshop Details</span>
+                    <i class="fas fa-chevron-right text-gray-300"></i>
+                    <span class="w-6 h-6 bg-gray-300 text-gray-600 rounded-full flex items-center justify-center text-xs font-semibold">2</span>
+                    <span class="text-gray-500">Schedule & Pricing</span>
+                    <i class="fas fa-chevron-right text-gray-300"></i>
+                    <span class="w-6 h-6 bg-gray-300 text-gray-600 rounded-full flex items-center justify-center text-xs font-semibold">3</span>
+                    <span class="text-gray-500">Preview & Publish</span>
+                </div>
+            </div>
+
+            <!-- Workshop Type Selection -->
+            <div class="bg-primary-light rounded-xl p-6 mb-8">
+                <h2 class="text-lg font-bold text-primary-dark mb-4">Workshop Type</h2>
+                <div class="grid md:grid-cols-3 gap-4">
+                    <label class="cursor-pointer">
+                        <input type="radio" name="workshop-type" value="masterclass" class="hidden">
+                        <div class="border-2 border-gray-200 rounded-lg p-4 transition-all duration-200 hover:border-primary">
+                            <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-3">
+                                <i class="fas fa-graduation-cap text-purple-600"></i>
+                            </div>
+                            <h3 class="font-semibold text-gray-900">Masterclass</h3>
+                            <p class="text-sm text-gray-600 mt-1">Advanced intensive session</p>
+                        </div>
+                    </label>
+                    <label class="cursor-pointer">
+                        <input type="radio" name="workshop-type" value="beginner" class="hidden" checked>
+                        <div class="border-2 border-primary rounded-lg p-4 bg-white">
+                            <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-3">
+                                <i class="fas fa-seedling text-green-600"></i>
+                            </div>
+                            <h3 class="font-semibold text-gray-900">Beginner Workshop</h3>
+                            <p class="text-sm text-gray-600 mt-1">Introduction for newcomers</p>
+                        </div>
+                    </label>
+                    <label class="cursor-pointer">
+                        <input type="radio" name="workshop-type" value="community" class="hidden">
+                        <div class="border-2 border-gray-200 rounded-lg p-4 transition-all duration-200 hover:border-primary">
+                            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-3">
+                                <i class="fas fa-users text-blue-600"></i>
+                            </div>
+                            <h3 class="font-semibold text-gray-900">Community Event</h3>
+                            <p class="text-sm text-gray-600 mt-1">Open cultural gathering</p>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Workshop Form -->
+            <div class="bg-white rounded-xl border border-gray-200">
+                <div class="border-b border-gray-200 p-6">
+                    <h2 class="text-xl font-bold text-gray-900">Workshop Information</h2>
+                    <p class="text-gray-600">Fill in the details to create your workshop</p>
+                </div>
+
+                <div class="p-6">
+                    <form class="space-y-8">
+                        <!-- Basic Information -->
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="md:col-span-2">
+                                <label class="block text-sm font-semibold text-gray-900 mb-2">Workshop Title *</label>
+                                <input type="text" placeholder="e.g., Introduction to Vedic Chanting" 
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                                <p class="text-xs text-gray-500 mt-1">Make it descriptive and engaging for participants</p>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-900 mb-2">Subject Category *</label>
+                                <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                                    <option>Select a category</option>
+                                    <option>Classical Dance</option>
+                                    <option>Music & Chanting</option>
+                                    <option>Philosophy & Mindfulness</option>
+                                    <option>Art & Craft</option>
+                                    <option>Languages</option>
+                                    <option>Cultural Heritage</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-900 mb-2">Skill Level *</label>
+                                <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                                    <option>Beginner</option>
+                                    <option>Intermediate</option>
+                                    <option>Advanced</option>
+                                    <option>All Levels</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Description -->
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-900 mb-2">Workshop Description *</label>
+                            <textarea rows="4" placeholder="Describe what participants will learn and experience in this workshop. Include your teaching approach and what makes it special..."
+                                     class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"></textarea>
+                            <div class="flex justify-between items-center mt-1">
+                                <p class="text-xs text-gray-500">Help participants understand what to expect</p>
+                                <span class="text-xs text-gray-400" id="desc-counter">0/800 characters</span>
+                            </div>
+                        </div>
+
+                        <!-- Target Audience -->
+                        <div class="border-t border-gray-200 pt-8">
+                            <h3 class="text-lg font-bold text-gray-900 mb-6">Target Audience</h3>
+                            
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-900 mb-3">Age Groups *</label>
+                                    <div class="space-y-2">
+                                        <label class="flex items-center">
+                                            <input type="checkbox" class="w-4 h-4 text-primary focus:ring-primary rounded">
+                                            <span class="ml-3 text-gray-700">Children (5-12 years)</span>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="checkbox" class="w-4 h-4 text-primary focus:ring-primary rounded">
+                                            <span class="ml-3 text-gray-700">Teens (13-17 years)</span>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="checkbox" class="w-4 h-4 text-primary focus:ring-primary rounded">
+                                            <span class="ml-3 text-gray-700">Adults (18+ years)</span>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="checkbox" class="w-4 h-4 text-primary focus:ring-primary rounded">
+                                            <span class="ml-3 text-gray-700">Family Friendly (All ages)</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-900 mb-3">Workshop Features</label>
+                                    <div class="space-y-2">
+                                        <label class="flex items-center">
+                                            <input type="checkbox" class="w-4 h-4 text-primary focus:ring-primary rounded">
+                                            <span class="ml-3 text-gray-700">Hands-on Activities</span>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="checkbox" class="w-4 h-4 text-primary focus:ring-primary rounded">
+                                            <span class="ml-3 text-gray-700">Take-home Materials</span>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="checkbox" class="w-4 h-4 text-primary focus:ring-primary rounded">
+                                            <span class="ml-3 text-gray-700">Certificate Provided</span>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="checkbox" class="w-4 h-4 text-primary focus:ring-primary rounded">
+                                            <span class="ml-3 text-gray-700">Q&A Session Included</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Schedule & Location -->
+                        <div class="border-t border-gray-200 pt-8">
+                            <h3 class="text-lg font-bold text-gray-900 mb-6">Schedule & Location</h3>
+                            
+                            <div class="grid md:grid-cols-3 gap-6 mb-6">
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-900 mb-2">Workshop Date *</label>
+                                    <input type="date" 
+                                           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-900 mb-2">Start Time *</label>
+                                    <input type="time" 
+                                           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-900 mb-2">Duration *</label>
+                                    <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                                        <option>1 hour</option>
+                                        <option>1.5 hours</option>
+                                        <option>2 hours</option>
+                                        <option>3 hours</option>
+                                        <option>4 hours</option>
+                                        <option>Full day (6+ hours)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Delivery Mode -->
+                            <div class="mb-6">
+                                <label class="block text-sm font-semibold text-gray-900 mb-3">Delivery Mode *</label>
+                                <div class="grid md:grid-cols-3 gap-4">
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="delivery-mode" value="online" class="hidden">
+                                        <div class="border-2 border-gray-200 rounded-lg p-4 text-center transition-all duration-200 hover:border-primary">
+                                            <i class="fas fa-laptop text-green-600 text-2xl mb-2"></i>
+                                            <h4 class="font-semibold text-gray-900">Online</h4>
+                                            <p class="text-sm text-gray-600 mt-1">Via Zoom/Google Meet</p>
+                                        </div>
+                                    </label>
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="delivery-mode" value="in-person" class="hidden">
+                                        <div class="border-2 border-gray-200 rounded-lg p-4 text-center transition-all duration-200 hover:border-primary">
+                                            <i class="fas fa-map-marker-alt text-blue-600 text-2xl mb-2"></i>
+                                            <h4 class="font-semibold text-gray-900">In-Person</h4>
+                                            <p class="text-sm text-gray-600 mt-1">Physical location</p>
+                                        </div>
+                                    </label>
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="delivery-mode" value="hybrid" class="hidden">
+                                        <div class="border-2 border-gray-200 rounded-lg p-4 text-center transition-all duration-200 hover:border-primary">
+                                            <i class="fas fa-globe text-purple-600 text-2xl mb-2"></i>
+                                            <h4 class="font-semibold text-gray-900">Hybrid</h4>
+                                            <p class="text-sm text-gray-600 mt-1">Both online & in-person</p>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Location Details -->
+                            <div class="grid md:grid-cols-2 gap-6" id="location-details" style="display: none;">
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-900 mb-2">Venue Name</label>
+                                    <input type="text" placeholder="e.g., Birmingham Community Centre" 
+                                           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-900 mb-2">Address</label>
+                                    <input type="text" placeholder="Full address for participants" 
+                                           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Capacity & Pricing -->
+                        <div class="border-t border-gray-200 pt-8">
+                            <h3 class="text-lg font-bold text-gray-900 mb-6">Capacity & Pricing</h3>
+                            
+                            <div class="grid md:grid-cols-3 gap-6 mb-6">
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-900 mb-2">Maximum Participants *</label>
+                                    <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                                        <option>5 participants</option>
+                                        <option>8 participants</option>
+                                        <option>10 participants</option>
+                                        <option>12 participants</option>
+                                        <option>15 participants</option>
+                                        <option>20 participants</option>
+                                        <option>25+ participants</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-900 mb-2">Minimum to Run</label>
+                                    <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                                        <option>1 participant</option>
+                                        <option>2 participants</option>
+                                        <option>3 participants</option>
+                                        <option>4 participants</option>
+                                        <option>5 participants</option>
+                                    </select>
+                                    <p class="text-xs text-gray-500 mt-1">Workshop runs if minimum is met</p>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-900 mb-2">Registration Deadline</label>
+                                    <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                                        <option>1 day before</option>
+                                        <option>2 days before</option>
+                                        <option>3 days before</option>
+                                        <option>1 week before</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Pricing Options -->
+                            <div class="bg-gray-50 rounded-lg p-6">
+                                <h4 class="font-semibold text-gray-900 mb-4">Pricing Structure</h4>
+                                <div class="grid md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label class="block text-sm font-semibold text-gray-900 mb-2">Workshop Price *</label>
+                                        <div class="space-y-3">
+                                            <label class="flex items-center">
+                                                <input type="radio" name="pricing-type" value="free" class="w-4 h-4 text-primary focus:ring-primary">
+                                                <span class="ml-3 text-gray-700">Free Workshop</span>
+                                            </label>
+                                            <label class="flex items-center">
+                                                <input type="radio" name="pricing-type" value="paid" class="w-4 h-4 text-primary focus:ring-primary" checked>
+                                                <div class="ml-3 flex items-center space-x-3">
+                                                    <span class="text-gray-700">Paid Workshop:</span>
+                                                    <div class="relative">
+                                                        <span class="absolute left-3 top-3 text-gray-500">£</span>
+                                                        <input type="number" placeholder="25" min="5" max="200"
+                                                               class="w-24 pl-8 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-sm">
+                                                    </div>
+                                                    <span class="text-gray-700">per person</span>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-semibold text-gray-900 mb-2">Early Bird Discount (Optional)</label>
+                                        <div class="space-y-3">
+                                            <div class="flex items-center space-x-3">
+                                                <input type="checkbox" class="w-4 h-4 text-primary focus:ring-primary rounded">
+                                                <span class="text-gray-700 text-sm">Offer early bird pricing</span>
+                                            </div>
+                                            <div class="grid grid-cols-2 gap-3">
+                                                <div class="relative">
+                                                    <input type="number" placeholder="10" min="5" max="50"
+                                                           class="w-full pr-8 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-sm">
+                                                    <span class="absolute right-3 top-2 text-gray-500 text-sm">%</span>
+                                                </div>
+                                                <span class="text-xs text-gray-500 flex items-center">discount before deadline</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Materials & Requirements -->
+                        <div class="border-t border-gray-200 pt-8">
+                            <h3 class="text-lg font-bold text-gray-900 mb-6">Materials & Requirements</h3>
+                            
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-900 mb-2">What participants should bring</label>
+                                    <textarea rows="4" placeholder="List any materials, clothing, or items participants need for the workshop..."
+                                             class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"></textarea>
+                                    <p class="text-xs text-gray-500 mt-1">e.g., comfortable clothing, notebook, water bottle</p>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-900 mb-2">What you'll provide</label>
+                                    <textarea rows="4" placeholder="Describe materials, handouts, or refreshments you'll provide..."
+                                             class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"></textarea>
+                                    <p class="text-xs text-gray-500 mt-1">e.g., practice sheets, tea/coffee, instruments</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="border-t border-gray-200 pt-8">
+                            <div class="flex flex-col sm:flex-row gap-4 sm:justify-between">
+                                <div class="flex space-x-4">
+                                    <button type="button" class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors">
+                                        <i class="fas fa-save mr-2"></i>
+                                        Save as Draft
+                                    </button>
+                                    <button type="button" class="px-6 py-3 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors">
+                                        <i class="fas fa-eye mr-2"></i>
+                                        Preview Workshop
+                                    </button>
+                                </div>
+                                <div class="flex space-x-4">
+                                    <button type="button" class="px-6 py-3 border border-primary text-primary rounded-lg hover:bg-primary-light transition-colors">
+                                        Schedule for Later
+                                    </button>
+                                    <button type="submit" class="px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors font-semibold">
+                                        <i class="fas fa-rocket mr-2"></i>
+                                        Publish Workshop
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Mobile Sidebar Overlay -->
+    <div id="sidebar-overlay" class="hidden fixed inset-0 bg-black bg-opacity-50 z-20 md:hidden"></div>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebar-overlay');
+
+        mobileMenuBtn.addEventListener('click', function() {
+            sidebar.classList.toggle('-translate-x-full');
+            sidebarOverlay.classList.toggle('hidden');
+        });
+
+        sidebarOverlay.addEventListener('click', function() {
+            sidebar.classList.add('-translate-x-full');
+            sidebarOverlay.classList.add('hidden');
+        });
+
+        // Profile dropdown toggle
+        const profileDropdownBtn = document.getElementById('profile-dropdown-btn');
+        const profileDropdown = document.getElementById('profile-dropdown');
+
+        profileDropdownBtn.addEventListener('click', function() {
+            profileDropdown.classList.toggle('hidden');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!profileDropdownBtn.contains(e.target) && !profileDropdown.contains(e.target)) {
+                profileDropdown.classList.add('hidden');
+            }
+        });
+
+        // Workshop type selection
+        document.querySelectorAll('input[name="workshop-type"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                document.querySelectorAll('input[name="workshop-type"]').forEach(r => {
+                    const card = r.closest('label').querySelector('div');
+                    card.classList.remove('border-primary', 'bg-white');
+                    card.classList.add('border-gray-200');
+                });
+                
+                if (this.checked) {
+                    const card = this.closest('label').querySelector('div');
+                    card.classList.add('border-primary', 'bg-white');
+                    card.classList.remove('border-gray-200');
+                }
+            });
+        });
+
+        // Delivery mode selection
+        document.querySelectorAll('input[name="delivery-mode"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                const locationDetails = document.getElementById('location-details');
+                
+                // Reset all cards
+                document.querySelectorAll('input[name="delivery-mode"]').forEach(r => {
+                    const card = r.closest('label').querySelector('div');
+                    card.classList.remove('border-primary', 'bg-primary-light');
+                    card.classList.add('border-gray-200');
+                });
+                
+                // Highlight selected card
+                if (this.checked) {
+                    const card = this.closest('label').querySelector('div');
+                    card.classList.add('border-primary', 'bg-primary-light');
+                    card.classList.remove('border-gray-200');
+                    
+                    // Show/hide location details
+                    if (this.value === 'in-person' || this.value === 'hybrid') {
+                        locationDetails.style.display = 'grid';
+                    } else {
+                        locationDetails.style.display = 'none';
+                    }
+                }
+            });
+        });
+
+        // Character counter for description
+        const descTextarea = document.querySelector('textarea[placeholder*="Describe what participants"]');
+        const descCounter = document.getElementById('desc-counter');
+        
+        descTextarea.addEventListener('input', function() {
+            const currentLength = this.value.length;
+            const maxLength = 800;
+            descCounter.textContent = `${currentLength}/${maxLength} characters`;
+            
+            if (currentLength > maxLength * 0.9) {
+                descCounter.classList.add('text-red-500');
+            } else {
+                descCounter.classList.remove('text-red-500');
+            }
+        });
+
+        // Sidebar navigation
+        document.querySelectorAll('nav a').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active classes from all items
+                document.querySelectorAll('nav a').forEach(i => {
+                    i.classList.remove('bg-primary', 'text-white');
+                    i.classList.add('text-gray-700');
+                });
+                
+                // Add active classes to clicked item (except current page)
+                if (!this.classList.contains('bg-primary')) {
+                    this.classList.add('bg-primary', 'text-white');
+                    this.classList.remove('text-gray-700');
+                }
+            });
+        });
+
+        // Auto-hide mobile sidebar on window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth >= 768) {
+                sidebar.classList.remove('-translate-x-full');
+                sidebarOverlay.classList.add('hidden');
+            }
+        });
+
+        // Form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            console.log('Workshop creation form submitted');
+            
+            // Show success message (you can replace with actual submission logic)
+            alert('Workshop created successfully! It will be reviewed and published within 24 hours.');
+        });
+    </script>
+</body>
+</html>

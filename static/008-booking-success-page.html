@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Confirmed! - Roots & Wings</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#00A2E8',
+                        'primary-dark': '#00468C',
+                        'primary-light': '#f8fbff',
+                        'accent-light': '#e8f4ff'
+                    },
+                    fontFamily: {
+                        sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif']
+                    },
+                    keyframes: {
+                        bounceIn: {
+                          '0%': { transform: 'scale(0)', opacity: '0' },
+                          '50%': { transform: 'scale(1.1)', opacity: '1' },
+                          '100%': { transform: 'scale(1)', opacity: '1' }
+                        },
+                        slideUp: {
+                          '0%': { transform: 'translateY(30px)', opacity: '0' },
+                          '100%': { transform: 'translateY(0)', opacity: '1' }
+                        },
+                        pulse: {
+                          '0%, 100%': { transform: 'scale(1)' },
+                          '50%': { transform: 'scale(1.05)' }
+                        }
+                    },
+                    animation: {
+                        bounceIn: 'bounceIn 0.8s ease-out',
+                        slideUp: 'slideUp 0.6s ease-out',
+                        pulseGentle: 'pulse 2s infinite'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans text-gray-800 bg-gradient-to-br from-green-50 via-blue-50 to-purple-50 min-h-screen">
+
+    <!-- Floating Confetti Animation -->
+    <div id="confetti-container" class="fixed inset-0 pointer-events-none z-10"></div>
+
+    <!-- Navigation Component -->
+    <nav class="relative z-20 bg-white/90 backdrop-blur-sm shadow-lg">
+        <div class="max-w-7xl mx-auto px-5">
+            <div class="flex justify-between items-center py-4">
+                <a href="#" class="text-2xl font-bold text-primary-dark">Roots & Wings</a>
+                <div class="flex items-center space-x-6">
+                    <span class="text-green-600 font-semibold">✅ Booking Confirmed</span>
+                    <a href="#" class="text-gray-600 hover:text-primary transition-colors">Help</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="relative z-20 pt-8 pb-16">
+        <div class="max-w-6xl mx-auto px-5">
+            
+            <!-- Confirmation Banner Component -->
+            <div class="text-center mb-12 animate-bounceIn">
+                <!-- Large Success Icon -->
+                <div class="relative inline-block mb-6">
+                    <div class="w-32 h-32 bg-gradient-to-r from-green-400 to-green-500 rounded-full flex items-center justify-center mx-auto shadow-2xl animate-pulseGentle">
+                        <span class="text-6xl text-white">✅</span>
+                    </div>
+                    <!-- Sparkle Effects -->
+                    <div class="absolute -top-2 -right-2 w-8 h-8 bg-yellow-400 rounded-full animate-ping opacity-75"></div>
+                    <div class="absolute -bottom-2 -left-2 w-6 h-6 bg-pink-400 rounded-full animate-ping opacity-60 animation-delay-300"></div>
+                </div>
+
+                <!-- Success Messages -->
+                <h1 class="text-5xl font-bold text-primary-dark mb-4">You're all set!</h1>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+                    🎉 Your booking is confirmed! We've reserved your spot and notified Priya Sharma. 
+                    Get ready for an amazing learning journey!
+                </p>
+                
+                <!-- Achievement Badge -->
+                <div class="inline-flex items-center bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-full font-bold mt-6 animate-slideUp animation-delay-500">
+                    🏆 Achievement Unlocked: First Booking Complete!
+                </div>
+            </div>
+
+            <!-- Main Content Grid -->
+            <div class="grid lg:grid-cols-3 gap-8">
+                
+                <!-- Booking Summary Card - Main Section -->
+                <div class="lg:col-span-2">
+                    <div class="bg-white rounded-3xl p-8 shadow-xl border border-gray-100 animate-slideUp animation-delay-300">
+                        <div class="flex items-center justify-between mb-6">
+                            <h2 class="text-2xl font-bold text-primary-dark">📋 Booking Summary</h2>
+                            <div class="text-sm text-gray-500">
+                                ID: <span class="font-mono bg-gray-100 px-2 py-1 rounded">RW-2025-0847</span>
+                            </div>
+                        </div>
+
+                        <!-- Mentor & Session Info -->
+                        <div class="flex items-start gap-6 mb-8">
+                            <!-- Mentor Photo -->
+                            <div class="relative">
+                                <div class="w-20 h-20 bg-gradient-to-r from-primary to-primary-dark rounded-full flex items-center justify-center text-white text-2xl font-bold">
+                                    P
+                                </div>
+                                <div class="absolute -bottom-1 -right-1 bg-green-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs">
+                                    ✓
+                                </div>
+                            </div>
+
+                            <!-- Session Details -->
+                            <div class="flex-1">
+                                <h3 class="text-xl font-bold text-primary-dark mb-2">Priya Sharma</h3>
+                                <p class="text-gray-600 mb-4">Kathak Dance & Cultural Arts Expert</p>
+                                
+                                <!-- Session Type Badge -->
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="px-4 py-2 bg-gradient-to-r from-blue-100 to-purple-100 text-primary-dark font-semibold rounded-full">
+                                        📚 Weekend Group Batch
+                                    </span>
+                                    <span class="px-4 py-2 bg-gradient-to-r from-yellow-100 to-orange-100 text-orange-700 font-semibold rounded-full">
+                                        ⚡ Intermediate Level
+                                    </span>
+                                    <span class="px-4 py-2 bg-gradient-to-r from-purple-100 to-pink-100 text-purple-700 font-semibold rounded-full">
+                                        👦 Teens (13-17)
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Detailed Schedule Grid -->
+                        <div class="grid md:grid-cols-2 gap-6 mb-8">
+                            <div class="space-y-4">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-2xl">📅</span>
+                                    <div>
+                                        <div class="font-semibold text-gray-700">Schedule</div>
+                                        <div class="text-primary-dark font-bold">8-Week Weekend Intensive</div>
+                                        <div class="text-sm text-gray-500">Aug 17 - Sep 15, 2025</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-center gap-3">
+                                    <span class="text-2xl">⏰</span>
+                                    <div>
+                                        <div class="font-semibold text-gray-700">Time</div>
+                                        <div class="text-primary-dark font-bold">Sat & Sun | 2:00-3:00 PM</div>
+                                        <div class="text-sm text-gray-500">16 total sessions</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="space-y-4">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-2xl">📍</span>
+                                    <div>
+                                        <div class="font-semibold text-gray-700">Location</div>
+                                        <div class="text-primary-dark font-bold">Community Centre Birmingham</div>
+                                        <div class="text-sm text-gray-500">12 Washwood Heath Rd, B8 2AA</div>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center gap-3">
+                                    <span class="text-2xl">💰</span>
+                                    <div>
+                                        <div class="font-semibold text-gray-700">Total Paid</div>
+                                        <div class="text-primary-dark font-bold text-lg">£187.50</div>
+                                        <div class="text-sm text-green-600">✅ Payment Confirmed</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Countdown Timer -->
+                        <div class="bg-gradient-to-r from-primary-light to-accent-light p-6 rounded-2xl mb-6">
+                            <h4 class="font-bold text-primary-dark mb-3">⏱️ Your first class starts in:</h4>
+                            <div class="flex justify-center gap-4 text-center">
+                                <div class="bg-white p-3 rounded-xl shadow">
+                                    <div class="text-2xl font-bold text-primary-dark" id="countdown-days">12</div>
+                                    <div class="text-xs text-gray-600">DAYS</div>
+                                </div>
+                                <div class="bg-white p-3 rounded-xl shadow">
+                                    <div class="text-2xl font-bold text-primary-dark" id="countdown-hours">08</div>
+                                    <div class="text-xs text-gray-600">HOURS</div>
+                                </div>
+                                <div class="bg-white p-3 rounded-xl shadow">
+                                    <div class="text-2xl font-bold text-primary-dark" id="countdown-minutes">42</div>
+                                    <div class="text-xs text-gray-600">MINS</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Weather Widget for In-person Classes -->
+                        <div class="bg-gradient-to-r from-blue-50 to-indigo-50 p-4 rounded-xl mb-6">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-2xl">🌤️</span>
+                                    <div>
+                                        <div class="font-semibold text-gray-700">Weather for your first class</div>
+                                        <div class="text-sm text-gray-600">Saturday, Aug 17 in Birmingham</div>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-lg font-bold text-primary-dark">22°C</div>
+                                    <div class="text-xs text-gray-600">Partly Cloudy</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Travel Time Estimation -->
+                        <div class="bg-gradient-to-r from-green-50 to-teal-50 p-4 rounded-xl">
+                            <div class="flex items-center gap-3">
+                                <span class="text-2xl">🚗</span>
+                                <div>
+                                    <div class="font-semibold text-gray-700">Estimated travel time</div>
+                                    <div class="text-sm text-gray-600">From your location: ~15 minutes by car, 25 minutes by bus</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions & QR Codes Sidebar -->
+                <div class="lg:col-span-1 space-y-6">
+                    
+                    <!-- Quick Action Buttons -->
+                    <div class="bg-white rounded-3xl p-6 shadow-xl animate-slideUp animation-delay-600">
+                        <h3 class="text-lg font-bold text-primary-dark mb-4">🚀 Quick Actions</h3>
+                        <div class="space-y-3">
+                            <button class="w-full bg-gradient-to-r from-primary to-blue-500 hover:from-blue-500 hover:to-primary text-white py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105"
+                                    onclick="goToDashboard()">
+                                📊 Go to My Dashboard
+                            </button>
+                            <button class="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-pink-500 hover:to-purple-500 text-white py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105"
+                                    onclick="messageMentor()">
+                                💬 Message Priya Sharma
+                            </button>
+                            <button class="w-full border-2 border-primary text-primary hover:bg-primary hover:text-white py-3 rounded-xl font-semibold transition-all duration-300"
+                                    onclick="viewMoreClasses()">
+                                🔍 View More Classes
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Calendar Integration -->
+                    <div class="bg-white rounded-3xl p-6 shadow-xl">
+                        <h3 class="text-lg font-bold text-primary-dark mb-4">📅 Add to Calendar</h3>
+                        <div class="grid grid-cols-2 gap-3 mb-4">
+                            <button class="bg-red-500 hover:bg-red-600 text-white py-2 px-3 rounded-lg font-medium transition-colors text-sm"
+                                    onclick="addToGoogleCalendar()">
+                                📅 Google
+                            </button>
+                            <button class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-3 rounded-lg font-medium transition-colors text-sm"
+                                    onclick="addToOutlookCalendar()">
+                                📧 Outlook
+                            </button>
+                            <button class="bg-gray-800 hover:bg-gray-900 text-white py-2 px-3 rounded-lg font-medium transition-colors text-sm"
+                                    onclick="addToAppleCalendar()">
+                                🍎 Apple
+                            </button>
+                            <button class="bg-green-500 hover:bg-green-600 text-white py-2 px-3 rounded-lg font-medium transition-colors text-sm"
+                                    onclick="downloadICS()">
+                                💾 .ICS File
+                            </button>
+                        </div>
+                        
+                        <!-- QR Code for Calendar -->
+                        <div class="text-center">
+                            <div class="bg-gray-100 w-24 h-24 mx-auto rounded-lg flex items-center justify-center mb-2">
+                                <div class="w-20 h-20 bg-black" style="
+                                    background-image: 
+                                        linear-gradient(90deg, black 50%, transparent 50%),
+                                        linear-gradient(black 50%, transparent 50%);
+                                    background-size: 4px 4px;
+                                    background-position: 0 0, 2px 2px;
+                                "></div>
+                            </div>
+                            <p class="text-xs text-gray-600">Scan to add all sessions</p>
+                        </div>
+                    </div>
+
+                    <!-- Location QR Code -->
+                    <div class="bg-white rounded-3xl p-6 shadow-xl">
+                        <h3 class="text-lg font-bold text-primary-dark mb-4">🗺️ Location & Directions</h3>
+                        <div class="text-center mb-4">
+                            <div class="bg-gray-100 w-32 h-32 mx-auto rounded-lg flex items-center justify-center mb-3">
+                                <div class="w-28 h-28 bg-black" style="
+                                    background-image: 
+                                        radial-gradient(circle at 25% 25%, black 2px, transparent 2px),
+                                        radial-gradient(circle at 75% 75%, black 2px, transparent 2px);
+                                    background-size: 8px 8px;
+                                "></div>
+                            </div>
+                            <p class="text-sm text-gray-600 mb-3">Scan for directions</p>
+                            <button class="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 rounded-lg font-medium transition-colors text-sm"
+                                    onclick="openMaps()">
+                                🗺️ Open in Maps
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Mentor Contact QR -->
+                    <div class="bg-white rounded-3xl p-6 shadow-xl">
+                        <h3 class="text-lg font-bold text-primary-dark mb-4">👤 Mentor Contact</h3>
+                        <div class="text-center">
+                            <div class="bg-gray-100 w-24 h-24 mx-auto rounded-lg flex items-center justify-center mb-3">
+                                <div class="w-20 h-20 bg-black" style="
+                                    background: 
+                                        repeating-linear-gradient(0deg, black, black 2px, transparent 2px, transparent 4px),
+                                        repeating-linear-gradient(90deg, black, black 2px, transparent 2px, transparent 4px);
+                                "></div>
+                            </div>
+                            <p class="text-xs text-gray-600">Save contact info</p>
+                        </div>
+                    </div>
+
+                    <!-- Social Sharing -->
+                    <div class="bg-gradient-to-r from-pink-100 to-purple-100 rounded-3xl p-6">
+                        <h3 class="text-lg font-bold text-primary-dark mb-4">📱 Share Your Achievement</h3>
+                        <p class="text-sm text-gray-600 mb-4">Let friends know about your learning journey!</p>
+                        <div class="flex gap-2">
+                            <button class="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-medium transition-colors text-sm"
+                                    onclick="shareOnFacebook()">
+                                📘
+                            </button>
+                            <button class="flex-1 bg-pink-500 hover:bg-pink-600 text-white py-2 rounded-lg font-medium transition-colors text-sm"
+                                    onclick="shareOnInstagram()">
+                                📷
+                            </button>
+                            <button class="flex-1 bg-green-500 hover:bg-green-600 text-white py-2 rounded-lg font-medium transition-colors text-sm"
+                                    onclick="shareViaWhatsApp()">
+                                💬
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Next Steps Section -->
+            <div class="mt-12 bg-white rounded-3xl p-8 shadow-xl animate-slideUp animation-delay-900">
+                <h2 class="text-2xl font-bold text-primary-dark mb-6 text-center">📋 What happens next?</h2>
+                
+                <div class="grid md:grid-cols-3 gap-6 mb-8">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-2xl text-white">📩</span>
+                        </div>
+                        <h4 class="font-bold text-primary-dark mb-2">Check Your Email</h4>
+                        <p class="text-gray-600 text-sm">Detailed confirmation with location link and preparation materials sent to your inbox</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-2xl text-white">💬</span>
+                        </div>
+                        <h4 class="font-bold text-primary-dark mb-2">Mentor Outreach</h4>
+                        <p class="text-gray-600 text-sm">Priya will message you within 24 hours with a welcome video and preparation tips</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-2xl text-white">🎯</span>
+                        </div>
+                        <h4 class="font-bold text-primary-dark mb-2">Set Your Goals</h4>
+                        <p class="text-gray-600 text-sm">Complete a quick learning objectives survey to personalize your experience</p>
+                    </div>
+                </div>
+
+                <!-- Preparation Checklist -->
+                <div class="bg-gradient-to-r from-yellow-50 to-orange-50 p-6 rounded-2xl mb-6">
+                    <h4 class="font-bold text-primary-dark mb-4">✅ Pre-Class Preparation Checklist</h4>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-3 cursor-pointer">
+                                <input type="checkbox" class="rounded border-gray-300 text-primary">
+                                <span class="text-sm">Download Spotify playlist for practice</span>
+                            </label>
+                            <label class="flex items-center gap-3 cursor-pointer">
+                                <input type="checkbox" class="rounded border-gray-300 text-primary">
+                                <span class="text-sm">Watch welcome video from Priya</span>
+                            </label>
+                            <label class="flex items-center gap-3 cursor-pointer">
+                                <input type="checkbox" class="rounded border-gray-300 text-primary">
+                                <span class="text-sm">Prepare comfortable dance clothing</span>
+                            </label>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-3 cursor-pointer">
+                                <input type="checkbox" class="rounded border-gray-300 text-primary">
+                                <span class="text-sm">Join WhatsApp group for batch updates</span>
+                            </label>
+                            <label class="flex items-center gap-3 cursor-pointer">
+                                <input type="checkbox" class="rounded border-gray-300 text-primary">
+                                <span class="text-sm">Set learning goals in your dashboard</span>
+                            </label>
+                            <label class="flex items-center gap-3 cursor-pointer">
+                                <input type="checkbox" class="rounded border-gray-300 text-primary">
+                                <span class="text-sm">Download class materials PDF</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Referral Program -->
+                <div class="bg-gradient-to-r from-purple-50 to-pink-50 p-6 rounded-2xl">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h4 class="font-bold text-primary-dark mb-2">🎁 Refer Friends & Save</h4>
+                            <p class="text-sm text-gray-600">Share your unique code and get £20 off your next booking when they join!</p>
+                        </div>
+                        <div class="text-right">
+                            <div class="bg-white px-4 py-2 rounded-lg border-2 border-dashed border-purple-300">
+                                <div class="text-xs text-gray-500">Your referral code</div>
+                                <div class="text-lg font-bold text-purple-600">PRIYA2025</div>
+                            </div>
+                            <button class="mt-2 text-xs text-purple-600 hover:text-purple-800 font-semibold" onclick="copyReferralCode()">
+                                📋 Copy Code
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="mt-8 text-center text-gray-500 text-sm">
+                <p>Need to make changes? You can manage or cancel this booking from your dashboard.</p>
+                <p class="mt-2">Questions? Our support team is available 24/7 at <a href="#" class="text-primary hover:text-primary-dark font-semibold">support@rootsandwings.co.uk</a></p>
+            </div>
+        </div>
+    </main>
+
+    <!-- JavaScript Component -->
+    <script>
+        // Create animated confetti on page load
+        function createConfetti() {
+            const container = document.getElementById('confetti-container');
+            const colors = ['#00A2E8', '#00468C', '#FFD700', '#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FFEAA7'];
+            
+            for (let i = 0; i < 80; i++) {
+                const confetti = document.createElement('div');
+                confetti.style.position = 'absolute';
+                confetti.style.width = Math.random() * 8 + 4 + 'px';
+                confetti.style.height = confetti.style.width;
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.top = '-20px';
+                confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                confetti.style.opacity = Math.random() * 0.8 + 0.2;
+                
+                const duration = Math.random() * 4 + 3;
+                const delay = Math.random() * 2;
+                
+                confetti.style.animation = `confettiFall ${duration}s ${delay}s linear forwards`;
+                container.appendChild(confetti);
+            }
+
+            // Clean up confetti after animation
+            setTimeout(() => {
+                container.innerHTML = '';
+            }, 8000);
+        }
+
+        // Add confetti animation CSS
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes confettiFall {
+                0% {
+                    transform: translateY(-100vh) rotate(0deg);
+                    opacity: 1;
+                }
+                100% {
+                    transform: translateY(100vh) rotate(720deg);
+                    opacity: 0;
+                }
+            }
+            .animation-delay-300 { animation-delay: 0.3s; }
+            .animation-delay-500 { animation-delay: 0.5s; }
+            .animation-delay-600 { animation-delay: 0.6s; }
+            .animation-delay-900 { animation-delay: 0.9s; }
+        `;
+        document.head.appendChild(style);
+
+        // Start confetti on page load
+        window.addEventListener('load', () => {
+            createConfetti();
+        });
+
+        // Countdown Timer
+        function updateCountdown() {
+            const classDate = new Date('2025-08-17T14:00:00');
+            const now = new Date();
+            const diff = classDate - now;
+            
+            if (diff > 0) {
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                
+                document.getElementById('countdown-days').textContent = days.toString().padStart(2, '0');
+                document.getElementById('countdown-hours').textContent = hours.toString().padStart(2, '0');
+                document.getElementById('countdown-minutes').textContent = minutes.toString().padStart(2, '0');
+            }
+        }
+
+        // Update countdown every minute
+        updateCountdown();
+        setInterval(updateCountdown, 60000);
+
+        // Button Functions
+        function goToDashboard() {
+            // Add loading animation
+            event.target.innerHTML = '🔄 Loading Dashboard...';
+            setTimeout(() => {
+                alert('Redirecting to your personalized dashboard...');
+                // window.location.href = '/dashboard';
+            }, 1000);
+        }
+
+        function messageMentor() {
+            alert('Opening direct message with Priya Sharma...\n\n"Hi! I\'m excited about our upcoming classes. Do you have any preparation recommendations?"');
+        }
+
+        function viewMoreClasses() {
+            alert('Showing you other classes by Priya and similar mentors...');
+        }
+
+        // Calendar Integration Functions
+        function addToGoogleCalendar() {
+            const startDate = new Date('2025-08-17T14:00:00').toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+            const endDate = new Date('2025-08-17T15:00:00').toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+            const title = '8-Week Weekend Batch - Kathak with Priya Sharma';
+            const location = 'Community Centre Birmingham, 12 Washwood Heath Rd, B8 2AA';
+            const details = 'Intermediate level Kathak dance class. Bring comfortable clothing and water.';
+            
+            const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${startDate}/${endDate}&location=${encodeURIComponent(location)}&details=${encodeURIComponent(details)}&recur=RRULE:FREQ=WEEKLY;BYDAY=SA,SU;COUNT=16`;
+            
+            window.open(url, '_blank');
+        }
+
+        function addToOutlookCalendar() {
+            alert('Opening Outlook calendar integration...');
+        }
+
+        function addToAppleCalendar() {
+            alert('Generating Apple Calendar file...');
+        }
+
+        function downloadICS() {
+            alert('Downloading .ics calendar file with all 16 sessions...');
+        }
+
+        // Map Integration
+        function openMaps() {
+            const address = '12 Washwood Heath Rd, Birmingham B8 2AA, UK';
+            const url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
+            window.open(url, '_blank');
+        }
+
+        // Social Sharing Functions
+        function shareOnFacebook() {
+            const text = "Just booked my first Kathak dance class with Roots & Wings! 🎉 Excited to learn traditional Indian dance. #LearningJourney #KathakDance #RootsAndWings";
+            const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}&quote=${encodeURIComponent(text)}`;
+            window.open(url, '_blank', 'width=600,height=400');
+        }
+
+        function shareOnInstagram() {
+            alert('Opening Instagram story template...\n\n"Just booked my first Kathak class! 💃 Excited for this cultural learning journey with Roots & Wings 🌟"');
+        }
+
+        function shareViaWhatsApp() {
+            const text = "Just booked an amazing Kathak dance class with Roots & Wings! 💃 Starting my cultural learning journey. Check them out!";
+            const url = `https://wa.me/?text=${encodeURIComponent(text)}`;
+            window.open(url, '_blank');
+        }
+
+        // Referral Code Copy
+        function copyReferralCode() {
+            navigator.clipboard.writeText('PRIYA2025').then(() => {
+                event.target.textContent = '✅ Copied!';
+                setTimeout(() => {
+                    event.target.textContent = '📋 Copy Code';
+                }, 2000);
+            });
+        }
+
+        // Auto-check some preparation items (gamification)
+        setTimeout(() => {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            checkboxes[0].checked = true; // Auto-check first item
+        }, 3000);
+
+        // Add sound effect (optional - commented out for demo)
+        // function playSuccessSound() {
+        //     const audio = new Audio('https://www.soundjay.com/misc/sounds/chimes_glassy-4.wav');
+        //     audio.play().catch(e => console.log('Audio play blocked by browser'));
+        // }
+
+        // Enhanced loading states for buttons
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', function() {
+                if (!this.dataset.clicked) {
+                    this.dataset.clicked = 'true';
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = 'scale(1)';
+                        this.dataset.clicked = 'false';
+                    }, 150);
+                }
+            });
+        });
+
+        // Progressive Web App - Add to Home Screen prompt
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            
+            // Show custom install button after 5 seconds
+            setTimeout(() => {
+                if (confirm('Add Roots & Wings to your home screen for quick access to your bookings?')) {
+                    deferredPrompt.prompt();
+                }
+            }, 5000);
+        });
+    </script>
+</body>
+</html>

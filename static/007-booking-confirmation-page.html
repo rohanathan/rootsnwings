@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm Your Booking - Roots & Wings</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#00A2E8',
+                        'primary-dark': '#00468C',
+                        'primary-light': '#f8fbff',
+                        'accent-light': '#e8f4ff'
+                    },
+                    fontFamily: {
+                        sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans text-gray-800 bg-gray-50">
+
+    <!-- Navigation Component -->
+    <nav class="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-sm shadow-lg">
+        <div class="max-w-7xl mx-auto px-5">
+            <div class="flex justify-between items-center py-4">
+                <a href="#" class="text-2xl font-bold text-primary-dark">Roots & Wings</a>
+                <div class="flex items-center space-x-6">
+                    <a href="#" class="text-gray-600 hover:text-primary transition-colors">← Back to Sessions</a>
+                    <a href="#" class="text-gray-600 hover:text-primary transition-colors">Help</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Step Indicator Component -->
+    <div class="fixed top-16 w-full z-40 bg-white border-b border-gray-200">
+        <div class="max-w-4xl mx-auto px-5 py-6">
+            <div class="flex items-center justify-center">
+                <!-- Step 1: Choose Mentor -->
+                <div class="flex items-center">
+                    <div class="w-10 h-10 bg-green-500 text-white rounded-full flex items-center justify-center font-bold">
+                        ✓
+                    </div>
+                    <div class="ml-3">
+                        <div class="text-sm font-semibold text-green-600">Step 1</div>
+                        <div class="text-xs text-gray-500">Choose Mentor</div>
+                    </div>
+                </div>
+
+                <!-- Connector Line -->
+                <div class="flex-1 h-px bg-green-500 mx-4"></div>
+
+                <!-- Step 2: Select Session -->
+                <div class="flex items-center">
+                    <div class="w-10 h-10 bg-green-500 text-white rounded-full flex items-center justify-center font-bold">
+                        ✓
+                    </div>
+                    <div class="ml-3">
+                        <div class="text-sm font-semibold text-green-600">Step 2</div>
+                        <div class="text-xs text-gray-500">Select Session</div>
+                    </div>
+                </div>
+
+                <!-- Connector Line -->
+                <div class="flex-1 h-px bg-primary mx-4"></div>
+
+                <!-- Step 3: Confirm Booking -->
+                <div class="flex items-center">
+                    <div class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center font-bold">
+                        3
+                    </div>
+                    <div class="ml-3">
+                        <div class="text-sm font-semibold text-primary">Step 3</div>
+                        <div class="text-xs text-gray-500">Confirm Booking</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="pt-40 pb-16">
+        <div class="max-w-7xl mx-auto px-5">
+            
+            <!-- Page Header -->
+            <div class="text-center mb-8">
+                <h1 class="text-3xl font-bold text-primary-dark mb-2">Confirm Your Booking</h1>
+                <p class="text-gray-600">Review your selection before proceeding to payment</p>
+            </div>
+
+            <!-- Main Layout: Mentor Info + Booking Details -->
+            <div class="grid lg:grid-cols-3 gap-8">
+                
+                <!-- Left Column: Mentor Snapshot -->
+                <div class="lg:col-span-1">
+                    <!-- Mentor Snapshot Card Component -->
+                    <div class="bg-white rounded-2xl p-6 shadow-lg sticky top-40">
+                        <div class="text-center mb-6">
+                            <!-- Profile Image -->
+                            <div class="relative mx-auto mb-4">
+                                <div class="w-24 h-24 bg-gradient-to-r from-primary to-primary-dark rounded-full flex items-center justify-center text-white text-3xl font-bold mx-auto">
+                                    P
+                                </div>
+                                <!-- Verified Badge -->
+                                <div class="absolute -bottom-2 -right-2 bg-green-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold">
+                                    ✓
+                                </div>
+                            </div>
+
+                            <!-- Mentor Info -->
+                            <h3 class="text-xl font-bold text-primary-dark mb-2">Priya Sharma</h3>
+                            <p class="text-gray-600 mb-3">Kathak Dance & Cultural Arts</p>
+                            
+                            <!-- Rating -->
+                            <div class="flex items-center justify-center gap-2 mb-4">
+                                <div class="flex text-yellow-400">★★★★★</div>
+                                <span class="text-sm text-gray-600">4.9 (32 reviews)</span>
+                            </div>
+
+                            <!-- First Session Free Tag -->
+                            <div class="inline-block bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-semibold mb-6">
+                                🎉 First Session is FREE
+                            </div>
+
+                            <!-- View Full Profile Link -->
+                            <a href="#" class="text-primary hover:text-primary-dark font-semibold text-sm transition-colors">
+                                👤 View Full Profile →
+                            </a>
+                        </div>
+
+                        <!-- Quick Stats -->
+                        <div class="border-t pt-6">
+                            <div class="grid grid-cols-2 gap-4 text-center text-sm">
+                                <div>
+                                    <div class="font-semibold text-primary-dark">500+</div>
+                                    <div class="text-gray-500">Hours Taught</div>
+                                </div>
+                                <div>
+                                    <div class="font-semibold text-primary-dark">85%</div>
+                                    <div class="text-gray-500">Repeat Students</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Booking Summary -->
+                <div class="lg:col-span-2">
+                    <!-- Booking Summary Card Component -->
+                    <div class="bg-white rounded-2xl p-8 shadow-lg mb-6">
+                        <h2 class="text-2xl font-bold text-primary-dark mb-6">Booking Summary</h2>
+
+                        <!-- Session Details -->
+                        <div class="space-y-6 mb-8">
+                            <!-- Session Type -->
+                            <div class="flex items-start justify-between">
+                                <div class="flex items-center">
+                                    <span class="text-2xl mr-3">📚</span>
+                                    <div>
+                                        <div class="font-semibold text-gray-700">Session Type</div>
+                                        <div class="text-primary-dark font-bold">Weekend Group Batch</div>
+                                    </div>
+                                </div>
+                                <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm font-medium rounded-full">
+                                    Group Class
+                                </span>
+                            </div>
+
+                            <!-- Session Name -->
+                            <div class="flex items-start">
+                                <span class="text-2xl mr-3">🎯</span>
+                                <div>
+                                    <div class="font-semibold text-gray-700">Batch Name</div>
+                                    <div class="text-primary-dark font-bold text-lg">8-Week Weekend Batch – Intermediate</div>
+                                </div>
+                            </div>
+
+                            <!-- Schedule -->
+                            <div class="flex items-start">
+                                <span class="text-2xl mr-3">📅</span>
+                                <div>
+                                    <div class="font-semibold text-gray-700">Schedule</div>
+                                    <div class="text-primary-dark font-bold">Saturday & Sunday | 2:00 PM - 3:00 PM</div>
+                                    <div class="text-sm text-gray-500">17 Aug 2025 - 15 Sep 2025 (8 weekends)</div>
+                                </div>
+                            </div>
+
+                            <!-- Mode -->
+                            <div class="flex items-start">
+                                <span class="text-2xl mr-3">💻</span>
+                                <div>
+                                    <div class="font-semibold text-gray-700">Delivery Mode</div>
+                                    <div class="text-primary-dark font-bold">In-Person (Birmingham)</div>
+                                    <div class="text-sm text-gray-500">Community Centre, Birmingham B12 8JA</div>
+                                </div>
+                            </div>
+
+                            <!-- Level & Age Group -->
+                            <div class="flex items-start">
+                                <span class="text-2xl mr-3">🎓</span>
+                                <div>
+                                    <div class="font-semibold text-gray-700">Level & Age Group</div>
+                                    <div class="flex gap-2 mt-1">
+                                        <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm font-medium rounded-full">
+                                            ⚡ Intermediate
+                                        </span>
+                                        <span class="px-3 py-1 bg-purple-100 text-purple-700 text-sm font-medium rounded-full">
+                                            👦 Teens (13-17)
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Fee Summary -->
+                        <div class="border-t pt-6">
+                            <h3 class="text-lg font-bold text-primary-dark mb-4">💰 Fee Summary</h3>
+                            
+                            <div class="space-y-3 mb-6">
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">8-Week Batch (16 sessions)</span>
+                                    <span class="font-semibold">£200.00</span>
+                                </div>
+                                <div class="flex justify-between text-green-600">
+                                    <span>First Session Discount</span>
+                                    <span class="font-semibold">-£12.50</span>
+                                </div>
+                                <div class="flex justify-between border-t pt-3">
+                                    <span class="font-bold text-lg">Total Payable</span>
+                                    <span class="font-bold text-xl text-primary-dark">£187.50</span>
+                                </div>
+                                <div class="text-sm text-gray-500">
+                                    ≈ £11.72 per session (excellent value!)
+                                </div>
+                            </div>
+
+                            <!-- Promo Code -->
+                            <div class="bg-gray-50 p-4 rounded-xl mb-6">
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                    🏷️ Have a promo code?
+                                </label>
+                                <div class="flex gap-3">
+                                    <input type="text" 
+                                           class="flex-1 px-4 py-3 border border-gray-200 rounded-lg focus:border-primary focus:outline-none"
+                                           placeholder="Enter promo code"
+                                           id="promo-code">
+                                    <button class="bg-gray-200 hover:bg-gray-300 text-gray-700 px-6 py-3 rounded-lg font-semibold transition-colors"
+                                            onclick="applyPromoCode()">
+                                        Apply
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Terms Checkbox -->
+                            <div class="mb-8">
+                                <label class="flex items-start gap-3 cursor-pointer">
+                                    <input type="checkbox" 
+                                           class="mt-1 rounded border-gray-300 text-primary focus:ring-primary focus:ring-2" 
+                                           id="terms-checkbox" required>
+                                    <div class="text-sm text-gray-700 leading-relaxed">
+                                        I agree to the platform's 
+                                        <a href="#" class="text-primary hover:text-primary-dark font-semibold">terms of service</a> 
+                                        and 
+                                        <a href="#" class="text-primary hover:text-primary-dark font-semibold">cancellation policy</a>. 
+                                        I understand that group classes have a 48-hour cancellation policy.
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="space-y-4 mb-8">
+                        <!-- Main CTA -->
+                        <button class="w-full bg-primary hover:bg-blue-500 text-white py-4 rounded-2xl font-bold text-lg transition-all duration-300 hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                                id="book-now-btn" onclick="proceedToPayment()">
+                            🔒 Pay & Confirm Booking - £187.50
+                        </button>
+
+                        <!-- Secondary Actions -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <button class="w-full border-2 border-gray-300 hover:border-primary text-gray-700 hover:text-primary py-3 rounded-lg font-semibold transition-colors"
+                                    onclick="contactSupport()">
+                                ❓ Need Help? Contact Support
+                            </button>
+                            <button class="w-full border-2 border-primary text-primary hover:bg-primary hover:text-white py-3 rounded-lg font-semibold transition-colors"
+                                    onclick="chatWithMentor()">
+                                💬 Chat with Mentor
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Additional Info -->
+                    <div class="bg-blue-50 p-6 rounded-2xl">
+                        <h4 class="font-bold text-primary-dark mb-3">📋 What happens next?</h4>
+                        <ul class="space-y-2 text-sm text-gray-700">
+                            <li class="flex items-start gap-2">
+                                <span class="text-green-500 mt-1">✓</span>
+                                <span>Instant booking confirmation via email</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-green-500 mt-1">✓</span>
+                                <span>Mentor will contact you within 24 hours</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-green-500 mt-1">✓</span>
+                                <span>Calendar invite with Zoom/location details</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-green-500 mt-1">✓</span>
+                                <span>Access to course materials and group chat</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Success Modal Component (Initially Hidden) -->
+    <div id="success-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-3xl p-8 max-w-md w-full text-center">
+            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <span class="text-3xl">🎉</span>
+            </div>
+            <h3 class="text-2xl font-bold text-primary-dark mb-4">Booking Confirmed!</h3>
+            <p class="text-gray-600 mb-6">
+                Great! You're all set for the 8-Week Weekend Batch with Priya Sharma. 
+                Check your email for confirmation details.
+            </p>
+            <div class="space-y-3">
+                <button class="w-full bg-primary hover:bg-blue-500 text-white py-3 rounded-full font-semibold transition-colors"
+                        onclick="addToCalendar()">
+                    📅 Add to Calendar
+                </button>
+                <button class="w-full border-2 border-gray-300 text-gray-700 py-3 rounded-full font-semibold transition-colors"
+                        onclick="closeSuccessModal()">
+                    View My Bookings
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Error Alert Component (Initially Hidden) -->
+    <div id="error-alert" class="fixed top-20 right-5 z-50 max-w-sm w-full bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg shadow-lg hidden">
+        <div class="flex items-center">
+            <span class="mr-2">⚠️</span>
+            <div>
+                <strong class="font-bold">Booking Unavailable!</strong>
+                <p class="text-sm">This batch is now full. Please try another session or contact the mentor.</p>
+            </div>
+        </div>
+        <button class="absolute top-2 right-2 text-red-500 hover:text-red-700" onclick="closeErrorAlert()">
+            ×
+        </button>
+    </div>
+
+    <!-- JavaScript Component -->
+    <script>
+        // Check if terms are accepted
+        function validateBooking() {
+            const termsCheckbox = document.getElementById('terms-checkbox');
+            const bookBtn = document.getElementById('book-now-btn');
+            
+            if (!termsCheckbox.checked) {
+                bookBtn.disabled = true;
+                bookBtn.classList.add('opacity-50', 'cursor-not-allowed');
+                return false;
+            } else {
+                bookBtn.disabled = false;
+                bookBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                return true;
+            }
+        }
+
+        // Listen for terms checkbox changes
+        document.getElementById('terms-checkbox').addEventListener('change', validateBooking);
+
+        // Initial validation check
+        validateBooking();
+
+        // Proceed to payment
+        function proceedToPayment() {
+            if (!validateBooking()) {
+                alert('Please accept the terms and conditions to proceed.');
+                return;
+            }
+
+            // Simulate booking process
+            const bookBtn = document.getElementById('book-now-btn');
+            bookBtn.textContent = 'Processing Payment...';
+            bookBtn.disabled = true;
+
+            // Simulate API call and different outcomes
+            setTimeout(() => {
+                const success = Math.random() > 0.1; // 90% success rate for demo
+                
+                if (success) {
+                    showSuccessModal();
+                } else {
+                    showErrorAlert();
+                    // Reset button
+                    bookBtn.textContent = '🔒 Pay & Confirm Booking - £187.50';
+                    bookBtn.disabled = false;
+                }
+            }, 2500);
+        }
+
+        // Show success modal
+        function showSuccessModal() {
+            document.getElementById('success-modal').classList.remove('hidden');
+            
+            // Confetti effect (simple version)
+            createConfetti();
+        }
+
+        // Close success modal
+        function closeSuccessModal() {
+            document.getElementById('success-modal').classList.add('hidden');
+            // In real app: window.location.href = '/dashboard';
+            alert('Redirecting to your dashboard...');
+        }
+
+        // Show error alert
+        function showErrorAlert() {
+            const errorAlert = document.getElementById('error-alert');
+            errorAlert.classList.remove('hidden');
+            
+            // Auto-hide after 5 seconds
+            setTimeout(() => {
+                errorAlert.classList.add('hidden');
+            }, 5000);
+        }
+
+        // Close error alert
+        function closeErrorAlert() {
+            document.getElementById('error-alert').classList.add('hidden');
+        }
+
+        // Apply promo code
+        function applyPromoCode() {
+            const promoCode = document.getElementById('promo-code').value.trim().toUpperCase();
+            
+            if (!promoCode) {
+                alert('Please enter a promo code');
+                return;
+            }
+
+            // Simulate promo code validation
+            const validCodes = ['STUDENT10', 'FIRST20', 'ROOTS15'];
+            const discounts = { 'STUDENT10': 10, 'FIRST20': 20, 'ROOTS15': 15 };
+            
+            if (validCodes.includes(promoCode)) {
+                const discount = discounts[promoCode];
+                const currentTotal = 187.50;
+                const newTotal = currentTotal - (currentTotal * discount / 100);
+                
+                // Update pricing display
+                const totalElement = document.querySelector('.font-bold.text-xl.text-primary-dark');
+                totalElement.textContent = `£${newTotal.toFixed(2)}`;
+                
+                // Update button text
+                const bookBtn = document.getElementById('book-now-btn');
+                bookBtn.textContent = `🔒 Pay & Confirm Booking - £${newTotal.toFixed(2)}`;
+                
+                // Add discount line
+                const feeContainer = document.querySelector('.space-y-3.mb-6');
+                const discountLine = document.createElement('div');
+                discountLine.className = 'flex justify-between text-green-600';
+                discountLine.innerHTML = `
+                    <span>Promo Code (${promoCode})</span>
+                    <span class="font-semibold">-£${(currentTotal * discount / 100).toFixed(2)}</span>
+                `;
+                feeContainer.insertBefore(discountLine, feeContainer.children[1]);
+                
+                alert(`Promo code applied! ${discount}% discount saved you £${(currentTotal * discount / 100).toFixed(2)}`);
+                
+                // Clear and disable promo code input
+                document.getElementById('promo-code').value = '';
+                document.getElementById('promo-code').disabled = true;
+                document.querySelector('button[onclick="applyPromoCode()"]').textContent = 'Applied ✓';
+                document.querySelector('button[onclick="applyPromoCode()"]').disabled = true;
+            } else {
+                alert('Invalid promo code. Please check and try again.');
+            }
+        }
+
+        // Contact support
+        function contactSupport() {
+            alert('Opening support chat...\nOur team is available 24/7 to help with your booking!');
+            // In real app: open support widget or redirect
+        }
+
+        // Chat with mentor
+        function chatWithMentor() {
+            alert('Starting chat with Priya Sharma...\nShe typically responds within 30 minutes.');
+            // In real app: open mentor chat
+        }
+
+        // Add to calendar
+        function addToCalendar() {
+            // Generate calendar event data
+            const startDate = new Date('2025-08-17T14:00:00');
+            const endDate = new Date('2025-08-17T15:00:00');
+            const title = '8-Week Weekend Batch - Intermediate Kathak with Priya Sharma';
+            const location = 'Community Centre, Birmingham B12 8JA';
+            
+            // Create calendar URL (Google Calendar format)
+            const calendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${startDate.toISOString().replace(/[-:]/g, '').split('.')[0]}Z/${endDate.toISOString().replace(/[-:]/g, '').split('.')[0]}Z&location=${encodeURIComponent(location)}&recur=RRULE:FREQ=WEEKLY;BYDAY=SA,SU;COUNT=16`;
+            
+            // Open calendar in new tab
+            window.open(calendarUrl, '_blank');
+            
+            alert('Calendar event created! The recurring sessions have been added to your Google Calendar.');
+        }
+
+        // Simple confetti effect
+        function createConfetti() {
+            const confettiContainer = document.createElement('div');
+            confettiContainer.style.position = 'fixed';
+            confettiContainer.style.top = '0';
+            confettiContainer.style.left = '0';
+            confettiContainer.style.width = '100%';
+            confettiContainer.style.height = '100%';
+            confettiContainer.style.pointerEvents = 'none';
+            confettiContainer.style.zIndex = '9999';
+            document.body.appendChild(confettiContainer);
+
+            // Create confetti pieces
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.style.position = 'absolute';
+                confetti.style.width = '10px';
+                confetti.style.height = '10px';
+                confetti.style.backgroundColor = ['#00A2E8', '#00468C', '#FFD700', '#FF6B6B', '#4ECDC4'][i % 5];
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.top = '-10px';
+                confetti.style.borderRadius = '50%';
+                confetti.style.animation = `fall ${Math.random() * 3 + 2}s linear forwards`;
+                confettiContainer.appendChild(confetti);
+            }
+
+            // Remove confetti after animation
+            setTimeout(() => {
+                document.body.removeChild(confettiContainer);
+            }, 5000);
+        }
+
+        // Add CSS animation for confetti
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fall {
+                from {
+                    transform: translateY(-100vh) rotate(0deg);
+                    opacity: 1;
+                }
+                to {
+                    transform: translateY(100vh) rotate(360deg);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Handle browser back button during booking
+        window.addEventListener('beforeunload', function(e) {
+            if (document.getElementById('book-now-btn').disabled) {
+                e.preventDefault();
+                e.returnValue = 'Your booking is being processed. Are you sure you want to leave?';
+            }
+        });
+
+        // Auto-save form data (in real app, would save to localStorage or backend)
+        function autoSaveBookingData() {
+            const bookingData = {
+                mentor: 'Priya Sharma',
+                session: '8-Week Weekend Batch – Intermediate',
+                total: '£187.50',
+                timestamp: Date.now()
+            };
+            
+            // In real app: localStorage.setItem('bookingData', JSON.stringify(bookingData));
+            console.log('Booking data auto-saved:', bookingData);
+        }
+
+        // Auto-save every 30 seconds
+        setInterval(autoSaveBookingData, 30000);
+
+        // Enhanced accessibility
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const modal = document.getElementById('success-modal');
+                if (!modal.classList.contains('hidden')) {
+                    closeSuccessModal();
+                }
+            }
+        });
+
+        // Focus management for accessibility
+        const termsCheckbox = document.getElementById('terms-checkbox');
+        const bookBtn = document.getElementById('book-now-btn');
+
+        termsCheckbox.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                this.checked = !this.checked;
+                validateBooking();
+            }
+        });
+    </script>
+</body>
+</html>

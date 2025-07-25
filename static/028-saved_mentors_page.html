@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saved Mentors - Roots & Wings</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#00A2E8',
+                        'primary-dark': '#00468C',
+                        'primary-light': '#f8fbff',
+                        'accent-light': '#e8f4ff',
+                        'purple-primary': '#8B5CF6',
+                        'green-primary': '#10B981'
+                    },
+                    fontFamily: {
+                        sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="font-sans text-gray-800 bg-primary-light min-h-screen">
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-40">
+        <div class="flex items-center justify-between px-6 py-4">
+            <!-- Left: Logo & Mobile Menu -->
+            <div class="flex items-center space-x-4">
+                <button id="mobile-menu-btn" class="md:hidden text-gray-600 hover:text-primary">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+                <h1 class="text-2xl font-bold text-primary-dark">Roots & Wings</h1>
+                <span class="hidden md:block text-sm text-gray-500">Family Learning Hub</span>
+            </div>
+            
+            <!-- Center: Search Bar -->
+            <div class="hidden md:flex flex-1 max-w-md mx-8">
+                <div class="relative w-full">
+                    <input type="text" placeholder="Search saved mentors..." class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary">
+                    <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+                </div>
+            </div>
+            
+            <!-- Right: Profile Dropdown -->
+            <div class="relative">
+                <button id="profile-dropdown-btn" class="flex items-center space-x-3 hover:bg-gray-50 rounded-lg px-3 py-2 transition-colors">
+                    <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+                        <span class="text-white font-semibold">SJ</span>
+                    </div>
+                    <div class="hidden md:block text-left">
+                        <div class="text-sm font-semibold text-gray-900">Sarah Johnson</div>
+                        <div class="text-xs text-gray-500">Parent & Learner</div>
+                    </div>
+                    <i class="fas fa-chevron-down text-gray-400 text-sm"></i>
+                </button>
+                
+                <!-- Dropdown Menu -->
+                <div id="profile-dropdown" class="hidden absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-200 py-2">
+                    <a href="#" class="flex items-center space-x-3 px-4 py-2 text-gray-700 hover:bg-gray-50">
+                        <i class="fas fa-home text-gray-400"></i>
+                        <span>Back to Dashboard</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-2 text-gray-700 hover:bg-gray-50">
+                        <i class="fas fa-search text-gray-400"></i>
+                        <span>Explore More Mentors</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-2 text-gray-700 hover:bg-gray-50">
+                        <i class="fas fa-cog text-gray-400"></i>
+                        <span>Settings</span>
+                    </a>
+                    <hr class="my-2">
+                    <a href="#" class="flex items-center space-x-3 px-4 py-2 text-red-600 hover:bg-red-50">
+                        <i class="fas fa-sign-out-alt text-red-400"></i>
+                        <span>Log Out</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex">
+        <!-- Sidebar -->
+        <nav class="bg-white w-64 min-h-screen shadow-sm border-r border-gray-200 fixed md:static z-30 transition-transform duration-300 ease-in-out -translate-x-full md:translate-x-0" id="sidebar">
+            <div class="p-6">
+                <!-- Main Navigation -->
+                <div class="space-y-2 mb-8">
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1">
+                        <i class="fas fa-home text-lg"></i>
+                        <span class="font-medium">Dashboard</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1">
+                        <i class="fas fa-search text-lg"></i>
+                        <span>Explore Mentors</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1">
+                        <i class="fas fa-calendar-alt text-lg"></i>
+                        <span>My Bookings</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1 bg-primary text-white">
+                        <i class="fas fa-heart text-lg"></i>
+                        <span class="font-medium">Saved Mentors</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1">
+                        <i class="fas fa-users text-lg"></i>
+                        <span>Workshops</span>
+                    </a>
+                </div>
+
+                <!-- Filter by Family Member -->
+                <div class="border-t border-gray-200 pt-6">
+                    <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">Filter by Learner</h3>
+                    <div class="space-y-2">
+                        <button class="learner-filter w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1 bg-primary-light border border-primary-dark" data-filter="all">
+                            <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
+                                <i class="fas fa-users text-white text-xs"></i>
+                            </div>
+                            <div class="flex-1 text-left">
+                                <div class="text-sm font-medium">All Family</div>
+                                <div class="text-xs text-gray-500">12 mentors</div>
+                            </div>
+                        </button>
+                        
+                        <button class="learner-filter w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-primary-light hover:translate-x-1" data-filter="sarah">
+                            <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
+                                <span class="text-white text-xs font-semibold">SJ</span>
+                            </div>
+                            <div class="flex-1 text-left">
+                                <div class="text-sm font-medium">Sarah (You)</div>
+                                <div class="text-xs text-gray-500">4 mentors</div>
+                            </div>
+                        </button>
+                        
+                        <button class="learner-filter w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-purple-50 hover:translate-x-1" data-filter="emma">
+                            <div class="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
+                                <span class="text-purple-600 text-xs font-semibold">E</span>
+                            </div>
+                            <div class="flex-1 text-left">
+                                <div class="text-sm font-medium">Emma (12)</div>
+                                <div class="text-xs text-gray-500">5 mentors</div>
+                            </div>
+                        </button>
+                        
+                        <button class="learner-filter w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 ease-in-out hover:bg-green-50 hover:translate-x-1" data-filter="jake">
+                            <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+                                <span class="text-green-600 text-xs font-semibold">J</span>
+                            </div>
+                            <div class="flex-1 text-left">
+                                <div class="text-sm font-medium">Jake (15)</div>
+                                <div class="text-xs text-gray-500">3 mentors</div>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Filter by Subject -->
+                <div class="border-t border-gray-200 pt-6 mt-6">
+                    <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">Filter by Subject</h3>
+                    <div class="space-y-2">
+                        <label class="flex items-center space-x-3 text-sm">
+                            <input type="checkbox" class="subject-filter rounded text-primary" data-subject="music" checked>
+                            <span>Music (3)</span>
+                        </label>
+                        <label class="flex items-center space-x-3 text-sm">
+                            <input type="checkbox" class="subject-filter rounded text-primary" data-subject="art" checked>
+                            <span>Art & Craft (2)</span>
+                        </label>
+                        <label class="flex items-center space-x-3 text-sm">
+                            <input type="checkbox" class="subject-filter rounded text-primary" data-subject="coding" checked>
+                            <span>Coding (3)</span>
+                        </label>
+                        <label class="flex items-center space-x-3 text-sm">
+                            <input type="checkbox" class="subject-filter rounded text-primary" data-subject="maths" checked>
+                            <span>Mathematics (2)</span>
+                        </label>
+                        <label class="flex items-center space-x-3 text-sm">
+                            <input type="checkbox" class="subject-filter rounded text-primary" data-subject="language" checked>
+                            <span>Languages (2)</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Overlay for mobile sidebar -->
+        <div id="sidebar-overlay" class="hidden md:hidden fixed inset-0 bg-black bg-opacity-50 z-20"></div>
+
+        <!-- Main Content -->
+        <main class="flex-1 md:ml-0">
+            <!-- Page Header -->
+            <div class="bg-white border-b border-gray-200 px-6 py-8">
+                <div class="max-w-7xl mx-auto">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between">
+                        <div>
+                            <h1 class="text-3xl font-bold text-gray-900 mb-2">Saved Mentors</h1>
+                            <p class="text-gray-600">Your family's favorite mentors for easy booking</p>
+                        </div>
+                        <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3 mt-4 md:mt-0">
+                            <button id="sort-dropdown-btn" class="border border-gray-300 text-gray-700 px-6 py-3 rounded-lg hover:bg-gray-50 transition-colors flex items-center">
+                                <i class="fas fa-sort mr-2"></i>Sort by Rating
+                                <i class="fas fa-chevron-down ml-2"></i>
+                            </button>
+                            <button class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary-dark transition-colors">
+                                <i class="fas fa-search mr-2"></i>Explore More Mentors
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-6 py-8">
+                <!-- Saved Mentors Stats -->
+                <section class="mb-8">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                        <div class="bg-white rounded-xl p-6 text-center shadow-sm hover:shadow-lg transition-shadow">
+                            <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-heart text-red-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-800">12</h3>
+                            <p class="text-gray-600 text-sm">Saved Mentors</p>
+                        </div>
+                        
+                        <div class="bg-white rounded-xl p-6 text-center shadow-sm hover:shadow-lg transition-shadow">
+                            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-calendar-check text-green-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-800">8</h3>
+                            <p class="text-gray-600 text-sm">Previously Booked</p>
+                        </div>
+                        
+                        <div class="bg-white rounded-xl p-6 text-center shadow-sm hover:shadow-lg transition-shadow">
+                            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-clock text-blue-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-800">5</h3>
+                            <p class="text-gray-600 text-sm">Available Today</p>
+                        </div>
+                        
+                        <div class="bg-white rounded-xl p-6 text-center shadow-sm hover:shadow-lg transition-shadow">
+                            <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-star text-purple-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-800">4.8</h3>
+                            <p class="text-gray-600 text-sm">Average Rating</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Recently Added -->
+                <section class="mb-8">
+                    <div class="bg-gradient-to-r from-purple-50 to-blue-50 rounded-2xl p-6 border border-purple-100">
+                        <h2 class="text-xl font-semibold text-gray-900 mb-4">Recently Added</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-white rounded-lg p-4 border border-gray-200">
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-12 h-12 bg-gray-300 rounded-full flex-shrink-0"></div>
+                                    <div class="flex-1">
+                                        <h4 class="font-semibold text-gray-900">Dr. Anjali Patel</h4>
+                                        <p class="text-gray-600 text-sm">Advanced Mathematics</p>
+                                        <div class="flex items-center space-x-2 mt-2">
+                                            <div class="flex items-center">
+                                                <i class="fas fa-star text-yellow-500 text-xs"></i>
+                                                <span class="text-sm text-gray-600 ml-1">4.9 (42 reviews)</span>
+                                            </div>
+                                            <span class="text-gray-400">•</span>
+                                            <span class="text-sm text-gray-600">Birmingham</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-col space-y-2">
+                                        <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full text-center">Available</span>
+                                        <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full text-center">Jake</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-white rounded-lg p-4 border border-gray-200">
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-12 h-12 bg-gray-300 rounded-full flex-shrink-0"></div>
+                                    <div class="flex-1">
+                                        <h4 class="font-semibold text-gray-900">Isabella Rodriguez</h4>
+                                        <p class="text-gray-600 text-sm">Watercolor Painting</p>
+                                        <div class="flex items-center space-x-2 mt-2">
+                                            <div class="flex items-center">
+                                                <i class="fas fa-star text-yellow-500 text-xs"></i>
+                                                <span class="text-sm text-gray-600 ml-1">4.7 (28 reviews)</span>
+                                            </div>
+                                            <span class="text-gray-400">•</span>
+                                            <span class="text-sm text-gray-600">Online</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-col space-y-2">
+                                        <span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded-full text-center">Busy</span>
+                                        <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full text-center">Emma</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- All Saved Mentors -->
+                <section>
+                    <div class="flex items-center justify-between mb-6">
+                        <h2 class="text-xl font-semibold text-gray-900">All Saved Mentors</h2>
+                        <span class="text-gray-600 text-sm">Showing 12 mentors</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6" id="mentors-grid">
+                        <!-- Mentor Card 1 - Priya Sharma -->
+                        <div class="mentor-card bg-white rounded-xl p-6 shadow-sm hover:shadow-lg transition-all duration-200 border border-gray-200 hover:border-primary" data-learner="sarah" data-subject="music">
+                            <div class="flex items-start justify-between mb-4">
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-16 h-16 bg-gray-300 rounded-full flex-shrink-0"></div>
+                                    <div class="flex-1">
+                                        <div class="flex items-center space-x-2 mb-1">
+                                            <h3 class="text-lg font-semibold text-gray-900">Priya Sharma</h3>
+                                            <i class="fas fa-check-circle text-blue-500 text-sm" title="Verified Mentor"></i>
+                                        </div>
+                                        <p class="text-gray-600 text-sm mb-2">Classical Music • Hindustani Vocals</p>
+                                        <div class="flex items-center space-x-4 text-sm text-gray-500">
+                                            <div class="flex items-center">
+                                                <i class="fas fa-star text-yellow-500 mr-1"></i>
+                                                <span>4.9 (67 reviews)</span>
+                                            </div>
+                                            <span>Manchester</span>
+                                            <span>Online/In-person</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="text-red-500 hover:text-red-700 p-2" title="Remove from saved">
+                                    <i class="fas fa-heart text-lg"></i>
+                                </button>
+                            </div>
+
+                            <div class="flex items-center space-x-2 mb-4">
+                                <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">You</span>
+                                <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">Available Today</span>
+                                <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full">Previously Booked</span>
+                            </div>
+
+                            <div class="flex items-center justify-between">
+                                <div class="text-sm text-gray-600">
+                                    <span class="font-medium">From £35/hour</span>
+                                    <span class="text-gray-400"> • First session free</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <button class="text-primary hover:text-primary-dark text-sm">Message</button>
+                                    <button class="bg-primary text-white px-4 py-2 rounded-lg text-sm hover:bg-primary-dark transition-colors">
+                                        Book Session
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Mentor Card 2 - Marcus Chen -->
+                        <div class="mentor-card bg-white rounded-xl p-6 shadow-sm hover:shadow-lg transition-all duration-200 border border-gray-200 hover:border-purple-primary" data-learner="emma" data-subject="art">
+                            <div class="flex items-start justify-between mb-4">
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-16 h-16 bg-gray-300 rounded-full flex-shrink-0"></div>
+                                    <div class="flex-1">
+                                        <div class="flex items-center space-x-2 mb-1">
+                                            <h3 class="text-lg font-semibold text-gray-900">Marcus Chen</h3>
+                                            <i class="fas fa-check-circle text-blue-500 text-sm" title="Verified Mentor"></i>
+                                        </div>
+                                        <p class="text-gray-600 text-sm mb-2">Art & Craft • Digital Art</p>
+                                        <div class="flex items-center space-x-4 text-sm text-gray-500">
+                                            <div class="flex items-center">
+                                                <i class="fas fa-star text-yellow-500 mr-1"></i>
+                                                <span>4.8 (45 reviews)</span>
+                                            </div>
+                                            <span>London</span>
+                                            <span>Online</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="text-red-500 hover:text-red-700 p-2" title="Remove from saved">
+                                    <i class="fas fa-heart text-lg"></i>
+                                </button>
+                            </div>
+
+                            <div class="flex items-center space-x-2 mb-4">
+                                <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full">Emma</span>
+                                <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">Available Today</span>
+                                <span class="bg-orange-100 text-orange-800 text-xs px-2 py-1 rounded-full">Weekend Batches</span>
+                            </div>
+
+                            <div class="flex items-center justify-between">
+                                <div class="text-sm text-gray-600">
+                                    <span class="font-medium">From £30/hour</span>
+                                    <span class="text-gray-400"> • Group discounts</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <button class="text-primary hover:text-primary-dark text-sm">Message</button>
+                                    <button class="bg-purple-primary text-white px-4 py-2 rounded-lg text-sm hover:bg-purple-600 transition-colors">
+                                        Book Session
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Mentor Card 3 - Alex Kumar -->
+                        <div class="mentor-card bg-white rounded-xl p-6 shadow-sm hover:shadow-lg transition-all duration-200 border border-gray-200 hover:border-green-primary" data-learner="jake" data-subject="coding">
+                            <div class="flex items-start justify-between mb-4">
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-16 h-16 bg-gray-300 rounded-full flex-shrink-0"></div>
+                                    <div class="flex-1">
+                                        <div class="flex items-center space-x-2 mb-1">
+                                            <h3 class="text-lg font-semibold text-gray-900">Alex Kumar</h3>
+                                            <i class="fas fa-check-circle text-blue-500 text-sm" title="Verified Mentor"></i>
+                                        </div>
+                                        <p class="text-gray-600 text-sm mb-2">Programming • Python & Web Dev</p>
+                                        <div class="flex items-center space-x-4 text-sm text-gray-500">
+                                            <div class="flex items-center">
+                                                <i class="fas fa-star text-yellow-500 mr-1"></i>
+                                                <span>4.9 (89 reviews)</span>
+                                            </div>
+                                            <span>Leeds</span>
+                                            <span>Online/In-person</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="text-red-500 hover:text-red-700 p-2" title="Remove from saved">
+                                    <i class="fas fa-heart text-lg"></i>
+                                </button>
+                            </div>
+
+                            <div class="flex items-center space-x-2 mb-4">
+                                <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">Jake</span>
+                                <span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded-full">Busy until tomorrow</span>
+                                <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Weekday Intensive</span>
+                            </div>
+
+                            <div class="flex items-center justify-between">
+                                <div class="text-sm text-gray-600">
+                                    <span class="font-medium">From £40/hour</span>
+                                    <span class="text-gray-400"> • Industry expert</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <button class="text-primary hover:text-primary-dark text-sm">Message</button>
+                                    <button class="bg-green-primary text-white px-4 py-2 rounded-lg text-sm hover:bg-green-600 transition-colors">
+                                        Book Session
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Mentor Card 4 - Dr. Sarah Mills -->
+                        <div class="mentor-card bg-white rounded-xl p-6 shadow-sm hover:shadow-lg transition-all duration-200 border border-gray-200 hover:border-green-primary" data-learner="jake" data-subject="maths">
+                            <div class="flex items-start justify-between mb-4">
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-16 h-16 bg-gray-300 rounded-full flex-shrink-0"></div>
+                                    <div class="flex-1">
+                                        <div class="flex items-center space-x-2 mb-1">
+                                            <h3 class="text-lg font-semibold text-gray-900">Dr. Sarah Mills</h3>
+                                            <i class="fas fa-check-circle text-blue-500 text-sm" title="Verified Mentor"></i>
+                                        </div>
+                                        <p class="text-gray-600 text-sm mb-2">Mathematics • Advanced Algebra</p>
+                                        <div class="flex items-center space-x-4 text-sm text-gray-500">
+                                            <div class="flex items-center">
+                                                <i class="fas fa-star text-yellow-500 mr-1"></i>
+                                                <span>4.9 (134 reviews)</span>
+                                            </div>
+                                            <span>Oxford</span>
+                                            <span>Online</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="text-red-500 hover:text-red-700 p-2" title="Remove from saved">
+                                    <i class="fas fa-heart text-lg"></i>
+                                </button>
+                            </div>
+
+                            <div class="flex items-center space-x-2 mb-4">
+                                <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">Jake</span>
+                                <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">Available Today</span>
+                                <span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded-full">PhD Qualified</span>
+                            </div>
+
+                            <div class="flex items-center justify-between">
+                                <div class="text-sm text-gray-600">
+                                    <span class="font-medium">From £45/hour</span>
+                                    <span class="text-gray-400"> • Academic specialist</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <button class="text-primary hover:text-primary-dark text-sm">Message</button>
+                                    <button class="bg-green-primary text-white px-4 py-2 rounded-lg text-sm hover:bg-green-600 transition-colors">
+                                        Book Session
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Mentor Card 5 - Luca Rossi -->
+                        <div class="mentor-card bg-white rounded-xl p-6 shadow-sm hover:shadow-lg transition-all duration-200 border border-gray-200 hover:border-primary" data-learner="sarah" data-subject="language">
+                            <div class="flex items-start justify-between mb-4">
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-16 h-16 bg-gray-300 rounded-full flex-shrink-0"></div>
+                                    <div class="flex-1">
+                                        <div class="flex items-center space-x-2 mb-1">
+                                            <h3 class="text-lg font-semibold text-gray-900">Luca Rossi</h3>
+                                            <i class="fas fa-check-circle text-blue-500 text-sm" title="Verified Mentor"></i>
+                                        </div>
+                                        <p class="text-gray-600 text-sm mb-2">Italian Language • Native Speaker</p>
+                                        <div class="flex items-center space-x-4 text-sm text-gray-500">
+                                            <div class="flex items-center">
+                                                <i class="fas fa-star text-yellow-500 mr-1"></i>
+                                                <span>4.7 (56 reviews)</span>
+                                            </div>
+                                            <span>Edinburgh</span>
+                                            <span>Online/In-person</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="text-red-500 hover:text-red-700 p-2" title="Remove from saved">
+                                    <i class="fas fa-heart text-lg"></i>
+                                </button>
+                            </div>
+
+                            <div class="flex items-center space-x-2 mb-4">
+                                <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">You</span>
+                                <span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded-full">Evening slots</span>
+                                <span class="bg-orange-100 text-orange-800 text-xs px-2 py-1 rounded-full">Conversation Focus</span>
+                            </div>
+
+                            <div class="flex items-center justify-between">
+                                <div class="text-sm text-gray-600">
+                                    <span class="font-medium">From £32/hour</span>
+                                    <span class="text-gray-400"> • Native speaker</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <button class="text-primary hover:text-primary-dark text-sm">Message</button>
+                                    <button class="bg-primary text-white px-4 py-2 rounded-lg text-sm hover:bg-primary-dark transition-colors">
+                                        Book Session
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Mentor Card 6 - Amara Singh -->
+                        <div class="mentor-card bg-white rounded-xl p-6 shadow-sm hover:shadow-lg transition-all duration-200 border border-gray-200 hover:border-purple-primary" data-learner="emma" data-subject="music">
+                            <div class="flex items-start justify-between mb-4">
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-16 h-16 bg-gray-300 rounded-full flex-shrink-0"></div>
+                                    <div class="flex-1">
+                                        <div class="flex items-center space-x-2 mb-1">
+                                            <h3 class="text-lg font-semibold text-gray-900">Amara Singh</h3>
+                                            <i class="fas fa-check-circle text-blue-500 text-sm" title="Verified Mentor"></i>
+                                        </div>
+                                        <p class="text-gray-600 text-sm mb-2">Piano • Classical & Contemporary</p>
+                                        <div class="flex items-center space-x-4 text-sm text-gray-500">
+                                            <div class="flex items-center">
+                                                <i class="fas fa-star text-yellow-500 mr-1"></i>
+                                                <span>4.8 (73 reviews)</span>
+                                            </div>
+                                            <span>Bristol</span>
+                                            <span>Online/In-person</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="text-red-500 hover:text-red-700 p-2" title="Remove from saved">
+                                    <i class="fas fa-heart text-lg"></i>
+                                </button>
+                            </div>
+
+                            <div class="flex items-center space-x-2 mb-4">
+                                <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full">Emma</span>
+                                <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">Available Today</span>
+                                <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Beginner Friendly</span>
+                            </div>
+
+                            <div class="flex items-center justify-between">
+                                <div class="text-sm text-gray-600">
+                                    <span class="font-medium">From £28/hour</span>
+                                    <span class="text-gray-400"> • Young learner specialist</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <button class="text-primary hover:text-primary-dark text-sm">Message</button>
+                                    <button class="bg-purple-primary text-white px-4 py-2 rounded-lg text-sm hover:bg-purple-600 transition-colors">
+                                        Book Session
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Load More -->
+                    <div class="text-center mt-8">
+                        <button class="text-primary hover:text-primary-dark font-medium">
+                            Load More Mentors (6 remaining)
+                        </button>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Mobile sidebar toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebar-overlay');
+
+        mobileMenuBtn.addEventListener('click', function() {
+            sidebar.classList.toggle('-translate-x-full');
+            sidebarOverlay.classList.toggle('hidden');
+        });
+
+        sidebarOverlay.addEventListener('click', function() {
+            sidebar.classList.add('-translate-x-full');
+            sidebarOverlay.classList.add('hidden');
+        });
+
+        // Profile dropdown
+        const profileDropdownBtn = document.getElementById('profile-dropdown-btn');
+        const profileDropdown = document.getElementById('profile-dropdown');
+
+        profileDropdownBtn.addEventListener('click', function() {
+            profileDropdown.classList.toggle('hidden');
+        });
+
+        // Learner filter
+        const learnerFilters = document.querySelectorAll('.learner-filter');
+        learnerFilters.forEach(filter => {
+            filter.addEventListener('click', function() {
+                const filterValue = this.getAttribute('data-filter');
+                
+                // Remove active class from all filters
+                learnerFilters.forEach(f => {
+                    f.classList.remove('bg-primary-light', 'border', 'border-primary-dark');
+                });
+                
+                // Add active class to clicked filter
+                this.classList.add('bg-primary-light', 'border', 'border-primary-dark');
+                
+                // Filter mentor cards
+                filterMentors(filterValue);
+            });
+        });
+
+        // Subject filter
+        const subjectFilters = document.querySelectorAll('.subject-filter');
+        subjectFilters.forEach(filter => {
+            filter.addEventListener('change', function() {
+                filterMentors();
+            });
+        });
+
+        function filterMentors(learnerFilter = null) {
+            const mentorCards = document.querySelectorAll('.mentor-card');
+            const checkedSubjects = Array.from(document.querySelectorAll('.subject-filter:checked')).map(cb => cb.getAttribute('data-subject'));
+            
+            mentorCards.forEach(card => {
+                const cardLearner = card.getAttribute('data-learner');
+                const cardSubject = card.getAttribute('data-subject');
+                
+                let showCard = true;
+                
+                // Apply learner filter
+                if (learnerFilter && learnerFilter !== 'all' && cardLearner !== learnerFilter) {
+                    showCard = false;
+                }
+                
+                // Apply subject filter
+                if (checkedSubjects.length > 0 && !checkedSubjects.includes(cardSubject)) {
+                    showCard = false;
+                }
+                
+                // Show/hide card
+                if (showCard) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!profileDropdownBtn.contains(e.target) && !profileDropdown.contains(e.target)) {
+                profileDropdown.classList.add('hidden');
+            }
+        });
+
+        // Auto-hide mobile sidebar on window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth >= 768) {
+                sidebar.classList.remove('-translate-x-full');
+                sidebarOverlay.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>
